@@ -1,4 +1,6 @@
 ### Guarani App
+[![Build Status](https://travis-ci.org/emanuelcondo/tdp2-guarani-app.svg?branch=develop)](https://travis-ci.org/emanuelcondo/tdp2-guarani-app)
+
 Este proyecto fue generado con [Create React Native App](https://github.com/react-community/create-react-native-app). Asi que es necesario contar con el cli (Command Line Interface) de React Native instalado.
 
 ### Ejecución
