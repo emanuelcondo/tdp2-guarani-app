@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "stable"
+cache:
+  directories:
+    - node_modules
+script:
+  - npm test
+notification:
+  email:
+    recipients:
+      - emanuelcondo@gmail.com
+    on_success: never
+    on_failure: always
