@@ -1,4 +1,4 @@
-package ar.uba.fi.tdp2.guaraniapp;
+package ar.edu.uba.fi.tdp2.guaraniapp;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("ar.uba.fi.tdp2.guaraniapp", appContext.getPackageName());
+        assertEquals("ar.edu.uba.fi.tdp2.guaraniapp", appContext.getPackageName());
     }
 }

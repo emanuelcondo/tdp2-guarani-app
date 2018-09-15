@@ -1,4 +1,4 @@
-package ar.uba.fi.tdp2.guaraniapp;
+package ar.edu.uba.fi.tdp2.guaraniapp;
 
 import org.junit.Test;
 
