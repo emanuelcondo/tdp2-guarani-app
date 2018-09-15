@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Guarani App</string>
-    <string name="navigation_drawer_open">Abrir menú</string>
-    <string name="navigation_drawer_close">Cerrar menú</string>
+    <string name="navigation_drawer_open">Abrir menu</string>
+    <string name="navigation_drawer_close">Cerrar menu</string>
     <string name="nav_header_title">Mis opciones</string>
     <string name="nav_header_subtitle">cperez@fi.uba.arr</string>
     <string name="nav_header_desc">Encabezado</string>
