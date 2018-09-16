@@ -1,12 +1,16 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.materias;
 
-public class Curso {
-    private String docente;
-    private String horario;
+import java.util.ArrayList;
 
-    public Curso(String docente, String horario) {
+public class Curso {
+    private int numeroCurso;
+    private String docente;
+    private ArrayList<Horario> horarios;
+
+    public Curso(int numeroCurso, String docente, ArrayList<Horario> horarios) {
+        this.numeroCurso = numeroCurso;
         this.docente = docente;
-        this.horario = horario;
+        this.horarios = horarios;
     }
 
     public String getDocente() {
@@ -17,11 +21,19 @@ public class Curso {
         this.docente = docente;
     }
 
-    public String getHorario() {
-        return horario;
+    public int getNumeroCurso() {
+        return numeroCurso;
     }
 
-    public void setHorario(String horario) {
-        this.horario = horario;
+    public void setNumeroCurso(int numeroCurso) {
+        this.numeroCurso = numeroCurso;
+    }
+
+    public ArrayList<Horario> getHorarios() {
+        return horarios;
+    }
+
+    public void setHorarios(ArrayList<Horario> horarios) {
+        this.horarios = horarios;
     }
 }

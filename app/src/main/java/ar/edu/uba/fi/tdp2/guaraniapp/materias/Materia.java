@@ -5,11 +5,13 @@ import java.util.ArrayList;
 public class Materia {
     private String codigo;
     private String nombre;
+    private String departamento;
     private ArrayList<Curso> cursos = new ArrayList<>();
 
-    public Materia(String codigo, String nombre) {
+    public Materia(String codigo, String nombre, String departamento) {
         this.codigo = codigo;
         this.nombre = nombre;
+        this.departamento = departamento;
     }
 
     public String getCodigo() {
@@ -34,5 +36,13 @@ public class Materia {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
     }
 }

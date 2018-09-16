@@ -23,12 +23,27 @@ public class MateriasFragment extends RecyclerFragment {
     }
 
     private void mockearMaterias() {
-        Materia materia1 = new Materia("75.01", "Algoritmos y Programación I");
-        materia1.agregarCurso(new Curso("Gustavo Campagnuolo", "Lunes 19-22, Martes 19-22"));
-        materia1.agregarCurso(new Curso("Reinaldo Merlo", "Miércoles 15-22"));
-        Materia materia2 = new Materia("75.26", "Arquitectura de Software");
-        materia2.agregarCurso(new Curso("José Chatruc", "Viernes 15-23"));
-        materia2.agregarCurso(new Curso("Adrián Bastía", "Lunes 19-22, Jueves 19-22"));
+        Materia materia1 = new Materia("75.01", "Algoritmos y Programación I", "Computacion");
+        ArrayList<Horario> horarios1 = new ArrayList<Horario>() {{
+            add(new Horario("Lunes",19,22));
+            add(new Horario("Martes", 19, 22));
+        }};
+        materia1.agregarCurso(new Curso(1,"Gustavo Campagnuolo", horarios1));
+        ArrayList<Horario> horarios2 = new ArrayList<Horario>() {{
+            add(new Horario("Miércoles",15,22));
+        }};
+        materia1.agregarCurso(new Curso(2,"Reinaldo Merlo", horarios2));
+        Materia materia2 = new Materia("71.26", "Modelos y Optimización II", "Gestion");
+        ArrayList<Horario> horarios3 = new ArrayList<Horario>() {{
+            add(new Horario("Viernes",15,23));
+        }};
+        materia2.agregarCurso(new Curso(1, "José Chatruc", horarios3));
+        ArrayList<Horario> horarios4 = new ArrayList<Horario>() {{
+            add(new Horario("Lunes",19,22));
+            add(new Horario("Martes", 19, 20));
+            add(new Horario("Jueves", 20, 22));
+        }};
+        materia2.agregarCurso(new Curso(2, "Adrián Bastía", horarios4));
         materias.add(materia1);
         materias.add(materia2);
     }
