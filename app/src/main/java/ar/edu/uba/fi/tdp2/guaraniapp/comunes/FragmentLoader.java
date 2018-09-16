@@ -21,6 +21,7 @@ public class FragmentLoader {
     public static final String Inscripcion = "Inscripcion";
     public static final String OfertaHoraria = "OfertaHoraria";
     public static final String Desinscripcion = "Desinscripcion";
+    public static final String Cursos = "Cursos";
 
 
     private static final Map<String, Boolean> drawerVisibilityMap;
@@ -30,6 +31,7 @@ public class FragmentLoader {
         drawerVisibilityMap.put(Inscripcion, true);
         drawerVisibilityMap.put(OfertaHoraria, true);
         drawerVisibilityMap.put(Desinscripcion, true);
+        drawerVisibilityMap.put(Cursos, true);
 
 
     }

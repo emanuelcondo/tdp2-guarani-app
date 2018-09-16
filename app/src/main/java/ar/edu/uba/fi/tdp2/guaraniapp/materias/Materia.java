@@ -1,10 +1,16 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.materias;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Materia {
     private String codigo;
-    private List<Curso> cursos;
+    private String nombre;
+    private ArrayList<Curso> cursos = new ArrayList<>();
+
+    public Materia(String codigo, String nombre) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+    }
 
     public String getCodigo() {
         return codigo;
@@ -14,11 +20,19 @@ public class Materia {
         this.codigo = codigo;
     }
 
-    public List<Curso> getCursos() {
+    public ArrayList<Curso> getCursos() {
         return cursos;
     }
 
-    public void setCursos(List<Curso> cursos) {
-        this.cursos = cursos;
+    public void agregarCurso(Curso curso) {
+        this.cursos.add(curso);
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }
