@@ -30,11 +30,11 @@ public class HistoriaAcademicaFragment extends RecyclerFragment {
         Materia materia2 = new Materia("71.26", "Modelos y Optimización II", "Gestion");
         Materia materia3 = new Materia("75.15", "Base de Datos", "Computacion");
         Calendar calendar = Calendar.getInstance();
-        calendar.set(116, 6, 15);
+        calendar.set(2016, 6, 15);
         Date date1 = calendar.getTime();
-        calendar.set(117, 12, 20);
+        calendar.set(2017, 12, 20);
         Date date2 = calendar.getTime();
-        calendar.set(118, 2, 14);
+        calendar.set(2018, 2, 14);
         Date date3 = calendar.getTime();
 
         ResultadoExamen resultado1 = new ResultadoExamen(materia1, date1, 8);

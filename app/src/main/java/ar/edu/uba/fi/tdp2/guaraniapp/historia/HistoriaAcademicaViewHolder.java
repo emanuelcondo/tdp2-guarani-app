@@ -4,10 +4,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 
 public class HistoriaAcademicaViewHolder extends RecyclerView.ViewHolder
         implements View.OnClickListener  {
+
     private TextView textViewCodigoMateria;
     private TextView textViewNombreMateria;
     private TextView textViewNota;
@@ -26,7 +30,10 @@ public class HistoriaAcademicaViewHolder extends RecyclerView.ViewHolder
 
         textViewCodigoMateria.setText(resultadoExamen.getMateria().getCodigo());
         textViewNombreMateria.setText(resultadoExamen.getMateria().getNombre());
-        textViewFecha.setText(resultadoExamen.getFecha().toString());
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        String strDate = dateFormat.format(resultadoExamen.getFecha());
+        textViewFecha.setText("Fecha: " + strDate);
         String nota = "Nota: " + resultadoExamen.getNota();
         textViewNota.setText(nota);
     }
