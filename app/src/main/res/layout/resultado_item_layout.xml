@@ -25,7 +25,7 @@
                 android:padding="8dp" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/nombre_materia_resultado"
                 android:textColor="@color/white"
@@ -40,18 +40,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/nota_resultado"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
+            style="@style/TextAppearance.AppCompat.Body1"
             android:textSize="16sp"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/white"
             android:padding="8dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/fecha_resultado"
-            android:textColor="@color/white"
+            android:textColor="@color/dim_gray"
+            style="@style/TextAppearance.AppCompat.Caption"
             android:textSize="16sp"
-            android:background="@color/colorPrimaryDark"
+            android:textStyle="italic"
+            android:background="@color/white"
             android:padding="8dp" />
 
     </LinearLayout>

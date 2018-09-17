@@ -33,7 +33,7 @@ public class HistoriaAcademicaViewHolder extends RecyclerView.ViewHolder
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
         String strDate = dateFormat.format(resultadoExamen.getFecha());
-        textViewFecha.setText("Fecha: " + strDate);
+        textViewFecha.setText(strDate);
         String nota = "Nota: " + resultadoExamen.getNota();
         textViewNota.setText(nota);
     }

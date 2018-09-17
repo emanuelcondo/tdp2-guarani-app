@@ -40,11 +40,11 @@ public abstract class RecyclerFragment extends Fragment implements View.OnClickL
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_recycler, container, false);
-
+        /*
         FloatingActionButton fabAgregarElemento = rootView.findViewById(R.id.fabAgregarElemento);
 
         fabAgregarElemento.setOnClickListener(this);
-
+        */
         mList = rootView.findViewById(R.id.section_list);
         mList.setLayoutManager(getLayoutManager());
         mList.addItemDecoration(getItemDecoration());

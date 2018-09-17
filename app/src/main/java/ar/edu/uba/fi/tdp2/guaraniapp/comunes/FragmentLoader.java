@@ -36,7 +36,7 @@ public class FragmentLoader {
         drawerVisibilityMap.put(Desinscripcion, true);
         drawerVisibilityMap.put(Cursos, true);
         drawerVisibilityMap.put(Login, false);
-        drawerVisibilityMap.put(HistoriaAcademica, false);
+        drawerVisibilityMap.put(HistoriaAcademica, true);
 
 
     }
