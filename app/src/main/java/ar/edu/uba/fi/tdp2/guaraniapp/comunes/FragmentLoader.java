@@ -10,6 +10,7 @@ import java.util.Map;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
+import ar.edu.uba.fi.tdp2.guaraniapp.historia.HistoriaAcademicaFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.MateriasFragment;
 
 
@@ -23,6 +24,7 @@ public class FragmentLoader {
     public static final String Desinscripcion = "Desinscripcion";
     public static final String Cursos = "Cursos";
     public static final String Login = "Login";
+    public static final String HistoriaAcademica = "HistoriaAcademica";
 
 
     private static final Map<String, Boolean> drawerVisibilityMap;
@@ -34,6 +36,7 @@ public class FragmentLoader {
         drawerVisibilityMap.put(Desinscripcion, true);
         drawerVisibilityMap.put(Cursos, true);
         drawerVisibilityMap.put(Login, false);
+        drawerVisibilityMap.put(HistoriaAcademica, false);
 
 
     }
@@ -82,13 +85,12 @@ public class FragmentLoader {
         String name;
 
         if (id == R.id.nav_inscribirme) {
-            //Mostrar pantalla perfil
             fragment = new MateriasFragment();
             name = Inscripcion;
-        } /*else if (id == R.id.nav_calendario) {
-            fragment = new CalendarioFragment();
-            name = Calendario;
-        }*/ else {
+        } else if (id == R.id.nav_historia_academica) {
+            fragment = new HistoriaAcademicaFragment();
+            name = HistoriaAcademica;
+        } else {
 
             // TODO: Corregir cual es el default
             fragment = new MateriasFragment();

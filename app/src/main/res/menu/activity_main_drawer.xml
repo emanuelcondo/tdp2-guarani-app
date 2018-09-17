@@ -20,6 +20,10 @@
             android:id="@+id/nav_perfil"
             android:icon="@drawable/ic_assignment_ind_black_24dp"
             android:title="Perfil" />
+        <item
+            android:id="@+id/nav_historia_academica"
+            android:icon="@drawable/ic_assignment_ind_black_24dp"
+            android:title="Historia Académica" />
     </group>
 
     <item android:title="Comunicate">
