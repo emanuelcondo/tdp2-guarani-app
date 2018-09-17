@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
+import ar.edu.uba.fi.tdp2.guaraniapp.login.LoginFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -31,14 +32,6 @@ public class MainActivity extends AppCompatActivity
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab =  findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Aún sin funcionalidad", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         drawer =  findViewById(R.id.drawer_layout);
         toggle = new ActionBarDrawerToggle(
@@ -48,6 +41,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        FragmentLoader.load(this, new LoginFragment(), "Login");
     }
 
     @Override
