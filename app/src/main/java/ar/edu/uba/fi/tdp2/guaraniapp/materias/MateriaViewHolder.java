@@ -21,7 +21,7 @@ public class MateriaViewHolder  extends RecyclerView.ViewHolder
     public MateriaViewHolder(final View itemView) {
         super(itemView);
 
-        imageViewDepartamento = itemView.findViewById(R.id.imagen_departamento);
+        //imageViewDepartamento = itemView.findViewById(R.id.imagen_departamento);
         textViewCodigo = itemView.findViewById(R.id.codigo_materia);
         textViewNombre = itemView.findViewById(R.id.nombre_materia);
 
@@ -38,6 +38,7 @@ public class MateriaViewHolder  extends RecyclerView.ViewHolder
 
     public void bindTo(Materia materia) {
 
+        /*
         switch (materia.getDepartamento()) {
             case "Computacion":
                 Glide
@@ -57,7 +58,7 @@ public class MateriaViewHolder  extends RecyclerView.ViewHolder
                         .load(R.drawable.computacion)
                         .into(imageViewDepartamento);
                 break;
-        }
+        }*/
 
         textViewCodigo.setText(materia.getCodigo());
         textViewNombre.setText(materia.getNombre());

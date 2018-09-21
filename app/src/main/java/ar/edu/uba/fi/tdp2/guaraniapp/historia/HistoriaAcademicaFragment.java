@@ -29,6 +29,9 @@ public class HistoriaAcademicaFragment extends RecyclerFragment {
         Materia materia1 = new Materia("75.01", "Algoritmos y Programación I", "Computacion");
         Materia materia2 = new Materia("71.26", "Modelos y Optimización II", "Gestion");
         Materia materia3 = new Materia("75.15", "Base de Datos", "Computacion");
+        Materia materia4 = new Materia("75.46", "Administración y Control de Proyectos Informáticos II", "Computacion");
+        Materia materia5 = new Materia("71.13", "Información en las Organizaciones", "Gestion");
+        Materia materia6 = new Materia("75.47", "Taller de Desarrollo de Proyectos II", "Computacion");
         Calendar calendar = Calendar.getInstance();
         calendar.set(2016, 6, 15);
         Date date1 = calendar.getTime();
@@ -43,6 +46,9 @@ public class HistoriaAcademicaFragment extends RecyclerFragment {
         resultados.add(resultado1);
         resultados.add(resultado2);
         resultados.add(resultado3);
+        resultados.add(new ResultadoExamen(materia4, date1, 7));
+        resultados.add(new ResultadoExamen(materia5, date2, 10));
+        resultados.add(new ResultadoExamen(materia6, date3, 9));
     }
 
     @Override

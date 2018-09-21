@@ -9,17 +9,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/imagen_departamento"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="Imagen Departamento" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_alignBottom="@+id/imagen_departamento">
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
