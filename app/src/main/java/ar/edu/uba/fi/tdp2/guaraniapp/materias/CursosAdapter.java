@@ -32,7 +32,6 @@ public class CursosAdapter extends RecyclerView.Adapter<CursoViewHolder> {
     public void onBindViewHolder(@NonNull CursoViewHolder holder, int position) {
         Curso curso = this.cursos.get(position);
         holder.bindTo(curso);
-        holder.position = position;
     }
 
     @Override

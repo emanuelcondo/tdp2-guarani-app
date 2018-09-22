@@ -8,7 +8,7 @@
     <string name="action_settings">Configuración</string>
     <string name="userName_hint">Nombre de Usuario</string>
     <string name="password_hint">Contraseña</string>
-    <string name="login_button">LOGIN</string>
+    <string name="login_button">Ingresar</string>
     <string name="nombre_error">Nombre inválido</string>
     <string name="password_error">Contraseña inválida</string>
     <string name="inscribirme">Inscribirme</string>

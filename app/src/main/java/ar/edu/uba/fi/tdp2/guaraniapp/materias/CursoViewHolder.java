@@ -20,8 +20,6 @@ public class CursoViewHolder extends RecyclerView.ViewHolder
 
     private Curso curso;
 
-    public int position;
-
     private MainActivity activity;
 
     public CursoViewHolder(View itemView, MainActivity activity) {
@@ -50,14 +48,14 @@ public class CursoViewHolder extends RecyclerView.ViewHolder
         TextView textViewDias = new TextView(itemView.getContext());
         textViewDias.setText("Días");
         textViewDias.setTextSize(14);
-        textViewDias.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.colorPrimaryDark));
-        textViewDias.setBackgroundResource(R.drawable.cell_shape);
+        textViewDias.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.white));
+        textViewDias.setBackgroundResource(R.color.colorPrimary);
         textViewDias.setPadding(8,8,8,8);
         TextView textViewHorarios = new TextView(itemView.getContext());
         textViewHorarios.setText("Horarios");
         textViewHorarios.setTextSize(14);
-        textViewHorarios.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.colorPrimaryDark));
-        textViewHorarios.setBackgroundResource(R.drawable.cell_shape);
+        textViewHorarios.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.white));
+        textViewHorarios.setBackgroundResource(R.color.colorPrimary);
         textViewHorarios.setPadding(8,8,8,8);
         header.addView(textViewDias);
         header.addView(textViewHorarios);

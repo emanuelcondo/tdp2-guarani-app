@@ -10,8 +10,6 @@ import java.util.ArrayList;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.MateriaViewHolder;
 
 public class HistoriaAcademicaAdapter extends RecyclerView.Adapter<HistoriaAcademicaViewHolder> {
 

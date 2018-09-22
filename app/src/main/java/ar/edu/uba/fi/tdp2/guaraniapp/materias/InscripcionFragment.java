@@ -2,7 +2,6 @@ package ar.edu.uba.fi.tdp2.guaraniapp.materias;
 
 import android.os.Bundle;
 import android.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import android.widget.TextView;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
-import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 
 public class InscripcionFragment extends Fragment {
 
@@ -57,14 +55,14 @@ public class InscripcionFragment extends Fragment {
         TextView textViewDias = new TextView(getContext());
         textViewDias.setText("Días");
         textViewDias.setTextSize(14);
-        textViewDias.setTextColor(getActivity().getColor(R.color.colorPrimaryDark));
-        textViewDias.setBackgroundResource(R.drawable.cell_shape);
+        textViewDias.setTextColor(getActivity().getColor(R.color.white));
+        textViewDias.setBackgroundResource(R.color.colorPrimary);
         textViewDias.setPadding(8,8,8,8);
         TextView textViewHorarios = new TextView(getContext());
         textViewHorarios.setText("Horarios");
         textViewHorarios.setTextSize(14);
-        textViewHorarios.setTextColor(getActivity().getColor(R.color.colorPrimaryDark));
-        textViewHorarios.setBackgroundResource(R.drawable.cell_shape);
+        textViewHorarios.setTextColor(getActivity().getColor(R.color.white));
+        textViewHorarios.setBackgroundResource(R.color.colorPrimary);
         textViewHorarios.setPadding(8,8,8,8);
         header.addView(textViewDias);
         header.addView(textViewHorarios);
