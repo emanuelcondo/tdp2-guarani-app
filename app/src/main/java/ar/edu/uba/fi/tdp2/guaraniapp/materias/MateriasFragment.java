@@ -23,6 +23,9 @@ public class MateriasFragment extends RecyclerFragment {
     }
 
     private void mockearMaterias() {
+        if (materias.size()>0 ) {
+            return;
+        }
         Materia materia1 = new Materia("75.01", "Algoritmos y Programación I", "Computacion");
         ArrayList<Horario> horarios1 = new ArrayList<Horario>() {{
             add(new Horario("Lunes",19,22));
@@ -45,6 +48,7 @@ public class MateriasFragment extends RecyclerFragment {
             add(new Horario("Jueves", 20, 22));
         }};
         materia2.agregarCurso(new Curso(2, "Adrián Bastía", horarios4));
+        materias.clear();
         materias.add(materia1);
         materias.add(materia2);
     }

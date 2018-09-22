@@ -1,5 +1,7 @@
 package ar.edu.uba.fi.tdp2.guaraniapp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -54,7 +56,9 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (!FragmentLoader.backFragment(this)) {
+                showExitDialog();
+            }
         }
     }
 
@@ -127,6 +131,26 @@ public class MainActivity extends AppCompatActivity
 
     public Curso getCursoSeleccionado() {
         return cursoSeleccionado;
+    }
+
+    private void showExitDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        String title = getString(R.string.message_confirm_exit);
+        builder.setTitle(title);
+
+        builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                finishAffinity();
+            }
+        });
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
 }

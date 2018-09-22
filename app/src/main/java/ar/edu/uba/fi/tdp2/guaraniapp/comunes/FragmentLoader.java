@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -109,6 +110,7 @@ public class FragmentLoader {
 
 
         if (pos >= 0) {
+            Log.d("getFragmentName", fragmentManager.getBackStackEntryAt(pos).getName());
             return fragmentManager.getBackStackEntryAt(pos).getName();
         }
 

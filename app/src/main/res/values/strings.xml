@@ -12,4 +12,5 @@
     <string name="nombre_error">Nombre inválido</string>
     <string name="password_error">Contraseña inválida</string>
     <string name="inscribirme">Inscribirme</string>
+    <string name="message_confirm_exit">Desea salir de la aplicacion?</string>
 </resources>

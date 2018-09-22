@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
@@ -42,7 +41,6 @@ public class CursoViewHolder extends RecyclerView.ViewHolder
 
     private void bindViews() {
         String numeroCurso = "Curso " + curso.getNumeroCurso();
-        Log.d("bindViews", numeroCurso);
         textViewNumeroCurso.setText(numeroCurso);
         textViewNumeroCurso.setOnClickListener(this);
         textViewDocente.setText(curso.getDocente());
@@ -89,9 +87,8 @@ public class CursoViewHolder extends RecyclerView.ViewHolder
     public void onClick(View view) {
 
         Log.d("ClicCursoViewHolder", "Clic en curso: " + curso.getDocente());
-        Toast.makeText(activity, "Clic en curso", Toast.LENGTH_LONG).show();
         activity.setCursoSeleccionado(curso);
-        FragmentLoader.load(activity, new InscripcionFragment(), FragmentLoader.Inscripcion);
+        FragmentLoader.load(activity, new InscripcionFragment(), FragmentLoader.InscripcionCurso);
 
     }
 
