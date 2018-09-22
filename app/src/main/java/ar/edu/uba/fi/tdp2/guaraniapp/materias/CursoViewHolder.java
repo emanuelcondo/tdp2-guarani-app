@@ -2,12 +2,16 @@ package ar.edu.uba.fi.tdp2.guaraniapp.materias;
 
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 
 public class CursoViewHolder extends RecyclerView.ViewHolder
         implements View.OnClickListener  {
@@ -15,18 +19,34 @@ public class CursoViewHolder extends RecyclerView.ViewHolder
     private TextView textViewDocente;
     private TableLayout tableLayoutHorarios;
 
-    public CursoViewHolder(View itemView) {
+    private Curso curso;
+
+    public int position;
+
+    private MainActivity activity;
+
+    public CursoViewHolder(View itemView, MainActivity activity) {
         super(itemView);
 
         textViewNumeroCurso = itemView.findViewById(R.id.numero_curso);
         textViewDocente = itemView.findViewById(R.id.docente_curso);
         tableLayoutHorarios = itemView.findViewById(R.id.tabla_horarios);
+
+        this.activity = activity;
     }
 
     public void bindTo(Curso curso) {
+        this.curso = curso;
+        bindViews();
+    }
+
+    private void bindViews() {
         String numeroCurso = "Curso " + curso.getNumeroCurso();
+        Log.d("bindViews", numeroCurso);
         textViewNumeroCurso.setText(numeroCurso);
+        textViewNumeroCurso.setOnClickListener(this);
         textViewDocente.setText(curso.getDocente());
+        textViewDocente.setOnClickListener(this);
 
         TableRow header = new TableRow(itemView.getContext());
         TextView textViewDias = new TextView(itemView.getContext());
@@ -45,6 +65,7 @@ public class CursoViewHolder extends RecyclerView.ViewHolder
         header.addView(textViewHorarios);
 
         tableLayoutHorarios.addView(header);
+        tableLayoutHorarios.setOnClickListener(this);
 
         for (Horario horario:curso.getHorarios()) {
             TableRow row = new TableRow(itemView.getContext());
@@ -66,6 +87,11 @@ public class CursoViewHolder extends RecyclerView.ViewHolder
 
     @Override
     public void onClick(View view) {
+
+        Log.d("ClicCursoViewHolder", "Clic en curso: " + curso.getDocente());
+        Toast.makeText(activity, "Clic en curso", Toast.LENGTH_LONG).show();
+        activity.setCursoSeleccionado(curso);
+        FragmentLoader.load(activity, new InscripcionFragment(), FragmentLoader.Inscripcion);
 
     }
 

@@ -6,6 +6,7 @@ public class Curso {
     private int numeroCurso;
     private String docente;
     private ArrayList<Horario> horarios;
+    private String observaciones = "";
 
     public Curso(int numeroCurso, String docente, ArrayList<Horario> horarios) {
         this.numeroCurso = numeroCurso;
@@ -35,5 +36,13 @@ public class Curso {
 
     public void setHorarios(ArrayList<Horario> horarios) {
         this.horarios = horarios;
+    }
+
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
     }
 }

@@ -20,6 +20,7 @@ public class FragmentLoader {
     private static int current = -1;
 
     public static final String Inscripcion = "Inscripcion";
+    public static final String InscripcionCurso = "InscripcionCurso";
     public static final String OfertaHoraria = "OfertaHoraria";
     public static final String Desinscripcion = "Desinscripcion";
     public static final String Cursos = "Cursos";
@@ -36,6 +37,7 @@ public class FragmentLoader {
         drawerVisibilityMap.put(Desinscripcion, true);
         drawerVisibilityMap.put(Cursos, true);
         drawerVisibilityMap.put(Login, false);
+        drawerVisibilityMap.put(InscripcionCurso, false);
         drawerVisibilityMap.put(HistoriaAcademica, true);
 
 

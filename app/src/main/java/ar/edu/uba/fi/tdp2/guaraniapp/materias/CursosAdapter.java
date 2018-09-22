@@ -25,13 +25,14 @@ public class CursosAdapter extends RecyclerView.Adapter<CursoViewHolder> {
     @NonNull
     @Override
     public CursoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new CursoViewHolder(LayoutInflater.from(activity).inflate(R.layout.curso_item_layout, parent, false));
+        return new CursoViewHolder(LayoutInflater.from(activity).inflate(R.layout.curso_item_layout, parent, false), activity);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CursoViewHolder holder, int position) {
         Curso curso = this.cursos.get(position);
         holder.bindTo(curso);
+        holder.position = position;
     }
 
     @Override

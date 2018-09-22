@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:background="?android:attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ins_numero_curso"
+            android:textSize="16sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:padding="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ins_docente_curso"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
+            android:padding="8dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*"
+            android:id="@+id/ins_tabla_horarios"
+            android:background="@drawable/cell_shape" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/ins_observaciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/red"
+        android:textStyle="bold"
+        android:padding="8dp"/>
+
+
+
+    <Button
+        android:id="@+id/ins_btn_inscribir"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:shadowColor="@color/gray"
+        android:background="@color/dark_green"
+        android:layout_gravity="center_horizontal"
+        android:text="Inscribirme" />
+
+</LinearLayout>

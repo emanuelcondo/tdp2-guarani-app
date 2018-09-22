@@ -28,7 +28,8 @@ public class MateriasFragment extends RecyclerFragment {
             add(new Horario("Lunes",19,22));
             add(new Horario("Martes", 19, 22));
         }};
-        materia1.agregarCurso(new Curso(1,"Gustavo Campagnuolo", horarios1));
+        materia1.agregarCurso(new Curso(12,"Gustavo Campagnuolo", horarios1));
+        materia1.getCursos().get(0).setObservaciones("Solo para recursantes");
         ArrayList<Horario> horarios2 = new ArrayList<Horario>() {{
             add(new Horario("Miércoles",15,22));
         }};

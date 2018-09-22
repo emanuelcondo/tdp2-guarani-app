@@ -17,6 +17,7 @@ import android.view.MenuItem;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.login.LoginFragment;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity
     private DrawerLayout drawer;
     private Toolbar toolbar;
     private ActionBarDrawerToggle toggle;
+
+    private Curso cursoSeleccionado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,5 +121,12 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
+    public void setCursoSeleccionado(Curso curso) {
+        cursoSeleccionado = curso;
+    }
+
+    public Curso getCursoSeleccionado() {
+        return cursoSeleccionado;
+    }
 
 }

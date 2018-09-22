@@ -11,4 +11,5 @@
     <string name="login_button">LOGIN</string>
     <string name="nombre_error">Nombre inválido</string>
     <string name="password_error">Contraseña inválida</string>
+    <string name="inscribirme">Inscribirme</string>
 </resources>
