@@ -6,12 +6,14 @@ public class Curso {
     private int numeroCurso;
     private String docente;
     private ArrayList<Horario> horarios;
-    private String observaciones = "";
+    private ArrayList<String> ayudantes = new ArrayList<>();
+    private int vacantes;
 
-    public Curso(int numeroCurso, String docente, ArrayList<Horario> horarios) {
+    public Curso(int numeroCurso, String docente, ArrayList<Horario> horarios, int vacantes) {
         this.numeroCurso = numeroCurso;
         this.docente = docente;
         this.horarios = horarios;
+        this.vacantes = vacantes;
     }
 
     public String getDocente() {
@@ -38,11 +40,27 @@ public class Curso {
         this.horarios = horarios;
     }
 
-    public String getObservaciones() {
-        return observaciones;
+    public void setVacantes(int vacantes) {
+        this.vacantes = vacantes;
     }
 
-    public void setObservaciones(String observaciones) {
-        this.observaciones = observaciones;
+    public int getVacantes() {
+        return vacantes;
+    }
+
+    public void decrementarVacantes() {
+        --vacantes;
+    }
+
+    public void agregarVacante() {
+        ++vacantes;
+    }
+
+    public ArrayList<String> getAyudantes() {
+        return ayudantes;
+    }
+
+    public void setAyudantes(ArrayList<String> ayudantes) {
+        this.ayudantes = ayudantes;
     }
 }

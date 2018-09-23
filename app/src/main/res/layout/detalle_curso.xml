@@ -44,13 +44,43 @@
                 android:background="@drawable/cell_shape" />
         </LinearLayout>
 
-
-        <TextView
-            android:id="@+id/ins_observaciones"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
-            android:textColor="@color/red"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:id="@+id/ayudantes">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:text="@string/ayudantes" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:id="@+id/modalidades">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:text="@string/modalidades" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/vacantes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
             android:textStyle="bold"
             android:padding="8dp"/>
 

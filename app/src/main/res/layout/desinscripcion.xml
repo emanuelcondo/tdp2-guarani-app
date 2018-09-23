@@ -14,7 +14,7 @@
         android:layout_width="match_parent" />
 
     <Button
-        android:id="@+id/ins_btn_inscribir"
+        android:id="@+id/ins_btn_desinscribir"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
@@ -22,6 +22,6 @@
         android:background="@color/design_default_color_primary"
         android:layout_marginTop="20dp"
         android:layout_gravity="center_horizontal"
-        android:text="@string/inscribirme" />
+        android:text="@string/desinscribirme" />
 
 </LinearLayout>

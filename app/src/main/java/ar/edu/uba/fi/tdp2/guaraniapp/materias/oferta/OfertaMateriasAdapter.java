@@ -1,4 +1,4 @@
-package ar.edu.uba.fi.tdp2.guaraniapp.materias;
+package ar.edu.uba.fi.tdp2.guaraniapp.materias.oferta;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -10,28 +10,29 @@ import java.util.ArrayList;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
 
-public class MateriasAdapter extends RecyclerView.Adapter<MateriaViewHolder> {
+public class OfertaMateriasAdapter extends RecyclerView.Adapter<OfertaMateriaViewHolder> {
 
     private MainActivity activity;
 
     private ArrayList<Materia> materias;
 
-    public MateriasAdapter(Activity activity, ArrayList<Materia> materias) {
+    public OfertaMateriasAdapter(Activity activity, ArrayList<Materia> materias) {
         this.materias = materias;
         this.activity = (MainActivity)activity;
     }
 
     @NonNull
     @Override
-    public MateriaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MateriaViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.materia_item_layout, parent, false));
+    public OfertaMateriaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new OfertaMateriaViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.materia_item_layout, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MateriaViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull OfertaMateriaViewHolder holder, int position) {
         Materia materia = this.materias.get(position);
-        holder.bindTo(materia);
+        holder.bindTo(materia, activity.getUsuario());
     }
 
     @Override

@@ -1,4 +1,4 @@
-package ar.edu.uba.fi.tdp2.guaraniapp.materias;
+package ar.edu.uba.fi.tdp2.guaraniapp.materias.oferta;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -10,26 +10,27 @@ import java.util.ArrayList;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 
-public class CursosAdapter extends RecyclerView.Adapter<CursoViewHolder> {
+public class OfertaCursosAdapter extends RecyclerView.Adapter<OfertaCursoViewHolder> {
 
     private MainActivity activity;
 
     private ArrayList<Curso> cursos;
 
-    public CursosAdapter(Activity activity, ArrayList<Curso> cursos) {
+    public OfertaCursosAdapter(Activity activity, ArrayList<Curso> cursos) {
         this.cursos = cursos;
         this.activity = (MainActivity)activity;
     }
 
     @NonNull
     @Override
-    public CursoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new CursoViewHolder(LayoutInflater.from(activity).inflate(R.layout.curso_item_layout, parent, false), activity);
+    public OfertaCursoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new OfertaCursoViewHolder(LayoutInflater.from(activity).inflate(R.layout.curso_item_layout, parent, false), activity);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CursoViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull OfertaCursoViewHolder holder, int position) {
         Curso curso = this.cursos.get(position);
         holder.bindTo(curso);
     }

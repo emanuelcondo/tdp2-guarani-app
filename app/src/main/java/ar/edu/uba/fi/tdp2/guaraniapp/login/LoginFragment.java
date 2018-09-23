@@ -16,9 +16,11 @@ import android.widget.EditText;
 import java.util.HashMap;
 import java.util.Map;
 
+import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.MateriasFragment;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Estudiante;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionMateriasFragment;
 
 public class LoginFragment extends Fragment {
 
@@ -51,7 +53,9 @@ public class LoginFragment extends Fragment {
     private void login() {
         Log.d(TAG, "Login");
 
-        FragmentLoader.load(getActivity(), new MateriasFragment(), "Inscripcion");
+        //TODO: Arreglar cuando tengamos login
+        ((MainActivity) getActivity()).setUsuario(new Estudiante(95010, "Carlos", "Ramirez"));
+        FragmentLoader.load(getActivity(), new InscripcionMateriasFragment(), "Inscripcion");
 
         /*if (!validate()) {
             return;

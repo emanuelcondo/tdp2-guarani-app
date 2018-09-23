@@ -12,7 +12,9 @@ import java.util.Map;
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.historia.HistoriaAcademicaFragment;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.MateriasFragment;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.desinscripcion.DesinscripcionCursosFragment;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionMateriasFragment;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.oferta.OfertaMateriasFragment;
 
 
 public class FragmentLoader {
@@ -23,7 +25,9 @@ public class FragmentLoader {
     public static final String Inscripcion = "Inscripcion";
     public static final String InscripcionCurso = "InscripcionCurso";
     public static final String OfertaHoraria = "OfertaHoraria";
+    public static final String OfertaCurso = "OfertaCurso";
     public static final String Desinscripcion = "Desinscripcion";
+    public static final String DesinscripcionCurso = "DesinscripcionCurso";
     public static final String Cursos = "Cursos";
     public static final String Login = "Login";
     public static final String HistoriaAcademica = "HistoriaAcademica";
@@ -35,10 +39,12 @@ public class FragmentLoader {
         drawerVisibilityMap = new HashMap<>();
         drawerVisibilityMap.put(Inscripcion, true);
         drawerVisibilityMap.put(OfertaHoraria, true);
+        drawerVisibilityMap.put(OfertaCurso, true);
         drawerVisibilityMap.put(Desinscripcion, true);
         drawerVisibilityMap.put(Cursos, true);
         drawerVisibilityMap.put(Login, false);
-        drawerVisibilityMap.put(InscripcionCurso, false);
+        drawerVisibilityMap.put(InscripcionCurso, true);
+        drawerVisibilityMap.put(DesinscripcionCurso, true);
         drawerVisibilityMap.put(HistoriaAcademica, true);
 
 
@@ -87,17 +93,27 @@ public class FragmentLoader {
         Fragment fragment;
         String name;
 
-        if (id == R.id.nav_inscribirme) {
-            fragment = new MateriasFragment();
-            name = Inscripcion;
-        } else if (id == R.id.nav_historia_academica) {
-            fragment = new HistoriaAcademicaFragment();
-            name = HistoriaAcademica;
-        } else {
-
-            // TODO: Corregir cual es el default
-            fragment = new MateriasFragment();
-            name = Inscripcion;
+        switch (id) {
+            case R.id.nav_oferta_horaria:
+                fragment = new OfertaMateriasFragment();
+                name = OfertaHoraria;
+                break;
+            case R.id.nav_inscribirme:
+                fragment = new InscripcionMateriasFragment();
+                name = Inscripcion;
+                break;
+            case R.id.nav_historia_academica:
+                fragment = new HistoriaAcademicaFragment();
+                name = HistoriaAcademica;
+                break;
+            case R.id.nav_desinscribirme:
+                fragment = new DesinscripcionCursosFragment();
+                name = Desinscripcion;
+                break;
+            default:
+                // TODO: Corregir cual es el default
+                fragment = new OfertaMateriasFragment();
+                name = OfertaHoraria;
         }
 
         load(activity, fragment, name);

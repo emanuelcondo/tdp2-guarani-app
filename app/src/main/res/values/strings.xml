@@ -13,4 +13,8 @@
     <string name="password_error">Contraseña inválida</string>
     <string name="inscribirme">Inscribirme</string>
     <string name="message_confirm_exit">Desea salir de la aplicacion?</string>
+    <string name="inscribirse_como_condicional">Inscribirme como Condicional</string>
+    <string name="desinscribirme">Desinscribirme</string>
+    <string name="modalidades">Modalidad de Clases</string>
+    <string name="ayudantes">Ayudantes</string>
 </resources>
