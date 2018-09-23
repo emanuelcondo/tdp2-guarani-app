@@ -26,6 +26,12 @@ public class InscripcionMateriasFragment extends RecyclerFragment {
         ((MainActivity) getActivity()).setToolbarName("Inscripción a Cursos");
      }
 
+     @Override
+     public void onResume() {
+        super.onResume();
+         ((MainActivity) getActivity()).setToolbarName("Inscripción a Cursos");
+     }
+
     @Override
     protected RecyclerView.LayoutManager getLayoutManager() {
         return new LinearLayoutManager(getActivity());

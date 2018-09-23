@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.RecyclerFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
@@ -21,6 +22,7 @@ public class OfertaCursosFragment extends RecyclerFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         cursos = materia.getCursos();
+        ((MainActivity) getActivity()).setToolbarName(materia.getCodigo() + " " + materia.getNombre());
 
     }
 

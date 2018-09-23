@@ -25,6 +25,7 @@ public class InscripcionCursosFragment extends RecyclerFragment {
         super.onCreate(savedInstanceState);
         cursos = materia.getCursos();
         cursos.removeAll(((MainActivity) getActivity()).getUsuario().getInscripciones());
+        ((MainActivity) getActivity()).setToolbarName(materia.getCodigo() + " " + materia.getNombre());
 
     }
 

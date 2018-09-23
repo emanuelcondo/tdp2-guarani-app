@@ -27,6 +27,12 @@ public class OfertaMateriasFragment extends RecyclerFragment {
      }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity) getActivity()).setToolbarName("Oferta Académica");
+    }
+
+    @Override
     protected RecyclerView.LayoutManager getLayoutManager() {
         return new LinearLayoutManager(getActivity());
     }
