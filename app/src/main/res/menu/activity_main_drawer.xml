@@ -7,7 +7,7 @@
         <item
             android:id="@+id/nav_oferta_horaria"
             android:icon="@drawable/ic_menu_bulleted_list"
-            android:title="Oferta horaria" />
+            android:title="Oferta académica" />
         <item
             android:id="@+id/nav_inscribirme"
             android:icon="@drawable/ic_note_add_black_24dp"
@@ -23,7 +23,7 @@
         <item
             android:id="@+id/nav_historia_academica"
             android:icon="@drawable/ic_assignment_ind_black_24dp"
-            android:title="Historia Académica" />
+            android:title="Historia académica" />
     </group>
 
     <item android:title="Comunicate">
