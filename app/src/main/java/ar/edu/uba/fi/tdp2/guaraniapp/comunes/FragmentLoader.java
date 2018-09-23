@@ -94,7 +94,7 @@ public class FragmentLoader {
         String name;
 
         switch (id) {
-            case R.id.nav_oferta_horaria:
+            case R.id.nav_oferta:
                 fragment = new OfertaMateriasFragment();
                 name = OfertaHoraria;
                 break;
@@ -102,7 +102,7 @@ public class FragmentLoader {
                 fragment = new InscripcionMateriasFragment();
                 name = Inscripcion;
                 break;
-            case R.id.nav_historia_academica:
+            case R.id.nav_historia:
                 fragment = new HistoriaAcademicaFragment();
                 name = HistoriaAcademica;
                 break;

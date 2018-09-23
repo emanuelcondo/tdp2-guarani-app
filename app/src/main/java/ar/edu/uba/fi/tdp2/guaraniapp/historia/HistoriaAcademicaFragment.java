@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
+import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.RecyclerFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
 
@@ -20,9 +22,23 @@ public class HistoriaAcademicaFragment extends RecyclerFragment {
     private ArrayList<ResultadoExamen> resultados = new ArrayList<>();
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(false);
+
+        ((MainActivity) getActivity()).setToolbarName(getString(R.string.historia));
+    }
+
+    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         //TODO: Borrar esto cuando este implementado
         mockearHistorial();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity) getActivity()).setToolbarName(getString(R.string.historia));
     }
 
     private void mockearHistorial() {

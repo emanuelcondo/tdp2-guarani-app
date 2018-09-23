@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
+import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.RecyclerFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
 
@@ -23,13 +24,13 @@ public class InscripcionMateriasFragment extends RecyclerFragment {
         setHasOptionsMenu(false);
         materias = ((MainActivity) getActivity()).getMaterias();
 
-        ((MainActivity) getActivity()).setToolbarName("Inscripción a Cursos");
+        ((MainActivity) getActivity()).setToolbarName(getString(R.string.inscribirme));
      }
 
      @Override
      public void onResume() {
         super.onResume();
-         ((MainActivity) getActivity()).setToolbarName("Inscripción a Cursos");
+         ((MainActivity) getActivity()).setToolbarName(getString(R.string.inscribirme));
      }
 
     @Override

@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
+import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.RecyclerFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
 
@@ -23,13 +24,13 @@ public class OfertaMateriasFragment extends RecyclerFragment {
         setHasOptionsMenu(false);
         materias = ((MainActivity) getActivity()).getMaterias();
 
-        ((MainActivity) getActivity()).setToolbarName("Oferta Académica");
+        ((MainActivity) getActivity()).setToolbarName(getString(R.string.oferta));
      }
 
     @Override
     public void onResume() {
         super.onResume();
-        ((MainActivity) getActivity()).setToolbarName("Oferta Académica");
+        ((MainActivity) getActivity()).setToolbarName(getString(R.string.oferta));
     }
 
     @Override

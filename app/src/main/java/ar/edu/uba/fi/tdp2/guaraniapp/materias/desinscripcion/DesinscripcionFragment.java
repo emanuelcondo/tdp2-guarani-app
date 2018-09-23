@@ -69,7 +69,6 @@ public class DesinscripcionFragment extends Fragment {
         curso = ((MainActivity) getActivity()).getCursoSeleccionado();
 
         bindCurso();
-        //FragmentLoader.setBackOptionEnabled(getActivity(), true);
 
     }
 

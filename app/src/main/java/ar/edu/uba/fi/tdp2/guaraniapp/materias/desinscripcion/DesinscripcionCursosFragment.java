@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
+import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.RecyclerFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.desinscripcion.DesinscripcionCursosAdapter;
@@ -24,13 +25,15 @@ public class DesinscripcionCursosFragment extends RecyclerFragment {
         setHasOptionsMenu(false);
         cursos = ((MainActivity) getActivity()).getUsuario().getInscripciones();
 
-        ((MainActivity) getActivity()).setToolbarName("Desinscripción a Cursos");
+        ((MainActivity) getActivity()).setToolbarName(getString(R.string.desinscribirme));
     }
 
     @Override
     public void onResume() {
         super.onResume();
         cursos = ((MainActivity) getActivity()).getUsuario().getInscripciones();
+
+        ((MainActivity) getActivity()).setToolbarName(getString(R.string.desinscribirme));
     }
 
     @Override
