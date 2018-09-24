@@ -25,7 +25,7 @@ public class DesinscripcionCursosFragment extends RecyclerFragment {
         setHasOptionsMenu(false);
         cursos = ((MainActivity) getActivity()).getUsuario().getInscripciones();
 
-        ((MainActivity) getActivity()).setToolbarName(getString(R.string.desinscribirme));
+        ((MainActivity) getActivity()).setToolbarName(getString(R.string.desinscripcion));
     }
 
     @Override
@@ -33,7 +33,7 @@ public class DesinscripcionCursosFragment extends RecyclerFragment {
         super.onResume();
         cursos = ((MainActivity) getActivity()).getUsuario().getInscripciones();
 
-        ((MainActivity) getActivity()).setToolbarName(getString(R.string.desinscribirme));
+        ((MainActivity) getActivity()).setToolbarName(getString(R.string.desinscripcion));
     }
 
     @Override

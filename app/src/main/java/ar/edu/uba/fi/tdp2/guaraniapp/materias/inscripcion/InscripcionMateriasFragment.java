@@ -24,13 +24,13 @@ public class InscripcionMateriasFragment extends RecyclerFragment {
         setHasOptionsMenu(false);
         materias = ((MainActivity) getActivity()).getMaterias();
 
-        ((MainActivity) getActivity()).setToolbarName(getString(R.string.inscribirme));
+        ((MainActivity) getActivity()).setToolbarName(getString(R.string.inscripcion));
      }
 
      @Override
      public void onResume() {
         super.onResume();
-         ((MainActivity) getActivity()).setToolbarName(getString(R.string.inscribirme));
+         ((MainActivity) getActivity()).setToolbarName(getString(R.string.inscripcion));
      }
 
     @Override
