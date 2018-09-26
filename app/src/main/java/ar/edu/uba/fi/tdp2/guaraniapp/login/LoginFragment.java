@@ -13,22 +13,28 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Estudiante;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionMateriasFragment;
 
-public class LoginFragment extends Fragment {
+public class LoginFragment extends Fragment implements ResponseListener {
 
     private static final String TAG = "LoginActivity";
 
-    private EditText campo_nombreUsuario;
-    private EditText campo_password;
-    private Button boton_login;
+    private EditText editTextUsuario;
+    private EditText editTextPassword;
+    private Button buttonLogin;
     private ProgressDialog progressDialog;
 
     @Override
@@ -39,29 +45,29 @@ public class LoginFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        boton_login = view.findViewById(R.id.btn_login);
+        buttonLogin = view.findViewById(R.id.btn_login);
 
-        boton_login.setOnClickListener(new View.OnClickListener() {
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 login();
             }
         });
+
     }
 
     private void login() {
         Log.d(TAG, "Login");
 
-        //TODO: Arreglar cuando tengamos login
-        ((MainActivity) getActivity()).setUsuario(new Estudiante(95010, "Carlos", "Ramirez"));
-        FragmentLoader.load(getActivity(), new InscripcionMateriasFragment(), "Inscripcion");
 
-        /*if (!validate()) {
+
+
+        if (!validate()) {
             return;
         }
 
-        boton_login.setEnabled(false);
+        buttonLogin.setEnabled(false);
 
         progressDialog = new ProgressDialog(getContext(),
                 R.style.AppTheme);
@@ -69,48 +75,57 @@ public class LoginFragment extends Fragment {
         progressDialog.setMessage("Ingresando...");
         progressDialog.show();
 
-        campo_nombreUsuario = getView().findViewById(R.id.input_userName);
-        campo_password = getView().findViewById(R.id.input_password);
+        editTextUsuario = getView().findViewById(R.id.input_userName);
+        editTextPassword = getView().findViewById(R.id.input_password);
 
-        String nombreUsuario = campo_nombreUsuario.getText().toString();
-        String password = campo_password.getText().toString();
+        String nombreUsuario = this.editTextUsuario.getText().toString();
+        String password = editTextPassword.getText().toString();
 
-        loginUsuario(nombreUsuario, password);*/
+        loginUsuario(nombreUsuario, password);
 
     }
 
     public void onLoginSuccess(String session) {
         if (progressDialog != null)
             progressDialog.dismiss();
+
+        Token.id = session;
+        Token.conectado = true;
+        RequestHelper.showError(getActivity(), "Logueado!");
+
+        ((MainActivity) getActivity()).setUsuario(new Estudiante(95010, "Carlos", "Ramirez"));
+        FragmentLoader.load(getActivity(), new InscripcionMateriasFragment(), "Inscripcion");
     }
 
     public void onLoginFailed() {
         if (progressDialog != null)
             progressDialog.dismiss();
-        boton_login.setEnabled(true);
+        buttonLogin.setEnabled(true);
+        editTextUsuario.setError(getString(R.string.nombre_error));
+        editTextUsuario.requestFocus();
     }
 
     private boolean validate() {
         boolean valid = true;
 
-        campo_nombreUsuario = getView().findViewById(R.id.input_userName);
-        campo_password = getView().findViewById(R.id.input_password);
+        editTextUsuario = getView().findViewById(R.id.input_userName);
+        editTextPassword = getView().findViewById(R.id.input_password);
 
-        String nombreUsuario = campo_nombreUsuario.getText().toString();
-        String password = campo_password.getText().toString();
+        String nombreUsuario = this.editTextUsuario.getText().toString();
+        String password = editTextPassword.getText().toString();
 
         if (nombreUsuario.isEmpty() || nombreUsuario.length() < 2) {
-            campo_nombreUsuario.setError(getString(R.string.nombre_error));
+            this.editTextUsuario.setError(getString(R.string.nombre_error));
             valid = false;
         } else {
-            campo_nombreUsuario.setError(null);
+            this.editTextUsuario.setError(null);
         }
 
         if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            campo_password.setError(getString(R.string.password_error));
+            editTextPassword.setError(getString(R.string.password_error));
             valid = false;
         } else {
-            campo_password.setError(null);
+            editTextPassword.setError(null);
         }
 
         return valid;
@@ -119,18 +134,42 @@ public class LoginFragment extends Fragment {
     private void loginUsuario(String nombreUsuario, String password) {
         Map<String,String> parametros;
         parametros = new HashMap<>();
-        /*RequestSender requestSender = new RequestSender(this);
-        parametros.put("name", nombreUsuario);
+        RequestSender requestSender = new RequestSender(getActivity());
+        parametros.put("usuario", nombreUsuario);
         parametros.put("password", password);
 
         JSONObject jsonObject = new JSONObject(parametros);
 
-        String url = getString(R.string.urlAppServer) + "users/login";
+        String url = getString(R.string.urlAppServer) + "alumnos/login";
 
-        LoginListener listener = new LoginListener(this);
-
-        requestSender.doPost(listener, url, jsonObject);*/
+        requestSender.doPost(this, url, jsonObject);
     }
+
+    @Override
+    public void onRequestCompleted(Object response) {
+        try {
+            JSONObject jsonObject = ((JSONObject)response).getJSONObject("data");
+            String token = jsonObject.getString("token");
+            //Usar gson y crear la clase Token
+
+            onLoginSuccess(token);
+
+
+        } catch (JSONException e) {
+            RequestHelper.showError(getActivity(),"No se pudo obtener el Token");
+
+            onLoginFailed();
+        }
+
+    }
+
+    @Override
+    public void onRequestError(int codError, String errorMessage) {
+
+        RequestHelper.showError(getActivity(), codError + ": " + errorMessage);
+        onLoginFailed();
+    }
+
 
 }
 
