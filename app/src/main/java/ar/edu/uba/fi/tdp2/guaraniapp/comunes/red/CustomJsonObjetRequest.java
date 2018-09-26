@@ -91,18 +91,4 @@ public class CustomJsonObjetRequest extends JsonObjectRequest {
         return RequestHelper.getHeaders();
     }
 
-    /*@Override
-    protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
-        try {
-            if (response.data.length == 0) {
-                byte[] responseData = "{}".getBytes("UTF8");
-                response = new NetworkResponse(response.statusCode, responseData, response.headers, response.notModified);
-            }
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return super.parseNetworkResponse(response);
-    }*/
-
-
 }

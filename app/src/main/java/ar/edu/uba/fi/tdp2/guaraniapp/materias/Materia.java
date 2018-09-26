@@ -1,17 +1,25 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.materias;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 public class Materia {
     private String codigo;
     private String nombre;
+    @SerializedName("subcodigo")
     private String departamento;
-    private ArrayList<Curso> cursos = new ArrayList<>();
+    private ArrayList<Curso> cursos;
+
+    public Materia() {
+        cursos = new ArrayList<>();
+    }
 
     public Materia(String codigo, String nombre, String departamento) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.departamento = departamento;
+        cursos = new ArrayList<>();
     }
 
     public String getCodigo() {

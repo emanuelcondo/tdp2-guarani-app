@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
@@ -16,7 +17,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
 
 public class InscripcionMateriasFragment extends RecyclerFragment {
 
-    private ArrayList<Materia> materias;
+    private List<Materia> materias;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

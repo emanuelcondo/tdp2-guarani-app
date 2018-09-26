@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.login.LoginFragment;
@@ -23,6 +24,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Estudiante;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.MateriasListener;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity
     private ActionBarDrawerToggle toggle;
 
     private Estudiante usuario;
-    private ArrayList<Materia> materias = new ArrayList<>();
+    private List<Materia> materias = new ArrayList<>();
 
     private Curso cursoSeleccionado;
     private Materia materiaSeleccionada;
@@ -61,6 +63,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void mockearMaterias() {
+        MateriasListener.moquear(this);
         Materia materia1 = new Materia("75.01", "Algoritmos y Programación I", "Computacion");
         ArrayList<Horario> horarios1 = new ArrayList<Horario>() {{
             add(new Horario("Lunes",19,22, "Paseo Colón", "LB"));
@@ -95,6 +98,9 @@ public class MainActivity extends AppCompatActivity
         materia2.agregarCurso(curso2);
         materias.add(materia1);
         materias.add(materia2);
+
+
+
     }
 
     @Override
@@ -205,11 +211,11 @@ public class MainActivity extends AppCompatActivity
         return usuario;
     }
 
-    public ArrayList<Materia> getMaterias() {
+    public List<Materia> getMaterias() {
         return materias;
     }
 
-    public void setMaterias(ArrayList<Materia> materias) {
+    public void setMaterias(List<Materia> materias) {
         this.materias = materias;
     }
 

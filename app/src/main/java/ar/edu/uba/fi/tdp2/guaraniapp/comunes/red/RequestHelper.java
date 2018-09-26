@@ -6,11 +6,15 @@ import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
+import com.android.volley.NetworkResponse;
 import com.android.volley.NoConnectionError;
 import com.android.volley.ParseError;
 import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,6 +38,19 @@ public class RequestHelper {
 
             codError = 401;
             errorDesc = "Error de autenticacion";
+
+            NetworkResponse networkResponse = error.networkResponse;
+            if (networkResponse != null && networkResponse.data != null) {
+                String jsonError = new String(networkResponse.data);
+                try {
+                    JSONObject result = new JSONObject(jsonError);
+                    errorDesc = result.getJSONObject("error").getString("message");
+
+                } catch (Exception e) {
+
+                }
+
+            }
 
 
         } else if (error instanceof ServerError) {

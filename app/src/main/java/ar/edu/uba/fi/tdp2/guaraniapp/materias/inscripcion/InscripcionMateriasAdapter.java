@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
@@ -16,9 +17,9 @@ public class InscripcionMateriasAdapter extends RecyclerView.Adapter<Inscripcion
 
     private MainActivity activity;
 
-    private ArrayList<Materia> materias;
+    private List<Materia> materias;
 
-    public InscripcionMateriasAdapter(Activity activity, ArrayList<Materia> materias) {
+    public InscripcionMateriasAdapter(Activity activity, List<Materia> materias) {
         this.materias = materias;
         this.activity = (MainActivity)activity;
     }

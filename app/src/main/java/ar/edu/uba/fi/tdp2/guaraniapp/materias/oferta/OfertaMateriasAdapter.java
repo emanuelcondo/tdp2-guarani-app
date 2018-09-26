@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
@@ -16,9 +16,9 @@ public class OfertaMateriasAdapter extends RecyclerView.Adapter<OfertaMateriaVie
 
     private MainActivity activity;
 
-    private ArrayList<Materia> materias;
+    private List<Materia> materias;
 
-    public OfertaMateriasAdapter(Activity activity, ArrayList<Materia> materias) {
+    public OfertaMateriasAdapter(Activity activity, List<Materia> materias) {
         this.materias = materias;
         this.activity = (MainActivity)activity;
     }
