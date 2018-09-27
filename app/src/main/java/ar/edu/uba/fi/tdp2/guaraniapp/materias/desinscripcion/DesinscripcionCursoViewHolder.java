@@ -40,7 +40,7 @@ public class DesinscripcionCursoViewHolder extends RecyclerView.ViewHolder
     }
 
     private void bindViews() {
-        String numeroCurso = "Curso " + curso.getNumeroCurso();
+        String numeroCurso = "Curso " + curso.getComision();
         textViewNumeroCurso.setText(numeroCurso);
         textViewNumeroCurso.setOnClickListener(this);
         textViewDocente.setText(curso.getDocente());

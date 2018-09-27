@@ -8,9 +8,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Alumno;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionCarrerasFragment;
 
 public class AlumnoListener implements ResponseListener {
     private MainActivity activity;
@@ -29,6 +31,8 @@ public class AlumnoListener implements ResponseListener {
             Log.d("AlumnoListener", alumno.toString());
 
             getActivity().setUsuario(alumno);
+
+            FragmentLoader.load(getActivity(), new InscripcionCarrerasFragment(), "Inscripcion");
 
         } catch (JSONException e) {
             e.printStackTrace();

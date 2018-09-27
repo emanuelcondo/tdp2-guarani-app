@@ -25,6 +25,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.materias.Alumno;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.MateriasListener;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Persona;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -69,33 +70,40 @@ public class MainActivity extends AppCompatActivity
             add(new Horario("Lunes",19,22, "Paseo Colón", "LB"));
             add(new Horario("Martes", 19, 22, "Las Heras", "303"));
         }};
-        Curso curso1 = new Curso(12,"Gustavo Campagnuolo", horarios1, 0);
-        curso1.setAyudantes(new ArrayList<String>() {{
-            add("Claudio Ubeda");
-            add("Gabriel Loeschbor");
+        Curso curso1 = new Curso(12, horarios1, 0);
+        curso1.setDocenteACargo(new Persona("Gustavo", "Campagnuolo"));
+
+        curso1.setAyudantes(new ArrayList<Persona>() {{
+            add(new Persona("Claudio", "Ubeda"));
+            add(new Persona("Gabriel", "Loeschbor"));
         }});
         materia1.agregarCurso(curso1);
         ArrayList<Horario> horarios2 = new ArrayList<Horario>() {{
             add(new Horario("Miércoles",15,22));
         }};
-        materia1.agregarCurso(new Curso(2,"Reinaldo Merlo", horarios2, 20));
+        Curso curso2 = new Curso(2, horarios2, 20);
+        materia1.agregarCurso(curso2);
+        curso2.setDocenteACargo(new Persona("Reinaldo", "Merlo"));
         Materia materia2 = new Materia("71.26", "Modelos y Optimización II", "Gestion");
         ArrayList<Horario> horarios3 = new ArrayList<Horario>() {{
             add(new Horario("Viernes",15,23));
         }};
-        materia2.agregarCurso(new Curso(1, "José Chatruc", horarios3, 25));
+        Curso curso3 = new Curso(1, horarios3, 25);
+        materia2.agregarCurso(curso3);
+        curso3.setDocenteACargo(new Persona("José","Chatruc"));
         ArrayList<Horario> horarios4 = new ArrayList<Horario>() {{
             add(new Horario("Lunes",19,22));
             add(new Horario("Martes", 19, 20));
             add(new Horario("Jueves", 20, 22));
         }};
-        Curso curso2 = new Curso(2, "Adrián Bastía", horarios4, 40);
-        curso2.setAyudantes(new ArrayList<String>() {{
-            add("Gerardo Bedoya");
-            add("Maximiliano Estévez");
-            add("Rafael Maceratesi");
+        Curso curso4 = new Curso(2, horarios4, 40);
+        curso4.setDocenteACargo(new Persona("Adrián", "Bastía"));
+        curso4.setAyudantes(new ArrayList<Persona>() {{
+            add(new Persona("Gerardo","Bedoya"));
+            add(new Persona("Maximiliano","Estévez"));
+            add(new Persona("Rafael","Maceratesi"));
         }});
-        materia2.agregarCurso(curso2);
+        materia2.agregarCurso(curso4);
         materias.add(materia1);
         materias.add(materia2);
 

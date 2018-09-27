@@ -15,6 +15,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Persona;
 
 public class OfertaFragment extends Fragment {
 
@@ -54,16 +55,16 @@ public class OfertaFragment extends Fragment {
     }
 
     private void bindCurso() {
-        numeroCurso.setText("Curso " + curso.getNumeroCurso());
+        numeroCurso.setText("Curso " + curso.getComision());
         docente.setText(curso.getDocente());
         vacantes.setText("Vacantes disponibles: " + curso.getVacantes());
 
         if (curso.getAyudantes().isEmpty()) {
             ayudantes.setVisibility(View.GONE);
         } else {
-            for (String ayudante : curso.getAyudantes()) {
+            for (Persona ayudante : curso.getAyudantes()) {
                 TextView textViewAyudante = new TextView(getContext());
-                textViewAyudante.setText(ayudante);
+                textViewAyudante.setText(ayudante.toString());
                 ayudantes.addView(textViewAyudante);
             }
         }

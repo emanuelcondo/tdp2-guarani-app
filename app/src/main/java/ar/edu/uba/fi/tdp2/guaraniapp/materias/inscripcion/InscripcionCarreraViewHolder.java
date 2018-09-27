@@ -6,11 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
-import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
-import ar.edu.uba.fi.tdp2.guaraniapp.login.AlumnoListener;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Carrera;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.MateriasListener;
 
@@ -31,12 +28,6 @@ public class InscripcionCarreraViewHolder  extends RecyclerView.ViewHolder
             public void onClick(View v) {
 
                 loadMaterias();
-
-
-
-                //InscripcionCursosFragment inscripcionCursosFragment = new InscripcionCursosFragment();
-                //inscripcionCursosFragment.setMateria(materia);
-                //FragmentLoader.load((Activity) itemView.getContext(), inscripcionCursosFragment, FragmentLoader.Cursos);
             }
         });
 
@@ -44,8 +35,9 @@ public class InscripcionCarreraViewHolder  extends RecyclerView.ViewHolder
 
     public void bindTo(Carrera carrera) {
 
-        textViewCodigo.setText(carrera.getCodigo());
+
         textViewNombre.setText(carrera.getNombre());
+        textViewCodigo.setText(String.valueOf((carrera.getCodigo())));
         this.carrera = carrera;
     }
 

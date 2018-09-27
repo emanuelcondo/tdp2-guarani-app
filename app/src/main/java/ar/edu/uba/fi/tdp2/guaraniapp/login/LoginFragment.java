@@ -26,6 +26,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Alumno;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionCarrerasFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionMateriasFragment;
 
 public class LoginFragment extends Fragment implements ResponseListener {
@@ -102,10 +103,11 @@ public class LoginFragment extends Fragment implements ResponseListener {
 
 
         RequestHelper.showError(getActivity(), "Logueado!");
-        //((MainActivity) getActivity()).onBackPressed();;
 
-        ((MainActivity) getActivity()).setUsuario(new Alumno(95010, "Carlos", "Ramirez"));
-        FragmentLoader.load(getActivity(), new InscripcionMateriasFragment(), "Inscripcion");
+        //((MainActivity) getActivity()).onBackPressed();
+
+        //((MainActivity) getActivity()).setUsuario(new Alumno(95010, "Carlos", "Ramirez"));
+        //FragmentLoader.load(getActivity(), new InscripcionMateriasFragment(), "InscripcionMateria");
     }
 
     public void onLoginFailed(String mensaje) {

@@ -63,10 +63,12 @@ public class MateriasListener implements ResponseListener {
                     add(new Horario("Lunes",19,22, "Paseo Colón", "LB"));
                     add(new Horario("Martes", 19, 22, "Las Heras", "303"));
                 }};
-                Curso curso1 = new Curso(12,"Gustavo Campagnuolo", horarios1, 0);
-                curso1.setAyudantes(new ArrayList<String>() {{
-                    add("Claudio Ubeda");
-                    add("Gabriel Loeschbor");
+                Curso curso1 = new Curso(12, horarios1, 0);
+                curso1.setDocenteACargo(new Persona("Gustavo", "Campagnuolo"));
+
+                curso1.setAyudantes(new ArrayList<Persona>() {{
+                    add(new Persona("Claudio", "Ubeda"));
+                    add(new Persona("Gabriel", "Loeschbor"));
                 }});
                 m.agregarCurso(curso1);
             }

@@ -14,7 +14,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.materias.Carrera;
 
 public class InscripcionCarrerasFragment  extends RecyclerFragment {
 
-    private List<Carrera> carreras;
+    //private List<Carrera> carreras;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,8 +38,8 @@ public class InscripcionCarrerasFragment  extends RecyclerFragment {
 
     @Override
     protected void configureAdapter() {
-        carreras = ((MainActivity) getActivity()).getUsuario().getCarreras();
-        InscripcionCarrerasAdapter inscripcionCarrerasAdapter = new InscripcionCarrerasAdapter(getActivity(), carreras);
+        //carreras = ((MainActivity) getActivity()).getUsuario().getCarreras();
+        InscripcionCarrerasAdapter inscripcionCarrerasAdapter = new InscripcionCarrerasAdapter(getActivity());
         this.setConfiguredAdapter(inscripcionCarrerasAdapter);
     }
 
