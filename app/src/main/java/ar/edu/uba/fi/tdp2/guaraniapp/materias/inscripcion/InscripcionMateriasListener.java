@@ -1,30 +1,30 @@
-package ar.edu.uba.fi.tdp2.guaraniapp.materias;
+package ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
-import ar.edu.uba.fi.tdp2.guaraniapp.login.LoginFragment;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionMateriasFragment;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Persona;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
-//import com.google.gson.JsonObject;
 import org.json.JSONException;
 import org.json.JSONObject;
 import com.google.gson.reflect.TypeToken;
 
-public class MateriasListener implements ResponseListener {
+public class InscripcionMateriasListener implements ResponseListener {
     private Context context;
 
-    public MateriasListener(Context context) {
+    public InscripcionMateriasListener(Context context) {
         this.context = context;
     }
 

@@ -15,6 +15,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.historia.HistoriaAcademicaFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.desinscripcion.DesinscripcionCursosFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionCarrerasFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionMateriasFragment;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.oferta.OfertaCarrerasFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.oferta.OfertaMateriasFragment;
 
 
@@ -100,7 +101,7 @@ public class FragmentLoader {
 
         switch (id) {
             case R.id.nav_oferta:
-                fragment = new OfertaMateriasFragment();
+                fragment = new OfertaCarrerasFragment();
                 name = OfertaAcademica;
                 break;
             case R.id.nav_inscribirme:

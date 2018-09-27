@@ -1,4 +1,4 @@
-package ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion;
+package ar.edu.uba.fi.tdp2.guaraniapp.materias.oferta;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,14 +8,15 @@ import android.widget.TextView;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Carrera;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionMateriasListener;
 
-public class InscripcionCarreraViewHolder  extends RecyclerView.ViewHolder
+public class OfertaCarreraViewHolder extends RecyclerView.ViewHolder
         implements View.OnClickListener  {
     private TextView textViewCodigo;
     private TextView textViewNombre;
     private Carrera carrera;
 
-    public InscripcionCarreraViewHolder(final View itemView) {
+    public OfertaCarreraViewHolder(final View itemView) {
         super(itemView);
 
         textViewCodigo = itemView.findViewById(R.id.codigo_carrera);

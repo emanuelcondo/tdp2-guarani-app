@@ -24,7 +24,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Alumno;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.MateriasListener;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionMateriasListener;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Persona;
 
 public class MainActivity extends AppCompatActivity
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void mockearMaterias() {
-        MateriasListener.moquear(this);
+        InscripcionMateriasListener.moquear(this);
         Materia materia1 = new Materia("75.01", "Algoritmos y Programación I", "Computacion");
         ArrayList<Horario> horarios1 = new ArrayList<Horario>() {{
             add(new Horario("Lunes",19,22, "Paseo Colón", "LB"));
