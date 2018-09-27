@@ -24,13 +24,14 @@ public class FragmentLoader {
 
     public static final String Inscripcion = "Inscripcion";
     public static final String InscripcionCurso = "InscripcionCurso";
-    public static final String OfertaHoraria = "OfertaHoraria";
+    public static final String OfertaAcademica = "OfertaAcademica";
     public static final String OfertaCurso = "OfertaCurso";
     public static final String Desinscripcion = "Desinscripcion";
     public static final String DesinscripcionCurso = "DesinscripcionCurso";
     public static final String Cursos = "Cursos";
     public static final String Login = "Login";
     public static final String HistoriaAcademica = "HistoriaAcademica";
+    //public static final String CarrerasAlumno = "CarrerasAlumno";
 
 
     private static final Map<String, Boolean> drawerVisibilityMap;
@@ -38,7 +39,7 @@ public class FragmentLoader {
     {
         drawerVisibilityMap = new HashMap<>();
         drawerVisibilityMap.put(Inscripcion, true);
-        drawerVisibilityMap.put(OfertaHoraria, true);
+        drawerVisibilityMap.put(OfertaAcademica, true);
         drawerVisibilityMap.put(OfertaCurso, true);
         drawerVisibilityMap.put(Desinscripcion, true);
         drawerVisibilityMap.put(Cursos, true);
@@ -46,6 +47,7 @@ public class FragmentLoader {
         drawerVisibilityMap.put(InscripcionCurso, false);
         drawerVisibilityMap.put(DesinscripcionCurso, false);
         drawerVisibilityMap.put(HistoriaAcademica, true);
+        //drawerVisibilityMap.put(CarrerasAlumno, true);
 
 
     }
@@ -96,7 +98,7 @@ public class FragmentLoader {
         switch (id) {
             case R.id.nav_oferta:
                 fragment = new OfertaMateriasFragment();
-                name = OfertaHoraria;
+                name = OfertaAcademica;
                 break;
             case R.id.nav_inscribirme:
                 fragment = new InscripcionMateriasFragment();
@@ -113,7 +115,7 @@ public class FragmentLoader {
             default:
                 // TODO: Corregir cual es el default
                 fragment = new OfertaMateriasFragment();
-                name = OfertaHoraria;
+                name = OfertaAcademica;
         }
 
         load(activity, fragment, name);

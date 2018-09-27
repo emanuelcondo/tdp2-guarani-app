@@ -16,7 +16,7 @@ import android.widget.Toast;
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Estudiante;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Alumno;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
 
 public class DesinscripcionFragment extends Fragment {
@@ -52,7 +52,7 @@ public class DesinscripcionFragment extends Fragment {
         btnDesinscribir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Estudiante estudiante = ((MainActivity) getActivity()).getUsuario();
+                Alumno estudiante = ((MainActivity) getActivity()).getUsuario();
                 if (!estudiante.esCondicional(curso)) {
                     curso.agregarVacante();
                 }

@@ -25,7 +25,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Estudiante;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Alumno;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionMateriasFragment;
 
 public class LoginFragment extends Fragment implements ResponseListener {
@@ -60,9 +60,6 @@ public class LoginFragment extends Fragment implements ResponseListener {
     private void login() {
         Log.d(TAG, "Login");
 
-
-
-
         if (!validate()) {
             return;
         }
@@ -85,15 +82,29 @@ public class LoginFragment extends Fragment implements ResponseListener {
 
     }
 
+    public void getAlumnoInfo() {
+        AlumnoListener alumnoListener = new AlumnoListener((MainActivity) getActivity());
+        RequestSender requestSender = new RequestSender(getActivity());
+
+        String url = getString(R.string.urlAppServer) + "alumnos/mis-datos";
+
+        requestSender.doGet_expectJSONObject(alumnoListener, url);
+    }
+
     public void onLoginSuccess(String session) {
+        Token.id = session;
+        Token.conectado = true;
+
+        getAlumnoInfo();
+
         if (progressDialog != null)
             progressDialog.dismiss();
 
-        Token.id = session;
-        Token.conectado = true;
-        RequestHelper.showError(getActivity(), "Logueado!");
 
-        ((MainActivity) getActivity()).setUsuario(new Estudiante(95010, "Carlos", "Ramirez"));
+        RequestHelper.showError(getActivity(), "Logueado!");
+        //((MainActivity) getActivity()).onBackPressed();;
+
+        ((MainActivity) getActivity()).setUsuario(new Alumno(95010, "Carlos", "Ramirez"));
         FragmentLoader.load(getActivity(), new InscripcionMateriasFragment(), "Inscripcion");
     }
 
@@ -138,11 +149,14 @@ public class LoginFragment extends Fragment implements ResponseListener {
     private void loginUsuario(String nombreUsuario, String password) {
         Map<String,String> parametros;
         parametros = new HashMap<>();
-        RequestSender requestSender = new RequestSender(getActivity());
         parametros.put("usuario", nombreUsuario);
         parametros.put("password", password);
 
+        RequestSender requestSender = new RequestSender(getActivity());
+
+
         JSONObject jsonObject = new JSONObject(parametros);
+
 
         String url = getString(R.string.urlAppServer) + "alumnos/login";
 

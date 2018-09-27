@@ -21,7 +21,7 @@ import java.util.List;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.login.LoginFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Estudiante;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Alumno;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.MateriasListener;
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity
     private Toolbar toolbar;
     private ActionBarDrawerToggle toggle;
 
-    private Estudiante usuario;
+    private Alumno usuario;
     private List<Materia> materias = new ArrayList<>();
 
     private Curso cursoSeleccionado;
@@ -203,11 +203,11 @@ public class MainActivity extends AppCompatActivity
         dialog.show();
     }
 
-    public void setUsuario(Estudiante usuario) {
+    public void setUsuario(Alumno usuario) {
         this.usuario = usuario;
     }
 
-    public Estudiante getUsuario() {
+    public Alumno getUsuario() {
         return usuario;
     }
 

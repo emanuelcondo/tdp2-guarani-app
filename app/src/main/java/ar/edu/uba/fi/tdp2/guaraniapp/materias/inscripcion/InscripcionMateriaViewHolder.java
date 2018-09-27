@@ -8,16 +8,15 @@ import android.widget.TextView;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Estudiante;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Alumno;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionCursosFragment;
 
 public class InscripcionMateriaViewHolder extends RecyclerView.ViewHolder
         implements View.OnClickListener  {
     private TextView textViewCodigo;
     private TextView textViewNombre;
     private Materia materia;
-    private Estudiante usuario;
+    private Alumno usuario;
 
     public InscripcionMateriaViewHolder(final View itemView) {
         super(itemView);
@@ -36,7 +35,7 @@ public class InscripcionMateriaViewHolder extends RecyclerView.ViewHolder
 
     }
 
-    public void bindTo(Materia materia, Estudiante usuario) {
+    public void bindTo(Materia materia, Alumno usuario) {
 
         textViewCodigo.setText(materia.getCodigo());
         textViewNombre.setText(materia.getNombre());
