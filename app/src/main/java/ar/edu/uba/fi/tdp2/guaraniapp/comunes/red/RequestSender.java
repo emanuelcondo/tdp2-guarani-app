@@ -1,6 +1,7 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.comunes.red;
 
 import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
 
 import com.android.volley.AuthFailureError;
@@ -26,7 +27,7 @@ public class RequestSender {
 
     private RequestQueue queue;
 
-    public RequestSender(Activity context) {
+    public RequestSender(Context context) {
         queue = Volley.newRequestQueue(context);
     }
 

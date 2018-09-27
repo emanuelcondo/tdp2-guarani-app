@@ -13,6 +13,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.historia.HistoriaAcademicaFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.desinscripcion.DesinscripcionCursosFragment;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionCarrerasFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionMateriasFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.oferta.OfertaMateriasFragment;
 
@@ -23,6 +24,7 @@ public class FragmentLoader {
     private static int current = -1;
 
     public static final String Inscripcion = "Inscripcion";
+    public static final String InscripcionMateria = "InscripcionMateria";
     public static final String InscripcionCurso = "InscripcionCurso";
     public static final String OfertaAcademica = "OfertaAcademica";
     public static final String OfertaCurso = "OfertaCurso";
@@ -45,6 +47,7 @@ public class FragmentLoader {
         drawerVisibilityMap.put(Cursos, true);
         drawerVisibilityMap.put(Login, false);
         drawerVisibilityMap.put(InscripcionCurso, false);
+        drawerVisibilityMap.put(InscripcionMateria, false);
         drawerVisibilityMap.put(DesinscripcionCurso, false);
         drawerVisibilityMap.put(HistoriaAcademica, true);
         //drawerVisibilityMap.put(CarrerasAlumno, true);
@@ -101,7 +104,7 @@ public class FragmentLoader {
                 name = OfertaAcademica;
                 break;
             case R.id.nav_inscribirme:
-                fragment = new InscripcionMateriasFragment();
+                fragment = new InscripcionCarrerasFragment();
                 name = Inscripcion;
                 break;
             case R.id.nav_historia:

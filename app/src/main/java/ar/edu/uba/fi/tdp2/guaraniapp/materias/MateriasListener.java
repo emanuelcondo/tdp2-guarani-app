@@ -1,10 +1,16 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.materias;
 
+import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
+import ar.edu.uba.fi.tdp2.guaraniapp.login.LoginFragment;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionMateriasFragment;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +30,25 @@ public class MateriasListener implements ResponseListener {
 
     @Override
     public void onRequestCompleted(Object response) {
+        try {
 
+            JSONObject jo = ((JSONObject)response).getJSONObject("data");
+            Type listType = new TypeToken<ArrayList<Materia>>(){}.getType();
+            List<Materia> ms = new Gson().fromJson(jo.getJSONArray("materias").toString(), listType);
+            List<Materia> materias = new ArrayList<>(ms);
+
+            ((MainActivity)context).setMaterias(materias);
+            FragmentLoader.load((Activity) context, new InscripcionMateriasFragment(), "InscripcionMateria");
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            RequestHelper.showError(context, e.getMessage());
+        }
     }
 
     @Override
     public void onRequestError(int codError, String errorMessage) {
-
+        RequestHelper.showError(context, errorMessage);
     }
 
     public static void moquear(Context context) {

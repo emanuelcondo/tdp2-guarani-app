@@ -16,7 +16,7 @@ public class InscripcionMateriaViewHolder extends RecyclerView.ViewHolder
     private TextView textViewCodigo;
     private TextView textViewNombre;
     private Materia materia;
-    private Alumno usuario;
+    private Alumno alumno;
 
     public InscripcionMateriaViewHolder(final View itemView) {
         super(itemView);
@@ -35,12 +35,12 @@ public class InscripcionMateriaViewHolder extends RecyclerView.ViewHolder
 
     }
 
-    public void bindTo(Materia materia, Alumno usuario) {
+    public void bindTo(Materia materia, Alumno alumno) {
 
         textViewCodigo.setText(materia.getCodigo());
         textViewNombre.setText(materia.getNombre());
         this.materia = materia;
-        this.usuario = usuario;
+        this.alumno = alumno;
     }
 
     @Override

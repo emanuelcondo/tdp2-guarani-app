@@ -82,7 +82,7 @@ public class LoginFragment extends Fragment implements ResponseListener {
 
     }
 
-    public void getAlumnoInfo() {
+    private void getAlumnoInfo() {
         AlumnoListener alumnoListener = new AlumnoListener((MainActivity) getActivity());
         RequestSender requestSender = new RequestSender(getActivity());
 
