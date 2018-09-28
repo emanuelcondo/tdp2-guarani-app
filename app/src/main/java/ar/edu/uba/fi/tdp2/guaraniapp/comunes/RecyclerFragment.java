@@ -2,7 +2,6 @@ package ar.edu.uba.fi.tdp2.guaraniapp.comunes;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -40,11 +39,11 @@ public abstract class RecyclerFragment extends Fragment implements View.OnClickL
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_recycler, container, false);
-
+        /*
         FloatingActionButton fabAgregarElemento = rootView.findViewById(R.id.fabAgregarElemento);
 
         fabAgregarElemento.setOnClickListener(this);
-
+        */
         mList = rootView.findViewById(R.id.section_list);
         mList.setLayoutManager(getLayoutManager());
         mList.addItemDecoration(getItemDecoration());

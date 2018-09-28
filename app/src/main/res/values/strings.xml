@@ -6,4 +6,21 @@
     <string name="nav_header_subtitle">cperez@fi.uba.arr</string>
     <string name="nav_header_desc">Encabezado</string>
     <string name="action_settings">Configuración</string>
+    <string name="userName_hint">Nombre de Usuario</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="login_button">Ingresar</string>
+    <string name="nombre_error">Nombre inválido</string>
+    <string name="password_error">Contraseña inválida</string>
+    <string name="inscripcion">Inscripción a Cursos</string>
+    <string name="seleccion_carrera">Carreras</string>
+    <string name="message_confirm_exit">Desea salir de la aplicacion?</string>
+    <string name="inscribirse_como_condicional">Inscribirme como Condicional</string>
+    <string name="inscribirse">Inscribirme</string>
+    <string name="desinscribirse">Desinscribirme</string>
+    <string name="desinscripcion">Desinscripción a Cursos</string>
+    <string name="modalidades">Modalidad de Clases</string>
+    <string name="ayudantes">Ayudantes</string>
+    <string name="oferta">Oferta Académica</string>
+    <string name="historia">Historia Académica</string>
+    <string name="urlAppServer">http://192.168.1.102:3000/api/v1.0/</string>
 </resources>
