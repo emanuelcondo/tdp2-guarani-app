@@ -32,7 +32,8 @@ public class OfertaMateriasAdapter extends RecyclerView.Adapter<OfertaMateriaVie
     @Override
     public void onBindViewHolder(@NonNull OfertaMateriaViewHolder holder, int position) {
         Materia materia = this.materias.get(position);
-        holder.bindTo(materia, activity.getUsuario());
+        holder.bindTo(materia);
+        activity.setMateriaSeleccionada(materia);
     }
 
     @Override

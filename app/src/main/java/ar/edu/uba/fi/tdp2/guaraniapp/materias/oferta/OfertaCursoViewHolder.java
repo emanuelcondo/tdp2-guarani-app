@@ -75,6 +75,11 @@ public class OfertaCursoViewHolder extends RecyclerView.ViewHolder
         textViewHeaderAula.setBackgroundResource(R.color.colorPrimary);
         textViewHeaderAula.setPadding(8,8,8,8);
 
+        if (curso.getCursada() == null) {
+            Log.d("OfertaCursoViewHolder", "No hay horarios: " + curso.getComision());
+            return;
+        }
+
         header.addView(textViewDias);
         header.addView(textViewHorarios);
         header.addView(textViewHeaderSede);
@@ -83,7 +88,7 @@ public class OfertaCursoViewHolder extends RecyclerView.ViewHolder
         tableLayoutHorarios.addView(header);
         tableLayoutHorarios.setOnClickListener(this);
 
-        for (Horario horario:curso.getHorarios()) {
+        for (Horario horario : curso.getCursada()) {
             TableRow row = new TableRow(itemView.getContext());
 
             TextView textViewDia = new TextView(itemView.getContext());
@@ -92,7 +97,7 @@ public class OfertaCursoViewHolder extends RecyclerView.ViewHolder
             textViewDia.setPadding(8,8,8,8);
 
             TextView textViewHorario = new TextView(itemView.getContext());
-            String s_horario = horario.getHoraInicio() + "hs - " + horario.getHoraFin() + "hs";
+            String s_horario = horario.getHoraInicio() + " - " + horario.getHoraFin();
             textViewHorario.setText(s_horario);
             textViewHorario.setBackgroundResource(R.drawable.cell_shape);
             textViewHorario.setPadding(8,8,8,8);

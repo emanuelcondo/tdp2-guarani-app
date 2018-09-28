@@ -7,13 +7,14 @@ public class Curso {
     private int comision;
     private Sede sede;
     private Persona docenteACargo;
-    private List<Horario> horarios;
+    private Persona jtp;
+    private List<Horario> cursada;
     private List<Persona> ayudantes = new ArrayList<>();
     private int vacantes;
 
     public Curso(int numeroCurso, ArrayList<Horario> horarios, int vacantes) {
         this.comision = numeroCurso;
-        this.horarios = horarios;
+        this.cursada = horarios;
         this.vacantes = vacantes;
     }
 
@@ -29,12 +30,12 @@ public class Curso {
         this.comision = comision;
     }
 
-    public List<Horario> getHorarios() {
-        return horarios;
+    public List<Horario> getCursada() {
+        return cursada;
     }
 
-    public void setHorarios(List<Horario> horarios) {
-        this.horarios = horarios;
+    public void setCursada(List<Horario> cursada) {
+        this.cursada = cursada;
     }
 
     public void setVacantes(int vacantes) {
@@ -75,5 +76,13 @@ public class Curso {
 
     public void setDocenteACargo(Persona docenteACargo) {
         this.docenteACargo = docenteACargo;
+    }
+
+    public Persona getJtp() {
+        return jtp;
+    }
+
+    public void setJtp(Persona jtp) {
+        this.jtp = jtp;
     }
 }

@@ -1,25 +1,34 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.materias;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.util.ArrayList;
+import java.util.List;
 
 public class Materia {
+    private String _id;
     private String codigo;
     private String nombre;
-    @SerializedName("subcodigo")
+
+    private int creditos;
     private String departamento;
-    private ArrayList<Curso> cursos;
+    private List<Curso> cursos;
 
     public Materia() {
-        cursos = new ArrayList<>();
+        setCursos(new ArrayList<Curso>());
     }
 
     public Materia(String codigo, String nombre, String departamento) {
-        this.codigo = codigo;
-        this.nombre = nombre;
-        this.departamento = departamento;
-        cursos = new ArrayList<>();
+        setCodigo(codigo);
+        setNombre(nombre);
+        setDepartamento(departamento);
+        setCursos(new ArrayList<Curso>());
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getCodigo() {
@@ -30,7 +39,7 @@ public class Materia {
         this.codigo = codigo;
     }
 
-    public ArrayList<Curso> getCursos() {
+    public List<Curso> getCursos() {
         return cursos;
     }
 
@@ -52,5 +61,17 @@ public class Materia {
 
     public void setDepartamento(String departamento) {
         this.departamento = departamento;
+    }
+
+    public int getCreditos() {
+        return creditos;
+    }
+
+    public void setCreditos(int creditos) {
+        this.creditos = creditos;
+    }
+
+    public void setCursos(List<Curso> cursos) {
+        this.cursos = cursos;
     }
 }

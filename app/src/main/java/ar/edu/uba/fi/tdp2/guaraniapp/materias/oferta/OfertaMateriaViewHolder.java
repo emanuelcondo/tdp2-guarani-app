@@ -1,21 +1,21 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.materias.oferta;
 
-import android.app.Activity;
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
-import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Alumno;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionCursosListener;
 
 public class OfertaMateriaViewHolder extends RecyclerView.ViewHolder
         implements View.OnClickListener  {
     private TextView textViewCodigo;
     private TextView textViewNombre;
     private Materia materia;
-    private Alumno usuario;
+
 
     public OfertaMateriaViewHolder(final View itemView) {
         super(itemView);
@@ -26,20 +26,30 @@ public class OfertaMateriaViewHolder extends RecyclerView.ViewHolder
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                OfertaCursosFragment ofertaCursosFragment = new OfertaCursosFragment();
-                ofertaCursosFragment.setMateria(materia);
-                FragmentLoader.load((Activity) itemView.getContext(), ofertaCursosFragment, FragmentLoader.Cursos);
+                loadCursos();
+                //OfertaCursosFragment ofertaCursosFragment = new OfertaCursosFragment();
+                //ofertaCursosFragment.setMateria(materia);
+                //FragmentLoader.load((Activity) itemView.getContext(), ofertaCursosFragment, FragmentLoader.Cursos);
             }
         });
 
     }
 
-    public void bindTo(Materia materia, Alumno usuario) {
+    public void bindTo(Materia materia) {
 
         textViewCodigo.setText(materia.getCodigo());
         textViewNombre.setText(materia.getNombre());
         this.materia = materia;
-        this.usuario = usuario;
+    }
+
+    private void loadCursos() {
+        Context context = itemView.getContext();
+        OfertaCursosListener ofertaCursosListener = new OfertaCursosListener(context);
+        RequestSender requestSender = new RequestSender(context);
+
+        String url = context.getString(R.string.urlAppServer) + "materias/" + materia.get_id() + "/cursos";
+
+        requestSender.doGet_expectJSONObject(ofertaCursosListener, url);
     }
 
     @Override

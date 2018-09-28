@@ -83,7 +83,7 @@ public class DesinscripcionCursoViewHolder extends RecyclerView.ViewHolder
         tableLayoutHorarios.addView(header);
         tableLayoutHorarios.setOnClickListener(this);
 
-        for (Horario horario:curso.getHorarios()) {
+        for (Horario horario:curso.getCursada()) {
             TableRow row = new TableRow(itemView.getContext());
 
             TextView textViewDia = new TextView(itemView.getContext());

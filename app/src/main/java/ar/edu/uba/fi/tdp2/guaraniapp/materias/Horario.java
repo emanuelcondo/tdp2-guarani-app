@@ -1,20 +1,25 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.materias;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Horario {
     private String dia;
-    private int horaInicio;
-    private int horaFin;
+    @SerializedName("horario_desde")
+    private String horaInicio;
+    @SerializedName("horario_hasta")
+    private String horaFin;
     private String aula = "-";
     private String sede = "-";
-    private String modalidad = "Teórico-Práctica Obligatoria";
 
-    public Horario(String dia, int horaInicio, int horaFin) {
+    private String tipo = "Teórico-Práctica Obligatoria";
+
+    public Horario(String dia, String horaInicio, String horaFin) {
         this.dia = dia;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
     }
 
-    public Horario(String dia, int horaInicio, int horaFin, String sede, String aula) {
+    public Horario(String dia, String horaInicio, String horaFin, String sede, String aula) {
         this.dia = dia;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
@@ -30,19 +35,19 @@ public class Horario {
         this.dia = dia;
     }
 
-    public int getHoraInicio() {
+    public String getHoraInicio() {
         return horaInicio;
     }
 
-    public void setHoraInicio(int horaInicio) {
+    public void setHoraInicio(String horaInicio) {
         this.horaInicio = horaInicio;
     }
 
-    public int getHoraFin() {
+    public String getHoraFin() {
         return horaFin;
     }
 
-    public void setHoraFin(int horaFin) {
+    public void setHoraFin(String horaFin) {
         this.horaFin = horaFin;
     }
 
@@ -62,11 +67,11 @@ public class Horario {
         this.sede = sede;
     }
 
-    public String getModalidad() {
-        return modalidad;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setModalidad(String modalidad) {
-        this.modalidad = modalidad;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }

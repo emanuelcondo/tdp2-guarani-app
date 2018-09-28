@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
@@ -16,9 +16,9 @@ public class InscripcionCursosAdapter extends RecyclerView.Adapter<InscripcionCu
 
     private MainActivity activity;
 
-    private ArrayList<Curso> cursos;
+    private List<Curso> cursos;
 
-    public InscripcionCursosAdapter(Activity activity, ArrayList<Curso> cursos) {
+    public InscripcionCursosAdapter(Activity activity, List<Curso> cursos) {
         this.cursos = cursos;
         this.activity = (MainActivity)activity;
     }

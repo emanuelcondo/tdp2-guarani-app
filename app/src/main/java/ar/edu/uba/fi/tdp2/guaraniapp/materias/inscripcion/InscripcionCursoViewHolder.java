@@ -83,7 +83,7 @@ public class InscripcionCursoViewHolder extends RecyclerView.ViewHolder
         tableLayoutHorarios.addView(header);
         tableLayoutHorarios.setOnClickListener(this);
 
-        for (Horario horario:curso.getHorarios()) {
+        for (Horario horario : curso.getCursada()) {
             TableRow row = new TableRow(itemView.getContext());
 
             TextView textViewDia = new TextView(itemView.getContext());
@@ -92,7 +92,7 @@ public class InscripcionCursoViewHolder extends RecyclerView.ViewHolder
             textViewDia.setPadding(8,8,8,8);
 
             TextView textViewHorario = new TextView(itemView.getContext());
-            String s_horario = horario.getHoraInicio() + "hs - " + horario.getHoraFin() + "hs";
+            String s_horario = horario.getHoraInicio() + " - " + horario.getHoraFin();
             textViewHorario.setText(s_horario);
             textViewHorario.setBackgroundResource(R.drawable.cell_shape);
             textViewHorario.setPadding(8,8,8,8);
@@ -121,7 +121,7 @@ public class InscripcionCursoViewHolder extends RecyclerView.ViewHolder
 
         Log.d("ClicCursoViewHolder", "Clic en curso: " + curso.getDocente());
         activity.setCursoSeleccionado(curso);
-        FragmentLoader.load(activity, new InscripcionFragment(), FragmentLoader.InscripcionCurso);
+        FragmentLoader.load(activity, new InscripcionFragment(), FragmentLoader.InscripcionCursos);
 
     }
 

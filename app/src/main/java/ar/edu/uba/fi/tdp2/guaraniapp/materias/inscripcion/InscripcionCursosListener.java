@@ -1,8 +1,7 @@
-package ar.edu.uba.fi.tdp2.guaraniapp.materias.oferta;
+package ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -19,15 +18,12 @@ import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Persona;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionMateriasFragment;
 
-public class OfertaMateriasListener implements ResponseListener {
+public class InscripcionCursosListener implements ResponseListener {
     private Context context;
 
-    public OfertaMateriasListener(Context context) {
+    public InscripcionCursosListener(Context context) {
         this.context = context;
     }
 
@@ -36,15 +32,12 @@ public class OfertaMateriasListener implements ResponseListener {
         try {
 
             JSONObject jo = ((JSONObject)response).getJSONObject("data");
+            Type listType = new TypeToken<ArrayList<Curso>>(){}.getType();
+            List<Curso> ms = new Gson().fromJson(jo.getJSONArray("cursos").toString(), listType);
+            List<Curso> cursos = new ArrayList<>(ms);
 
-            Log.d("OfertaMateriasListener", jo.toString());
-
-            Type listType = new TypeToken<ArrayList<Materia>>(){}.getType();
-            List<Materia> ms = new Gson().fromJson(jo.getJSONArray("materias").toString(), listType);
-            List<Materia> materias = new ArrayList<>(ms);
-
-            ((MainActivity)context).setMaterias(materias);
-            FragmentLoader.load((Activity) context, new OfertaMateriasFragment(), "OfertaMaterias");
+            ((MainActivity)context).getMateriaSeleccionada().setCursos(cursos);
+            FragmentLoader.load((Activity) context, new InscripcionCursosFragment(), "InscripcionCursos");
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -56,6 +49,5 @@ public class OfertaMateriasListener implements ResponseListener {
     public void onRequestError(int codError, String errorMessage) {
         RequestHelper.showError(context, errorMessage);
     }
-
 
 }

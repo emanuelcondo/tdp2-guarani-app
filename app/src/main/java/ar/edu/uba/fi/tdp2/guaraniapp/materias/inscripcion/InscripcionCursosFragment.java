@@ -7,18 +7,18 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.RecyclerFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionCursosAdapter;
 
 
 public class InscripcionCursosFragment extends RecyclerFragment {
 
     private Materia materia;
-    private ArrayList<Curso> cursos;
+    private List<Curso> cursos;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

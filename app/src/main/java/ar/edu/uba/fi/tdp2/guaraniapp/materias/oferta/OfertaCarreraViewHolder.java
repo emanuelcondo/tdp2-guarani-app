@@ -42,12 +42,12 @@ public class OfertaCarreraViewHolder extends RecyclerView.ViewHolder
 
     private void loadMaterias() {
         Context context = itemView.getContext();
-        InscripcionMateriasListener inscripcionMateriasListener = new InscripcionMateriasListener(context);
+        OfertaMateriasListener ofertaMateriasListener = new OfertaMateriasListener(context);
         RequestSender requestSender = new RequestSender(context);
 
         String url = context.getString(R.string.urlAppServer) + "materias/carrera/" + carrera.get_id();
 
-        requestSender.doGet_expectJSONObject(inscripcionMateriasListener, url);
+        requestSender.doGet_expectJSONObject(ofertaMateriasListener, url);
     }
 
     @Override

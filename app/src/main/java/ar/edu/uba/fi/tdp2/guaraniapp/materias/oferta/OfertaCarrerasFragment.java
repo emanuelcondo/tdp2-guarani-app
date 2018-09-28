@@ -11,8 +11,6 @@ import ar.edu.uba.fi.tdp2.guaraniapp.comunes.RecyclerFragment;
 
 public class OfertaCarrerasFragment extends RecyclerFragment {
 
-    //private List<Carrera> carreras;
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,9 +33,8 @@ public class OfertaCarrerasFragment extends RecyclerFragment {
 
     @Override
     protected void configureAdapter() {
-        //carreras = ((MainActivity) getActivity()).getUsuario().getCarreras();
-        OfertaCarrerasAdapter inscripcionCarrerasAdapter = new OfertaCarrerasAdapter(getActivity());
-        this.setConfiguredAdapter(inscripcionCarrerasAdapter);
+        OfertaCarrerasAdapter ofertaCarrerasAdapter = new OfertaCarrerasAdapter(getActivity());
+        this.setConfiguredAdapter(ofertaCarrerasAdapter);
     }
 
 }

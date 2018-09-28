@@ -38,7 +38,7 @@ public class InscripcionMateriasListener implements ResponseListener {
             List<Materia> materias = new ArrayList<>(ms);
 
             ((MainActivity)context).setMaterias(materias);
-            FragmentLoader.load((Activity) context, new InscripcionMateriasFragment(), "InscripcionMateria");
+            FragmentLoader.load((Activity) context, new InscripcionMateriasFragment(), "InscripcionMaterias");
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -60,8 +60,8 @@ public class InscripcionMateriasListener implements ResponseListener {
             List<Materia> materias = new ArrayList<>(ms);
             for (Materia m: materias) {
                 ArrayList<Horario> horarios1 = new ArrayList<Horario>() {{
-                    add(new Horario("Lunes",19,22, "Paseo Colón", "LB"));
-                    add(new Horario("Martes", 19, 22, "Las Heras", "303"));
+                    add(new Horario("Lunes","19","22", "Paseo Colón", "LB"));
+                    add(new Horario("Martes", "15", "18", "Las Heras", "303"));
                 }};
                 Curso curso1 = new Curso(12, horarios1, 0);
                 curso1.setDocenteACargo(new Persona("Gustavo", "Campagnuolo"));

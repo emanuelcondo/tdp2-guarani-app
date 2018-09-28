@@ -133,7 +133,7 @@ public class InscripcionFragment extends Fragment {
 
         horarios.addView(header);
 
-        for (Horario horario : curso.getHorarios()) {
+        for (Horario horario : curso.getCursada()) {
             TableRow row = new TableRow(getContext());
 
             TextView textViewDia = new TextView(getContext());
@@ -165,7 +165,7 @@ public class InscripcionFragment extends Fragment {
             horarios.addView(row);
 
             TextView modalidad = new TextView(getContext());
-            String s_modalidad = horario.getDia() + ": " + horario.getModalidad();
+            String s_modalidad = horario.getDia() + ": " + horario.getTipo();
             modalidad.setText(s_modalidad);
             modalidad.setPadding(8,8,8,8);
             modalidades.addView(modalidad);

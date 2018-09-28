@@ -24,34 +24,58 @@ public class FragmentLoader {
     public static final int DEFAULT_FRAGMENT = -1;//R.id.nav_actividades;
     private static int current = -1;
 
-    public static final String Inscripcion = "Inscripcion";
-    public static final String InscripcionMateria = "InscripcionMateria";
-    public static final String InscripcionCurso = "InscripcionCurso";
-    public static final String OfertaAcademica = "OfertaAcademica";
+    //Carreras
+    public static final String InscripcionCarreras = "InscripcionCarreras";
+    public static final String OfertaCarreras = "OfertaCarreras";
+
+    //Materias
+    public static final String OfertaMaterias = "OfertaMaterias";
+    public static final String InscripcionMaterias = "InscripcionMaterias";
+
+    //Cursos
+    public static final String OfertaCursos = "OfertaCursos";
+    public static final String InscripcionCursos = "InscripcionCursos";
+    public static final String DesinscripcionCursos = "DesinscripcionCursos";
+
     public static final String OfertaCurso = "OfertaCurso";
-    public static final String Desinscripcion = "Desinscripcion";
+    public static final String InscripcionCurso = "InscripcionCurso";
+
     public static final String DesinscripcionCurso = "DesinscripcionCurso";
-    public static final String Cursos = "Cursos";
+
     public static final String Login = "Login";
     public static final String HistoriaAcademica = "HistoriaAcademica";
-    //public static final String CarrerasAlumno = "CarrerasAlumno";
+
+
 
 
     private static final Map<String, Boolean> drawerVisibilityMap;
     static
     {
         drawerVisibilityMap = new HashMap<>();
-        drawerVisibilityMap.put(Inscripcion, true);
-        drawerVisibilityMap.put(OfertaAcademica, true);
+
+        //Carreras
+        drawerVisibilityMap.put(InscripcionCarreras, true);
+        drawerVisibilityMap.put(OfertaCarreras, true);
+
+        //Materias
+        drawerVisibilityMap.put(InscripcionMaterias, true);
+        drawerVisibilityMap.put(OfertaMaterias, true);
+
+        //Cursos
+        drawerVisibilityMap.put(OfertaCursos, true);
+        drawerVisibilityMap.put(InscripcionCursos, true);
+        drawerVisibilityMap.put(DesinscripcionCursos, true);
+
         drawerVisibilityMap.put(OfertaCurso, true);
-        drawerVisibilityMap.put(Desinscripcion, true);
-        drawerVisibilityMap.put(Cursos, true);
-        drawerVisibilityMap.put(Login, false);
-        drawerVisibilityMap.put(InscripcionCurso, false);
-        drawerVisibilityMap.put(InscripcionMateria, false);
+        drawerVisibilityMap.put(InscripcionCurso, true);
+
         drawerVisibilityMap.put(DesinscripcionCurso, false);
+
+        drawerVisibilityMap.put(Login, false);
         drawerVisibilityMap.put(HistoriaAcademica, true);
-        //drawerVisibilityMap.put(CarrerasAlumno, true);
+
+
+
 
 
     }
@@ -102,11 +126,11 @@ public class FragmentLoader {
         switch (id) {
             case R.id.nav_oferta:
                 fragment = new OfertaCarrerasFragment();
-                name = OfertaAcademica;
+                name = OfertaCarreras;
                 break;
             case R.id.nav_inscribirme:
                 fragment = new InscripcionCarrerasFragment();
-                name = Inscripcion;
+                name = InscripcionCarreras;
                 break;
             case R.id.nav_historia:
                 fragment = new HistoriaAcademicaFragment();
@@ -114,12 +138,12 @@ public class FragmentLoader {
                 break;
             case R.id.nav_desinscribirme:
                 fragment = new DesinscripcionCursosFragment();
-                name = Desinscripcion;
+                name = DesinscripcionCursos;
                 break;
             default:
                 // TODO: Corregir cual es el default
-                fragment = new OfertaMateriasFragment();
-                name = OfertaAcademica;
+                fragment = new OfertaCarrerasFragment();
+                name = OfertaCarreras;
         }
 
         load(activity, fragment, name);

@@ -19,15 +19,12 @@ import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Persona;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionMateriasFragment;
 
-public class OfertaMateriasListener implements ResponseListener {
+public class OfertaCursosListener implements ResponseListener {
     private Context context;
 
-    public OfertaMateriasListener(Context context) {
+    public OfertaCursosListener(Context context) {
         this.context = context;
     }
 
@@ -37,14 +34,15 @@ public class OfertaMateriasListener implements ResponseListener {
 
             JSONObject jo = ((JSONObject)response).getJSONObject("data");
 
-            Log.d("OfertaMateriasListener", jo.toString());
+            String json = jo.getJSONArray("cursos").toString();
+            Log.d("OfertaCursosListener", json);
 
-            Type listType = new TypeToken<ArrayList<Materia>>(){}.getType();
-            List<Materia> ms = new Gson().fromJson(jo.getJSONArray("materias").toString(), listType);
-            List<Materia> materias = new ArrayList<>(ms);
+            Type listType = new TypeToken<ArrayList<Curso>>(){}.getType();
+            List<Curso> ms = new Gson().fromJson(json, listType);
+            List<Curso> cursos = new ArrayList<>(ms);
 
-            ((MainActivity)context).setMaterias(materias);
-            FragmentLoader.load((Activity) context, new OfertaMateriasFragment(), "OfertaMaterias");
+            ((MainActivity)context).getMateriaSeleccionada().setCursos(cursos);
+            FragmentLoader.load((Activity) context, new OfertaCursosFragment(), "OfertaCursos");
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -56,6 +54,5 @@ public class OfertaMateriasListener implements ResponseListener {
     public void onRequestError(int codError, String errorMessage) {
         RequestHelper.showError(context, errorMessage);
     }
-
 
 }

@@ -29,7 +29,7 @@ public class InscripcionMateriaViewHolder extends RecyclerView.ViewHolder
             public void onClick(View v) {
                 InscripcionCursosFragment inscripcionCursosFragment = new InscripcionCursosFragment();
                 inscripcionCursosFragment.setMateria(materia);
-                FragmentLoader.load((Activity) itemView.getContext(), inscripcionCursosFragment, FragmentLoader.Cursos);
+                FragmentLoader.load((Activity) itemView.getContext(), inscripcionCursosFragment, FragmentLoader.InscripcionCursos);
             }
         });
 

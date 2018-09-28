@@ -67,8 +67,8 @@ public class MainActivity extends AppCompatActivity
         InscripcionMateriasListener.moquear(this);
         Materia materia1 = new Materia("75.01", "Algoritmos y Programación I", "Computacion");
         ArrayList<Horario> horarios1 = new ArrayList<Horario>() {{
-            add(new Horario("Lunes",19,22, "Paseo Colón", "LB"));
-            add(new Horario("Martes", 19, 22, "Las Heras", "303"));
+            add(new Horario("Lunes","19","22", "Paseo Colón", "LB"));
+            add(new Horario("Martes", "15", "22", "Las Heras", "303"));
         }};
         Curso curso1 = new Curso(12, horarios1, 0);
         curso1.setDocenteACargo(new Persona("Gustavo", "Campagnuolo"));
@@ -79,22 +79,22 @@ public class MainActivity extends AppCompatActivity
         }});
         materia1.agregarCurso(curso1);
         ArrayList<Horario> horarios2 = new ArrayList<Horario>() {{
-            add(new Horario("Miércoles",15,22));
+            add(new Horario("Miércoles","15","22"));
         }};
         Curso curso2 = new Curso(2, horarios2, 20);
         materia1.agregarCurso(curso2);
         curso2.setDocenteACargo(new Persona("Reinaldo", "Merlo"));
         Materia materia2 = new Materia("71.26", "Modelos y Optimización II", "Gestion");
         ArrayList<Horario> horarios3 = new ArrayList<Horario>() {{
-            add(new Horario("Viernes",15,23));
+            add(new Horario("Viernes","15","23"));
         }};
         Curso curso3 = new Curso(1, horarios3, 25);
         materia2.agregarCurso(curso3);
         curso3.setDocenteACargo(new Persona("José","Chatruc"));
         ArrayList<Horario> horarios4 = new ArrayList<Horario>() {{
-            add(new Horario("Lunes",19,22));
-            add(new Horario("Martes", 19, 20));
-            add(new Horario("Jueves", 20, 22));
+            add(new Horario("Lunes","19","22"));
+            add(new Horario("Martes", "19", "20"));
+            add(new Horario("Jueves", "20", "22"));
         }};
         Curso curso4 = new Curso(2, horarios4, 40);
         curso4.setDocenteACargo(new Persona("Adrián", "Bastía"));

@@ -32,10 +32,9 @@ public class AlumnoListener implements ResponseListener {
 
             getActivity().setUsuario(alumno);
 
-            FragmentLoader.load(getActivity(), new InscripcionCarrerasFragment(), "Inscripcion");
+            FragmentLoader.load(getActivity(), new InscripcionCarrerasFragment(), "InscripcionCarreras");
 
         } catch (JSONException e) {
-            e.printStackTrace();
             RequestHelper.showError(getActivity(), e.getMessage());
         }
     }
