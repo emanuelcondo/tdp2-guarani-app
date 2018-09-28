@@ -50,7 +50,6 @@ public class OfertaFragment extends Fragment {
         curso = ((MainActivity) getActivity()).getCursoSeleccionado();
 
         bindCurso();
-        //FragmentLoader.setBackOptionEnabled(getActivity(), true);
 
     }
 

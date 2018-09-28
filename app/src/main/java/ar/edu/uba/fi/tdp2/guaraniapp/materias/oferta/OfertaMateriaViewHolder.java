@@ -5,10 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionCursosListener;
 
 public class OfertaMateriaViewHolder extends RecyclerView.ViewHolder
         implements View.OnClickListener  {
@@ -27,9 +27,7 @@ public class OfertaMateriaViewHolder extends RecyclerView.ViewHolder
             @Override
             public void onClick(View v) {
                 loadCursos();
-                //OfertaCursosFragment ofertaCursosFragment = new OfertaCursosFragment();
-                //ofertaCursosFragment.setMateria(materia);
-                //FragmentLoader.load((Activity) itemView.getContext(), ofertaCursosFragment, FragmentLoader.Cursos);
+                ((MainActivity) itemView.getContext()).setMateriaSeleccionada(materia);
             }
         });
 
