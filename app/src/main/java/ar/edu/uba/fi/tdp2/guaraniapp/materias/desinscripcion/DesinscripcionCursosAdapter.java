@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
@@ -16,10 +17,10 @@ public class DesinscripcionCursosAdapter extends RecyclerView.Adapter<Desinscrip
 
     private MainActivity activity;
 
-    private ArrayList<Curso> cursos;
+    private DesinscripcionCursosFragment fragment;
 
-    public DesinscripcionCursosAdapter(Activity activity, ArrayList<Curso> cursos) {
-        this.cursos = cursos;
+    public DesinscripcionCursosAdapter(Activity activity, DesinscripcionCursosFragment fragment) {
+        this.fragment = fragment;
         this.activity = (MainActivity)activity;
     }
 
@@ -31,13 +32,13 @@ public class DesinscripcionCursosAdapter extends RecyclerView.Adapter<Desinscrip
 
     @Override
     public void onBindViewHolder(@NonNull DesinscripcionCursoViewHolder holder, int position) {
-        Curso curso = this.cursos.get(position);
+        Curso curso = this.fragment.getCursos().get(position);
         holder.bindTo(curso);
     }
 
     @Override
     public int getItemCount() {
-        return cursos.size();
+        return this.fragment.getCursos().size();
     }
 }
 

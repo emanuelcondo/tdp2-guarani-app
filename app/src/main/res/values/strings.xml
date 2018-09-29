@@ -22,5 +22,5 @@
     <string name="ayudantes">Ayudantes</string>
     <string name="oferta">Oferta Académica</string>
     <string name="historia">Historia Académica</string>
-    <string name="urlAppServer">http://192.168.1.102:3000/api/v1.0/</string>
+    <string name="urlAppServer">http://192.168.0.15:3000/api/v1.0/</string>
 </resources>
