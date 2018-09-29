@@ -62,7 +62,8 @@ public class DesinscripcionCursosFragment extends RecyclerFragment {
 
     public void onSuccess(List<Inscripcion> inscripciones) {
         for (Inscripcion inscripcion:inscripciones) {
-            this.cursos.add(inscripcion.getCurso());
+            if (inscripcion.getCurso() != null)
+                this.cursos.add(inscripcion.getCurso());
         }
         this.getAdapter().notifyDataSetChanged();
     }
