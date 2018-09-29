@@ -23,6 +23,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.login.LoginFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Alumno;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Inscripcion;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionMateriasListener;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Persona;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity
 
     private Curso cursoSeleccionado;
     private Materia materiaSeleccionada;
+    private Inscripcion inscripcionSeleccionada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -237,5 +239,13 @@ public class MainActivity extends AppCompatActivity
 
     public void setToolbarName(String toolbarName) {
         toolbar.setTitle(toolbarName);
+    }
+
+    public Inscripcion getInscripcionSeleccionada() {
+        return inscripcionSeleccionada;
+    }
+
+    public void setInscripcionSeleccionada(Inscripcion inscripcionSeleccionada) {
+        this.inscripcionSeleccionada = inscripcionSeleccionada;
     }
 }

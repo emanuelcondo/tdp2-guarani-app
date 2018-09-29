@@ -13,12 +13,11 @@ import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.RecyclerFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Inscripcion;
 
 public class DesinscripcionCursosFragment extends RecyclerFragment {
 
-    private List<Curso> cursos = new ArrayList<>();
+    private List<Inscripcion> inscripciones = new ArrayList<>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,15 +60,12 @@ public class DesinscripcionCursosFragment extends RecyclerFragment {
 
 
     public void onSuccess(List<Inscripcion> inscripciones) {
-        for (Inscripcion inscripcion:inscripciones) {
-            if (inscripcion.getCurso() != null)
-                this.cursos.add(inscripcion.getCurso());
-        }
+        this.inscripciones = inscripciones;
         this.getAdapter().notifyDataSetChanged();
     }
 
-    public List<Curso> getCursos() {
-        return cursos;
+    public List<Inscripcion> getInscripciones() {
+        return this.inscripciones;
     }
 }
 

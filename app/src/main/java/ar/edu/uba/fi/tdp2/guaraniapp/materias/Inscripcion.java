@@ -47,4 +47,8 @@ public class Inscripcion {
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
+
+    public boolean esCondicional() {
+        return this.condicion.equals("Condicional");
+    }
 }

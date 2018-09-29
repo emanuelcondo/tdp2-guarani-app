@@ -12,6 +12,7 @@ import java.util.List;
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Inscripcion;
 
 public class DesinscripcionCursosAdapter extends RecyclerView.Adapter<DesinscripcionCursoViewHolder> {
 
@@ -27,18 +28,18 @@ public class DesinscripcionCursosAdapter extends RecyclerView.Adapter<Desinscrip
     @NonNull
     @Override
     public DesinscripcionCursoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new DesinscripcionCursoViewHolder(LayoutInflater.from(activity).inflate(R.layout.curso_item_layout, parent, false), activity);
+        return new DesinscripcionCursoViewHolder(LayoutInflater.from(activity).inflate(R.layout.inscripcion_item_layout, parent, false), activity);
     }
 
     @Override
     public void onBindViewHolder(@NonNull DesinscripcionCursoViewHolder holder, int position) {
-        Curso curso = this.fragment.getCursos().get(position);
-        holder.bindTo(curso);
+        Inscripcion inscripcion = this.fragment.getInscripciones().get(position);
+        holder.bindTo(inscripcion);
     }
 
     @Override
     public int getItemCount() {
-        return this.fragment.getCursos().size();
+        return this.fragment.getInscripciones().size();
     }
 }
 

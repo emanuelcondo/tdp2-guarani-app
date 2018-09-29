@@ -18,6 +18,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Alumno;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Inscripcion;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Persona;
 
 public class DesinscripcionFragment extends Fragment {
@@ -30,7 +31,7 @@ public class DesinscripcionFragment extends Fragment {
     private LinearLayout modalidades;
     private LinearLayout ayudantes;
 
-    private Curso curso;
+    private Inscripcion inscripcion;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -53,33 +54,36 @@ public class DesinscripcionFragment extends Fragment {
         btnDesinscribir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Alumno estudiante = ((MainActivity) getActivity()).getUsuario();
-                if (!estudiante.esCondicional(curso)) {
-                    curso.agregarVacante();
-                }
-                estudiante.desinscribir(curso);
+
+                //TODO: Desinscribir
                 Toast.makeText(getActivity(), "Desinscripción exitosa!", Toast.LENGTH_LONG).show();
 
                 btnDesinscribir.setEnabled(false);
                 btnDesinscribir.setBackgroundResource(R.color.gray);
-                actualizarVacantes();
 
             }
         });
 
-        curso = ((MainActivity) getActivity()).getCursoSeleccionado();
+        inscripcion = ((MainActivity) getActivity()).getInscripcionSeleccionada();
 
         bindCurso();
 
     }
 
-    private void actualizarVacantes() {
-        this.vacantes.setText("Vacantes disponibles: " + curso.getVacantes());
-    }
-
     private void bindCurso() {
+        Curso curso;
+        if (inscripcion.esCondicional()) {
+            curso = new Curso();
+            docente.setText(R.string.condicional);
+            horarios.setVisibility(View.GONE);
+            modalidades.setVisibility(View.GONE);
+        } else {
+            curso = inscripcion.getCurso();
+            docente.setText(curso.getDocente());
+        }
+
         numeroCurso.setText("Curso " + curso.getComision());
-        docente.setText(curso.getDocente());
+
         vacantes.setText("Vacantes disponibles: " + curso.getVacantes());
 
         if (curso.getAyudantes().isEmpty()) {
@@ -94,28 +98,28 @@ public class DesinscripcionFragment extends Fragment {
 
         TableRow header = new TableRow(getContext());
         TextView textViewDias = new TextView(getContext());
-        textViewDias.setText("Días");
+        textViewDias.setText(R.string.dias_header);
         textViewDias.setTextSize(14);
         textViewDias.setTextColor(getActivity().getColor(R.color.white));
         textViewDias.setBackgroundResource(R.color.colorPrimary);
         textViewDias.setPadding(8,8,8,8);
 
         TextView textViewHorarios = new TextView(getContext());
-        textViewHorarios.setText("Horarios");
+        textViewHorarios.setText(R.string.horarios_header);
         textViewHorarios.setTextSize(14);
         textViewHorarios.setTextColor(getActivity().getColor(R.color.white));
         textViewHorarios.setBackgroundResource(R.color.colorPrimary);
         textViewHorarios.setPadding(8,8,8,8);
 
         TextView textViewHeaderSede = new TextView(getContext());
-        textViewHeaderSede.setText("Sede");
+        textViewHeaderSede.setText(R.string.sede_header);
         textViewHeaderSede.setTextSize(14);
         textViewHeaderSede.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
         textViewHeaderSede.setBackgroundResource(R.color.colorPrimary);
         textViewHeaderSede.setPadding(8,8,8,8);
 
         TextView textViewHeaderAula = new TextView(getContext());
-        textViewHeaderAula.setText("Aula");
+        textViewHeaderAula.setText(R.string.aula_header);
         textViewHeaderAula.setTextSize(14);
         textViewHeaderAula.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
         textViewHeaderAula.setBackgroundResource(R.color.colorPrimary);
@@ -165,5 +169,6 @@ public class DesinscripcionFragment extends Fragment {
             modalidad.setPadding(8,8,8,8);
             modalidades.addView(modalidad);
         }
+
     }
 }

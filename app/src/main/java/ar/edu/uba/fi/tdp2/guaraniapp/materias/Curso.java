@@ -18,6 +18,13 @@ public class Curso {
         this.vacantes = vacantes;
     }
 
+    //Constructor de Curso Condicional
+    public Curso() {
+        this.comision = 0;
+        this.cursada = new ArrayList<>();
+        this.vacantes = 0;
+    }
+
     public String getDocente() {
         return docenteACargo.toString();
     }
