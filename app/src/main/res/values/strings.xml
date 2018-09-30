@@ -30,4 +30,5 @@
     <string name="aula_header">Aula</string>
     <string name="curso_header">Curso %1$d</string>
     <string name="vacantes_header">Cupo: %1$d - Vacantes: %2$d</string>
+    <string name="horario_row">%1$s - %2$s</string>
 </resources>

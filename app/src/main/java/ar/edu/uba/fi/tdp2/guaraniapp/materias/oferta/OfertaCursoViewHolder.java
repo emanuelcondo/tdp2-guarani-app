@@ -48,28 +48,28 @@ public class OfertaCursoViewHolder extends RecyclerView.ViewHolder
 
         TableRow header = new TableRow(itemView.getContext());
         TextView textViewDias = new TextView(itemView.getContext());
-        textViewDias.setText("Días");
+        textViewDias.setText(R.string.dias_header);
         textViewDias.setTextSize(14);
         textViewDias.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.white));
         textViewDias.setBackgroundResource(R.color.colorPrimary);
         textViewDias.setPadding(8,8,8,8);
 
         TextView textViewHorarios = new TextView(itemView.getContext());
-        textViewHorarios.setText("Horarios");
+        textViewHorarios.setText(R.string.horarios_header);
         textViewHorarios.setTextSize(14);
         textViewHorarios.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.white));
         textViewHorarios.setBackgroundResource(R.color.colorPrimary);
         textViewHorarios.setPadding(8,8,8,8);
 
         TextView textViewHeaderSede = new TextView(itemView.getContext());
-        textViewHeaderSede.setText("Sede");
+        textViewHeaderSede.setText(R.string.sede_header);
         textViewHeaderSede.setTextSize(14);
         textViewHeaderSede.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.white));
         textViewHeaderSede.setBackgroundResource(R.color.colorPrimary);
         textViewHeaderSede.setPadding(8,8,8,8);
 
         TextView textViewHeaderAula = new TextView(itemView.getContext());
-        textViewHeaderAula.setText("Aula");
+        textViewHeaderAula.setText(R.string.aula_header);
         textViewHeaderAula.setTextSize(14);
         textViewHeaderAula.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.white));
         textViewHeaderAula.setBackgroundResource(R.color.colorPrimary);
@@ -97,13 +97,12 @@ public class OfertaCursoViewHolder extends RecyclerView.ViewHolder
             textViewDia.setPadding(8,8,8,8);
 
             TextView textViewHorario = new TextView(itemView.getContext());
-            String s_horario = horario.getHoraInicio() + " - " + horario.getHoraFin();
-            textViewHorario.setText(s_horario);
+            textViewHorario.setText(itemView.getContext().getString(R.string.horario_row, horario.getHoraInicio(), horario.getHoraFin()));
             textViewHorario.setBackgroundResource(R.drawable.cell_shape);
             textViewHorario.setPadding(8,8,8,8);
 
             TextView textViewSede = new TextView(itemView.getContext());
-            textViewSede.setText(horario.getSede());
+            textViewSede.setText(curso.getSede().getNombre());
             textViewSede.setBackgroundResource(R.drawable.cell_shape);
             textViewSede.setPadding(8,8,8,8);
 

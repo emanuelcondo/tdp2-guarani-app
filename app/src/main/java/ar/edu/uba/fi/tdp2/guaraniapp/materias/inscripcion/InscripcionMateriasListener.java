@@ -11,6 +11,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Persona;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Sede;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -58,10 +59,13 @@ public class InscripcionMateriasListener implements ResponseListener {
             Type listType = new TypeToken<ArrayList<Materia>>(){}.getType();
             List<Materia> ms = new Gson().fromJson(jo.getJSONArray("materias").toString(), listType);
             List<Materia> materias = new ArrayList<>(ms);
+            Sede sede = new Sede();
+            sede.setCodigo("PC");
+            sede.setNombre("Paseo Colón");
             for (Materia m: materias) {
                 ArrayList<Horario> horarios1 = new ArrayList<Horario>() {{
-                    add(new Horario("Lunes","19","22", "Paseo Colón", "LB"));
-                    add(new Horario("Martes", "15", "18", "Las Heras", "303"));
+                    add(new Horario("Lunes","19","22", "LB"));
+                    add(new Horario("Martes", "15", "18", "303"));
                 }};
                 Curso curso1 = new Curso(12, horarios1, 0);
                 curso1.setDocenteACargo(new Persona("Gustavo", "Campagnuolo"));
@@ -70,6 +74,7 @@ public class InscripcionMateriasListener implements ResponseListener {
                     add(new Persona("Claudio", "Ubeda"));
                     add(new Persona("Gabriel", "Loeschbor"));
                 }});
+                curso1.setSede(sede);
                 m.agregarCurso(curso1);
             }
             ((MainActivity)context).setMaterias(materias);

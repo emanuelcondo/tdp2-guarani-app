@@ -64,7 +64,7 @@ public class InscripcionFragment extends Fragment {
 
                 btnInscribir.setEnabled(false);
                 btnInscribir.setBackgroundResource(R.color.gray);
-                //actualizarVacantes();
+
             }
         });
 
@@ -75,9 +75,6 @@ public class InscripcionFragment extends Fragment {
 
     }
 
-    private void actualizarVacantes() {
-        this.vacantes.setText("Vacantes disponibles: " + curso.getVacantes());
-    }
 
     private void bindCurso() {
         numeroCurso.setText(getString(R.string.curso_header, curso.getComision()));
@@ -144,13 +141,13 @@ public class InscripcionFragment extends Fragment {
             textViewDia.setPadding(8,8,8,8);
 
             TextView textViewHorario = new TextView(getContext());
-            String s_horario = horario.getHoraInicio() + " - " + horario.getHoraFin();
-            textViewHorario.setText(s_horario);
+
+            textViewHorario.setText(getString(R.string.horario_row, horario.getHoraInicio(), horario.getHoraFin()));
             textViewHorario.setBackgroundResource(R.drawable.cell_shape);
             textViewHorario.setPadding(8,8,8,8);
 
             TextView textViewSede = new TextView(getContext());
-            textViewSede.setText(horario.getSede());
+            textViewSede.setText(curso.getSede().getNombre());
             textViewSede.setBackgroundResource(R.drawable.cell_shape);
             textViewSede.setPadding(8,8,8,8);
 

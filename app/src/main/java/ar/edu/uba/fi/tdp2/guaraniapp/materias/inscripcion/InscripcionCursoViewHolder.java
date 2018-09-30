@@ -92,13 +92,12 @@ public class InscripcionCursoViewHolder extends RecyclerView.ViewHolder
             textViewDia.setPadding(8,8,8,8);
 
             TextView textViewHorario = new TextView(itemView.getContext());
-            String s_horario = horario.getHoraInicio() + " - " + horario.getHoraFin();
-            textViewHorario.setText(s_horario);
+            textViewHorario.setText(itemView.getContext().getString(R.string.horario_row, horario.getHoraInicio(), horario.getHoraFin()));
             textViewHorario.setBackgroundResource(R.drawable.cell_shape);
             textViewHorario.setPadding(8,8,8,8);
 
             TextView textViewSede = new TextView(itemView.getContext());
-            textViewSede.setText(horario.getSede());
+            textViewSede.setText(curso.getSede().getNombre());
             textViewSede.setBackgroundResource(R.drawable.cell_shape);
             textViewSede.setPadding(8,8,8,8);
 

@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity
         InscripcionMateriasListener.moquear(this);
         Materia materia1 = new Materia("75.01", "Algoritmos y Programación I", "Computacion");
         ArrayList<Horario> horarios1 = new ArrayList<Horario>() {{
-            add(new Horario("Lunes","19","22", "Paseo Colón", "LB"));
-            add(new Horario("Martes", "15", "22", "Las Heras", "303"));
+            add(new Horario("Lunes","19","22", "LB"));
+            add(new Horario("Martes", "15", "22", "303"));
         }};
         Curso curso1 = new Curso(12, horarios1, 0);
         curso1.setDocenteACargo(new Persona("Gustavo", "Campagnuolo"));

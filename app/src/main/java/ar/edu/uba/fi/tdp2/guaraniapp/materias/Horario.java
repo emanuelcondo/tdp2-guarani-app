@@ -9,7 +9,6 @@ public class Horario {
     @SerializedName("horario_hasta")
     private String horaFin;
     private String aula = "-";
-    private String sede = "-";
 
     private String tipo = "Teórico-Práctica Obligatoria";
 
@@ -19,11 +18,10 @@ public class Horario {
         this.horaFin = horaFin;
     }
 
-    public Horario(String dia, String horaInicio, String horaFin, String sede, String aula) {
+    public Horario(String dia, String horaInicio, String horaFin, String aula) {
         this.dia = dia;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
-        this.sede = sede;
         this.aula = aula;
     }
 
@@ -57,14 +55,6 @@ public class Horario {
 
     public void setAula(String aula) {
         this.aula = aula;
-    }
-
-    public String getSede() {
-        return sede;
-    }
-
-    public void setSede(String sede) {
-        this.sede = sede;
     }
 
     public String getTipo() {

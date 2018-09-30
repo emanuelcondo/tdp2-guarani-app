@@ -147,7 +147,7 @@ public class DesinscripcionFragment extends Fragment {
             textViewHorario.setPadding(8,8,8,8);
 
             TextView textViewSede = new TextView(getContext());
-            textViewSede.setText(horario.getSede());
+            textViewSede.setText(curso.getSede().getNombre());
             textViewSede.setBackgroundResource(R.drawable.cell_shape);
             textViewSede.setPadding(8,8,8,8);
 
