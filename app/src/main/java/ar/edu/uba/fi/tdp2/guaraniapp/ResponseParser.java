@@ -17,11 +17,11 @@ public class ResponseParser {
 
     private static Gson gson = new Gson();
 
-    public static List<Inscripcion> getInscripciones(Object response) {
+    private static String getJsonArray(Object response, String field) {
         try {
             JSONObject jo = ((JSONObject)response).getJSONObject("data");
-            Type listType = new TypeToken<ArrayList<Inscripcion>>(){}.getType();
-            return gson.fromJson(jo.getJSONArray("inscripciones").toString(), listType);
+
+            return jo.getJSONArray(field).toString();
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -30,16 +30,13 @@ public class ResponseParser {
         }
     }
 
+    public static List<Inscripcion> getInscripciones(Object response) {
+        Type listType = new TypeToken<ArrayList<Inscripcion>>(){}.getType();
+        return gson.fromJson(getJsonArray(response,"inscripciones"), listType);
+    }
+
     public static List<Materia> getMaterias(Object response) {
-        try {
-            JSONObject jo = ((JSONObject)response).getJSONObject("data");
-            Type listType = new TypeToken<ArrayList<Materia>>(){}.getType();
-            return gson.fromJson(jo.getJSONArray("materias").toString(), listType);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e.getMessage());
-
-        }
+        Type listType = new TypeToken<ArrayList<Materia>>(){}.getType();
+        return gson.fromJson(getJsonArray(response,"materias"), listType);
     }
 }

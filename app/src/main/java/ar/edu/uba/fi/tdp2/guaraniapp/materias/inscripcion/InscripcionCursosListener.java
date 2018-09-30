@@ -43,10 +43,12 @@ public class InscripcionCursosListener implements ResponseListener {
             List<Curso> ms = new Gson().fromJson(json, listType);
             List<Curso> cursos = new ArrayList<>(ms);
 
-            watcher.onSuccess();
+
 
             ((MainActivity)context).getMateriaSeleccionada().setCursos(cursos);
             FragmentLoader.load((Activity) context, new InscripcionCursosFragment(), "InscripcionCursos");
+
+            watcher.onSuccess();
 
         } catch (JSONException e) {
             e.printStackTrace();
