@@ -99,13 +99,8 @@ public class LoginFragment extends Fragment implements ResponseListener {
         if (progressPopup != null)
             progressPopup.dismiss();
 
+        RequestHelper.showError(getActivity(), "Conectado a " + getString(R.string.app_name) + "!");
 
-        RequestHelper.showError(getActivity(), "Logueado!");
-
-        //((MainActivity) getActivity()).onBackPressed();
-
-        //((MainActivity) getActivity()).setUsuario(new Alumno(95010, "Carlos", "Ramirez"));
-        //FragmentLoader.load(getActivity(), new InscripcionMateriasFragment(), "InscripcionMateria");
     }
 
     public void onLoginFailed() {

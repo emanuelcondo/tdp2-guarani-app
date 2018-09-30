@@ -62,54 +62,6 @@ public class MainActivity extends AppCompatActivity
         FragmentLoader.load(this, new LoginFragment(), "Login");
     }
 
-    private void mockearMaterias() {
-        //InscripcionMateriasListener.moquear(this);
-        Materia materia1 = new Materia("75.01", "Algoritmos y Programación I", "Computacion");
-        ArrayList<Horario> horarios1 = new ArrayList<Horario>() {{
-            add(new Horario("Lunes","19","22", "LB"));
-            add(new Horario("Martes", "15", "22", "303"));
-        }};
-        Curso curso1 = new Curso(12, horarios1, 0);
-        curso1.setDocenteACargo(new Persona("Gustavo", "Campagnuolo"));
-
-        curso1.setAyudantes(new ArrayList<Persona>() {{
-            add(new Persona("Claudio", "Ubeda"));
-            add(new Persona("Gabriel", "Loeschbor"));
-        }});
-        materia1.agregarCurso(curso1);
-        ArrayList<Horario> horarios2 = new ArrayList<Horario>() {{
-            add(new Horario("Miércoles","15","22"));
-        }};
-        Curso curso2 = new Curso(2, horarios2, 20);
-        materia1.agregarCurso(curso2);
-        curso2.setDocenteACargo(new Persona("Reinaldo", "Merlo"));
-        Materia materia2 = new Materia("71.26", "Modelos y Optimización II", "Gestion");
-        ArrayList<Horario> horarios3 = new ArrayList<Horario>() {{
-            add(new Horario("Viernes","15","23"));
-        }};
-        Curso curso3 = new Curso(1, horarios3, 25);
-        materia2.agregarCurso(curso3);
-        curso3.setDocenteACargo(new Persona("José","Chatruc"));
-        ArrayList<Horario> horarios4 = new ArrayList<Horario>() {{
-            add(new Horario("Lunes","19","22"));
-            add(new Horario("Martes", "19", "20"));
-            add(new Horario("Jueves", "20", "22"));
-        }};
-        Curso curso4 = new Curso(2, horarios4, 40);
-        curso4.setDocenteACargo(new Persona("Adrián", "Bastía"));
-        curso4.setAyudantes(new ArrayList<Persona>() {{
-            add(new Persona("Gerardo","Bedoya"));
-            add(new Persona("Maximiliano","Estévez"));
-            add(new Persona("Rafael","Maceratesi"));
-        }});
-        materia2.agregarCurso(curso4);
-        materias.add(materia1);
-        materias.add(materia2);
-
-
-
-    }
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

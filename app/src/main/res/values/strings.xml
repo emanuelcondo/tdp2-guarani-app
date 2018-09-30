@@ -3,8 +3,6 @@
     <string name="urlAppServer">http://192.168.0.15:3000/api/v1.0/</string>
     <string name="navigation_drawer_open">Abrir menu</string>
     <string name="navigation_drawer_close">Cerrar menu</string>
-    <string name="nav_header_title">Mis opciones</string>
-    <string name="nav_header_subtitle">cperez@fi.uba.arr</string>
     <string name="nav_header_desc">Encabezado</string>
     <string name="action_settings">Configuración</string>
     <string name="userName_hint">Nombre de Usuario</string>
@@ -31,4 +29,6 @@
     <string name="curso_header">Curso %1$d</string>
     <string name="vacantes_header">Cupo: %1$d - Vacantes: %2$d</string>
     <string name="horario_row">%1$s - %2$s</string>
+    <string name="legajo_header">Padrón: %1$d</string>
+    <string name="alumno_header">Alumno: %1$s, %2$s</string>
 </resources>

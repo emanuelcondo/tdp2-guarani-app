@@ -74,11 +74,7 @@ public class Alumno {
 
     @Override
     public String toString() {
-        String strCarreras = "/";
-        for (Carrera carrera: carreras) {
-            strCarreras += carrera.getNombre() + "/";
-        }
 
-        return "(" + legajo + ") " + nombre + apellido + strCarreras;
+        return "(" + legajo + ") " + nombre + " " + apellido ;
     }
 }

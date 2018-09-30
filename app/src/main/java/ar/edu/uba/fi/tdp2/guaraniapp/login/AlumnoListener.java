@@ -1,6 +1,7 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.login;
 
 import android.util.Log;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 
@@ -8,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
+import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
@@ -31,6 +33,13 @@ public class AlumnoListener implements ResponseListener {
             Log.d("AlumnoListener", alumno.toString());
 
             getActivity().setUsuario(alumno);
+
+            // Para que se vea el nombre del alumno en el menu
+            TextView view = activity.findViewById(R.id.alumno_conectado);
+            view.setText(activity.getString(R.string.alumno_header, alumno.getApellido(), alumno.getNombre()));
+            view = activity.findViewById(R.id.padron_alumno_conectado);
+            view.setText(activity.getString(R.string.legajo_header, alumno.getLegajo()));
+            //Agregar una foto al menu
 
             FragmentLoader.load(getActivity(), new InscripcionCarrerasFragment(), "InscripcionCarreras");
 
