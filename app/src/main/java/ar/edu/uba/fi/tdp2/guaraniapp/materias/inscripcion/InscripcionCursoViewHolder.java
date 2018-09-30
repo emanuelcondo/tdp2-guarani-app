@@ -119,9 +119,9 @@ public class InscripcionCursoViewHolder extends RecyclerView.ViewHolder
     @Override
     public void onClick(View view) {
 
-        Log.d("ClicCursoViewHolder", "Clic en curso: " + curso.getDocente());
+        Log.d("ClicInscripcionCursoViewHolder", "Clic en curso: " + curso.getDocente());
         activity.setCursoSeleccionado(curso);
-        FragmentLoader.load(activity, new InscripcionFragment(), FragmentLoader.InscripcionCursos);
+        FragmentLoader.load(activity, new InscripcionFragment(), FragmentLoader.InscripcionCurso);
 
     }
 

@@ -54,21 +54,24 @@ public class InscripcionFragment extends Fragment {
         btnInscribir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*
                 if (!condicional) {
                     curso.decrementarVacantes();
                 }
-                ((MainActivity) getActivity()).getUsuario().inscribir(curso, condicional);
-                Toast.makeText(getActivity(), "Inscripción exitosa!", Toast.LENGTH_LONG).show();
+                */
+                //((MainActivity) getActivity()).getUsuario().inscribir(curso, condicional);
+                Toast.makeText(getActivity(), "Aca llamar al server!", Toast.LENGTH_LONG).show();
 
                 btnInscribir.setEnabled(false);
                 btnInscribir.setBackgroundResource(R.color.gray);
-                actualizarVacantes();
+                //actualizarVacantes();
             }
         });
 
         curso = ((MainActivity) getActivity()).getCursoSeleccionado();
 
-        bindCurso();
+        if (curso != null)
+            bindCurso();
         //FragmentLoader.setBackOptionEnabled(getActivity(), true);
 
     }

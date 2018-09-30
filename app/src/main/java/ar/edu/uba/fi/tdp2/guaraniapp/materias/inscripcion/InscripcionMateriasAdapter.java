@@ -15,13 +15,11 @@ import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
 
 public class InscripcionMateriasAdapter extends RecyclerView.Adapter<InscripcionMateriaViewHolder> {
 
-    private MainActivity activity;
 
     private List<Materia> materias;
 
     public InscripcionMateriasAdapter(Activity activity, List<Materia> materias) {
         this.materias = materias;
-        this.activity = (MainActivity)activity;
     }
 
     @NonNull
@@ -33,7 +31,7 @@ public class InscripcionMateriasAdapter extends RecyclerView.Adapter<Inscripcion
     @Override
     public void onBindViewHolder(@NonNull InscripcionMateriaViewHolder holder, int position) {
         Materia materia = this.materias.get(position);
-        holder.bindTo(materia, activity.getUsuario());
+        holder.bindTo(materia);
     }
 
     @Override

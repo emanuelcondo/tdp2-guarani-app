@@ -11,6 +11,7 @@ public class Curso {
     private List<Horario> cursada;
     private List<Persona> ayudantes = new ArrayList<>();
     private int vacantes;
+    private int cupos;
 
     public Curso(int numeroCurso, ArrayList<Horario> horarios, int vacantes) {
         this.comision = numeroCurso;
@@ -91,5 +92,13 @@ public class Curso {
 
     public void setJtp(Persona jtp) {
         this.jtp = jtp;
+    }
+
+    public int getCupos() {
+        return cupos;
+    }
+
+    public void setCupos(int cupos) {
+        this.cupos = cupos;
     }
 }

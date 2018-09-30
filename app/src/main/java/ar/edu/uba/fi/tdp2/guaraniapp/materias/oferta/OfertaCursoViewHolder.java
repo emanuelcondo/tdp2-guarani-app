@@ -124,7 +124,7 @@ public class OfertaCursoViewHolder extends RecyclerView.ViewHolder
     @Override
     public void onClick(View view) {
 
-        Log.d("ClicCursoViewHolder", "Clic en curso: " + curso.getDocente());
+        Log.d("ClicOfertaCursoViewHolder", "Clic en curso: " + curso.getDocente());
         activity.setCursoSeleccionado(curso);
         FragmentLoader.load(activity, new OfertaFragment(), FragmentLoader.OfertaCurso);
 

@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
@@ -23,17 +23,15 @@ public class InscripcionCursosFragment extends RecyclerFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        cursos = materia.getCursos();
-        cursos.removeAll(((MainActivity) getActivity()).getUsuario().getInscripciones());
-        ((MainActivity) getActivity()).setToolbarName(materia.getCodigo() + " " + materia.getNombre());
+        materia = ((MainActivity) getActivity()).getMateriaSeleccionada();
+        if (materia == null) {
+            Log.d("InscripcionCursosFragment", "No hay materia seleccionada");
+        } else {
+            cursos = materia.getCursos();
+            ((MainActivity) getActivity()).setToolbarName(materia.getCodigo() + " " + materia.getNombre());
+        }
 
-    }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        cursos = materia.getCursos();
-        cursos.removeAll(((MainActivity) getActivity()).getUsuario().getInscripciones());
     }
 
     @Override
@@ -47,7 +45,7 @@ public class InscripcionCursosFragment extends RecyclerFragment {
         this.setConfiguredAdapter(inscripcionCursosAdapter);
     }
 
-    public void setCursos(ArrayList<Curso> cursos) {
+    public void setCursos(List<Curso> cursos) {
         this.cursos = cursos;
     }
 
