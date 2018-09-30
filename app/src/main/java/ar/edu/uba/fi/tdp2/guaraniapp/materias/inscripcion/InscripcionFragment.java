@@ -1,5 +1,6 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Persona;
@@ -73,6 +75,15 @@ public class InscripcionFragment extends Fragment {
         if (curso != null)
             bindCurso();
 
+    }
+
+    private void inscribir() {
+        InscripcionCursosListener inscripcionCursosListener = new InscripcionCursosListener(getContext());
+        RequestSender requestSender = new RequestSender(getContext());
+
+        String url = getContext().getString(R.string.urlAppServer) + "inscripciones/cursos/" + curso.get_id();
+
+        requestSender.doGet_expectJSONObject(inscripcionCursosListener, url);
     }
 
 

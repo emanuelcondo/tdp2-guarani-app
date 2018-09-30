@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Curso {
+    private String _id;
     private int comision;
     private Sede sede;
     private Persona docenteACargo;
@@ -24,6 +25,14 @@ public class Curso {
         this.comision = 0;
         this.cursada = new ArrayList<>();
         this.vacantes = 0;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getDocente() {
