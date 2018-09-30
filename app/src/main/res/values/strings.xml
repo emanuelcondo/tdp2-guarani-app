@@ -22,10 +22,12 @@
     <string name="ayudantes">Ayudantes</string>
     <string name="oferta">Oferta Académica</string>
     <string name="historia">Historia Académica</string>
-    <string name="urlAppServer">http://192.168.0.15:3000/api/v1.0/</string>
+    <string name="urlAppServer">http://192.168.1.102:3000/api/v1.0/</string>
     <string name="condicional">Condicionales</string>
     <string name="dias_header">Días</string>
     <string name="horarios_header">Horarios</string>
     <string name="sede_header">Sede</string>
     <string name="aula_header">Aula</string>
+    <string name="curso_header">Curso %1$d</string>
+    <string name="vacantes_header">Cupo: %1$d - Vacantes: %2$d</string>
 </resources>

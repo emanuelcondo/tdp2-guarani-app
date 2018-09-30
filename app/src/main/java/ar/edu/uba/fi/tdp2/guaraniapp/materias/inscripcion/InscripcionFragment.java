@@ -72,7 +72,6 @@ public class InscripcionFragment extends Fragment {
 
         if (curso != null)
             bindCurso();
-        //FragmentLoader.setBackOptionEnabled(getActivity(), true);
 
     }
 
@@ -81,9 +80,9 @@ public class InscripcionFragment extends Fragment {
     }
 
     private void bindCurso() {
-        numeroCurso.setText("Curso " + curso.getComision());
+        numeroCurso.setText(getString(R.string.curso_header, curso.getComision()));
         docente.setText(curso.getDocente());
-        vacantes.setText("Vacantes disponibles: " + curso.getVacantes());
+        vacantes.setText(getString(R.string.vacantes_header, curso.getCupos(), curso.getVacantes()));
 
         if (curso.getVacantes() == 0) {
             btnInscribir.setText(R.string.inscribirse_como_condicional);
@@ -102,28 +101,28 @@ public class InscripcionFragment extends Fragment {
 
         TableRow header = new TableRow(getContext());
         TextView textViewDias = new TextView(getContext());
-        textViewDias.setText("Días");
+        textViewDias.setText(R.string.dias_header);
         textViewDias.setTextSize(14);
         textViewDias.setTextColor(getActivity().getColor(R.color.white));
         textViewDias.setBackgroundResource(R.color.colorPrimary);
         textViewDias.setPadding(8,8,8,8);
 
         TextView textViewHorarios = new TextView(getContext());
-        textViewHorarios.setText("Horarios");
+        textViewHorarios.setText(R.string.horarios_header);
         textViewHorarios.setTextSize(14);
         textViewHorarios.setTextColor(getActivity().getColor(R.color.white));
         textViewHorarios.setBackgroundResource(R.color.colorPrimary);
         textViewHorarios.setPadding(8,8,8,8);
 
         TextView textViewHeaderSede = new TextView(getContext());
-        textViewHeaderSede.setText("Sede");
+        textViewHeaderSede.setText(R.string.sede_header);
         textViewHeaderSede.setTextSize(14);
         textViewHeaderSede.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
         textViewHeaderSede.setBackgroundResource(R.color.colorPrimary);
         textViewHeaderSede.setPadding(8,8,8,8);
 
         TextView textViewHeaderAula = new TextView(getContext());
-        textViewHeaderAula.setText("Aula");
+        textViewHeaderAula.setText(R.string.aula_header);
         textViewHeaderAula.setTextSize(14);
         textViewHeaderAula.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
         textViewHeaderAula.setBackgroundResource(R.color.colorPrimary);
@@ -145,7 +144,7 @@ public class InscripcionFragment extends Fragment {
             textViewDia.setPadding(8,8,8,8);
 
             TextView textViewHorario = new TextView(getContext());
-            String s_horario = horario.getHoraInicio() + "hs - " + horario.getHoraFin() + "hs";
+            String s_horario = horario.getHoraInicio() + " - " + horario.getHoraFin();
             textViewHorario.setText(s_horario);
             textViewHorario.setBackgroundResource(R.drawable.cell_shape);
             textViewHorario.setPadding(8,8,8,8);
