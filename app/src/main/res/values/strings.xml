@@ -10,8 +10,8 @@
     <string name="userName_hint">Nombre de Usuario</string>
     <string name="password_hint">Contraseña</string>
     <string name="login_button">Ingresar</string>
-    <string name="nombre_error">Nombre inválido</string>
-    <string name="password_error">Contraseña inválida</string>
+    <string name="nombre_error">El nombre debe tener al menos 2 caracteres</string>
+    <string name="password_error">La contraseña debe tener entre 4 y 10 caracteres</string>
     <string name="inscripcion">Inscripción a Cursos</string>
     <string name="seleccion_carrera">Carreras</string>
     <string name="message_confirm_exit">Desea salir de la aplicacion?</string>

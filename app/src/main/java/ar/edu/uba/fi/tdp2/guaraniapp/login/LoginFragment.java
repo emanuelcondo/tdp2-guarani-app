@@ -108,16 +108,11 @@ public class LoginFragment extends Fragment implements ResponseListener {
         //FragmentLoader.load(getActivity(), new InscripcionMateriasFragment(), "InscripcionMateria");
     }
 
-    public void onLoginFailed(String mensaje) {
+    public void onLoginFailed() {
         if (progressPopup != null)
             progressPopup.dismiss();
         buttonLogin.setEnabled(true);
-        editTextUsuario.setError(mensaje);
         editTextUsuario.requestFocus();
-    }
-
-    public void onLoginFailed() {
-        onLoginFailed(getString(R.string.nombre_error));
     }
 
     private boolean validate() {
@@ -131,6 +126,7 @@ public class LoginFragment extends Fragment implements ResponseListener {
 
         if (nombreUsuario.isEmpty() || nombreUsuario.length() < 2) {
             this.editTextUsuario.setError(getString(R.string.nombre_error));
+            this.editTextUsuario.requestFocus();
             valid = false;
         } else {
             this.editTextUsuario.setError(null);
@@ -138,6 +134,7 @@ public class LoginFragment extends Fragment implements ResponseListener {
 
         if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
             editTextPassword.setError(getString(R.string.password_error));
+            this.editTextPassword.requestFocus();
             valid = false;
         } else {
             editTextPassword.setError(null);
@@ -183,9 +180,8 @@ public class LoginFragment extends Fragment implements ResponseListener {
 
     @Override
     public void onRequestError(int codError, String errorMessage) {
-
         RequestHelper.showError(getActivity(), errorMessage);
-        onLoginFailed(errorMessage);
+        onLoginFailed();
     }
 
 
