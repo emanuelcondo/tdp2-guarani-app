@@ -48,6 +48,8 @@ public class DesinscripcionCursoViewHolder extends RecyclerView.ViewHolder
         textViewNombreMateria.setOnClickListener(this);
         textViewFechaInscripcion.setOnClickListener(this);
         textViewNumeroCurso.setOnClickListener(this);
+        tableLayoutHorarios.setOnClickListener(this);
+
         itemView.setOnClickListener(this);
 
         this.activity = activity;
@@ -124,7 +126,6 @@ public class DesinscripcionCursoViewHolder extends RecyclerView.ViewHolder
         header.addView(textViewHeaderAula);
 
         tableLayoutHorarios.addView(header);
-        tableLayoutHorarios.setOnClickListener(this);
 
         for (Horario horario:curso.getCursada()) {
             TableRow row = new TableRow(itemView.getContext());
