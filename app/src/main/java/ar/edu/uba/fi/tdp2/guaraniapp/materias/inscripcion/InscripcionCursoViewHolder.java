@@ -34,6 +34,7 @@ public class InscripcionCursoViewHolder extends RecyclerView.ViewHolder
         textViewDocente.setOnClickListener(this);
         tableLayoutHorarios.setOnClickListener(this);
         textViewNumeroCurso.setOnClickListener(this);
+        itemView.setOnClickListener(this);
 
         this.activity = activity;
     }

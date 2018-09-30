@@ -48,6 +48,7 @@ public class DesinscripcionCursoViewHolder extends RecyclerView.ViewHolder
         textViewNombreMateria.setOnClickListener(this);
         textViewFechaInscripcion.setOnClickListener(this);
         textViewNumeroCurso.setOnClickListener(this);
+        itemView.setOnClickListener(this);
 
         this.activity = activity;
     }

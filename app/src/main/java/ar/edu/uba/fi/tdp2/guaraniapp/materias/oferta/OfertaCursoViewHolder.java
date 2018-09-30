@@ -31,6 +31,11 @@ public class OfertaCursoViewHolder extends RecyclerView.ViewHolder
         textViewDocente = itemView.findViewById(R.id.docente_curso);
         tableLayoutHorarios = itemView.findViewById(R.id.tabla_horarios);
 
+        textViewNumeroCurso.setOnClickListener(this);
+        textViewDocente.setOnClickListener(this);
+        tableLayoutHorarios.setOnClickListener(this);
+        itemView.setOnClickListener(this);
+
         this.activity = activity;
     }
 
@@ -42,9 +47,9 @@ public class OfertaCursoViewHolder extends RecyclerView.ViewHolder
     private void bindViews() {
         String numeroCurso = "Curso " + curso.getComision();
         textViewNumeroCurso.setText(numeroCurso);
-        textViewNumeroCurso.setOnClickListener(this);
+
         textViewDocente.setText(curso.getDocente());
-        textViewDocente.setOnClickListener(this);
+
 
         TableRow header = new TableRow(itemView.getContext());
         TextView textViewDias = new TextView(itemView.getContext());
@@ -86,7 +91,7 @@ public class OfertaCursoViewHolder extends RecyclerView.ViewHolder
         header.addView(textViewHeaderAula);
 
         tableLayoutHorarios.addView(header);
-        tableLayoutHorarios.setOnClickListener(this);
+
 
         for (Horario horario : curso.getCursada()) {
             TableRow row = new TableRow(itemView.getContext());
