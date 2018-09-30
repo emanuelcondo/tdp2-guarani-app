@@ -60,13 +60,13 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         //TODO: Borrar esto cuando este implementado
-        mockearMaterias();
+        //mockearMaterias();
 
         FragmentLoader.load(this, new LoginFragment(), "Login");
     }
 
     private void mockearMaterias() {
-        InscripcionMateriasListener.moquear(this);
+        //InscripcionMateriasListener.moquear(this);
         Materia materia1 = new Materia("75.01", "Algoritmos y Programación I", "Computacion");
         ArrayList<Horario> horarios1 = new ArrayList<Horario>() {{
             add(new Horario("Lunes","19","22", "LB"));

@@ -52,36 +52,4 @@ public class InscripcionMateriasListener implements ResponseListener {
         RequestHelper.showError(context, errorMessage);
     }
 
-    public static void moquear(Context context) {
-        String stringResponse = "{\"status\": \"success\", \"data\": { \"materias\": [ { \"_id\": \"a2bc2187abc8fe8a8dcb7101\", \"codigo\": \"7547\", \"subcodigo\": \"75\", \"nombre\": \"Taller de Desarrollo de Proyectos II\" }, { \"_id\": \"a2bc2187abc8fe8a8dcb7102\", \"codigo\": \"7512\", \"subcodigo\": \"75\", \"nombre\": \"Análisis numérico\" }, { \"_id\": \"a2bc2187abc8fe8a8dcb71\", \"codigo\": \"6203\", \"subcodigo\": \"62\", \"nombre\": \"Física II\" }, { \"_id\": \"a2bc2187abc8fe8a8dcb7121\", \"codigo\": \"7544\", \"subcodigo\": \"75\", \"nombre\": \"Administración y Control de Proyectos\" }, { \"_id\": \"a2bc2187abc8fe8a8dcb7121\", \"codigo\": \"7545\", \"subcodigo\": \"75\", \"nombre\": \"Taller de Desarrollo de Proyectos I\" }, { \"_id\": \"a2bc2187abc8fe8a8dcb7121\", \"codigo\": \"7507\", \"subcodigo\": \"75\", \"nombre\": \"Algoritmos III\" }, { \"_id\": \"a2bc2187abc8fe8a8dcb7121\", \"codigo\": \"7508\", \"subcodigo\": \"75\", \"nombre\": \"Sistemas Operativos\" } ] } } ";
-        try {
-            JSONObject jo = new JSONObject(stringResponse).getJSONObject("data");
-            Type listType = new TypeToken<ArrayList<Materia>>(){}.getType();
-            List<Materia> ms = new Gson().fromJson(jo.getJSONArray("materias").toString(), listType);
-            List<Materia> materias = new ArrayList<>(ms);
-            Sede sede = new Sede();
-            sede.setCodigo("PC");
-            sede.setNombre("Paseo Colón");
-            for (Materia m: materias) {
-                ArrayList<Horario> horarios1 = new ArrayList<Horario>() {{
-                    add(new Horario("Lunes","19","22", "LB"));
-                    add(new Horario("Martes", "15", "18", "303"));
-                }};
-                Curso curso1 = new Curso(12, horarios1, 0);
-                curso1.setDocenteACargo(new Persona("Gustavo", "Campagnuolo"));
-
-                curso1.setAyudantes(new ArrayList<Persona>() {{
-                    add(new Persona("Claudio", "Ubeda"));
-                    add(new Persona("Gabriel", "Loeschbor"));
-                }});
-                curso1.setSede(sede);
-                m.agregarCurso(curso1);
-            }
-            ((MainActivity)context).setMaterias(materias);
-        } catch (JSONException e) {
-            e.printStackTrace();
-            RequestHelper.showError(context, e.getMessage());
-        }
-
-    }
 }

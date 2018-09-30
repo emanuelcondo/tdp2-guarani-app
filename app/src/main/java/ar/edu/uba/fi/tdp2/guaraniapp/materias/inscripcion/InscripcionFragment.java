@@ -14,6 +14,8 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
@@ -56,13 +58,7 @@ public class InscripcionFragment extends Fragment {
         btnInscribir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*
-                if (!condicional) {
-                    curso.decrementarVacantes();
-                }
-                */
-                //((MainActivity) getActivity()).getUsuario().inscribir(curso, condicional);
-                Toast.makeText(getActivity(), "Aca llamar al server!", Toast.LENGTH_LONG).show();
+                inscribir();
 
                 btnInscribir.setEnabled(false);
                 btnInscribir.setBackgroundResource(R.color.gray);
@@ -78,12 +74,12 @@ public class InscripcionFragment extends Fragment {
     }
 
     private void inscribir() {
-        InscripcionCursosListener inscripcionCursosListener = new InscripcionCursosListener(getContext());
+        InscripcionListener inscripcionListener = new InscripcionListener(getContext());
         RequestSender requestSender = new RequestSender(getContext());
 
         String url = getContext().getString(R.string.urlAppServer) + "inscripciones/cursos/" + curso.get_id();
 
-        requestSender.doGet_expectJSONObject(inscripcionCursosListener, url);
+        requestSender.doPost(inscripcionListener, url, new JSONObject());
     }
 
 

@@ -105,7 +105,7 @@ public class RequestHelper {
     }
 
     public static void showError(Context context, String error) {
-        Log.d("LoginActivity", error);
+        Log.d("RequestHelper", error);
         Toast.makeText(context, error, Toast.LENGTH_LONG).show();
     }
 }
