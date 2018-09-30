@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -80,6 +81,10 @@ public class DesinscripcionCursoViewHolder extends RecyclerView.ViewHolder
         Date date = null;
         try {
             date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault()).parse(inscripcion.getTimestamp());
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            cal.add(Calendar.HOUR, -3);
+            date = cal.getTime();
         } catch (ParseException e) {
             e.printStackTrace();
         }

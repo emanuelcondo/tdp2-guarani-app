@@ -185,7 +185,7 @@ public class InscripcionFragment extends Fragment  implements ResponseWatcher {
             horarios.addView(row);
 
             TextView modalidad = new TextView(getContext());
-            String s_modalidad = horario.getDia() + ": " + horario.getTipo();
+            String s_modalidad = horario.getDia() + " " + horario.getHoraInicio() + " - " + horario.getHoraFin() + ": " + horario.getTipo();
             modalidad.setText(s_modalidad);
             modalidad.setPadding(8,8,8,8);
             modalidades.addView(modalidad);
@@ -208,8 +208,10 @@ public class InscripcionFragment extends Fragment  implements ResponseWatcher {
         btnInscribir.setEnabled(false);
         btnInscribir.setBackgroundResource(R.color.gray);
 
-        curso.decrementarVacantes();
-        vacantes.setText(getString(R.string.vacantes_header, curso.getCupos(), curso.getVacantes()));
+        if (curso.getVacantes() != 0) {
+            curso.decrementarVacantes();
+            vacantes.setText(getString(R.string.vacantes_header, curso.getCupos(), curso.getVacantes()));
+        }
     }
 
     @Override

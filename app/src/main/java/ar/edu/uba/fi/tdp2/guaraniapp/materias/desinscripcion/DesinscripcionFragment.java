@@ -194,7 +194,7 @@ public class DesinscripcionFragment extends Fragment implements ResponseWatcher 
             horarios.addView(row);
 
             TextView modalidad = new TextView(getContext());
-            String s_modalidad = horario.getDia() + ": " + horario.getTipo();
+            String s_modalidad = horario.getDia() + " " + horario.getHoraInicio() + " - " + horario.getHoraFin() + ": " + horario.getTipo();
             modalidad.setText(s_modalidad);
             modalidad.setPadding(8,8,8,8);
             modalidades.addView(modalidad);
