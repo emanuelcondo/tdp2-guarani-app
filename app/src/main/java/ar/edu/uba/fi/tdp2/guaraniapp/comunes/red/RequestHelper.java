@@ -37,20 +37,11 @@ public class RequestHelper {
         } else if (error instanceof AuthFailureError) {
 
             codError = 401;
-            errorDesc = "Error de autenticacion";
 
-            NetworkResponse networkResponse = error.networkResponse;
-            if (networkResponse != null && networkResponse.data != null) {
-                String jsonError = new String(networkResponse.data);
-                try {
-                    JSONObject result = new JSONObject(jsonError);
-                    errorDesc = result.getJSONObject("error").getString("message");
 
-                } catch (Exception e) {
-
-                }
-
-            }
+            errorDesc = getNetworkError(error);
+            if (errorDesc.isEmpty())
+                errorDesc = "Error de autenticacion";
 
 
         } else if (error instanceof ServerError) {
@@ -62,7 +53,10 @@ public class RequestHelper {
                     errorDesc = "Nombre de usuario ya existe";
                     break;
                 case 400:
-                    errorDesc = "No se recibieron todos los parametros";
+
+                    errorDesc = getNetworkError(error);
+                    if (errorDesc.isEmpty())
+                        errorDesc = "Error en invocación al servidor";
                     break;
                 case 404:
                     errorDesc = "La url invocada no corresponde a un servicio valido";
@@ -90,6 +84,34 @@ public class RequestHelper {
         }
 
         return new Pair<>(codError, errorDesc);
+    }
+
+    private static String getNetworkError(VolleyError error) {
+        String errorDesc = "";
+        NetworkResponse networkResponse = error.networkResponse;
+        if (networkResponse != null && networkResponse.data != null) {
+            String jsonError = new String(networkResponse.data);
+            try {
+                JSONObject result = new JSONObject(jsonError).getJSONObject("error");
+                try
+                {
+                    errorDesc = result.getString("message");
+
+                } catch (Exception e) {
+                    Log.d("RequestHelperException",e.getMessage());
+                    errorDesc = result.getString("mensaje");
+                }
+
+
+
+            } catch (Exception e) {
+
+                errorDesc = "";
+                Log.d("RequestHelperException",e.getMessage());
+            }
+
+        }
+        return errorDesc;
     }
 
     public static Map getHeaders() {

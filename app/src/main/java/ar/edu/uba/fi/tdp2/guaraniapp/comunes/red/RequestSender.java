@@ -1,6 +1,5 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.comunes.red;
 
-import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
@@ -37,7 +36,11 @@ public class RequestSender {
     }
 
     public void doPost(final ResponseListener listener, String url, final JSONObject jsonObject){
-        Log.d("RequestSender", "Sending post to " + url + " params " + jsonObject.toString());
+        String params = "";
+        if (jsonObject != null)
+            params = " params " + jsonObject.toString();
+
+        Log.d("RequestSender", "Sending post to " + url + params);
 
         doRequest(new CustomJsonObjetRequest(url, jsonObject, listener));
 

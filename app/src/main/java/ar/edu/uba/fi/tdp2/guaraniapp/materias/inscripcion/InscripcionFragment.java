@@ -1,6 +1,5 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -12,9 +11,12 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
@@ -79,7 +81,14 @@ public class InscripcionFragment extends Fragment {
 
         String url = getContext().getString(R.string.urlAppServer) + "inscripciones/cursos/" + curso.get_id();
 
-        requestSender.doPost(inscripcionListener, url, new JSONObject());
+        Map<String,String> parametros;
+        parametros = new HashMap<>();
+        parametros.put("usuario", "rer");
+        parametros.put("password", "rer");
+
+        JSONObject jo = new JSONObject(parametros);
+
+        requestSender.doPost(inscripcionListener, url, jo);
     }
 
 
