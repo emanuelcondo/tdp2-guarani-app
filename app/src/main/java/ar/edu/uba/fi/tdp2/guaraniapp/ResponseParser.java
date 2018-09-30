@@ -10,6 +10,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Inscripcion;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
 
@@ -38,5 +39,10 @@ public class ResponseParser {
     public static List<Materia> getMaterias(Object response) {
         Type listType = new TypeToken<ArrayList<Materia>>(){}.getType();
         return gson.fromJson(getJsonArray(response,"materias"), listType);
+    }
+
+    public static List<Curso> getCursos(Object response) {
+        Type listType = new TypeToken<ArrayList<Curso>>(){}.getType();
+        return gson.fromJson(getJsonArray(response,"cursos"), listType);
     }
 }
