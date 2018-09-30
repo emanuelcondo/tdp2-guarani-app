@@ -48,6 +48,8 @@ public class InscripcionFragment extends Fragment  implements ResponseWatcher {
 
         init(rootView);
 
+        progressPopup = new ProgressPopup("Inscribiendo...", getContext());
+
         return rootView;
     }
 
@@ -63,7 +65,7 @@ public class InscripcionFragment extends Fragment  implements ResponseWatcher {
         btnInscribir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressPopup = new ProgressPopup("Inscribiendo...", getContext());
+                progressPopup.show();
                 inscribir();
             }
         });
@@ -186,6 +188,9 @@ public class InscripcionFragment extends Fragment  implements ResponseWatcher {
         // TODO: acá se podría mostrat una tilde verde en vez de grisar el boton
         btnInscribir.setEnabled(false);
         btnInscribir.setBackgroundResource(R.color.gray);
+
+        curso.decrementarVacantes();
+        vacantes.setText(getString(R.string.vacantes_header, curso.getCupos(), curso.getVacantes()));
     }
 
     @Override

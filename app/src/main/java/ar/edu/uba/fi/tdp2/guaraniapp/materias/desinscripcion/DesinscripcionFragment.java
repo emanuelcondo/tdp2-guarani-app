@@ -88,10 +88,13 @@ public class DesinscripcionFragment extends Fragment implements ResponseWatcher 
         btnDesinscribir.setEnabled(false);
         btnDesinscribir.setBackgroundResource(R.color.gray);
 
-        //TODO: Esto esta demás, o habria q hacer un notifyDatasetChanged para que se vea la diferencia
-        //this.inscripcion.getCurso().decrementarVacantes();
-
-
+        Curso curso;
+        if (inscripcion.esCondicional())
+            curso = new Curso();
+        else
+            curso = inscripcion.getCurso();
+        curso.agregarVacante();
+        vacantes.setText(getString(R.string.vacantes_header, curso.getCupos(), curso.getVacantes()));
     }
 
     public void onError() {
@@ -112,7 +115,7 @@ public class DesinscripcionFragment extends Fragment implements ResponseWatcher 
 
         numeroCurso.setText("Curso " + curso.getComision());
 
-        vacantes.setText("Vacantes disponibles: " + curso.getVacantes());
+        vacantes.setText(getString(R.string.vacantes_header, curso.getCupos(), curso.getVacantes()));
 
         if (curso.getAyudantes().isEmpty()) {
             ayudantes.setVisibility(View.GONE);

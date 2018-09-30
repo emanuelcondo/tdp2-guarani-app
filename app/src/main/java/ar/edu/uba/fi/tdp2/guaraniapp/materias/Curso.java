@@ -24,6 +24,7 @@ public class Curso {
     public Curso() {
         this.comision = 0;
         this.cursada = new ArrayList<>();
+        this.cupos = 0;
         this.vacantes = 0;
     }
 
