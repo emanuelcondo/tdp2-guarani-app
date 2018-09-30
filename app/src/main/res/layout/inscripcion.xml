@@ -24,4 +24,17 @@
         android:layout_gravity="center_horizontal"
         android:text="@string/inscribirse" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mensaje_condicionales"
+        android:textColor="@color/dim_gray"
+        style="@style/TextAppearance.AppCompat.Caption"
+        android:text="@string/mensaje_condicionales"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        android:textAlignment="center"
+        android:visibility="invisible"
+        android:padding="8dp" />
+
 </LinearLayout>

@@ -35,6 +35,7 @@ public class InscripcionFragment extends Fragment  implements ResponseWatcher {
     private Button btnInscribir;
     private LinearLayout modalidades;
     private LinearLayout ayudantes;
+    private TextView mensajeCondicionales;
 
     private ProgressPopup progressPopup;
 
@@ -61,6 +62,7 @@ public class InscripcionFragment extends Fragment  implements ResponseWatcher {
         modalidades = rootView.findViewById(R.id.modalidades);
         ayudantes = rootView.findViewById(R.id.ayudantes);
         btnInscribir = rootView.findViewById(R.id.ins_btn_inscribir);
+        mensajeCondicionales = rootView.findViewById(R.id.mensaje_condicionales);
 
         btnInscribir.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +97,15 @@ public class InscripcionFragment extends Fragment  implements ResponseWatcher {
         if (curso.getVacantes() == 0) {
             btnInscribir.setText(R.string.inscribirse_como_condicional);
             condicional = true;
+            if (hayVacantesEnOtrosCursos()) {
+                //No se puede inscribir como condicional mientras haya vacantes en otros cursos
+                btnInscribir.setEnabled(false);
+                btnInscribir.setBackgroundResource(R.color.gray);
+                mensajeCondicionales.setVisibility(View.VISIBLE);
+            }
         }
+
+
 
         if (curso.getAyudantes().isEmpty()) {
             ayudantes.setVisibility(View.GONE);
@@ -180,6 +190,15 @@ public class InscripcionFragment extends Fragment  implements ResponseWatcher {
             modalidad.setPadding(8,8,8,8);
             modalidades.addView(modalidad);
         }
+    }
+
+    private boolean hayVacantesEnOtrosCursos() {
+        for (Curso curso:((MainActivity) getActivity()).getMateriaSeleccionada().getCursos()) {
+            if (curso.getVacantes() != 0) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
