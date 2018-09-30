@@ -24,8 +24,6 @@ public class InscripcionMateriasFragment extends RecyclerFragment {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(false);
         materias = ((MainActivity) getActivity()).getMaterias();
-
-        ((MainActivity) getActivity()).setToolbarName(getString(R.string.inscripcion));
      }
 
      @Override

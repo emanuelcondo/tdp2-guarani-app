@@ -20,9 +20,6 @@ public class InscripcionCarrerasFragment  extends RecyclerFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(false);
-
-
-        ((MainActivity) getActivity()).setToolbarName(getString(R.string.seleccion_carrera));
     }
 
     @Override

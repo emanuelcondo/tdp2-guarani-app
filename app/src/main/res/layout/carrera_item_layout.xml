@@ -7,7 +7,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark">
 
 
         <LinearLayout
@@ -21,7 +22,6 @@
                 android:id="@+id/codigo_carrera"
                 android:textColor="@color/white"
                 android:textSize="16sp"
-                android:background="@color/colorPrimaryDark"
                 android:padding="8dp" />
 
             <TextView
@@ -31,7 +31,6 @@
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:background="@color/colorPrimaryDark"
                 android:padding="8dp" />
 
         </LinearLayout>

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Guarani App</string>
+    <string name="urlAppServer">http://192.168.0.15:3000/api/v1.0/</string>
     <string name="navigation_drawer_open">Abrir menu</string>
     <string name="navigation_drawer_close">Cerrar menu</string>
     <string name="nav_header_title">Mis opciones</string>
@@ -22,7 +23,6 @@
     <string name="ayudantes">Ayudantes</string>
     <string name="oferta">Oferta Académica</string>
     <string name="historia">Historia Académica</string>
-    <string name="urlAppServer">http://192.168.1.102:3000/api/v1.0/</string>
     <string name="condicional">Condicionales</string>
     <string name="dias_header">Días</string>
     <string name="horarios_header">Horarios</string>

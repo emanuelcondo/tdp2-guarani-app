@@ -22,6 +22,7 @@ import java.util.Map;
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
@@ -36,7 +37,7 @@ public class LoginFragment extends Fragment implements ResponseListener {
     private EditText editTextUsuario;
     private EditText editTextPassword;
     private Button buttonLogin;
-    private ProgressDialog progressDialog;
+    private ProgressPopup progressPopup;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -67,11 +68,8 @@ public class LoginFragment extends Fragment implements ResponseListener {
 
         buttonLogin.setEnabled(false);
 
-        progressDialog = new ProgressDialog(getContext(),
-                R.style.AppTheme);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Ingresando...");
-        progressDialog.show();
+        progressPopup = new ProgressPopup("Ingresando...", getContext());
+        progressPopup.show();
 
         editTextUsuario = getView().findViewById(R.id.input_userName);
         editTextPassword = getView().findViewById(R.id.input_password);
@@ -98,8 +96,8 @@ public class LoginFragment extends Fragment implements ResponseListener {
 
         getAlumnoInfo();
 
-        if (progressDialog != null)
-            progressDialog.dismiss();
+        if (progressPopup != null)
+            progressPopup.dismiss();
 
 
         RequestHelper.showError(getActivity(), "Logueado!");
@@ -111,8 +109,8 @@ public class LoginFragment extends Fragment implements ResponseListener {
     }
 
     public void onLoginFailed(String mensaje) {
-        if (progressDialog != null)
-            progressDialog.dismiss();
+        if (progressPopup != null)
+            progressPopup.dismiss();
         buttonLogin.setEnabled(true);
         editTextUsuario.setError(mensaje);
         editTextUsuario.requestFocus();

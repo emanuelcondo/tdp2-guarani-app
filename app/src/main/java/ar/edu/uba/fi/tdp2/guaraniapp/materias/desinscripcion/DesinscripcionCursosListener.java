@@ -43,12 +43,14 @@ public class DesinscripcionCursosListener implements ResponseListener {
         } catch (JSONException e) {
             e.printStackTrace();
             RequestHelper.showError(context, e.getMessage());
+            fragment.onError();
         }
     }
 
     @Override
     public void onRequestError(int codError, String errorMessage) {
         RequestHelper.showError(context, errorMessage);
+        fragment.onError();
     }
 
 }

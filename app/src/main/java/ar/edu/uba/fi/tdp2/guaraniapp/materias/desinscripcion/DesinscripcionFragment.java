@@ -13,15 +13,21 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Alumno;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Inscripcion;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Persona;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionListener;
 
-public class DesinscripcionFragment extends Fragment {
+public class DesinscripcionFragment extends Fragment implements ResponseWatcher {
 
     private TextView numeroCurso;
     private TextView docente;
@@ -30,6 +36,8 @@ public class DesinscripcionFragment extends Fragment {
     private Button btnDesinscribir;
     private LinearLayout modalidades;
     private LinearLayout ayudantes;
+
+    private ProgressPopup progressPopup;
 
     private Inscripcion inscripcion;
 
@@ -54,13 +62,8 @@ public class DesinscripcionFragment extends Fragment {
         btnDesinscribir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //TODO: Desinscribir
-                Toast.makeText(getActivity(), "Desinscripción exitosa!", Toast.LENGTH_LONG).show();
-
-                btnDesinscribir.setEnabled(false);
-                btnDesinscribir.setBackgroundResource(R.color.gray);
-
+                progressPopup = new ProgressPopup("Desinscribiendo...", getContext());
+                desinscribir();
             }
         });
 
@@ -68,6 +71,27 @@ public class DesinscripcionFragment extends Fragment {
 
         bindCurso();
 
+    }
+
+    private void desinscribir() {
+        DesinscripcionListener desinscripcionListener = new DesinscripcionListener(getContext(), this);
+        RequestSender requestSender = new RequestSender(getContext());
+
+        String url = getContext().getString(R.string.urlAppServer) + "inscripciones/" + inscripcion.get_id() + "/cursos/";
+
+        requestSender.doDelete(desinscripcionListener, url);
+    }
+
+    public void onSuccess() {
+        progressPopup.dismiss();
+        btnDesinscribir.setEnabled(false);
+        btnDesinscribir.setBackgroundResource(R.color.gray);
+
+        this.inscripcion.getCurso().decrementarVacantes();
+    }
+
+    public void onError() {
+        progressPopup.dismiss();
     }
 
     private void bindCurso() {

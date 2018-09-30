@@ -59,9 +59,6 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //TODO: Borrar esto cuando este implementado
-        //mockearMaterias();
-
         FragmentLoader.load(this, new LoginFragment(), "Login");
     }
 

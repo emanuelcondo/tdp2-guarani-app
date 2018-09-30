@@ -18,6 +18,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
@@ -26,9 +27,11 @@ import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionMateriasFra
 
 public class OfertaMateriasListener implements ResponseListener {
     private Context context;
+    private ResponseWatcher watcher;
 
-    public OfertaMateriasListener(Context context) {
+    public OfertaMateriasListener(Context context, ResponseWatcher watcher) {
         this.context = context;
+        this.watcher = watcher;
     }
 
     @Override
@@ -43,18 +46,22 @@ public class OfertaMateriasListener implements ResponseListener {
             List<Materia> ms = new Gson().fromJson(jo.getJSONArray("materias").toString(), listType);
             List<Materia> materias = new ArrayList<>(ms);
 
+            watcher.onSuccess();
+
             ((MainActivity)context).setMaterias(materias);
             FragmentLoader.load((Activity) context, new OfertaMateriasFragment(), "OfertaMaterias");
 
         } catch (JSONException e) {
             e.printStackTrace();
             RequestHelper.showError(context, e.getMessage());
+            watcher.onError();
         }
     }
 
     @Override
     public void onRequestError(int codError, String errorMessage) {
         RequestHelper.showError(context, errorMessage);
+        watcher.onError();
     }
 
 

@@ -11,6 +11,7 @@ import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.RecyclerFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Inscripcion;
@@ -19,14 +20,15 @@ public class DesinscripcionCursosFragment extends RecyclerFragment {
 
     private List<Inscripcion> inscripciones = new ArrayList<>();
 
+    private ProgressPopup progressPopup;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(false);
 
-        loadInscripciones();
+        progressPopup = new ProgressPopup("Cargando inscripciones...", getContext());
 
-        ((MainActivity) getActivity()).setToolbarName(getString(R.string.desinscripcion));
     }
 
     private void loadInscripciones() {
@@ -41,9 +43,11 @@ public class DesinscripcionCursosFragment extends RecyclerFragment {
 
     @Override
     public void onResume() {
+        //OnResume se llama siempre despues de OnStart y cada vez que se vuelve al fragment
         super.onResume();
-        //loadInscripciones();
-
+        progressPopup.show();
+        this.getAdapter().notifyDataSetChanged();
+        loadInscripciones();
         ((MainActivity) getActivity()).setToolbarName(getString(R.string.desinscripcion));
     }
 
@@ -62,6 +66,11 @@ public class DesinscripcionCursosFragment extends RecyclerFragment {
     public void onSuccess(List<Inscripcion> inscripciones) {
         this.inscripciones = inscripciones;
         this.getAdapter().notifyDataSetChanged();
+        progressPopup.dismiss();
+    }
+
+    public void onError() {
+        progressPopup.dismiss();
     }
 
     public List<Inscripcion> getInscripciones() {

@@ -83,6 +83,8 @@ public class DesinscripcionCursoViewHolder extends RecyclerView.ViewHolder
         textViewNumeroCurso.setText(numeroCurso);
         textViewNumeroCurso.setOnClickListener(this);
 
+        tableLayoutHorarios.removeAllViews();
+
         TableRow header = new TableRow(itemView.getContext());
         TextView textViewDias = new TextView(itemView.getContext());
         textViewDias.setText(R.string.dias_header);
