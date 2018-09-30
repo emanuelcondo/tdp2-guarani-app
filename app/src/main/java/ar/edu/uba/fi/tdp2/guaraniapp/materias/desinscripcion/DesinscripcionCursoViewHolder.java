@@ -43,6 +43,12 @@ public class DesinscripcionCursoViewHolder extends RecyclerView.ViewHolder
         tableLayoutHorarios = itemView.findViewById(R.id.tabla_horarios);
         textViewFechaInscripcion = itemView.findViewById(R.id.fecha_inscripcion);
 
+        textViewCodigoMateria.setOnClickListener(this);
+        textViewDocente.setOnClickListener(this);
+        textViewNombreMateria.setOnClickListener(this);
+        textViewFechaInscripcion.setOnClickListener(this);
+        textViewNumeroCurso.setOnClickListener(this);
+
         this.activity = activity;
     }
 
@@ -62,12 +68,12 @@ public class DesinscripcionCursoViewHolder extends RecyclerView.ViewHolder
             curso = inscripcion.getCurso();
             textViewDocente.setText(curso.getDocente());
         }
-        textViewDocente.setOnClickListener(this);
+
 
         textViewCodigoMateria.setText(inscripcion.getMateria().getCodigo());
-        textViewCodigoMateria.setOnClickListener(this);
+
         textViewNombreMateria.setText(inscripcion.getMateria().getNombre());
-        textViewNombreMateria.setOnClickListener(this);
+
         Date date = null;
         try {
             date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault()).parse(inscripcion.getTimestamp());
@@ -77,11 +83,8 @@ public class DesinscripcionCursoViewHolder extends RecyclerView.ViewHolder
         String formattedDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault()).format(date);
         String fechaInscripcion = "Fecha de Inscripción: " + formattedDate;
         textViewFechaInscripcion.setText(fechaInscripcion);
-        textViewFechaInscripcion.setOnClickListener(this);
 
-        String numeroCurso = "Curso " + curso.getComision();
-        textViewNumeroCurso.setText(numeroCurso);
-        textViewNumeroCurso.setOnClickListener(this);
+        textViewNumeroCurso.setText(itemView.getContext().getString(R.string.curso_header, curso.getComision()));
 
         tableLayoutHorarios.removeAllViews();
 

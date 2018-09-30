@@ -84,10 +84,14 @@ public class DesinscripcionFragment extends Fragment implements ResponseWatcher 
 
     public void onSuccess() {
         progressPopup.dismiss();
+        // TODO: acá se podría mostrat una tilde verde en vez de grisar el boton
         btnDesinscribir.setEnabled(false);
         btnDesinscribir.setBackgroundResource(R.color.gray);
 
-        this.inscripcion.getCurso().decrementarVacantes();
+        //TODO: Esto esta demás, o habria q hacer un notifyDatasetChanged para que se vea la diferencia
+        //this.inscripcion.getCurso().decrementarVacantes();
+
+
     }
 
     public void onError() {
@@ -165,8 +169,7 @@ public class DesinscripcionFragment extends Fragment implements ResponseWatcher 
             textViewDia.setPadding(8,8,8,8);
 
             TextView textViewHorario = new TextView(getContext());
-            String s_horario = horario.getHoraInicio() + "hs - " + horario.getHoraFin() + "hs";
-            textViewHorario.setText(s_horario);
+            textViewHorario.setText(getContext().getString(R.string.horario_row, horario.getHoraInicio(), horario.getHoraFin()));
             textViewHorario.setBackgroundResource(R.drawable.cell_shape);
             textViewHorario.setPadding(8,8,8,8);
 

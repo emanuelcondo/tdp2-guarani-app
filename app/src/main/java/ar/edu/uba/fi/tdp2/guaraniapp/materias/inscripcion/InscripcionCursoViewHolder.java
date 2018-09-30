@@ -31,6 +31,10 @@ public class InscripcionCursoViewHolder extends RecyclerView.ViewHolder
         textViewDocente = itemView.findViewById(R.id.docente_curso);
         tableLayoutHorarios = itemView.findViewById(R.id.tabla_horarios);
 
+        textViewDocente.setOnClickListener(this);
+        tableLayoutHorarios.setOnClickListener(this);
+        textViewNumeroCurso.setOnClickListener(this);
+
         this.activity = activity;
     }
 
@@ -40,36 +44,35 @@ public class InscripcionCursoViewHolder extends RecyclerView.ViewHolder
     }
 
     private void bindViews() {
-        String numeroCurso = "Curso " + curso.getComision();
-        textViewNumeroCurso.setText(numeroCurso);
-        textViewNumeroCurso.setOnClickListener(this);
+        textViewNumeroCurso.setText(itemView.getContext().getString(R.string.curso_header, curso.getComision()));
+
         textViewDocente.setText(curso.getDocente());
-        textViewDocente.setOnClickListener(this);
+
 
         TableRow header = new TableRow(itemView.getContext());
         TextView textViewDias = new TextView(itemView.getContext());
-        textViewDias.setText("Días");
+        textViewDias.setText(R.string.dias_header);
         textViewDias.setTextSize(14);
         textViewDias.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.white));
         textViewDias.setBackgroundResource(R.color.colorPrimary);
         textViewDias.setPadding(8,8,8,8);
 
         TextView textViewHorarios = new TextView(itemView.getContext());
-        textViewHorarios.setText("Horarios");
+        textViewHorarios.setText(R.string.horarios_header);
         textViewHorarios.setTextSize(14);
         textViewHorarios.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.white));
         textViewHorarios.setBackgroundResource(R.color.colorPrimary);
         textViewHorarios.setPadding(8,8,8,8);
 
         TextView textViewHeaderSede = new TextView(itemView.getContext());
-        textViewHeaderSede.setText("Sede");
+        textViewHeaderSede.setText(R.string.sede_header);
         textViewHeaderSede.setTextSize(14);
         textViewHeaderSede.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.white));
         textViewHeaderSede.setBackgroundResource(R.color.colorPrimary);
         textViewHeaderSede.setPadding(8,8,8,8);
 
         TextView textViewHeaderAula = new TextView(itemView.getContext());
-        textViewHeaderAula.setText("Aula");
+        textViewHeaderAula.setText(R.string.aula_header);
         textViewHeaderAula.setTextSize(14);
         textViewHeaderAula.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.white));
         textViewHeaderAula.setBackgroundResource(R.color.colorPrimary);
@@ -81,7 +84,7 @@ public class InscripcionCursoViewHolder extends RecyclerView.ViewHolder
         header.addView(textViewHeaderAula);
 
         tableLayoutHorarios.addView(header);
-        tableLayoutHorarios.setOnClickListener(this);
+
 
         for (Horario horario : curso.getCursada()) {
             TableRow row = new TableRow(itemView.getContext());

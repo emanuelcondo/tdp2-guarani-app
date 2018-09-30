@@ -12,7 +12,6 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -20,12 +19,14 @@ import java.util.Map;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Persona;
 
-public class InscripcionFragment extends Fragment {
+public class InscripcionFragment extends Fragment  implements ResponseWatcher {
 
     private TextView numeroCurso;
     private TextView docente;
@@ -34,6 +35,8 @@ public class InscripcionFragment extends Fragment {
     private Button btnInscribir;
     private LinearLayout modalidades;
     private LinearLayout ayudantes;
+
+    private ProgressPopup progressPopup;
 
     private boolean condicional = false;
 
@@ -60,11 +63,8 @@ public class InscripcionFragment extends Fragment {
         btnInscribir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressPopup = new ProgressPopup("Inscribiendo...", getContext());
                 inscribir();
-
-                btnInscribir.setEnabled(false);
-                btnInscribir.setBackgroundResource(R.color.gray);
-
             }
         });
 
@@ -76,19 +76,12 @@ public class InscripcionFragment extends Fragment {
     }
 
     private void inscribir() {
-        InscripcionListener inscripcionListener = new InscripcionListener(getContext());
+        InscripcionListener inscripcionListener = new InscripcionListener(getContext(), this);
         RequestSender requestSender = new RequestSender(getContext());
 
         String url = getContext().getString(R.string.urlAppServer) + "inscripciones/cursos/" + curso.get_id();
 
-        Map<String,String> parametros;
-        parametros = new HashMap<>();
-        parametros.put("usuario", "rer");
-        parametros.put("password", "rer");
-
-        JSONObject jo = new JSONObject(parametros);
-
-        requestSender.doPost(inscripcionListener, url, jo);
+        requestSender.doPost(inscripcionListener, url, new JSONObject());
     }
 
 
@@ -185,5 +178,18 @@ public class InscripcionFragment extends Fragment {
             modalidad.setPadding(8,8,8,8);
             modalidades.addView(modalidad);
         }
+    }
+
+    @Override
+    public void onSuccess() {
+        progressPopup.dismiss();
+        // TODO: acá se podría mostrat una tilde verde en vez de grisar el boton
+        btnInscribir.setEnabled(false);
+        btnInscribir.setBackgroundResource(R.color.gray);
+    }
+
+    @Override
+    public void onError() {
+        progressPopup.dismiss();
     }
 }
