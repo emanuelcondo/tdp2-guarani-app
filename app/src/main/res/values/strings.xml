@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Guarani App</string>
-    <string name="urlAppServer">http://192.168.0.15:3000/api/v1.0/</string>
+    <!--string name="urlAppServer">http://192.168.1.102:3000/api/v1.0/</string-->
+    <!-- Servidor apuntando a produccion -->
+    <string name="urlAppServer">https://guarani-server.herokuapp.com/api/v1.0/</string>
     <string name="navigation_drawer_open">Abrir menu</string>
     <string name="navigation_drawer_close">Cerrar menu</string>
     <string name="nav_header_desc">Encabezado</string>

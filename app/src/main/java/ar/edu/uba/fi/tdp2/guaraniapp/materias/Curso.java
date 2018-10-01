@@ -65,11 +65,13 @@ public class Curso {
     }
 
     public void decrementarVacantes() {
-        --vacantes;
+        if (vacantes > 0)
+            --vacantes;
     }
 
     public void agregarVacante() {
-        ++vacantes;
+        if (vacantes < cupos)
+            ++vacantes;
     }
 
     public List<Persona> getAyudantes() {
