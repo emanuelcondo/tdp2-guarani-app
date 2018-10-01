@@ -28,14 +28,14 @@ public class InscripcionCarrerasAdapter extends RecyclerView.Adapter<Inscripcion
 
     @Override
     public void onBindViewHolder(@NonNull InscripcionCarreraViewHolder holder, int position) {
-        List<Carrera> carreras = activity.getUsuario().getCarreras();
+        List<Carrera> carreras = activity.getAlumno().getCarreras();
         Carrera carrera = carreras.get(position);
         holder.bindTo(carrera);
     }
 
     @Override
     public int getItemCount() {
-        return activity.getUsuario().getCarreras().size();
+        return activity.getAlumno().getCarreras().size();
     }
 }
 

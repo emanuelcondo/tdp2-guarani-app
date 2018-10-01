@@ -28,14 +28,14 @@ public class OfertaCarrerasAdapter extends RecyclerView.Adapter<OfertaCarreraVie
 
     @Override
     public void onBindViewHolder(@NonNull OfertaCarreraViewHolder holder, int position) {
-        List<Carrera> carreras = activity.getUsuario().getCarreras();
+        List<Carrera> carreras = activity.getAlumno().getCarreras();
         Carrera carrera = carreras.get(position);
         holder.bindTo(carrera);
     }
 
     @Override
     public int getItemCount() {
-        return activity.getUsuario().getCarreras().size();
+        return activity.getAlumno().getCarreras().size();
     }
 }
 

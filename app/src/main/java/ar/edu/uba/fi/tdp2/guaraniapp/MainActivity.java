@@ -22,11 +22,8 @@ import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.login.LoginFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Alumno;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Inscripcion;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionMateriasListener;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Persona;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -35,7 +32,7 @@ public class MainActivity extends AppCompatActivity
     private Toolbar toolbar;
     private ActionBarDrawerToggle toggle;
 
-    private Alumno usuario;
+    private Alumno alumno;
     private List<Materia> materias = new ArrayList<>();
 
     private Curso cursoSeleccionado;
@@ -64,7 +61,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        //DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -162,12 +159,12 @@ public class MainActivity extends AppCompatActivity
         dialog.show();
     }
 
-    public void setUsuario(Alumno usuario) {
-        this.usuario = usuario;
+    public void setAlumno(Alumno alumno) {
+        this.alumno = alumno;
     }
 
-    public Alumno getUsuario() {
-        return usuario;
+    public Alumno getAlumno() {
+        return alumno;
     }
 
     public List<Materia> getMaterias() {
@@ -197,4 +194,28 @@ public class MainActivity extends AppCompatActivity
     public void setInscripcionSeleccionada(Inscripcion inscripcionSeleccionada) {
         this.inscripcionSeleccionada = inscripcionSeleccionada;
     }
+
+    public void flipDesinscripcion() {
+
+        if (getAlumno().getInscripciones() != null) {
+            int inscripciones = getAlumno().getInscripciones().size();
+            setDesinscripcionesEnabled(inscripciones > 0);
+        }
+    }
+
+    public void setDesinscripcionesEnabled(boolean enabled) {
+        NavigationView navigationView = findViewById(R.id.nav_view);
+
+        Menu menuNav = navigationView.getMenu();
+        MenuItem nav_desinscr = menuNav.findItem(R.id.nav_desinscribirme);
+        nav_desinscr.setEnabled(enabled);
+    }
+
+    public void eliminarInscripcion(Inscripcion inscripcion) {
+        alumno.eliminarInscripcion(inscripcion);
+        flipDesinscripcion();
+
+    }
+
+
 }

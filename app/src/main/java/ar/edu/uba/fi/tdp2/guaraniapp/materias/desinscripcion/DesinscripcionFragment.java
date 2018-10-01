@@ -88,6 +88,9 @@ public class DesinscripcionFragment extends Fragment implements ResponseWatcher 
         btnDesinscribir.setEnabled(false);
         btnDesinscribir.setBackgroundResource(R.color.gray);
 
+        // deshabilito (en caso de no haber mas inscripciones) en el menu la desinscripcion
+        ((MainActivity) getActivity()).eliminarInscripcion(inscripcion);
+
         Curso curso;
         if (inscripcion.esCondicional())
             curso = new Curso();

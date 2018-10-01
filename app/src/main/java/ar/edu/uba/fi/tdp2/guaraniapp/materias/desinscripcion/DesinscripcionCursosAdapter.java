@@ -6,22 +6,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Inscripcion;
 
 public class DesinscripcionCursosAdapter extends RecyclerView.Adapter<DesinscripcionCursoViewHolder> {
 
     private MainActivity activity;
 
-    private DesinscripcionCursosFragment fragment;
-
-    public DesinscripcionCursosAdapter(Activity activity, DesinscripcionCursosFragment fragment) {
-        this.fragment = fragment;
+    public DesinscripcionCursosAdapter(Activity activity) {
         this.activity = (MainActivity)activity;
     }
 
@@ -33,13 +28,18 @@ public class DesinscripcionCursosAdapter extends RecyclerView.Adapter<Desinscrip
 
     @Override
     public void onBindViewHolder(@NonNull DesinscripcionCursoViewHolder holder, int position) {
-        Inscripcion inscripcion = this.fragment.getInscripciones().get(position);
+        Inscripcion inscripcion = getInscripciones().get(position);
         holder.bindTo(inscripcion);
     }
 
     @Override
     public int getItemCount() {
-        return this.fragment.getInscripciones().size();
+        return getInscripciones().size();
+    }
+
+
+    private List<Inscripcion> getInscripciones() {
+        return activity.getAlumno().getInscripciones();
     }
 }
 

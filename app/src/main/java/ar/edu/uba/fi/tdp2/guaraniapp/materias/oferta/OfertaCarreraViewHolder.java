@@ -52,7 +52,7 @@ public class OfertaCarreraViewHolder extends RecyclerView.ViewHolder
         OfertaMateriasListener ofertaMateriasListener = new OfertaMateriasListener(context, this);
         RequestSender requestSender = new RequestSender(context);
 
-        String url = context.getString(R.string.urlAppServer) + "materias/carrera/" + carrera.get_id();
+        String url = context.getString(R.string.urlAppServer) + "oferta-academica/materias/carrera/" + carrera.get_id();
 
         requestSender.doGet_expectJSONObject(ofertaMateriasListener, url);
     }

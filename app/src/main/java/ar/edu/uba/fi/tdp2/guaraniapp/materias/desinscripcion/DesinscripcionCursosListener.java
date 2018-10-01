@@ -1,36 +1,46 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.materias.desinscripcion;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 
+import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.ResponseParser;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
 
 public class DesinscripcionCursosListener implements ResponseListener {
     private Context context;
-    private DesinscripcionCursosFragment fragment;
+    private ProgressPopup progressPopup;
+    private ResponseWatcher watcher;
 
-    public DesinscripcionCursosListener(Context context, DesinscripcionCursosFragment fragment) {
+    public DesinscripcionCursosListener(Context context, ResponseWatcher watcher) {
         this.context = context;
-        this.fragment = fragment;
+        this.watcher = watcher;
+        progressPopup = new ProgressPopup("Cargando inscripciones...", context);
+        progressPopup.show();
     }
 
     @Override
     public void onRequestCompleted(Object response) {
         try {
 
-            fragment.onSuccess(ResponseParser.getInscripciones(response));
+            ((MainActivity)context).getAlumno().setInscripciones(ResponseParser.getInscripciones(response));
+            watcher.onSuccess();
 
         } catch (RuntimeException e) {
             RequestHelper.showError(context, e.getMessage());
-            fragment.onError();
+            watcher.onError();
         }
+        progressPopup.dismiss();
     }
 
     @Override
     public void onRequestError(int codError, String errorMessage) {
         RequestHelper.showError(context, errorMessage);
-        fragment.onError();
+        progressPopup.dismiss();
+        watcher.onError();
     }
 
 }

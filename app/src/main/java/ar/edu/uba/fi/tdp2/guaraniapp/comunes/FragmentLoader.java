@@ -92,6 +92,8 @@ public class FragmentLoader {
 
         if (previous.equals(name)) { return;}
 
+        Log.d("FragmentLoader", previous + " >>> " + name);
+
         fragmentManager.beginTransaction()
                 .replace(R.id.contenedor, fragment)
                 .addToBackStack(name)
@@ -156,7 +158,6 @@ public class FragmentLoader {
 
 
         if (pos >= 0) {
-            Log.d("getFragmentName", fragmentManager.getBackStackEntryAt(pos).getName());
             return fragmentManager.getBackStackEntryAt(pos).getName();
         }
 

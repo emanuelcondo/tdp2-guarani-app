@@ -74,4 +74,10 @@ public class Materia {
     public void setCursos(List<Curso> cursos) {
         this.cursos = cursos;
     }
+
+    @Override
+    public boolean equals( Object obj) {
+        Materia materia = (Materia)obj;
+        return materia.getCodigo().equals(this.codigo);
+    }
 }

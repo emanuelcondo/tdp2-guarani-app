@@ -14,20 +14,19 @@ import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.RecyclerFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Inscripcion;
 
-public class DesinscripcionCursosFragment extends RecyclerFragment {
+public class DesinscripcionCursosFragment extends RecyclerFragment implements ResponseWatcher {
 
-    private List<Inscripcion> inscripciones = new ArrayList<>();
-
-    private ProgressPopup progressPopup;
+    //private ProgressPopup progressPopup;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(false);
 
-        progressPopup = new ProgressPopup("Cargando inscripciones...", getContext());
+        //progressPopup = new ProgressPopup("Cargando inscripciones...", getContext());
 
     }
 
@@ -45,8 +44,8 @@ public class DesinscripcionCursosFragment extends RecyclerFragment {
     public void onResume() {
         //OnResume se llama siempre despues de OnStart y cada vez que se vuelve al fragment
         super.onResume();
-        progressPopup.show();
-        this.getAdapter().notifyDataSetChanged();
+        //progressPopup.show();
+        getAdapter().notifyDataSetChanged();
         loadInscripciones();
         ((MainActivity) getActivity()).setToolbarName(getString(R.string.desinscripcion));
     }
@@ -58,23 +57,36 @@ public class DesinscripcionCursosFragment extends RecyclerFragment {
 
     @Override
     protected void configureAdapter() {
-        DesinscripcionCursosAdapter desinscripcionCursosAdapter = new DesinscripcionCursosAdapter(getActivity(), this);
+        DesinscripcionCursosAdapter desinscripcionCursosAdapter = new DesinscripcionCursosAdapter(getActivity());
         this.setConfiguredAdapter(desinscripcionCursosAdapter);
     }
 
+    @Override
+    public void onSuccess() {
 
+        getAdapter().notifyDataSetChanged();
+    }
+
+    @Override
+    public void onError() {
+
+        //Do nothing?
+    }
+
+
+    /*
     public void onSuccess(List<Inscripcion> inscripciones) {
-        this.inscripciones = inscripciones;
+        //this.inscripciones = inscripciones;
         this.getAdapter().notifyDataSetChanged();
         progressPopup.dismiss();
-    }
+    }*/
 
-    public void onError() {
+    /*public void onError() {
         progressPopup.dismiss();
-    }
+    }*/
 
-    public List<Inscripcion> getInscripciones() {
+    /*public List<Inscripcion> getInscripciones() {
         return this.inscripciones;
-    }
+    }*/
 }
 

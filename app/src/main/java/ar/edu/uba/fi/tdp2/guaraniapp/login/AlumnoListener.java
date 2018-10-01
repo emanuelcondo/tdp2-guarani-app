@@ -32,7 +32,7 @@ public class AlumnoListener implements ResponseListener {
 
             Log.d("AlumnoListener", alumno.toString());
 
-            getActivity().setUsuario(alumno);
+            getActivity().setAlumno(alumno);
 
             // Para que se vea el nombre del alumno en el menu
             TextView view = activity.findViewById(R.id.alumno_conectado);

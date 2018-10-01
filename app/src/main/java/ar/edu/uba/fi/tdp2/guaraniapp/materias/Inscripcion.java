@@ -51,4 +51,10 @@ public class Inscripcion {
     public boolean esCondicional() {
         return this.condicion.equals("Condicional");
     }
+
+    @Override
+    public boolean equals( Object obj) {
+        Inscripcion ins = (Inscripcion)obj;
+        return ins.getMateria().equals(materia);
+    }
 }

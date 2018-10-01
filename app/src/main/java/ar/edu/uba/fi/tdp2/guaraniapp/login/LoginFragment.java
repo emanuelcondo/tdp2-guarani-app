@@ -1,13 +1,16 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.login;
 
 
-import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.app.Fragment;
+import android.support.design.widget.NavigationView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -21,16 +24,14 @@ import java.util.Map;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
-import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Alumno;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionCarrerasFragment;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionMateriasFragment;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.desinscripcion.DesinscripcionCursosListener;
 
-public class LoginFragment extends Fragment implements ResponseListener {
+public class LoginFragment extends Fragment implements ResponseListener, ResponseWatcher {
 
     private static final String TAG = "LoginActivity";
 
@@ -90,22 +91,34 @@ public class LoginFragment extends Fragment implements ResponseListener {
         requestSender.doGet_expectJSONObject(alumnoListener, url);
     }
 
+    private void loadInscripciones() {
+        Context context = getActivity();
+        DesinscripcionCursosListener desinscripcionCursosListener = new DesinscripcionCursosListener(context, this);
+        RequestSender requestSender = new RequestSender(context);
+
+        String url = context.getString(R.string.urlAppServer) + "inscripciones/cursos/";
+
+        requestSender.doGet_expectJSONObject(desinscripcionCursosListener, url);
+    }
+
     public void onLoginSuccess(String session) {
         Token.id = session;
         Token.conectado = true;
 
         getAlumnoInfo();
+        // Pre-carga de las inscripciones para mostrar en inscripcion
+        // solo las materias a las cuales le falta inscribirse
+        loadInscripciones();
 
-        if (progressPopup != null)
-            progressPopup.dismiss();
+        progressPopup.dismiss();
 
         RequestHelper.showError(getActivity(), "Conectado a " + getString(R.string.app_name) + "!");
 
     }
 
     public void onLoginFailed() {
-        if (progressPopup != null)
-            progressPopup.dismiss();
+
+        progressPopup.dismiss();
         buttonLogin.setEnabled(true);
         editTextUsuario.requestFocus();
     }
@@ -180,5 +193,15 @@ public class LoginFragment extends Fragment implements ResponseListener {
     }
 
 
+    @Override
+    public void onSuccess() {
+        // en caso de que esté inscripto en alguna materia le habilito la desinscripcion
+        ((MainActivity) getActivity()).flipDesinscripcion();
+    }
+
+    @Override
+    public void onError() {
+
+    }
 }
 
