@@ -59,10 +59,12 @@ public class DesinscripcionFragment extends Fragment implements ResponseWatcher 
         ayudantes = rootView.findViewById(R.id.ayudantes);
         btnDesinscribir = rootView.findViewById(R.id.ins_btn_desinscribir);
 
+        progressPopup = new ProgressPopup("Desinscribiendo...", getContext());
+
         btnDesinscribir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressPopup = new ProgressPopup("Desinscribiendo...", getContext());
+                progressPopup.show();
                 desinscribir();
             }
         });

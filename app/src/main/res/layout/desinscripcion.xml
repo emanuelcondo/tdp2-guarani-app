@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -8,20 +8,28 @@
     android:background="?android:attr/selectableItemBackground"
     android:focusable="true">
 
-    <include
-        layout="@layout/detalle_curso"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent" />
-
-    <Button
-        android:id="@+id/ins_btn_desinscribir"
-        android:layout_width="180dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:shadowColor="@color/black"
-        android:background="@color/design_default_color_primary"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/desinscribirse" />
+        android:orientation="vertical"
+        android:paddingBottom="32dp">
 
-</LinearLayout>
+        <include
+            layout="@layout/detalle_curso"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent" />
+
+        <Button
+            android:id="@+id/ins_btn_desinscribir"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:shadowColor="@color/black"
+            android:background="@color/design_default_color_primary"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/desinscribirse" />
+
+    </LinearLayout>
+
+</ScrollView>
