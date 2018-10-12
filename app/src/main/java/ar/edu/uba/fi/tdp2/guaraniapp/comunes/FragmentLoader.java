@@ -45,6 +45,8 @@ public class FragmentLoader {
     public static final String Login = "Login";
     public static final String HistoriaAcademica = "HistoriaAcademica";
 
+    public static final String FechasExamen = "FechasExamen";
+
 
 
 
@@ -74,7 +76,7 @@ public class FragmentLoader {
         drawerVisibilityMap.put(Login, false);
         drawerVisibilityMap.put(HistoriaAcademica, true);
 
-
+        drawerVisibilityMap.put(FechasExamen, true);
 
 
 
@@ -110,6 +112,7 @@ public class FragmentLoader {
 
         int stackCount = fragmentManager.getBackStackEntryCount();
         if ( stackCount > 1) {
+            //TODO: en caso de que el fragment no tiene data saltearlo
             fragmentManager.popBackStack();
             String next = getFragmentName(fragmentManager, stackCount - 2);
             boolean visible = drawerVisibilityMap.get(next);

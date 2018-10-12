@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
+import ar.edu.uba.fi.tdp2.guaraniapp.examenes.FechaExamen;
 import ar.edu.uba.fi.tdp2.guaraniapp.login.LoginFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Alumno;
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity
 
     private Alumno alumno;
     private List<Materia> materias = new ArrayList<>();
+    private List<FechaExamen> fechasExamen = new ArrayList<>();
+
 
     private Curso cursoSeleccionado;
     private Materia materiaSeleccionada;
@@ -193,6 +196,14 @@ public class MainActivity extends AppCompatActivity
 
     public void setInscripcionSeleccionada(Inscripcion inscripcionSeleccionada) {
         this.inscripcionSeleccionada = inscripcionSeleccionada;
+    }
+
+    public List<FechaExamen> getFechasExamen() {
+        return fechasExamen;
+    }
+
+    public void setFechasExamen(List<FechaExamen> fechasExamen) {
+        this.fechasExamen = fechasExamen;
     }
 
     public void flipDesinscripcion() {
