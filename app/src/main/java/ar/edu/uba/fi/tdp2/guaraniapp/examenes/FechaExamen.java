@@ -1,27 +1,39 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.examenes;
 
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Persona;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Sede;
+
 public class FechaExamen {
-    private String codigoMateria;
-    private String materia;
-    private String docente;
+    private String _id;
+
+    private Sede sede;
+    private Persona docenteACargo;
+    private Curso curso;
+    private String aula;
+
     private String fecha;
     private String hora;
 
 
-    public String getMateria() {
-        return materia;
+    public String get_id() {
+        return _id;
     }
 
-    public void setMateria(String materia) {
-        this.materia = materia;
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getDocente() {
-        return docente;
+        return docenteACargo.toString();
     }
 
-    public void setDocente(String docente) {
-        this.docente = docente;
+    public Persona getDocenteACargo() {
+        return docenteACargo;
+    }
+
+    public void setDocenteACargo(Persona docenteACargo) {
+        this.docenteACargo = docenteACargo;
     }
 
     public String getFecha() {
@@ -40,11 +52,28 @@ public class FechaExamen {
         this.hora = hora;
     }
 
-    public String getCodigoMateria() {
-        return codigoMateria;
+    public Curso getCurso() {
+        return curso;
     }
 
-    public void setCodigoMateria(String codigoMateria) {
-        this.codigoMateria = codigoMateria;
+    public void setCurso(Curso curso) {
+        this.curso = curso;
+    }
+
+
+    public Sede getSede() {
+        return sede;
+    }
+
+    public void setSede(Sede sede) {
+        this.sede = sede;
+    }
+
+    public String getAula() {
+        return aula;
+    }
+
+    public void setAula(String aula) {
+        this.aula = aula;
     }
 }

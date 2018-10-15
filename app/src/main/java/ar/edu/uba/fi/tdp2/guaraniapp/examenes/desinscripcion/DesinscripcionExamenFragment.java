@@ -1,4 +1,4 @@
-package ar.edu.uba.fi.tdp2.guaraniapp.materias.desinscripcion;
+package ar.edu.uba.fi.tdp2.guaraniapp.examenes.desinscripcion;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.comunes.RecyclerFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
 
-public class DesinscripcionCursosFragment extends RecyclerFragment implements ResponseWatcher {
+public class DesinscripcionExamenFragment extends RecyclerFragment implements ResponseWatcher {
 
     //private ProgressPopup progressPopup;
 
@@ -21,18 +21,21 @@ public class DesinscripcionCursosFragment extends RecyclerFragment implements Re
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(false);
 
-        //progressPopup = new ProgressPopup("Cargando inscripciones...", getContext());
+        //progressPopup = new ProgressPopup("Cargando inscripciones a examen...", getContext());
 
     }
 
-    private void loadInscripciones() {
+    private void loadInscripcionesExamenes() {
         Context context = getActivity();
-        DesinscripcionCursosListener desinscripcionCursosListener = new DesinscripcionCursosListener(context, this);
+        //DesinscripcionExamenesListener listener = new DesinscripcionExamenesListener(context, this);
         RequestSender requestSender = new RequestSender(context);
 
-        String url = context.getString(R.string.urlAppServer) + "inscripciones/cursos/";
+        String id = "";
+        // TODO: Cargar la inscripcion a examen
+        //id = this.inscripcionExamen.get_id();
+        String url = context.getString(R.string.urlAppServer) + "inscripciones/examenes/" + id;
 
-        requestSender.doGet_expectJSONObject(desinscripcionCursosListener, url);
+        //requestSender.doGet_expectJSONObject(listener, url);
     }
 
     @Override
@@ -41,8 +44,8 @@ public class DesinscripcionCursosFragment extends RecyclerFragment implements Re
         super.onResume();
         //progressPopup.show();
         getAdapter().notifyDataSetChanged();
-        loadInscripciones();
-        ((MainActivity) getActivity()).setToolbarName(getString(R.string.desinscripcion));
+        loadInscripcionesExamenes();
+        ((MainActivity) getActivity()).setToolbarName(getString(R.string.desinscripcion_examen));
     }
 
     @Override
@@ -52,8 +55,8 @@ public class DesinscripcionCursosFragment extends RecyclerFragment implements Re
 
     @Override
     protected void configureAdapter() {
-        DesinscripcionCursosAdapter desinscripcionCursosAdapter = new DesinscripcionCursosAdapter(getActivity());
-        this.setConfiguredAdapter(desinscripcionCursosAdapter);
+        DesinscripcionExamenAdapter adapter = new DesinscripcionExamenAdapter(getActivity());
+        this.setConfiguredAdapter(adapter);
     }
 
     @Override

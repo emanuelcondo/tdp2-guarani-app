@@ -1,4 +1,4 @@
-package ar.edu.uba.fi.tdp2.guaraniapp.examenes;
+package ar.edu.uba.fi.tdp2.guaraniapp.examenes.inscripcion;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,11 +7,11 @@ import android.widget.TextView;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
-import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.oferta.OfertaMateriasListener;
+import ar.edu.uba.fi.tdp2.guaraniapp.examenes.FechaExamen;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 
-public class FechaExamenViewHolder extends RecyclerView.ViewHolder
+public class InscripcionExamenViewHolder extends RecyclerView.ViewHolder
         implements View.OnClickListener, ResponseWatcher {
     private TextView textViewCodigo;
     private TextView textViewNombre;
@@ -19,7 +19,7 @@ public class FechaExamenViewHolder extends RecyclerView.ViewHolder
 
     private ProgressPopup progressPopup;
 
-    public FechaExamenViewHolder(final View itemView) {
+    public InscripcionExamenViewHolder(final View itemView) {
         super(itemView);
 
         textViewCodigo = itemView.findViewById(R.id.fecha_examen_codigo_materia);
@@ -39,9 +39,10 @@ public class FechaExamenViewHolder extends RecyclerView.ViewHolder
 
     public void bindTo(FechaExamen fechaExamen) {
 
+        Curso curso = fechaExamen.getCurso();
 
-        textViewNombre.setText(fechaExamen.getMateria());
-        textViewCodigo.setText(String.valueOf((fechaExamen.getCodigoMateria())));
+        textViewNombre.setText(curso.getMateria().getNombre());
+        textViewCodigo.setText(String.valueOf((curso.getMateria().getCodigo())));
         this.fechaExamen = fechaExamen;
     }
 

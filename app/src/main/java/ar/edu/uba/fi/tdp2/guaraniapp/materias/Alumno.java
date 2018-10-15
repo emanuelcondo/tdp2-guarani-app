@@ -3,20 +3,27 @@ package ar.edu.uba.fi.tdp2.guaraniapp.materias;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.edu.uba.fi.tdp2.guaraniapp.examenes.InscripcionExamen;
+
 public class Alumno {
     //uso legajo en lugar de padron porque asi viene en el server
     private int legajo;
     private String nombre;
     private String apellido;
-    private List<Carrera> carreras = new ArrayList<>();
+    private List<Carrera> carreras;
     private List<Inscripcion> inscripciones;
+    private List<InscripcionExamen> inscripcionesExamenes;
 
     public Alumno() {
         carreras = new ArrayList<>();
         inscripciones = new ArrayList<>();
+        inscripcionesExamenes = new ArrayList<>();
     }
 
     public Alumno(int padron, String nombre, String apellido) {
+        carreras = new ArrayList<>();
+        inscripciones = new ArrayList<>();
+        inscripcionesExamenes = new ArrayList<>();
         this.legajo = padron;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -70,5 +77,13 @@ public class Alumno {
 
     public void eliminarInscripcion(Inscripcion inscripcion) {
         inscripciones.remove(inscripcion);
+    }
+
+    public List<InscripcionExamen> getInscripcionesExamenes() {
+        return inscripcionesExamenes;
+    }
+
+    public void setInscripcionesExamenes(List<InscripcionExamen> inscripcionesExamenes) {
+        this.inscripcionesExamenes = inscripcionesExamenes;
     }
 }

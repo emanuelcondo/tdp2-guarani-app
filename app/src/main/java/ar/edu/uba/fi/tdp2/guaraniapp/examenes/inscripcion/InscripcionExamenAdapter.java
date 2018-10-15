@@ -1,4 +1,4 @@
-package ar.edu.uba.fi.tdp2.guaraniapp.examenes;
+package ar.edu.uba.fi.tdp2.guaraniapp.examenes.inscripcion;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -10,24 +10,24 @@ import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Carrera;
+import ar.edu.uba.fi.tdp2.guaraniapp.examenes.FechaExamen;
 
-public class FechasExamenAdapter extends RecyclerView.Adapter<FechaExamenViewHolder> {
+public class InscripcionExamenAdapter extends RecyclerView.Adapter<InscripcionExamenViewHolder> {
 
     private MainActivity activity;
 
-    public FechasExamenAdapter(Activity activity) {
+    public InscripcionExamenAdapter(Activity activity) {
         this.activity = (MainActivity)activity;
     }
 
     @NonNull
     @Override
-    public FechaExamenViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new FechaExamenViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.fecha_examen_item_layout, parent, false));
+    public InscripcionExamenViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new InscripcionExamenViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.fecha_examen_item_layout, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FechaExamenViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull InscripcionExamenViewHolder holder, int position) {
         List<FechaExamen> fechasExamen = activity.getFechasExamen();
         FechaExamen fechaExamen = fechasExamen.get(position);
         holder.bindTo(fechaExamen);

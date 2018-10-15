@@ -1,4 +1,4 @@
-package ar.edu.uba.fi.tdp2.guaraniapp.examenes;
+package ar.edu.uba.fi.tdp2.guaraniapp.examenes.inscripcion;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,10 +6,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
-import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.RecyclerFragment;
 
-public class FechasExamenFragment extends RecyclerFragment {
+public class InscripcionExamenFragment extends RecyclerFragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,8 +35,8 @@ public class FechasExamenFragment extends RecyclerFragment {
 
     @Override
     protected void configureAdapter() {
-        FechasExamenAdapter fechasExamenAdapter = new FechasExamenAdapter(getActivity());
-        this.setConfiguredAdapter(fechasExamenAdapter);
+        InscripcionExamenAdapter inscripcionExamenAdapter = new InscripcionExamenAdapter(getActivity());
+        this.setConfiguredAdapter(inscripcionExamenAdapter);
     }
 
 }

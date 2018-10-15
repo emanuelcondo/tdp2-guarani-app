@@ -20,6 +20,7 @@ import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.examenes.FechaExamen;
+import ar.edu.uba.fi.tdp2.guaraniapp.examenes.InscripcionExamen;
 import ar.edu.uba.fi.tdp2.guaraniapp.login.LoginFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Alumno;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity
     private Curso cursoSeleccionado;
     private Materia materiaSeleccionada;
     private Inscripcion inscripcionSeleccionada;
+    private InscripcionExamen inscripcionExamenSeleccionada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -228,5 +230,11 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    public InscripcionExamen getInscripcionExamenSeleccionada() {
+        return inscripcionExamenSeleccionada;
+    }
 
+    public void setInscripcionExamenSeleccionada(InscripcionExamen inscripcionExamenSeleccionada) {
+        this.inscripcionExamenSeleccionada = inscripcionExamenSeleccionada;
+    }
 }
