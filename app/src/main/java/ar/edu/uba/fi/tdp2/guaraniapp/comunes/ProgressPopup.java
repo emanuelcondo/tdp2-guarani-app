@@ -40,9 +40,6 @@ public class ProgressPopup {
         progressBar.setPadding(0, 0, llPadding, 0);
         progressBar.setLayoutParams(llParam);
 
-        llParam = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
-        llParam.gravity = Gravity.CENTER;
         TextView tvText = new TextView(this.context);
         tvText.setText(this.text);
         tvText.setTextColor(Color.parseColor("#000000"));
@@ -53,7 +50,7 @@ public class ProgressPopup {
         ll.addView(tvText);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
-        builder.setCancelable(true);
+        builder.setCancelable(false);
         builder.setView(ll);
 
         this.dialog = builder.create();

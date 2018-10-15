@@ -19,7 +19,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/insc_examen_codigo_materia"
+                android:id="@+id/inscripcion_examen_codigo_materia"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:padding="8dp" />
@@ -27,7 +27,7 @@
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/insc_examen_materia"
+                android:id="@+id/inscripcion_examen_nombre_materia"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -43,7 +43,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/insc_examen_nro_curso"
+                android:id="@+id/inscripcion_examen_oportunidad"
                 android:textSize="16sp"
                 android:textColor="@color/colorPrimaryDark"
                 android:padding="8dp" />
@@ -51,7 +51,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/insc_examen_docente"
+                android:id="@+id/inscripcion_examen_docente"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimaryDark"
@@ -59,10 +59,22 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*"
+                android:id="@+id/tabla_horario_inscripcion_examen"
+                android:background="@drawable/cell_shape" />
+        </LinearLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/insc_examen_fecha_inscripcion"
+            android:id="@+id/fecha_inscripcion_examen"
             android:textColor="@color/dim_gray"
             style="@style/TextAppearance.AppCompat.Caption"
             android:textSize="16sp"

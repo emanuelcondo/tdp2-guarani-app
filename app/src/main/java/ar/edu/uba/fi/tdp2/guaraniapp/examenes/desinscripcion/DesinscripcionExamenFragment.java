@@ -14,21 +14,18 @@ import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
 
 public class DesinscripcionExamenFragment extends RecyclerFragment implements ResponseWatcher {
 
-    //private ProgressPopup progressPopup;
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(false);
-
-        //progressPopup = new ProgressPopup("Cargando inscripciones a examen...", getContext());
-
     }
 
     private void loadInscripcionesExamenes() {
         Context context = getActivity();
-        //DesinscripcionExamenesListener listener = new DesinscripcionExamenesListener(context, this);
+        DesinscripcionExamenesListener listener = new DesinscripcionExamenesListener(context, this);
         RequestSender requestSender = new RequestSender(context);
+
+        listener.onRequestCompleted(null);
 
         String id = "";
         // TODO: Cargar la inscripcion a examen

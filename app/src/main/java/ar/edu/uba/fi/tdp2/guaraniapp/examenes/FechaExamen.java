@@ -1,6 +1,11 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.examenes;
 
+import java.util.ArrayList;
+
+import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Persona;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Sede;
 
@@ -11,10 +16,25 @@ public class FechaExamen {
     private Persona docenteACargo;
     private Curso curso;
     private String aula;
-
+    private String oportunidad;
     private String fecha;
     private String hora;
 
+    //TODO: Borrar Mock
+    public FechaExamen(String sede, String docenteNombre, String docenteApellido, String fecha, String hora) {
+        this.sede = new Sede();
+        this.sede.setCodigo("1");
+        this.sede.setNombre(sede);
+        this.docenteACargo = new Persona(docenteNombre, docenteApellido);
+        this.curso = new Curso(1, new ArrayList<Horario>() {{add(new Horario("Lunes", "12:00", "15:00", "200"));}}, 30);
+        this.curso.setDocenteACargo(docenteACargo);
+        this.curso.setSede(this.sede);
+        this.curso.setMateria(new Materia("75.01", "Algoritmos y Programación I", "Computación"));
+        this.aula = "200";
+        this.fecha = fecha;
+        this.hora = hora;
+        this.oportunidad = "1";
+    }
 
     public String get_id() {
         return _id;
@@ -75,5 +95,13 @@ public class FechaExamen {
 
     public void setAula(String aula) {
         this.aula = aula;
+    }
+
+    public String getOportunidad() {
+        return oportunidad;
+    }
+
+    public void setOportunidad(String oportunidad) {
+        this.oportunidad = oportunidad;
     }
 }

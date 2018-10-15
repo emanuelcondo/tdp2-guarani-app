@@ -8,8 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.RecyclerFragment;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionCarrerasAdapter;
 
-public class InscripcionExamenFragment extends RecyclerFragment {
+public class InscripcionExamenCarrerasFragment extends RecyclerFragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -20,7 +21,7 @@ public class InscripcionExamenFragment extends RecyclerFragment {
     @Override
     public void onResume() {
         super.onResume();
-        ((MainActivity) getActivity()).setToolbarName(getString(R.string.seleccion_fechas_examenes));
+        ((MainActivity) getActivity()).setToolbarName(getString(R.string.seleccion_carrera));
     }
 
     @Override
@@ -30,8 +31,8 @@ public class InscripcionExamenFragment extends RecyclerFragment {
 
     @Override
     protected void configureAdapter() {
-        InscripcionExamenAdapter inscripcionExamenAdapter = new InscripcionExamenAdapter(getActivity());
-        this.setConfiguredAdapter(inscripcionExamenAdapter);
+        InscripcionExamenCarrerasAdapter inscripcionExamenCarrerasAdapter = new InscripcionExamenCarrerasAdapter(getActivity());
+        this.setConfiguredAdapter(inscripcionExamenCarrerasAdapter);
     }
 
 }

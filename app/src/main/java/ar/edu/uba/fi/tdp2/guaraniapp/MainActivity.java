@@ -62,6 +62,9 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         FragmentLoader.load(this, new LoginFragment(), "Login");
+
+        //TODO: Sacar esto
+        setDesinscripcioneExamenesEnabled(true);
     }
 
     @Override
@@ -214,6 +217,11 @@ public class MainActivity extends AppCompatActivity
             int inscripciones = getAlumno().getInscripciones().size();
             setDesinscripcionesEnabled(inscripciones > 0);
         }
+
+        if (getAlumno().getInscripcionesExamenes() != null) {
+            int inscripcionesExamen = getAlumno().getInscripcionesExamenes().size();
+            setDesinscripcioneExamenesEnabled(inscripcionesExamen > 0);
+        }
     }
 
     public void setDesinscripcionesEnabled(boolean enabled) {
@@ -221,6 +229,14 @@ public class MainActivity extends AppCompatActivity
 
         Menu menuNav = navigationView.getMenu();
         MenuItem nav_desinscr = menuNav.findItem(R.id.nav_desinscribirme);
+        nav_desinscr.setEnabled(enabled);
+    }
+
+    public void setDesinscripcioneExamenesEnabled(boolean enabled) {
+        NavigationView navigationView = findViewById(R.id.nav_view);
+
+        Menu menuNav = navigationView.getMenu();
+        MenuItem nav_desinscr = menuNav.findItem(R.id.nav_desinscribirme_examen);
         nav_desinscr.setEnabled(enabled);
     }
 

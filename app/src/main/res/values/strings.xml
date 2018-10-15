@@ -34,5 +34,9 @@
     <string name="legajo_header">Padrón: %1$d</string>
     <string name="alumno_header">Alumno: %1$s, %2$s</string>
     <string name="mensaje_condicionales">No puede inscribirse como condicional mientras existan vacantes en otros cursos para esta materia.</string>
-    <string name="desinscripcion_examen">Desinscripción a Examenes</string>
+    <string name="desinscripcion_examen">Desinscripción a Exámenes</string>
+    <string name="perfil">Perfil</string>
+    <string name="inscripcion_examen">Inscripción a Exámenes</string>
+    <string name="seleccion_fechas_examenes">Fechas de Examen</string>
+    <string name="horario_examen_header">Fecha de Examen</string>
 </resources>
