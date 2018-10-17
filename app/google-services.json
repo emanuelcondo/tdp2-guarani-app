@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "632752284890",
+    "firebase_url": "https://guarani-app.firebaseio.com",
+    "project_id": "guarani-app",
+    "storage_bucket": "guarani-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632752284890:android:df4c3e1e861a5403",
+        "android_client_info": {
+          "package_name": "ar.edu.uba.fi.tdp2.guaraniapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632752284890-g467eeghjjeo4iph2acbspr50utup8nj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtwP8bMYXaUdF1u64MtBZpwffFir1gRus"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
