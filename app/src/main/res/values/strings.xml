@@ -43,5 +43,7 @@
     <string name="default_notification_channel_name" translatable="true">News</string>
     <string name="msg_subscribe_failed">Failed to subscribe to news topic</string>
     <string name="fcm_message">Notificación de Guaraní App</string>
+    <string name="mesa_cancelada"><b>Mesa examen cancelada:</b> %1$s</string>
+
 
 </resources>
