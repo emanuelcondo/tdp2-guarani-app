@@ -4,13 +4,19 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.MateriasFragment;
+import ar.edu.uba.fi.tdp2.guaraniapp.historia.HistoriaAcademicaFragment;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.desinscripcion.DesinscripcionCursosFragment;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionCarrerasFragment;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionMateriasFragment;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.oferta.OfertaCarrerasFragment;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.oferta.OfertaMateriasFragment;
 
 
 public class FragmentLoader {
@@ -18,18 +24,58 @@ public class FragmentLoader {
     public static final int DEFAULT_FRAGMENT = -1;//R.id.nav_actividades;
     private static int current = -1;
 
-    public static final String Inscripcion = "Inscripcion";
-    public static final String OfertaHoraria = "OfertaHoraria";
-    public static final String Desinscripcion = "Desinscripcion";
+    //Carreras
+    public static final String InscripcionCarreras = "InscripcionCarreras";
+    public static final String OfertaCarreras = "OfertaCarreras";
+
+    //Materias
+    public static final String OfertaMaterias = "OfertaMaterias";
+    public static final String InscripcionMaterias = "InscripcionMaterias";
+
+    //Cursos
+    public static final String OfertaCursos = "OfertaCursos";
+    public static final String InscripcionCursos = "InscripcionCursos";
+    public static final String DesinscripcionCursos = "DesinscripcionCursos";
+
+    public static final String OfertaCurso = "OfertaCurso";
+    public static final String InscripcionCurso = "InscripcionCurso";
+
+    public static final String DesinscripcionCurso = "DesinscripcionCurso";
+
+    public static final String Login = "Login";
+    public static final String HistoriaAcademica = "HistoriaAcademica";
+
+
 
 
     private static final Map<String, Boolean> drawerVisibilityMap;
     static
     {
         drawerVisibilityMap = new HashMap<>();
-        drawerVisibilityMap.put(Inscripcion, true);
-        drawerVisibilityMap.put(OfertaHoraria, true);
-        drawerVisibilityMap.put(Desinscripcion, true);
+
+        //Carreras
+        drawerVisibilityMap.put(InscripcionCarreras, true);
+        drawerVisibilityMap.put(OfertaCarreras, true);
+
+        //Materias
+        drawerVisibilityMap.put(InscripcionMaterias, true);
+        drawerVisibilityMap.put(OfertaMaterias, true);
+
+        //Cursos
+        drawerVisibilityMap.put(OfertaCursos, true);
+        drawerVisibilityMap.put(InscripcionCursos, true);
+        drawerVisibilityMap.put(DesinscripcionCursos, true);
+
+        drawerVisibilityMap.put(OfertaCurso, false);
+        drawerVisibilityMap.put(InscripcionCurso, false);
+
+        drawerVisibilityMap.put(DesinscripcionCurso, false);
+
+        drawerVisibilityMap.put(Login, false);
+        drawerVisibilityMap.put(HistoriaAcademica, true);
+
+
+
 
 
     }
@@ -45,6 +91,8 @@ public class FragmentLoader {
         String previous = getFragmentName(fragmentManager, stackCount - 1);
 
         if (previous.equals(name)) { return;}
+
+        Log.d("FragmentLoader", previous + " >>> " + name);
 
         fragmentManager.beginTransaction()
                 .replace(R.id.contenedor, fragment)
@@ -77,18 +125,27 @@ public class FragmentLoader {
         Fragment fragment;
         String name;
 
-        if (id == R.id.nav_inscribirme) {
-            //Mostrar pantalla perfil
-            fragment = new MateriasFragment();
-            name = Inscripcion;
-        } /*else if (id == R.id.nav_calendario) {
-            fragment = new CalendarioFragment();
-            name = Calendario;
-        }*/ else {
-
-            // TODO: Corregir cual es el default
-            fragment = new MateriasFragment();
-            name = Inscripcion;
+        switch (id) {
+            case R.id.nav_oferta:
+                fragment = new OfertaCarrerasFragment();
+                name = OfertaCarreras;
+                break;
+            case R.id.nav_inscribirme:
+                fragment = new InscripcionCarrerasFragment();
+                name = InscripcionCarreras;
+                break;
+            case R.id.nav_historia:
+                fragment = new HistoriaAcademicaFragment();
+                name = HistoriaAcademica;
+                break;
+            case R.id.nav_desinscribirme:
+                fragment = new DesinscripcionCursosFragment();
+                name = DesinscripcionCursos;
+                break;
+            default:
+                // TODO: Corregir cual es el default
+                fragment = new OfertaCarrerasFragment();
+                name = OfertaCarreras;
         }
 
         load(activity, fragment, name);

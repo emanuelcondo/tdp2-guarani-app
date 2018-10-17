@@ -5,21 +5,27 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_oferta_horaria"
+            android:id="@+id/nav_oferta"
             android:icon="@drawable/ic_menu_bulleted_list"
-            android:title="Oferta horaria" />
+            android:title="@string/oferta" />
         <item
             android:id="@+id/nav_inscribirme"
             android:icon="@drawable/ic_note_add_black_24dp"
-            android:title="Incribirme" />
+            android:title="@string/inscripcion" />
         <item
             android:id="@+id/nav_desinscribirme"
+            android:enabled="false"
             android:icon="@drawable/ic_person_add_disabled"
-            android:title="Desinscribirme" />
+            android:title="@string/desinscripcion" />
         <item
             android:id="@+id/nav_perfil"
             android:icon="@drawable/ic_assignment_ind_black_24dp"
+            android:enabled="false"
             android:title="Perfil" />
+        <item
+            android:id="@+id/nav_historia"
+            android:icon="@drawable/ic_assignment_ind_black_24dp"
+            android:title="@string/historia" />
     </group>
 
     <item android:title="Comunicate">

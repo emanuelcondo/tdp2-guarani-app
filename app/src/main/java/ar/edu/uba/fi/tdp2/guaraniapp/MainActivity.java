@@ -1,8 +1,9 @@
 package ar.edu.uba.fi.tdp2.guaraniapp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -14,7 +15,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
+import ar.edu.uba.fi.tdp2.guaraniapp.login.LoginFragment;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Alumno;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Inscripcion;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -23,6 +32,13 @@ public class MainActivity extends AppCompatActivity
     private Toolbar toolbar;
     private ActionBarDrawerToggle toggle;
 
+    private Alumno alumno;
+    private List<Materia> materias = new ArrayList<>();
+
+    private Curso cursoSeleccionado;
+    private Materia materiaSeleccionada;
+    private Inscripcion inscripcionSeleccionada;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,14 +46,6 @@ public class MainActivity extends AppCompatActivity
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab =  findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Aún sin funcionalidad", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         drawer =  findViewById(R.id.drawer_layout);
         toggle = new ActionBarDrawerToggle(
@@ -47,33 +55,34 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        FragmentLoader.load(this, new LoginFragment(), "Login");
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        //DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (!FragmentLoader.backFragment(this)) {
+                showExitDialog();
+            }
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -82,8 +91,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
         int id = item.getItemId();
 
         FragmentLoader.load(this, id);
@@ -120,6 +129,92 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
+    }
+
+    public void setCursoSeleccionado(Curso curso) {
+        cursoSeleccionado = curso;
+    }
+
+    public Curso getCursoSeleccionado() {
+        return cursoSeleccionado;
+    }
+
+    private void showExitDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        String title = getString(R.string.message_confirm_exit);
+        builder.setTitle(title);
+
+        builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                finishAffinity();
+            }
+        });
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    public void setAlumno(Alumno alumno) {
+        this.alumno = alumno;
+    }
+
+    public Alumno getAlumno() {
+        return alumno;
+    }
+
+    public List<Materia> getMaterias() {
+        return materias;
+    }
+
+    public void setMaterias(List<Materia> materias) {
+        this.materias = materias;
+    }
+
+    public Materia getMateriaSeleccionada() {
+        return materiaSeleccionada;
+    }
+
+    public void setMateriaSeleccionada(Materia materiaSeleccionada) {
+        this.materiaSeleccionada = materiaSeleccionada;
+    }
+
+    public void setToolbarName(String toolbarName) {
+        toolbar.setTitle(toolbarName);
+    }
+
+    public Inscripcion getInscripcionSeleccionada() {
+        return inscripcionSeleccionada;
+    }
+
+    public void setInscripcionSeleccionada(Inscripcion inscripcionSeleccionada) {
+        this.inscripcionSeleccionada = inscripcionSeleccionada;
+    }
+
+    public void flipDesinscripcion() {
+
+        if (getAlumno().getInscripciones() != null) {
+            int inscripciones = getAlumno().getInscripciones().size();
+            setDesinscripcionesEnabled(inscripciones > 0);
+        }
+    }
+
+    public void setDesinscripcionesEnabled(boolean enabled) {
+        NavigationView navigationView = findViewById(R.id.nav_view);
+
+        Menu menuNav = navigationView.getMenu();
+        MenuItem nav_desinscr = menuNav.findItem(R.id.nav_desinscribirme);
+        nav_desinscr.setEnabled(enabled);
+    }
+
+    public void eliminarInscripcion(Inscripcion inscripcion) {
+        alumno.eliminarInscripcion(inscripcion);
+        flipDesinscripcion();
+
     }
 
 
