@@ -16,6 +16,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
 import ar.edu.uba.fi.tdp2.guaraniapp.examenes.FechaExamen;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
 
 public class InscripcionExamenViewHolder extends RecyclerView.ViewHolder implements ResponseWatcher {
     private TextView textViewCodigo;
@@ -47,15 +48,16 @@ public class InscripcionExamenViewHolder extends RecyclerView.ViewHolder impleme
     public void bindTo(FechaExamen fechaExamen) {
 
         Curso curso = fechaExamen.getCurso();
+        Materia materia = fechaExamen.getMateria();
 
-        textViewNombre.setText(curso.getMateria().getNombre());
-        textViewCodigo.setText(String.valueOf((curso.getMateria().getCodigo())));
+        textViewNombre.setText(materia.getNombre());
+        textViewCodigo.setText(String.valueOf((materia.getCodigo())));
         textViewOportunidad.setText(fechaExamen.getOportunidad());
         textViewDocente.setText(curso.getDocente());
         this.fechaExamen = fechaExamen;
 
         confirmationPopup = new ConfirmationPopup(
-                String.valueOf((curso.getMateria().getCodigo())) + " " + curso.getMateria().getNombre()
+                String.valueOf((materia.getCodigo())) + " " + materia.getNombre()
                 , fechaExamen.getFecha() + " " + fechaExamen.getHora()
                 , "¿Desea inscribirse a esta fecha de examen?"
                 , "Inscribirse"

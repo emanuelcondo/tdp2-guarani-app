@@ -14,9 +14,6 @@ public class Curso {
     private int vacantes;
     private int cupos;
 
-    //TODO: No esta implementada en el listener de cursos la carga de la materia acá, probar
-    private Materia materia;
-
     public Curso(int numeroCurso, ArrayList<Horario> horarios, int vacantes) {
         this.comision = numeroCurso;
         this.cursada = horarios;
@@ -117,13 +114,4 @@ public class Curso {
         this.cupos = cupos;
     }
 
-    //TODO: No esta implementada en el listener de cursos la carga de la materia acá, probar
-
-    public Materia getMateria() {
-        return materia;
-    }
-
-    public void setMateria(Materia materia) {
-        this.materia = materia;
-    }
 }

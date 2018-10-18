@@ -20,6 +20,8 @@ public class FechaExamen {
     private String fecha;
     private String hora;
 
+    private Materia materia;
+
     //TODO: Borrar Mock
     public FechaExamen(String sede, String docenteNombre, String docenteApellido, String fecha, String hora) {
         this.sede = new Sede();
@@ -29,7 +31,7 @@ public class FechaExamen {
         this.curso = new Curso(1, new ArrayList<Horario>() {{add(new Horario("Lunes", "12:00", "15:00", "200"));}}, 30);
         this.curso.setDocenteACargo(docenteACargo);
         this.curso.setSede(this.sede);
-        this.curso.setMateria(new Materia("75.01", "Algoritmos y Programación I", "Computación"));
+        this.setMateria(new Materia("75.01", "Algoritmos y Programación I", "Computación"));
         this.aula = "200";
         this.fecha = fecha;
         this.hora = hora;
@@ -103,5 +105,13 @@ public class FechaExamen {
 
     public void setOportunidad(String oportunidad) {
         this.oportunidad = oportunidad;
+    }
+
+    public Materia getMateria() {
+        return materia;
+    }
+
+    public void setMateria(Materia materia) {
+        this.materia = materia;
     }
 }

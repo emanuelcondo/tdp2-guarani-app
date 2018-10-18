@@ -5,7 +5,7 @@ public class Inscripcion {
     private String _id;
 
     private Curso curso;
-    //TODO: pasar materia a la clase Curso
+
     private Materia materia;
     private String condicion;
 

@@ -12,6 +12,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ConfirmationPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
+import ar.edu.uba.fi.tdp2.guaraniapp.examenes.FechaExamen;
 import ar.edu.uba.fi.tdp2.guaraniapp.examenes.InscripcionExamen;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 
@@ -57,15 +58,15 @@ public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
 
     private void bindViews() {
 
-        Curso curso = inscripcionExamen.getFechaExamen().getCurso();
+        FechaExamen fechaExamen = inscripcionExamen.getFechaExamen();
 
-        textViewNombreMateria.setText(curso.getMateria().getNombre());
-        textViewCodigoMateria.setText(String.valueOf((curso.getMateria().getCodigo())));
+        textViewNombreMateria.setText(fechaExamen.getMateria().getNombre());
+        textViewCodigoMateria.setText(String.valueOf((fechaExamen.getMateria().getCodigo())));
         textViewOportunidad.setText(inscripcionExamen.getFechaExamen().getOportunidad());
-        textViewDocente.setText(curso.getDocente());
+        textViewDocente.setText(fechaExamen.getDocente());
 
         confirmationPopup = new ConfirmationPopup(
-                String.valueOf((curso.getMateria().getCodigo())) + " " + curso.getMateria().getNombre()
+                String.valueOf((fechaExamen.getMateria().getCodigo())) + " " + fechaExamen.getMateria().getNombre()
                 , inscripcionExamen.getFechaExamen().getFecha() + " " + inscripcionExamen.getFechaExamen().getHora()
                 , "¿Desea desinscribirse a esta fecha de examen?"
                 , "Desinscribirse"
@@ -109,7 +110,7 @@ public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
         textViewFecha.setPadding(8,8,8,8);
 
         TextView textViewSede = new TextView(itemView.getContext());
-        textViewSede.setText(curso.getSede().getNombre());
+        textViewSede.setText(fechaExamen.getSede().getNombre());
         textViewSede.setBackgroundResource(R.drawable.cell_shape);
         textViewSede.setPadding(8,8,8,8);
 
