@@ -83,22 +83,22 @@ public class LoginFragment extends Fragment implements ResponseListener, Respons
     }
 
     private void getAlumnoInfo() {
-        AlumnoListener alumnoListener = new AlumnoListener((MainActivity) getActivity());
+        AlumnoListener listener = new AlumnoListener((MainActivity) getActivity());
         RequestSender requestSender = new RequestSender(getActivity());
 
         String url = getString(R.string.urlAppServer) + "alumnos/mis-datos";
 
-        requestSender.doGet_expectJSONObject(alumnoListener, url);
+        requestSender.doGet_expectJSONObject(listener, url);
     }
 
     private void loadInscripciones() {
         Context context = getActivity();
-        DesinscripcionCursosListener desinscripcionCursosListener = new DesinscripcionCursosListener(context, this);
+        DesinscripcionCursosListener listener = new DesinscripcionCursosListener(context, this);
         RequestSender requestSender = new RequestSender(context);
 
         String url = context.getString(R.string.urlAppServer) + "inscripciones/cursos/";
 
-        requestSender.doGet_expectJSONObject(desinscripcionCursosListener, url);
+        requestSender.doGet_expectJSONObject(listener, url);
     }
 
     public void onLoginSuccess(String session) {

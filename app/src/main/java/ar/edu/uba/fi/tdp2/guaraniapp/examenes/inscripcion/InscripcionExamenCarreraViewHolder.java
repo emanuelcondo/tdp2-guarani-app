@@ -47,12 +47,12 @@ public class InscripcionExamenCarreraViewHolder extends RecyclerView.ViewHolder
     private void loadMaterias() {
         progressPopup.show();
         Context context = itemView.getContext();
-        InscripcionExamenMateriasListener inscripcionExamenMateriasListener = new InscripcionExamenMateriasListener(context, this);
+        InscripcionExamenMateriasListener listener = new InscripcionExamenMateriasListener(context, this);
         RequestSender requestSender = new RequestSender(context);
 
         String url = context.getString(R.string.urlAppServer) + "materias/carrera/" + carrera.get_id();
 
-        requestSender.doGet_expectJSONObject(inscripcionExamenMateriasListener, url);
+        requestSender.doGet_expectJSONObject(listener, url);
     }
 
     public void onSuccess() {

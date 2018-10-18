@@ -41,12 +41,12 @@ public class InscripcionMateriaViewHolder extends RecyclerView.ViewHolder
     private void loadCursos() {
         progressPopup.show();
         Context context = itemView.getContext();
-        InscripcionCursosListener inscripcionCursosListener = new InscripcionCursosListener(context, this);
+        InscripcionCursosListener listener = new InscripcionCursosListener(context, this);
         RequestSender requestSender = new RequestSender(context);
 
         String url = context.getString(R.string.urlAppServer) + "materias/" + materia.get_id() + "/cursos";
 
-        requestSender.doGet_expectJSONObject(inscripcionCursosListener, url);
+        requestSender.doGet_expectJSONObject(listener, url);
     }
 
     public void bindTo(Materia materia) {

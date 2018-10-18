@@ -52,8 +52,8 @@ public class DesinscripcionCursosFragment extends RecyclerFragment implements Re
 
     @Override
     protected void configureAdapter() {
-        DesinscripcionCursosAdapter desinscripcionCursosAdapter = new DesinscripcionCursosAdapter(getActivity());
-        this.setConfiguredAdapter(desinscripcionCursosAdapter);
+        DesinscripcionCursosAdapter adapter = new DesinscripcionCursosAdapter(getActivity());
+        this.setConfiguredAdapter(adapter);
     }
 
     @Override
@@ -68,20 +68,5 @@ public class DesinscripcionCursosFragment extends RecyclerFragment implements Re
         //Do nothing?
     }
 
-
-    /*
-    public void onSuccess(List<Inscripcion> inscripciones) {
-        //this.inscripciones = inscripciones;
-        this.getAdapter().notifyDataSetChanged();
-        progressPopup.dismiss();
-    }*/
-
-    /*public void onError() {
-        progressPopup.dismiss();
-    }*/
-
-    /*public List<Inscripcion> getInscripciones() {
-        return this.inscripciones;
-    }*/
 }
 

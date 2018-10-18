@@ -39,8 +39,8 @@ public class InscripcionMateriasFragment extends RecyclerFragment {
 
     @Override
     protected void configureAdapter() {
-        InscripcionMateriasAdapter inscripcionMateriasAdapter = new InscripcionMateriasAdapter(getActivity(), materias);
-        this.setConfiguredAdapter(inscripcionMateriasAdapter);
+        InscripcionMateriasAdapter adapter = new InscripcionMateriasAdapter(getActivity(), materias);
+        this.setConfiguredAdapter(adapter);
     }
 
 }

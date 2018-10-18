@@ -76,12 +76,12 @@ public class DesinscripcionFragment extends Fragment implements ResponseWatcher 
     }
 
     private void desinscribir() {
-        DesinscripcionListener desinscripcionListener = new DesinscripcionListener(getContext(), this);
+        DesinscripcionListener listener = new DesinscripcionListener(getContext(), this);
         RequestSender requestSender = new RequestSender(getContext());
 
         String url = getContext().getString(R.string.urlAppServer) + "inscripciones/" + inscripcion.get_id() + "/cursos/";
 
-        requestSender.doDelete(desinscripcionListener, url);
+        requestSender.doDelete(listener, url);
     }
 
     public void onSuccess() {

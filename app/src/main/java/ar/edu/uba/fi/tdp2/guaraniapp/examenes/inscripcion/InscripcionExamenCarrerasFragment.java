@@ -31,8 +31,8 @@ public class InscripcionExamenCarrerasFragment extends RecyclerFragment {
 
     @Override
     protected void configureAdapter() {
-        InscripcionExamenCarrerasAdapter inscripcionExamenCarrerasAdapter = new InscripcionExamenCarrerasAdapter(getActivity());
-        this.setConfiguredAdapter(inscripcionExamenCarrerasAdapter);
+        InscripcionExamenCarrerasAdapter adapter = new InscripcionExamenCarrerasAdapter(getActivity());
+        this.setConfiguredAdapter(adapter);
     }
 
 }

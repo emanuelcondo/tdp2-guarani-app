@@ -1,30 +1,19 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.examenes.desinscripcion;
 
-import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ConfirmationPopup;
-import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
 import ar.edu.uba.fi.tdp2.guaraniapp.examenes.InscripcionExamen;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.desinscripcion.DesinscripcionFragment;
 
 public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
         implements ResponseWatcher {

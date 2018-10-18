@@ -34,8 +34,8 @@ public class OfertaCursosFragment extends RecyclerFragment {
 
     @Override
     protected void configureAdapter() {
-        OfertaCursosAdapter ofertaCursosAdapter = new OfertaCursosAdapter(getActivity(), cursos);
-        this.setConfiguredAdapter(ofertaCursosAdapter);
+        OfertaCursosAdapter adapter = new OfertaCursosAdapter(getActivity(), cursos);
+        this.setConfiguredAdapter(adapter);
     }
 
     public void setCursos(List<Curso> cursos) {

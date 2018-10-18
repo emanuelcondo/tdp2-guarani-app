@@ -42,16 +42,16 @@ public class InscripcionExamenMateriaViewHolder extends RecyclerView.ViewHolder
     private void loadFechasExamen() {
         progressPopup.show();
         Context context = itemView.getContext();
-        InscripcionExamenListener inscripcionExamenListener = new InscripcionExamenListener(context, this);
+        InscripcionExamenListener listener = new InscripcionExamenListener(context, this);
 
         //TODO: Sacar el mock
 
-        inscripcionExamenListener.onRequestCompleted(null);
+        listener.onRequestCompleted(null);
         /*RequestSender requestSender = new RequestSender(context);
 
         String url = context.getString(R.string.urlAppServer) + "examenes/" + materia.get_id();
 
-        requestSender.doGet_expectJSONObject(inscripcionExamenListener, url);*/
+        requestSender.doGet_expectJSONObject(listener, url);*/
     }
 
     public void bindTo(Materia materia) {

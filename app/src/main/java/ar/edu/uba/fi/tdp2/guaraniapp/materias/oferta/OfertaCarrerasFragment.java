@@ -33,8 +33,8 @@ public class OfertaCarrerasFragment extends RecyclerFragment {
 
     @Override
     protected void configureAdapter() {
-        OfertaCarrerasAdapter ofertaCarrerasAdapter = new OfertaCarrerasAdapter(getActivity());
-        this.setConfiguredAdapter(ofertaCarrerasAdapter);
+        OfertaCarrerasAdapter adapter = new OfertaCarrerasAdapter(getActivity());
+        this.setConfiguredAdapter(adapter);
     }
 
 }

@@ -80,12 +80,12 @@ public class InscripcionFragment extends Fragment  implements ResponseWatcher {
     }
 
     private void inscribir() {
-        InscripcionListener inscripcionListener = new InscripcionListener(getContext(), this);
+        InscripcionListener listener = new InscripcionListener(getContext(), this);
         RequestSender requestSender = new RequestSender(getContext());
 
         String url = getContext().getString(R.string.urlAppServer) + "inscripciones/cursos/" + curso.get_id();
 
-        requestSender.doPost(inscripcionListener, url, new JSONObject());
+        requestSender.doPost(listener, url, new JSONObject());
     }
 
 

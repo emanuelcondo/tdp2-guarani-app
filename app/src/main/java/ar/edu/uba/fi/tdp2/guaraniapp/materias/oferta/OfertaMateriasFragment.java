@@ -41,8 +41,8 @@ public class OfertaMateriasFragment extends RecyclerFragment {
 
     @Override
     protected void configureAdapter() {
-        OfertaMateriasAdapter ofertaMateriasAdapter = new OfertaMateriasAdapter(getActivity(), materias);
-        this.setConfiguredAdapter(ofertaMateriasAdapter);
+        OfertaMateriasAdapter adapter = new OfertaMateriasAdapter(getActivity(), materias);
+        this.setConfiguredAdapter(adapter);
     }
 
 }

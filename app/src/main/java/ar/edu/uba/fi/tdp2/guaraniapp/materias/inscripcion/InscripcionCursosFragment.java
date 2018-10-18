@@ -41,8 +41,8 @@ public class InscripcionCursosFragment extends RecyclerFragment {
 
     @Override
     protected void configureAdapter() {
-        InscripcionCursosAdapter inscripcionCursosAdapter = new InscripcionCursosAdapter(getActivity(), cursos);
-        this.setConfiguredAdapter(inscripcionCursosAdapter);
+        InscripcionCursosAdapter adapter = new InscripcionCursosAdapter(getActivity(), cursos);
+        this.setConfiguredAdapter(adapter);
     }
 
     public void setCursos(List<Curso> cursos) {

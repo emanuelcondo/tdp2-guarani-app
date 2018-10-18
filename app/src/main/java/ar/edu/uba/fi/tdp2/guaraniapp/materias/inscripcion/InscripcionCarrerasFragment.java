@@ -30,8 +30,8 @@ public class InscripcionCarrerasFragment  extends RecyclerFragment {
 
     @Override
     protected void configureAdapter() {
-        InscripcionCarrerasAdapter inscripcionCarrerasAdapter = new InscripcionCarrerasAdapter(getActivity());
-        this.setConfiguredAdapter(inscripcionCarrerasAdapter);
+        InscripcionCarrerasAdapter adapter = new InscripcionCarrerasAdapter(getActivity());
+        this.setConfiguredAdapter(adapter);
     }
 
 }

@@ -68,20 +68,5 @@ public class DesinscripcionExamenFragment extends RecyclerFragment implements Re
         //Do nothing?
     }
 
-
-    /*
-    public void onSuccess(List<Inscripcion> inscripciones) {
-        //this.inscripciones = inscripciones;
-        this.getAdapter().notifyDataSetChanged();
-        progressPopup.dismiss();
-    }*/
-
-    /*public void onError() {
-        progressPopup.dismiss();
-    }*/
-
-    /*public List<Inscripcion> getInscripciones() {
-        return this.inscripciones;
-    }*/
 }
 
