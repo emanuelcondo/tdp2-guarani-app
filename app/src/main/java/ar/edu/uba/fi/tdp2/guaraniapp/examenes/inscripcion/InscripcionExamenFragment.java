@@ -4,12 +4,16 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.RecyclerFragment;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
 
 public class InscripcionExamenFragment extends RecyclerFragment {
+
+    private Materia materia;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -20,7 +24,15 @@ public class InscripcionExamenFragment extends RecyclerFragment {
     @Override
     public void onResume() {
         super.onResume();
-        ((MainActivity) getActivity()).setToolbarName(getString(R.string.seleccion_fechas_examenes));
+        setHasOptionsMenu(false);
+        materia = ((MainActivity) getActivity()).getMateriaSeleccionada();
+        String titulo = "";
+        if (materia != null) {
+            titulo = materia.getCodigo() + " " + materia.getNombre();
+        } else {
+            titulo = getString(R.string.seleccion_fechas_examenes);
+        }
+        ((MainActivity) getActivity()).setToolbarName(titulo);
     }
 
     @Override

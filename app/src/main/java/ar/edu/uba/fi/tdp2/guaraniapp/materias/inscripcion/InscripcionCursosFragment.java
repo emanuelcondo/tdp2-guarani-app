@@ -23,6 +23,7 @@ public class InscripcionCursosFragment extends RecyclerFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(false);
         materia = ((MainActivity) getActivity()).getMateriaSeleccionada();
         if (materia == null) {
             Log.d("InscripcionCursosFragment", "No hay materia seleccionada");

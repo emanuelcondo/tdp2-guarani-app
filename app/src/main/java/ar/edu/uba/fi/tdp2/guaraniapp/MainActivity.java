@@ -18,7 +18,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -30,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
-import ar.edu.uba.fi.tdp2.guaraniapp.examenes.FechaExamen;
+import ar.edu.uba.fi.tdp2.guaraniapp.examenes.Examen;
 import ar.edu.uba.fi.tdp2.guaraniapp.examenes.InscripcionExamen;
 import ar.edu.uba.fi.tdp2.guaraniapp.login.LoginFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
@@ -47,13 +46,14 @@ public class MainActivity extends AppCompatActivity
 
     private Alumno alumno;
     private List<Materia> materias = new ArrayList<>();
-    private List<FechaExamen> fechasExamen = new ArrayList<>();
+    private List<Examen> fechasExamen = new ArrayList<>();
 
 
     private Curso cursoSeleccionado;
     private Materia materiaSeleccionada;
     private Inscripcion inscripcionSeleccionada;
     private InscripcionExamen inscripcionExamenSeleccionada;
+    //private Examen examenSeleccionado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,12 +137,14 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+    */
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -261,11 +263,11 @@ public class MainActivity extends AppCompatActivity
         this.inscripcionSeleccionada = inscripcionSeleccionada;
     }
 
-    public List<FechaExamen> getFechasExamen() {
+    public List<Examen> getFechasExamen() {
         return fechasExamen;
     }
 
-    public void setFechasExamen(List<FechaExamen> fechasExamen) {
+    public void setFechasExamen(List<Examen> fechasExamen) {
         this.fechasExamen = fechasExamen;
     }
 
@@ -311,4 +313,14 @@ public class MainActivity extends AppCompatActivity
     public void setInscripcionExamenSeleccionada(InscripcionExamen inscripcionExamenSeleccionada) {
         this.inscripcionExamenSeleccionada = inscripcionExamenSeleccionada;
     }
+
+    /*
+    public Examen getExamenSeleccionado() {
+        return examenSeleccionado;
+    }
+
+    public void setExamenSeleccionado(Examen examenSeleccionado) {
+        this.examenSeleccionado = examenSeleccionado;
+    }
+    */
 }

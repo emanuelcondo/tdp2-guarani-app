@@ -46,12 +46,12 @@ public class InscripcionExamenMateriaViewHolder extends RecyclerView.ViewHolder
 
         //TODO: Sacar el mock
 
-        listener.onRequestCompleted(null);
-        /*RequestSender requestSender = new RequestSender(context);
+        //listener.onRequestCompleted(null);
+        RequestSender requestSender = new RequestSender(context);
 
-        String url = context.getString(R.string.urlAppServer) + "examenes/" + materia.get_id();
+        String url = context.getString(R.string.urlAppServer) + "materias/" + materia.get_id() + "/examenes";
 
-        requestSender.doGet_expectJSONObject(listener, url);*/
+        requestSender.doGet_expectJSONObject(listener, url);
     }
 
     public void bindTo(Materia materia) {

@@ -12,9 +12,8 @@ import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ConfirmationPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
-import ar.edu.uba.fi.tdp2.guaraniapp.examenes.FechaExamen;
+import ar.edu.uba.fi.tdp2.guaraniapp.examenes.Examen;
 import ar.edu.uba.fi.tdp2.guaraniapp.examenes.InscripcionExamen;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 
 public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
         implements ResponseWatcher {
@@ -58,16 +57,16 @@ public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
 
     private void bindViews() {
 
-        FechaExamen fechaExamen = inscripcionExamen.getFechaExamen();
+        Examen examen = inscripcionExamen.getExamen();
 
-        textViewNombreMateria.setText(fechaExamen.getMateria().getNombre());
-        textViewCodigoMateria.setText(String.valueOf((fechaExamen.getMateria().getCodigo())));
-        textViewOportunidad.setText(inscripcionExamen.getFechaExamen().getOportunidad());
-        textViewDocente.setText(fechaExamen.getDocente());
+        textViewNombreMateria.setText(examen.getMateria().getNombre());
+        textViewCodigoMateria.setText(String.valueOf((examen.getMateria().getCodigo())));
+        textViewOportunidad.setText(inscripcionExamen.getExamen().getOportunidad());
+        textViewDocente.setText(examen.getDocente());
 
         confirmationPopup = new ConfirmationPopup(
-                String.valueOf((fechaExamen.getMateria().getCodigo())) + " " + fechaExamen.getMateria().getNombre()
-                , inscripcionExamen.getFechaExamen().getFecha() + " " + inscripcionExamen.getFechaExamen().getHora()
+                String.valueOf((examen.getMateria().getCodigo())) + " " + examen.getMateria().getNombre()
+                , inscripcionExamen.getExamen().getFecha() + " " + inscripcionExamen.getExamen().getHora()
                 , "¿Desea desinscribirse a esta fecha de examen?"
                 , "Desinscribirse"
                 , "Cancelar"
@@ -105,17 +104,17 @@ public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
         TableRow row = new TableRow(itemView.getContext());
 
         TextView textViewFecha = new TextView(itemView.getContext());
-        textViewFecha.setText(inscripcionExamen.getFechaExamen().getFecha() + ", " + inscripcionExamen.getFechaExamen().getHora());
+        textViewFecha.setText(inscripcionExamen.getExamen().getFecha() + ", " + inscripcionExamen.getExamen().getHora());
         textViewFecha.setBackgroundResource(R.drawable.cell_shape);
         textViewFecha.setPadding(8,8,8,8);
 
         TextView textViewSede = new TextView(itemView.getContext());
-        textViewSede.setText(fechaExamen.getSede().getNombre());
+        textViewSede.setText(examen.getSede().getNombre());
         textViewSede.setBackgroundResource(R.drawable.cell_shape);
         textViewSede.setPadding(8,8,8,8);
 
         TextView textViewAula = new TextView(itemView.getContext());
-        textViewAula.setText(inscripcionExamen.getFechaExamen().getAula());
+        textViewAula.setText(inscripcionExamen.getExamen().getAula());
         textViewAula.setBackgroundResource(R.drawable.cell_shape);
         textViewAula.setPadding(8,8,8,8);
 

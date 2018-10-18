@@ -50,7 +50,7 @@ public class InscripcionExamenCarreraViewHolder extends RecyclerView.ViewHolder
         InscripcionExamenMateriasListener listener = new InscripcionExamenMateriasListener(context, this);
         RequestSender requestSender = new RequestSender(context);
 
-        String url = context.getString(R.string.urlAppServer) + "materias/carrera/" + carrera.get_id();
+        String url = context.getString(R.string.urlAppServer) + "oferta-academica/materias/carrera/" + carrera.get_id();
 
         requestSender.doGet_expectJSONObject(listener, url);
     }

@@ -14,28 +14,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@color/colorPrimaryDark">
+            >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/fecha_examen_codigo_materia"
-                android:textColor="@color/white"
+                android:id="@+id/fecha_examen_codigo_curso"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="16sp"
                 android:padding="8dp" />
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/fecha_examen_nombre_materia"
-                android:textColor="@color/white"
+                android:id="@+id/fecha_examen_nombre_curso"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:padding="8dp" />
 
         </LinearLayout>
 
-        <LinearLayout
+        <!--LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -43,7 +43,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/fecha_examen_oportunidad"
+                android:id="@+id/fecha_examen_curso"
                 android:textSize="16sp"
                 android:textColor="@color/colorPrimaryDark"
                 android:padding="8dp" />
@@ -57,7 +57,7 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:padding="8dp" />
 
-        </LinearLayout>
+        </LinearLayout-->
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -10,7 +10,7 @@ import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
-import ar.edu.uba.fi.tdp2.guaraniapp.examenes.FechaExamen;
+import ar.edu.uba.fi.tdp2.guaraniapp.examenes.Examen;
 
 public class InscripcionExamenAdapter extends RecyclerView.Adapter<InscripcionExamenViewHolder> {
 
@@ -28,9 +28,9 @@ public class InscripcionExamenAdapter extends RecyclerView.Adapter<InscripcionEx
 
     @Override
     public void onBindViewHolder(@NonNull InscripcionExamenViewHolder holder, int position) {
-        List<FechaExamen> fechasExamen = activity.getFechasExamen();
-        FechaExamen fechaExamen = fechasExamen.get(position);
-        holder.bindTo(fechaExamen);
+        List<Examen> fechasExamen = activity.getFechasExamen();
+        Examen examen = fechasExamen.get(position);
+        holder.bindTo(examen);
     }
 
     @Override

@@ -6,12 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
-import ar.edu.uba.fi.tdp2.guaraniapp.ResponseParser;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
-import ar.edu.uba.fi.tdp2.guaraniapp.examenes.FechaExamen;
+import ar.edu.uba.fi.tdp2.guaraniapp.examenes.Examen;
 import ar.edu.uba.fi.tdp2.guaraniapp.examenes.InscripcionExamen;
 
 public class DesinscripcionExamenesListener implements ResponseListener {
@@ -34,7 +33,7 @@ public class DesinscripcionExamenesListener implements ResponseListener {
 
             //TODO: Borrar Mock
             final InscripcionExamen inscripcionExamen = new InscripcionExamen();
-            inscripcionExamen.setFechaExamen(new FechaExamen("Paseo Colón", "Adrián", "Bastía", "20/10/2018", "13:30"));
+            inscripcionExamen.setExamen(new Examen("Paseo Colón", "Adrián", "Bastía", "20/10/2018", "13:30"));
             inscripcionExamen.setTimestamp("18/10/2018, 18:24");
             List<InscripcionExamen> inscripciones = new ArrayList<InscripcionExamen>(){{add(inscripcionExamen);}};
             ((MainActivity)context).getAlumno().setInscripcionesExamenes(inscripciones);

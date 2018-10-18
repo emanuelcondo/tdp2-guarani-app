@@ -9,7 +9,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Persona;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Sede;
 
-public class FechaExamen {
+public class Examen {
     private String _id;
 
     private Sede sede;
@@ -23,7 +23,7 @@ public class FechaExamen {
     private Materia materia;
 
     //TODO: Borrar Mock
-    public FechaExamen(String sede, String docenteNombre, String docenteApellido, String fecha, String hora) {
+    public Examen(String sede, String docenteNombre, String docenteApellido, String fecha, String hora) {
         this.sede = new Sede();
         this.sede.setCodigo("1");
         this.sede.setNombre(sede);
@@ -59,7 +59,9 @@ public class FechaExamen {
     }
 
     public String getFecha() {
-        return fecha;
+        String[] data = fecha.split("T");
+        String[] datafecha = data[0].split("-");
+        return datafecha[2] + "/" + datafecha[1] + "/" + datafecha[0];
     }
 
     public void setFecha(String fecha) {
@@ -67,7 +69,8 @@ public class FechaExamen {
     }
 
     public String getHora() {
-        return hora;
+        String[] data = fecha.split("T");
+        return data[1].substring(0,5);
     }
 
     public void setHora(String hora) {

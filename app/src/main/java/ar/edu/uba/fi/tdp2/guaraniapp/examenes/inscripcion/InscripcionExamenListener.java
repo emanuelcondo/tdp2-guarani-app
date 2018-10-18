@@ -3,7 +3,6 @@ package ar.edu.uba.fi.tdp2.guaraniapp.examenes.inscripcion;
 import android.app.Activity;
 import android.content.Context;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +12,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
-import ar.edu.uba.fi.tdp2.guaraniapp.examenes.FechaExamen;
+import ar.edu.uba.fi.tdp2.guaraniapp.examenes.Examen;
 
 public class InscripcionExamenListener implements ResponseListener {
     private Context context;
@@ -30,10 +29,10 @@ public class InscripcionExamenListener implements ResponseListener {
 
             //TODO: Borrar Mock
 
-            //((MainActivity)context).setFechasExamen(ResponseParser.getFechasExamen(response));
+            ((MainActivity)context).setFechasExamen(ResponseParser.getFechasExamen(response));
 
-            List<FechaExamen> fechasDeExamen = new ArrayList<FechaExamen>(){{add(new FechaExamen("Paseo Colón", "Adrián", "Bastía", "20/10/2018", "13:30"));}};
-            ((MainActivity)context).setFechasExamen(fechasDeExamen);
+            //List<Examen> fechasDeExamen = new ArrayList<Examen>(){{add(new Examen("Paseo Colón", "Adrián", "Bastía", "20/10/2018", "13:30"));}};
+            //((MainActivity)context).setFechasExamen(fechasDeExamen);
             FragmentLoader.load((Activity) context, new InscripcionExamenFragment(), "InscripcionExamenes");
 
             watcher.onSuccess();

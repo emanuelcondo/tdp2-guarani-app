@@ -5,8 +5,8 @@ public class InscripcionExamen {
     private String _id;
     private String timestamp;
 
-    //TODO: todos los datos sacarlos de FechaExamen
-    private FechaExamen fechaExamen;
+    //TODO: todos los datos sacarlos de Examen
+    private Examen examen;
 
     public String get_id() {
         return _id;
@@ -24,11 +24,11 @@ public class InscripcionExamen {
         this.timestamp = timestamp;
     }
 
-    public FechaExamen getFechaExamen() {
-        return fechaExamen;
+    public Examen getExamen() {
+        return examen;
     }
 
-    public void setFechaExamen(FechaExamen fechaExamen) {
-        this.fechaExamen = fechaExamen;
+    public void setExamen(Examen examen) {
+        this.examen = examen;
     }
 }
