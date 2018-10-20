@@ -11,7 +11,6 @@ import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionCursosListener;
 
 public class InscripcionExamenMateriaViewHolder extends RecyclerView.ViewHolder
         implements View.OnClickListener, ResponseWatcher {
@@ -42,7 +41,7 @@ public class InscripcionExamenMateriaViewHolder extends RecyclerView.ViewHolder
     private void loadFechasExamen() {
         progressPopup.show();
         Context context = itemView.getContext();
-        InscripcionExamenListener listener = new InscripcionExamenListener(context, this);
+        InscripcionExamenesListener listener = new InscripcionExamenesListener(context, this);
 
         //TODO: Sacar el mock
 

@@ -14,11 +14,11 @@ import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
 import ar.edu.uba.fi.tdp2.guaraniapp.examenes.Examen;
 
-public class InscripcionExamenListener implements ResponseListener {
+public class InscripcionExamenesListener implements ResponseListener {
     private Context context;
     private ResponseWatcher watcher;
 
-    public InscripcionExamenListener(Context context, ResponseWatcher watcher) {
+    public InscripcionExamenesListener(Context context, ResponseWatcher watcher) {
         this.context = context;
         this.watcher = watcher;
     }

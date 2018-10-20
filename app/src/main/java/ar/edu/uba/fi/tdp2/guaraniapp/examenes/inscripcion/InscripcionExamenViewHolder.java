@@ -8,12 +8,16 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ConfirmationPopup;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
 import ar.edu.uba.fi.tdp2.guaraniapp.examenes.Examen;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionListener;
 
 public class InscripcionExamenViewHolder extends RecyclerView.ViewHolder implements ResponseWatcher {
     private TextView textViewCodigo;
@@ -127,7 +131,15 @@ public class InscripcionExamenViewHolder extends RecyclerView.ViewHolder impleme
     public void onSuccess() {
         //TODO: Inscribir examen en el server
         confirmationPopup.dismiss();
-        Toast.makeText(itemView.getContext(), "Inscripcion de examen", Toast.LENGTH_LONG).show();
+
+        InscripcionListener listener = new InscripcionListener(itemView.getContext(), this);
+        RequestSender requestSender = new RequestSender(itemView.getContext());
+
+        String url = itemView.getContext().getString(R.string.urlAppServer) + "inscripciones/cursos/" + examen.get_id();
+
+        requestSender.doPost(listener, url, new JSONObject());
+
+        //Toast.makeText(itemView.getContext(), "Inscripcion de examen", Toast.LENGTH_LONG).show();
     }
 
     @Override
