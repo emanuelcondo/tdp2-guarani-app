@@ -27,12 +27,8 @@ public class InscripcionExamenesListener implements ResponseListener {
     public void onRequestCompleted(Object response) {
         try {
 
-            //TODO: Borrar Mock
-
             ((MainActivity)context).setFechasExamen(ResponseParser.getFechasExamen(response));
 
-            //List<Examen> fechasDeExamen = new ArrayList<Examen>(){{add(new Examen("Paseo Colón", "Adrián", "Bastía", "20/10/2018", "13:30"));}};
-            //((MainActivity)context).setFechasExamen(fechasDeExamen);
             FragmentLoader.load((Activity) context, new InscripcionExamenFragment(), "InscripcionExamenes");
 
             watcher.onSuccess();

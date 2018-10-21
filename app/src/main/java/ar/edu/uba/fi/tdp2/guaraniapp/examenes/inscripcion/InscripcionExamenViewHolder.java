@@ -129,17 +129,16 @@ public class InscripcionExamenViewHolder extends RecyclerView.ViewHolder impleme
 
     @Override
     public void onSuccess() {
-        //TODO: Inscribir examen en el server
+
         confirmationPopup.dismiss();
 
-        InscripcionListener listener = new InscripcionListener(itemView.getContext(), this);
+        InscripcionExamenListener listener = new InscripcionExamenListener(itemView.getContext());
         RequestSender requestSender = new RequestSender(itemView.getContext());
 
-        String url = itemView.getContext().getString(R.string.urlAppServer) + "inscripciones/cursos/" + examen.get_id();
+        String url = itemView.getContext().getString(R.string.urlAppServer) + "inscripciones/examenes/" + examen.get_id();
 
         requestSender.doPost(listener, url, new JSONObject());
 
-        //Toast.makeText(itemView.getContext(), "Inscripcion de examen", Toast.LENGTH_LONG).show();
     }
 
     @Override
