@@ -11,9 +11,11 @@ import android.widget.Toast;
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ConfirmationPopup;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
 import ar.edu.uba.fi.tdp2.guaraniapp.examenes.Examen;
 import ar.edu.uba.fi.tdp2.guaraniapp.examenes.InscripcionExamen;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.desinscripcion.DesinscripcionListener;
 
 public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
         implements ResponseWatcher {
@@ -128,10 +130,18 @@ public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
 
     }
 
+    private void desinscribir() {
+        DesinscripcionListener listener = new DesinscripcionListener(activity, this);
+        RequestSender requestSender = new RequestSender(activity);
+
+        String url = activity.getString(R.string.urlAppServer) + "inscripciones/" + inscripcionExamen.get_id() + "/cursos/";
+
+        requestSender.doDelete(listener, url);
+    }
+
     @Override
     public void onSuccess() {
-        //TODO: Desinscribirse en el server
-        Toast.makeText(activity, "Desinscripcion de examen", Toast.LENGTH_LONG).show();
+        desinscribir();
         confirmationPopup.dismiss();
     }
 

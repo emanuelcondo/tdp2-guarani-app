@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
+import ar.edu.uba.fi.tdp2.guaraniapp.ResponseParser;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
@@ -29,14 +30,16 @@ public class DesinscripcionExamenesListener implements ResponseListener {
     public void onRequestCompleted(Object response) {
         try {
 
-            //((MainActivity)context).getAlumno().setInscripcionesExamenes(ResponseParser.getInscripcionesExamenes(response));
+            ((MainActivity)context).getAlumno().setInscripcionesExamenes(ResponseParser.getInscripcionesExamenes(response));
 
             //TODO: Borrar Mock
+            /*
             final InscripcionExamen inscripcionExamen = new InscripcionExamen();
             inscripcionExamen.setExamen(new Examen("Paseo Colón", "Adrián", "Bastía", "2022-11-07T15:00:00.000Z", "13:30"));
             inscripcionExamen.setTimestamp("18/10/2018, 18:24");
             List<InscripcionExamen> inscripciones = new ArrayList<InscripcionExamen>(){{add(inscripcionExamen);}};
             ((MainActivity)context).getAlumno().setInscripcionesExamenes(inscripciones);
+            */
 
             watcher.onSuccess();
 

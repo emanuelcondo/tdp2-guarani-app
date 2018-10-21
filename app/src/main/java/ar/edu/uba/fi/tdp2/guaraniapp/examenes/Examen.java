@@ -118,3 +118,15 @@ public class Examen {
         this.materia = materia;
     }
 }
+
+
+/*
+"examen": {
+                    "aula": null,
+                    "_id": "5bcb7a1ba99bde7a4fbb601e",
+                    "curso": "5ba718b71dabf8854f11e180",
+                    "materia": "5ba6cdae8b7931ac3e21ddd6",
+                    "fecha": "2018-10-23T12:35:00.000Z",
+                    "__v": 0
+                },
+ */

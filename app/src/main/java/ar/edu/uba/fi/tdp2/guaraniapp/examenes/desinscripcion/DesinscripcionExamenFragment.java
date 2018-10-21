@@ -25,14 +25,10 @@ public class DesinscripcionExamenFragment extends RecyclerFragment implements Re
         DesinscripcionExamenesListener listener = new DesinscripcionExamenesListener(context, this);
         RequestSender requestSender = new RequestSender(context);
 
-        listener.onRequestCompleted(null);
 
-        String id = "";
-        // TODO: Cargar la inscripcion a examen
-        //id = this.inscripcionExamen.get_id();
-        String url = context.getString(R.string.urlAppServer) + "inscripciones/examenes/" + id;
+        String url = context.getString(R.string.urlAppServer) + "inscripciones/examenes";
 
-        //requestSender.doGet_expectJSONObject(listener, url);
+        requestSender.doGet_expectJSONObject(listener, url);
     }
 
     @Override
