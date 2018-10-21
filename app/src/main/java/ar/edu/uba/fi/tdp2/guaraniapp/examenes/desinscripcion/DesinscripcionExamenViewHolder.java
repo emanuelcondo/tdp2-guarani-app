@@ -64,8 +64,8 @@ public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
         textViewNombreMateria.setText(examen.getMateria().getNombre());
         textViewCodigoMateria.setText(String.valueOf((examen.getMateria().getCodigo())));
         textViewOportunidad.setText(inscripcionExamen.getExamen().getOportunidad());
-        //textViewDocente.setText(examen.getDocente());
-        textViewDocente.setText("Perez jose");
+        textViewDocente.setText(examen.getCurso().getDocente());
+        //textViewDocente.setText("Perez jose");
 
         confirmationPopup = new ConfirmationPopup(
                 String.valueOf((examen.getMateria().getCodigo())) + " " + examen.getMateria().getNombre()
@@ -132,10 +132,10 @@ public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
     }
 
     private void desinscribir() {
-        DesinscripcionListener listener = new DesinscripcionListener(activity, this);
+        DesinscripcionExamenListener listener = new DesinscripcionExamenListener(activity);
         RequestSender requestSender = new RequestSender(activity);
 
-        String url = activity.getString(R.string.urlAppServer) + "inscripciones/" + inscripcionExamen.get_id() + "/cursos/";
+        String url = activity.getString(R.string.urlAppServer) + "inscripciones/" + inscripcionExamen.get_id() + "/examenes";
 
         requestSender.doDelete(listener, url);
     }

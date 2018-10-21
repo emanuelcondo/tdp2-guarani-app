@@ -1,19 +1,14 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.examenes;
 
-import java.util.ArrayList;
 
-import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Persona;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Sede;
 
 public class Examen {
     private String _id;
 
     private Sede sede;
-    private Persona docenteACargo;
     private Curso curso;
     private String aula;
     private String oportunidad;
@@ -22,21 +17,7 @@ public class Examen {
 
     private Materia materia;
 
-    //TODO: Borrar Mock
-    public Examen(String sede, String docenteNombre, String docenteApellido, String fecha, String hora) {
-        this.sede = new Sede();
-        this.sede.setCodigo("1");
-        this.sede.setNombre(sede);
-        this.docenteACargo = new Persona(docenteNombre, docenteApellido);
-        this.curso = new Curso(1, new ArrayList<Horario>() {{add(new Horario("Lunes", "12:00", "15:00", "200"));}}, 30);
-        this.curso.setDocenteACargo(docenteACargo);
-        this.curso.setSede(this.sede);
-        this.setMateria(new Materia("75.01", "Algoritmos y Programación I", "Computación"));
-        this.aula = "200";
-        this.fecha = fecha;
-        this.hora = hora;
-        this.oportunidad = "1";
-    }
+    public Examen(){}
 
     public String get_id() {
         return _id;
@@ -44,18 +25,6 @@ public class Examen {
 
     public void set_id(String _id) {
         this._id = _id;
-    }
-
-    public String getDocente() {
-        return docenteACargo.toString();
-    }
-
-    public Persona getDocenteACargo() {
-        return docenteACargo;
-    }
-
-    public void setDocenteACargo(Persona docenteACargo) {
-        this.docenteACargo = docenteACargo;
     }
 
     public String getFecha() {
@@ -84,7 +53,6 @@ public class Examen {
     public void setCurso(Curso curso) {
         this.curso = curso;
     }
-
 
     public Sede getSede() {
         return sede;
@@ -118,15 +86,3 @@ public class Examen {
         this.materia = materia;
     }
 }
-
-
-/*
-"examen": {
-                    "aula": null,
-                    "_id": "5bcb7a1ba99bde7a4fbb601e",
-                    "curso": "5ba718b71dabf8854f11e180",
-                    "materia": "5ba6cdae8b7931ac3e21ddd6",
-                    "fecha": "2018-10-23T12:35:00.000Z",
-                    "__v": 0
-                },
- */
