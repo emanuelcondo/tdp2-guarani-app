@@ -105,6 +105,8 @@ public class LoginFragment extends Fragment implements ResponseListener, Respons
         Token.id = session;
         Token.conectado = true;
 
+        ((MainActivity) getActivity()).sendFirebaseToken();
+
         getAlumnoInfo();
         // Pre-carga de las inscripciones para mostrar en inscripcion
         // solo las materias a las cuales le falta inscribirse
