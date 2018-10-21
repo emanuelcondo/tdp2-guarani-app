@@ -1,6 +1,9 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.examenes.desinscripcion;
 
 import android.content.Context;
+import android.util.Log;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +33,8 @@ public class DesinscripcionExamenesListener implements ResponseListener {
     public void onRequestCompleted(Object response) {
         try {
 
+            String recibido = ((JSONObject)response).toString();
+            Log.d("onRequestCompleted", recibido);
             ((MainActivity)context).getAlumno().setInscripcionesExamenes(ResponseParser.getInscripcionesExamenes(response));
 
             //TODO: Borrar Mock

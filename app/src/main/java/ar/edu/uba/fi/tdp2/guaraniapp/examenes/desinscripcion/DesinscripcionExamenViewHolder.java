@@ -64,7 +64,8 @@ public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
         textViewNombreMateria.setText(examen.getMateria().getNombre());
         textViewCodigoMateria.setText(String.valueOf((examen.getMateria().getCodigo())));
         textViewOportunidad.setText(inscripcionExamen.getExamen().getOportunidad());
-        textViewDocente.setText(examen.getDocente());
+        //textViewDocente.setText(examen.getDocente());
+        textViewDocente.setText("Perez jose");
 
         confirmationPopup = new ConfirmationPopup(
                 String.valueOf((examen.getMateria().getCodigo())) + " " + examen.getMateria().getNombre()
@@ -111,7 +112,7 @@ public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
         textViewFecha.setPadding(8,8,8,8);
 
         TextView textViewSede = new TextView(itemView.getContext());
-        textViewSede.setText(examen.getSede().getNombre());
+        ///textViewSede.setText(examen.getSede().getNombre());
         textViewSede.setBackgroundResource(R.drawable.cell_shape);
         textViewSede.setPadding(8,8,8,8);
 
