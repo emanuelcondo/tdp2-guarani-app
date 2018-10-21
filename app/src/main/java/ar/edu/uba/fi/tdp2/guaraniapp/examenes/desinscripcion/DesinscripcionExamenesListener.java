@@ -33,7 +33,7 @@ public class DesinscripcionExamenesListener implements ResponseListener {
 
             //TODO: Borrar Mock
             final InscripcionExamen inscripcionExamen = new InscripcionExamen();
-            inscripcionExamen.setExamen(new Examen("Paseo Colón", "Adrián", "Bastía", "20/10/2018", "13:30"));
+            inscripcionExamen.setExamen(new Examen("Paseo Colón", "Adrián", "Bastía", "2022-11-07T15:00:00.000Z", "13:30"));
             inscripcionExamen.setTimestamp("18/10/2018, 18:24");
             List<InscripcionExamen> inscripciones = new ArrayList<InscripcionExamen>(){{add(inscripcionExamen);}};
             ((MainActivity)context).getAlumno().setInscripcionesExamenes(inscripciones);

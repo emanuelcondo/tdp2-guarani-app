@@ -278,9 +278,13 @@ public class MainActivity extends AppCompatActivity
             setDesinscripcionesEnabled(inscripciones > 0);
         }
 
-        if (getAlumno().getInscripcionesExamenes() != null) {
-            int inscripcionesExamen = getAlumno().getInscripcionesExamenes().size();
-            setDesinscripcioneExamenesEnabled(inscripcionesExamen > 0);
+    }
+
+    public void flipDesinscripcionExamenes() {
+
+        if (getAlumno().getInscripciones() != null) {
+            int inscripciones = getAlumno().getInscripciones().size();
+            setDesinscripcionesEnabled(inscripciones > 0);
         }
     }
 
