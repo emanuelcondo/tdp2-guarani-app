@@ -35,30 +35,6 @@
 
         </LinearLayout>
 
-        <!--LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/fecha_examen_curso"
-                android:textSize="16sp"
-                android:textColor="@color/colorPrimaryDark"
-                android:padding="8dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/fecha_examen_docente"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimaryDark"
-                android:padding="8dp" />
-
-        </LinearLayout-->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -69,6 +45,33 @@
                 android:stretchColumns="*"
                 android:id="@+id/tabla_horario_examen"
                 android:background="@drawable/cell_shape" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:background="@color/colorPrimary"
+                android:text="@string/anotarse_regular_examen"
+                android:id="@+id/anotarse_regular_examen_boton"
+                android:layout_weight="1"
+                android:layout_marginEnd="2dp"/>
+
+            <android.support.v7.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:background="@color/light_grey"
+                android:text="@string/anotarse_libre_examen"
+                android:layout_weight="1"
+                android:layout_marginStart="2dp"
+                android:id="@+id/anotarse_libre_examen_boton"/>
+
         </LinearLayout>
 
     </LinearLayout>

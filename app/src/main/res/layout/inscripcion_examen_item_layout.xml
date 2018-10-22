@@ -43,7 +43,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/inscripcion_examen_oportunidad"
+                android:id="@+id/inscripcion_examen_numero_curso"
                 android:textSize="16sp"
                 android:textColor="@color/colorPrimaryDark"
                 android:padding="8dp" />

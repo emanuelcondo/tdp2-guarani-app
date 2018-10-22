@@ -21,7 +21,7 @@ public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
         implements ResponseWatcher {
     private TextView textViewCodigoMateria;
     private TextView textViewNombreMateria;
-    private TextView textViewOportunidad;
+    private TextView textViewNumeroCurso;
     private TextView textViewDocente;
     private TableLayout tableHorarioExamen;
     private TextView textViewFechaInscripcion;
@@ -37,7 +37,7 @@ public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
 
         textViewCodigoMateria = itemView.findViewById(R.id.inscripcion_examen_codigo_materia);
         textViewNombreMateria = itemView.findViewById(R.id.inscripcion_examen_nombre_materia);
-        textViewOportunidad = itemView.findViewById(R.id.inscripcion_examen_oportunidad);
+        textViewNumeroCurso = itemView.findViewById(R.id.inscripcion_examen_numero_curso);
         textViewDocente = itemView.findViewById(R.id.inscripcion_examen_docente);
         tableHorarioExamen = itemView.findViewById(R.id.tabla_horario_inscripcion_examen);
         textViewFechaInscripcion = itemView.findViewById(R.id.fecha_inscripcion_examen);
@@ -63,13 +63,12 @@ public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
 
         textViewNombreMateria.setText(examen.getMateria().getNombre());
         textViewCodigoMateria.setText(String.valueOf((examen.getMateria().getCodigo())));
-        textViewOportunidad.setText(inscripcionExamen.getExamen().getOportunidad());
+        textViewNumeroCurso.setText(itemView.getContext().getString(R.string.curso_header, examen.getCurso().getComision()));
         textViewDocente.setText(examen.getCurso().getDocente());
-        //textViewDocente.setText("Perez jose");
 
         confirmationPopup = new ConfirmationPopup(
                 String.valueOf((examen.getMateria().getCodigo())) + " " + examen.getMateria().getNombre()
-                , inscripcionExamen.getExamen().getFecha() + " " + inscripcionExamen.getExamen().getHora()
+                , examen.getFecha()
                 , "¿Desea desinscribirse a esta fecha de examen?"
                 , "Desinscribirse"
                 , "Cancelar"
@@ -77,14 +76,15 @@ public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
                 , itemView.getContext());
 
         TableRow header = new TableRow(itemView.getContext());
-        TextView textViewHorario = new TextView(itemView.getContext());
-        textViewHorario.setText(R.string.horario_examen_header);
-        textViewHorario.setTextSize(14);
-        textViewHorario.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.white));
-        textViewHorario.setBackgroundResource(R.color.colorPrimary);
-        textViewHorario.setPadding(8,8,8,8);
 
-        TextView textViewHeaderSede = new TextView(itemView.getContext());
+        TextView textViewHeaderFecha = new TextView(itemView.getContext());
+        textViewHeaderFecha.setText(R.string.horario_examen_header);
+        textViewHeaderFecha.setTextSize(14);
+        textViewHeaderFecha.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.white));
+        textViewHeaderFecha.setBackgroundResource(R.color.colorPrimary);
+        textViewHeaderFecha.setPadding(8,8,8,8);
+
+        /*TextView textViewHeaderSede = new TextView(itemView.getContext());
         textViewHeaderSede.setText(R.string.sede_header);
         textViewHeaderSede.setTextSize(14);
         textViewHeaderSede.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.white));
@@ -96,36 +96,37 @@ public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
         textViewHeaderAula.setTextSize(14);
         textViewHeaderAula.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.white));
         textViewHeaderAula.setBackgroundResource(R.color.colorPrimary);
-        textViewHeaderAula.setPadding(8,8,8,8);
+        textViewHeaderAula.setPadding(8,8,8,8);*/
 
-        header.addView(textViewHorario);
-        header.addView(textViewHeaderSede);
-        header.addView(textViewHeaderAula);
+        header.addView(textViewHeaderFecha);
+        /*header.addView(textViewHeaderSede);
+        header.addView(textViewHeaderAula);*/
 
         tableHorarioExamen.addView(header);
 
         TableRow row = new TableRow(itemView.getContext());
 
         TextView textViewFecha = new TextView(itemView.getContext());
-        textViewFecha.setText(inscripcionExamen.getExamen().getFecha() + ", " + inscripcionExamen.getExamen().getHora());
+        textViewFecha.setText(examen.getFecha());
         textViewFecha.setBackgroundResource(R.drawable.cell_shape);
         textViewFecha.setPadding(8,8,8,8);
 
-        TextView textViewSede = new TextView(itemView.getContext());
-        ///textViewSede.setText(examen.getSede().getNombre());
+        /*TextView textViewSede = new TextView(itemView.getContext());
+        textViewSede.setText(examen.getAula().getSede());
         textViewSede.setBackgroundResource(R.drawable.cell_shape);
         textViewSede.setPadding(8,8,8,8);
 
         TextView textViewAula = new TextView(itemView.getContext());
-        textViewAula.setText(inscripcionExamen.getExamen().getAula());
+        textViewAula.setText(examen.getAula().getAula());
         textViewAula.setBackgroundResource(R.drawable.cell_shape);
-        textViewAula.setPadding(8,8,8,8);
+        textViewAula.setPadding(8,8,8,8);*/
 
         row.addView(textViewFecha);
-        row.addView(textViewSede);
-        row.addView(textViewAula);
+        /*row.addView(textViewSede);
+        row.addView(textViewAula);*/
 
         tableHorarioExamen.addView(row);
+
         String fechaInscripcion = "Fecha de Inscripción: " + inscripcionExamen.getTimestamp();
         textViewFechaInscripcion.setText(fechaInscripcion);
 

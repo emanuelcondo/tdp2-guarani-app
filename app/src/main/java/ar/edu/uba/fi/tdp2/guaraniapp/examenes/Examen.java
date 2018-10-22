@@ -1,6 +1,12 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.examenes;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Sede;
@@ -8,14 +14,10 @@ import ar.edu.uba.fi.tdp2.guaraniapp.materias.Sede;
 public class Examen {
     private String _id;
 
-    private Sede sede;
+    private Aula aula;
     private Curso curso;
-    private String aula;
-    private String oportunidad;
-    private String fecha;
-    private String hora;
-
     private Materia materia;
+    private String fecha;
 
     public Examen(){}
 
@@ -28,22 +30,21 @@ public class Examen {
     }
 
     public String getFecha() {
-        String[] data = fecha.split("T");
-        String[] datafecha = data[0].split("-");
-        return datafecha[2] + "/" + datafecha[1] + "/" + datafecha[0];
+        Date date = null;
+        try {
+            date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault()).parse(fecha);
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            cal.add(Calendar.HOUR, -3);
+            date = cal.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault()).format(date);
     }
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
-    }
-
-    public String getHora() {
-        String[] data = fecha.split("T");
-        return data[1].substring(0,5);
-    }
-
-    public void setHora(String hora) {
-        this.hora = hora;
     }
 
     public Curso getCurso() {
@@ -54,28 +55,12 @@ public class Examen {
         this.curso = curso;
     }
 
-    public Sede getSede() {
-        return sede;
-    }
-
-    public void setSede(Sede sede) {
-        this.sede = sede;
-    }
-
-    public String getAula() {
+    public Aula getAula() {
         return aula;
     }
 
-    public void setAula(String aula) {
+    public void setAula(Aula aula) {
         this.aula = aula;
-    }
-
-    public String getOportunidad() {
-        return oportunidad;
-    }
-
-    public void setOportunidad(String oportunidad) {
-        this.oportunidad = oportunidad;
     }
 
     public Materia getMateria() {
