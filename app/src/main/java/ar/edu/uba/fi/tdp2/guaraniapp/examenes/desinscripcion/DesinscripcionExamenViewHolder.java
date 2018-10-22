@@ -84,23 +84,7 @@ public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
         textViewHeaderFecha.setBackgroundResource(R.color.colorPrimary);
         textViewHeaderFecha.setPadding(8,8,8,8);
 
-        /*TextView textViewHeaderSede = new TextView(itemView.getContext());
-        textViewHeaderSede.setText(R.string.sede_header);
-        textViewHeaderSede.setTextSize(14);
-        textViewHeaderSede.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.white));
-        textViewHeaderSede.setBackgroundResource(R.color.colorPrimary);
-        textViewHeaderSede.setPadding(8,8,8,8);
-
-        TextView textViewHeaderAula = new TextView(itemView.getContext());
-        textViewHeaderAula.setText(R.string.aula_header);
-        textViewHeaderAula.setTextSize(14);
-        textViewHeaderAula.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.white));
-        textViewHeaderAula.setBackgroundResource(R.color.colorPrimary);
-        textViewHeaderAula.setPadding(8,8,8,8);*/
-
         header.addView(textViewHeaderFecha);
-        /*header.addView(textViewHeaderSede);
-        header.addView(textViewHeaderAula);*/
 
         tableHorarioExamen.addView(header);
 
@@ -111,19 +95,7 @@ public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
         textViewFecha.setBackgroundResource(R.drawable.cell_shape);
         textViewFecha.setPadding(8,8,8,8);
 
-        /*TextView textViewSede = new TextView(itemView.getContext());
-        textViewSede.setText(examen.getAula().getSede());
-        textViewSede.setBackgroundResource(R.drawable.cell_shape);
-        textViewSede.setPadding(8,8,8,8);
-
-        TextView textViewAula = new TextView(itemView.getContext());
-        textViewAula.setText(examen.getAula().getAula());
-        textViewAula.setBackgroundResource(R.drawable.cell_shape);
-        textViewAula.setPadding(8,8,8,8);*/
-
         row.addView(textViewFecha);
-        /*row.addView(textViewSede);
-        row.addView(textViewAula);*/
 
         tableHorarioExamen.addView(row);
 
