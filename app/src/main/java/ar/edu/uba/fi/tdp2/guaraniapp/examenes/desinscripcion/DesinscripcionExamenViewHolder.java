@@ -75,6 +75,8 @@ public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
                 , this
                 , itemView.getContext());
 
+        tableHorarioExamen.removeAllViews();
+
         TableRow header = new TableRow(itemView.getContext());
 
         TextView textViewHeaderFecha = new TextView(itemView.getContext());

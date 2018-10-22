@@ -43,7 +43,7 @@ class InscripcionExamenRegularWatcher implements ResponseWatcher {
 
         Map<String,String> parametros;
         parametros = new HashMap<>();
-        parametros.put("condicion", context.getString(R.string.anotarse_libre_examen));
+        parametros.put("condicion", context.getString(R.string.anotarse_regular_examen));
 
         String url = context.getString(R.string.urlAppServer) + "inscripciones/examenes/" + examen.get_id();
 
