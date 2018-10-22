@@ -113,6 +113,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                         .setContentText(messageBody)
                         .setAutoCancel(true)
                         .setSound(defaultSoundUri)
+                        .setStyle(new NotificationCompat.BigTextStyle()
+                                .bigText(messageBody))
                         .setContentIntent(pendingIntent);
 
         NotificationManager notificationManager =
