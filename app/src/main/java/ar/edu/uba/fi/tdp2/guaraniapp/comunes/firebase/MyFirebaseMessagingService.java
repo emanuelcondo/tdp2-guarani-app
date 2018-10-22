@@ -115,6 +115,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                         .setSound(defaultSoundUri)
                         .setStyle(new NotificationCompat.BigTextStyle()
                                 .bigText(messageBody))
+                        .setVibrate(new long[] { 1000, 1000 })
                         .setContentIntent(pendingIntent);
 
         NotificationManager notificationManager =
