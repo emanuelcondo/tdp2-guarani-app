@@ -26,7 +26,8 @@ public class DesinscripcionCursosListener implements ResponseListener {
     public void onRequestCompleted(Object response) {
         try {
 
-            ((MainActivity)context).getAlumno().setInscripciones(ResponseParser.getInscripciones(response));
+            if (((MainActivity)context).getAlumno() != null)
+                ((MainActivity)context).getAlumno().setInscripciones(ResponseParser.getInscripciones(response));
             watcher.onSuccess();
 
         } catch (RuntimeException e) {

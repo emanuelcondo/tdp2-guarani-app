@@ -42,7 +42,7 @@ public class InscripcionExamenFragment extends RecyclerFragment {
 
     @Override
     protected void configureAdapter() {
-        InscripcionExamenAdapter adapter = new InscripcionExamenAdapter(getActivity());
+        InscripcionExamenAdapter adapter = new InscripcionExamenAdapter(getActivity(), this);
         this.setConfiguredAdapter(adapter);
     }
 

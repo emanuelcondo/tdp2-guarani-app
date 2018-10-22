@@ -16,15 +16,17 @@ import ar.edu.uba.fi.tdp2.guaraniapp.materias.Inscripcion;
 public class DesinscripcionExamenAdapter extends RecyclerView.Adapter<DesinscripcionExamenViewHolder> {
 
     private MainActivity activity;
+    private DesinscripcionExamenFragment desinscripcionExamenFragment;
 
-    public DesinscripcionExamenAdapter(Activity activity) {
+    public DesinscripcionExamenAdapter(Activity activity, DesinscripcionExamenFragment desinscripcionExamenFragment) {
         this.activity = (MainActivity)activity;
+        this.desinscripcionExamenFragment = desinscripcionExamenFragment;
     }
 
     @NonNull
     @Override
     public DesinscripcionExamenViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new DesinscripcionExamenViewHolder(LayoutInflater.from(activity).inflate(R.layout.inscripcion_examen_item_layout, parent, false), activity);
+        return new DesinscripcionExamenViewHolder(LayoutInflater.from(activity).inflate(R.layout.inscripcion_examen_item_layout, parent, false), activity, desinscripcionExamenFragment);
     }
 
     @Override

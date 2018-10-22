@@ -15,15 +15,17 @@ import ar.edu.uba.fi.tdp2.guaraniapp.examenes.Examen;
 public class InscripcionExamenAdapter extends RecyclerView.Adapter<InscripcionExamenViewHolder> {
 
     private MainActivity activity;
+    private InscripcionExamenFragment inscripcionExamenFragment;
 
-    public InscripcionExamenAdapter(Activity activity) {
+    public InscripcionExamenAdapter(Activity activity, InscripcionExamenFragment inscripcionExamenFragment) {
         this.activity = (MainActivity)activity;
+        this.inscripcionExamenFragment = inscripcionExamenFragment;
     }
 
     @NonNull
     @Override
     public InscripcionExamenViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new InscripcionExamenViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.fecha_examen_item_layout, parent, false));
+        return new InscripcionExamenViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.fecha_examen_item_layout, parent, false), inscripcionExamenFragment);
     }
 
     @Override

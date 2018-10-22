@@ -14,20 +14,26 @@ import ar.edu.uba.fi.tdp2.guaraniapp.examenes.Examen;
 import ar.edu.uba.fi.tdp2.guaraniapp.examenes.InscripcionExamen;
 
 public class DesinscripcionExamenListener implements ResponseListener {
-    private Context context;
+    private DesinscripcionExamenFragment desinscripcionExamenFragment;
+    private InscripcionExamen inscripcionExamen;
 
-    public DesinscripcionExamenListener(Context context) {
-        this.context = context;
+    public DesinscripcionExamenListener(DesinscripcionExamenFragment desinscripcionExamenFragment, InscripcionExamen inscripcionExamen) {
+        this.desinscripcionExamenFragment = desinscripcionExamenFragment;
+        this.inscripcionExamen = inscripcionExamen;
     }
 
     @Override
     public void onRequestCompleted(Object response) {
-        RequestHelper.showError(context, "Desinscripción exitosa");
+        RequestHelper.showError(desinscripcionExamenFragment.getContext(), "Desinscripción exitosa");
+        desinscripcionExamenFragment.onResume();
+        desinscripcionExamenFragment.progressPopup.dismiss();
+        ((MainActivity) desinscripcionExamenFragment.getActivity()).removeInscripcionExamen(inscripcionExamen);
+        ((MainActivity) desinscripcionExamenFragment.getActivity()).flipDesinscripcionExamenes();
     }
 
     @Override
     public void onRequestError(int codError, String errorMessage) {
-        RequestHelper.showError(context, errorMessage);
+        RequestHelper.showError(desinscripcionExamenFragment.getContext(), errorMessage);
     }
 
 }

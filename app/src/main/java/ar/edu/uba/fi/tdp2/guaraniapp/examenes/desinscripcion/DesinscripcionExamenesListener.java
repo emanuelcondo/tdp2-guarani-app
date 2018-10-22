@@ -33,7 +33,8 @@ public class DesinscripcionExamenesListener implements ResponseListener {
     public void onRequestCompleted(Object response) {
         try {
 
-            ((MainActivity)context).getAlumno().setInscripcionesExamenes(ResponseParser.getInscripcionesExamenes(response));
+            if (((MainActivity)context).getAlumno() != null)
+                ((MainActivity)context).getAlumno().setInscripcionesExamenes(ResponseParser.getInscripcionesExamenes(response));
 
             watcher.onSuccess();
 

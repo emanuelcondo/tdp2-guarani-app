@@ -76,9 +76,6 @@ public class MainActivity extends AppCompatActivity
 
         FragmentLoader.load(this, new LoginFragment(), "Login");
 
-        //TODO: Sacar esto
-        setDesinscripcioneExamenesEnabled(true);
-
         firebaseMessagingManager = new FirebaseMessagingManager(this);
     }
 
@@ -229,19 +226,16 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void flipDesinscripcion() {
-
         if (getAlumno().getInscripciones() != null) {
             int inscripciones = getAlumno().getInscripciones().size();
             setDesinscripcionesEnabled(inscripciones > 0);
         }
-
     }
 
     public void flipDesinscripcionExamenes() {
-
-        if (getAlumno().getInscripciones() != null) {
-            int inscripciones = getAlumno().getInscripciones().size();
-            setDesinscripcionesEnabled(inscripciones > 0);
+        if (getAlumno().getInscripcionesExamenes() != null) {
+            int inscripciones = getAlumno().getInscripcionesExamenes().size();
+            setDesinscripcionesExamenesEnabled(inscripciones > 0);
         }
     }
 
@@ -253,7 +247,7 @@ public class MainActivity extends AppCompatActivity
         nav_desinscr.setEnabled(enabled);
     }
 
-    public void setDesinscripcioneExamenesEnabled(boolean enabled) {
+    public void setDesinscripcionesExamenesEnabled(boolean enabled) {
         NavigationView navigationView = findViewById(R.id.nav_view);
 
         Menu menuNav = navigationView.getMenu();
@@ -264,7 +258,6 @@ public class MainActivity extends AppCompatActivity
     public void eliminarInscripcion(Inscripcion inscripcion) {
         alumno.eliminarInscripcion(inscripcion);
         flipDesinscripcion();
-
     }
 
     public InscripcionExamen getInscripcionExamenSeleccionada() {
@@ -277,6 +270,14 @@ public class MainActivity extends AppCompatActivity
 
     public void sendFirebaseToken() {
         firebaseMessagingManager.sendFirebaseToken();
+    }
+
+    public void removeFechaExamen(Examen examen) {
+        this.fechasExamen.remove(examen);
+    }
+
+    public void removeInscripcionExamen(InscripcionExamen inscripcionExamen) {
+        this.alumno.getInscripcionesExamenes().remove(inscripcionExamen);
     }
 
     /*

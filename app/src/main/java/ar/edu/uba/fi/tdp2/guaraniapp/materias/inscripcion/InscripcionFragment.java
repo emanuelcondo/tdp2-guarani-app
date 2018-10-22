@@ -49,7 +49,7 @@ public class InscripcionFragment extends Fragment  implements ResponseWatcher {
 
         init(rootView);
 
-        progressPopup = new ProgressPopup("Inscribiendo...", getContext());
+        progressPopup = new ProgressPopup("Inscribiendo...", rootView.getContext());
 
         return rootView;
     }

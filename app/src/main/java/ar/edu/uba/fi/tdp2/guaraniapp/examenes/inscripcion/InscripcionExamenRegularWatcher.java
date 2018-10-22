@@ -17,11 +17,11 @@ class InscripcionExamenRegularWatcher implements ResponseWatcher {
     private Examen examen;
 
     private ConfirmationPopup confirmationPopup;
-    private Context context;
+    private InscripcionExamenFragment inscripcionExamenFragment;
 
-    public InscripcionExamenRegularWatcher(Examen examen, Context context) {
+    public InscripcionExamenRegularWatcher(Examen examen, InscripcionExamenFragment inscripcionExamenFragment) {
         this.examen = examen;
-        this.context = context;
+        this.inscripcionExamenFragment = inscripcionExamenFragment;
 
         confirmationPopup = new ConfirmationPopup(
                 String.valueOf((examen.getMateria().getCodigo())) + " " + examen.getMateria().getNombre()
@@ -30,7 +30,7 @@ class InscripcionExamenRegularWatcher implements ResponseWatcher {
                 , "Inscribirse"
                 , "Cancelar"
                 , this
-                , context);
+                , inscripcionExamenFragment.getContext());
         confirmationPopup.show();
     }
 
@@ -38,14 +38,14 @@ class InscripcionExamenRegularWatcher implements ResponseWatcher {
     public void onSuccess() {
         confirmationPopup.dismiss();
 
-        InscripcionExamenListener listener = new InscripcionExamenListener(context);
-        RequestSender requestSender = new RequestSender(context);
+        InscripcionExamenListener listener = new InscripcionExamenListener(examen, inscripcionExamenFragment);
+        RequestSender requestSender = new RequestSender(inscripcionExamenFragment.getContext());
 
         Map<String,String> parametros;
         parametros = new HashMap<>();
-        parametros.put("condicion", context.getString(R.string.anotarse_regular_examen));
+        parametros.put("condicion", inscripcionExamenFragment.getContext().getString(R.string.anotarse_regular_examen));
 
-        String url = context.getString(R.string.urlAppServer) + "inscripciones/examenes/" + examen.get_id();
+        String url = inscripcionExamenFragment.getContext().getString(R.string.urlAppServer) + "inscripciones/examenes/" + examen.get_id();
 
         requestSender.doPost(listener, url, new JSONObject(parametros));
 

@@ -31,7 +31,7 @@ public class InscripcionExamenViewHolder extends RecyclerView.ViewHolder {
 
     private Examen examen;
 
-    public InscripcionExamenViewHolder(final View itemView) {
+    public InscripcionExamenViewHolder(final View itemView, final InscripcionExamenFragment inscripcionExamenFragment) {
         super(itemView);
 
         textViewNumeroCurso = itemView.findViewById(R.id.fecha_examen_codigo_curso);
@@ -44,13 +44,13 @@ public class InscripcionExamenViewHolder extends RecyclerView.ViewHolder {
         botonRegular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new InscripcionExamenRegularWatcher(examen, itemView.getContext());
+                new InscripcionExamenRegularWatcher(examen, inscripcionExamenFragment);
             }
         });
         botonLibre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new InscripcionExamenLibreWatcher(examen, itemView.getContext());
+                new InscripcionExamenLibreWatcher(examen, inscripcionExamenFragment);
             }
         });
     }

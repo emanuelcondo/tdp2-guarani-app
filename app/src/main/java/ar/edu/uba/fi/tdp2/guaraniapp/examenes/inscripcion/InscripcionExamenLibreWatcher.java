@@ -12,16 +12,17 @@ import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ConfirmationPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
 import ar.edu.uba.fi.tdp2.guaraniapp.examenes.Examen;
+import ar.edu.uba.fi.tdp2.guaraniapp.examenes.InscripcionExamen;
 
 class InscripcionExamenLibreWatcher implements ResponseWatcher {
     private Examen examen;
 
     private ConfirmationPopup confirmationPopup;
-    private Context context;
+    private InscripcionExamenFragment inscripcionExamenFragment;
 
-    public InscripcionExamenLibreWatcher(Examen examen, Context context) {
+    public InscripcionExamenLibreWatcher(Examen examen, InscripcionExamenFragment inscripcionExamenFragment) {
         this.examen = examen;
-        this.context = context;
+        this.inscripcionExamenFragment = inscripcionExamenFragment;
 
         confirmationPopup = new ConfirmationPopup(
                 String.valueOf((examen.getMateria().getCodigo())) + " " + examen.getMateria().getNombre()
@@ -30,7 +31,7 @@ class InscripcionExamenLibreWatcher implements ResponseWatcher {
                 , "Inscribirse"
                 , "Cancelar"
                 , this
-                , context);
+                , inscripcionExamenFragment.getContext());
         confirmationPopup.show();
     }
 
@@ -38,13 +39,13 @@ class InscripcionExamenLibreWatcher implements ResponseWatcher {
     public void onSuccess() {
         confirmationPopup.dismiss();
 
-        InscripcionExamenListener listener = new InscripcionExamenListener(context);
-        RequestSender requestSender = new RequestSender(context);
+        InscripcionExamenListener listener = new InscripcionExamenListener(examen, inscripcionExamenFragment);
+        RequestSender requestSender = new RequestSender(inscripcionExamenFragment.getContext());
 
         Map<String,String> parametros;
         parametros = new HashMap<>();
-        parametros.put("condicion", context.getString(R.string.anotarse_libre_examen));
-        String url = context.getString(R.string.urlAppServer) + "inscripciones/examenes/" + examen.get_id();
+        parametros.put("condicion", inscripcionExamenFragment.getContext().getString(R.string.anotarse_libre_examen));
+        String url = inscripcionExamenFragment.getContext().getString(R.string.urlAppServer) + "inscripciones/examenes/" + examen.get_id();
 
         requestSender.doPost(listener, url, new JSONObject(parametros));
 

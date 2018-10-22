@@ -2,28 +2,38 @@ package ar.edu.uba.fi.tdp2.guaraniapp.examenes.inscripcion;
 
 import android.content.Context;
 
+import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
+import ar.edu.uba.fi.tdp2.guaraniapp.examenes.Examen;
 
 public class InscripcionExamenListener implements ResponseListener {
-    private Context context;
+    private Examen examen;
+
+    private InscripcionExamenFragment inscripcionExamenFragment;
     private ProgressPopup progressPopup;
 
-    public InscripcionExamenListener(Context context) {
-        this.context = context;
-        progressPopup = new ProgressPopup("Inscripción en curso...", context);
+    public InscripcionExamenListener(Examen examen, InscripcionExamenFragment inscripcionExamenFragment) {
+        this.examen = examen;
+        this.inscripcionExamenFragment = inscripcionExamenFragment;
+        progressPopup = new ProgressPopup("Inscribiendo en examen...", inscripcionExamenFragment.getContext());
+        progressPopup.show();
     }
 
     @Override
     public void onRequestCompleted(Object response) {
-        RequestHelper.showError(context, "Inscripción exitosa");
+        // habilito en el menu la desinscripcion
+        ((MainActivity) inscripcionExamenFragment.getActivity()).setDesinscripcionesExamenesEnabled(true);
+        ((MainActivity) inscripcionExamenFragment.getActivity()).removeFechaExamen(examen);
+        inscripcionExamenFragment.getAdapter().notifyDataSetChanged();
+        RequestHelper.showError(inscripcionExamenFragment.getContext(), "Inscripción exitosa");
         progressPopup.dismiss();
     }
 
     @Override
     public void onRequestError(int codError, String errorMessage) {
-        RequestHelper.showError(context, errorMessage);
+        RequestHelper.showError(inscripcionExamenFragment.getContext(), errorMessage);
         progressPopup.dismiss();
     }
 

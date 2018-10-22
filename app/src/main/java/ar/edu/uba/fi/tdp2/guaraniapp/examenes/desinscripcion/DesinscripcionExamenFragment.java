@@ -8,16 +8,22 @@ import android.support.v7.widget.RecyclerView;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.RecyclerFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
 
 public class DesinscripcionExamenFragment extends RecyclerFragment implements ResponseWatcher {
 
+    public ProgressPopup progressPopup;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(false);
+
+        progressPopup = new ProgressPopup("Desinscribiendo de examen...", getContext());
+
     }
 
     private void loadInscripcionesExamenes() {
@@ -48,13 +54,12 @@ public class DesinscripcionExamenFragment extends RecyclerFragment implements Re
 
     @Override
     protected void configureAdapter() {
-        DesinscripcionExamenAdapter adapter = new DesinscripcionExamenAdapter(getActivity());
+        DesinscripcionExamenAdapter adapter = new DesinscripcionExamenAdapter(getActivity(), this);
         this.setConfiguredAdapter(adapter);
     }
 
     @Override
     public void onSuccess() {
-
         getAdapter().notifyDataSetChanged();
     }
 

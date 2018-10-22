@@ -11,6 +11,7 @@ import android.widget.Toast;
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ConfirmationPopup;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
 import ar.edu.uba.fi.tdp2.guaraniapp.examenes.Examen;
@@ -31,8 +32,9 @@ public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
     private ConfirmationPopup confirmationPopup;
 
     private MainActivity activity;
+    private DesinscripcionExamenFragment desinscripcionExamenFragment;
 
-    public DesinscripcionExamenViewHolder(View itemView, MainActivity activity) {
+    public DesinscripcionExamenViewHolder(View itemView, MainActivity activity, DesinscripcionExamenFragment desinscripcionExamenFragment) {
         super(itemView);
 
         textViewCodigoMateria = itemView.findViewById(R.id.inscripcion_examen_codigo_materia);
@@ -50,6 +52,7 @@ public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
         });
 
         this.activity = activity;
+        this.desinscripcionExamenFragment = desinscripcionExamenFragment;
     }
 
     public void bindTo(InscripcionExamen inscripcionExamen) {
@@ -107,7 +110,8 @@ public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
     }
 
     private void desinscribir() {
-        DesinscripcionExamenListener listener = new DesinscripcionExamenListener(activity);
+        desinscripcionExamenFragment.progressPopup.show();
+        DesinscripcionExamenListener listener = new DesinscripcionExamenListener(desinscripcionExamenFragment, inscripcionExamen);
         RequestSender requestSender = new RequestSender(activity);
 
         String url = activity.getString(R.string.urlAppServer) + "inscripciones/" + inscripcionExamen.get_id() + "/examenes";
@@ -125,4 +129,5 @@ public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
     public void onError() {
         confirmationPopup.dismiss();
     }
+
 }
