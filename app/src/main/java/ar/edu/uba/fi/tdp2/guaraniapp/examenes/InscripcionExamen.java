@@ -12,7 +12,6 @@ public class InscripcionExamen {
     private String timestamp;
     private String condicion;
 
-    //TODO: todos los datos sacarlos de Examen
     private Examen examen;
 
     public String get_id() {

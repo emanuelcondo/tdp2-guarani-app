@@ -4,6 +4,9 @@ import android.content.Context;
 
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ConfirmationPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
@@ -38,9 +41,13 @@ class InscripcionExamenRegularWatcher implements ResponseWatcher {
         InscripcionExamenListener listener = new InscripcionExamenListener(context);
         RequestSender requestSender = new RequestSender(context);
 
+        Map<String,String> parametros;
+        parametros = new HashMap<>();
+        parametros.put("condicion", context.getString(R.string.anotarse_libre_examen));
+
         String url = context.getString(R.string.urlAppServer) + "inscripciones/examenes/" + examen.get_id();
 
-        requestSender.doPost(listener, url, new JSONObject());
+        requestSender.doPost(listener, url, new JSONObject(parametros));
 
     }
 
