@@ -64,6 +64,8 @@ public class InscripcionExamenViewHolder extends RecyclerView.ViewHolder {
         textViewNumeroCurso.setText(itemView.getContext().getString(R.string.curso_header, curso.getComision()));
         this.examen = examen;
 
+        tableHorarioExamen.removeAllViews();
+
         TableRow header = new TableRow(itemView.getContext());
 
         TextView textViewHeaderFecha = new TextView(itemView.getContext());
