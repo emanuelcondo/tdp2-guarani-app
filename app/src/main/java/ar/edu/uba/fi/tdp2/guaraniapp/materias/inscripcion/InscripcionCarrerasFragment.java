@@ -20,7 +20,7 @@ public class InscripcionCarrerasFragment  extends RecyclerFragment {
     @Override
     public void onResume() {
         super.onResume();
-        ((MainActivity) getActivity()).setToolbarName(getString(R.string.seleccion_carrera));
+        ((MainActivity) getActivity()).setToolbarName(getString(R.string.seleccion_carrera_inscripcion_cursos));
     }
 
     @Override

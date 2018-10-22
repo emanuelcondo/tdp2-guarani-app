@@ -15,15 +15,12 @@ public class OfertaCarrerasFragment extends RecyclerFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(false);
-
-
-        ((MainActivity) getActivity()).setToolbarName(getString(R.string.seleccion_carrera));
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        ((MainActivity) getActivity()).setToolbarName(getString(R.string.seleccion_carrera));
+        ((MainActivity) getActivity()).setToolbarName(getString(R.string.seleccion_carrera_oferta));
     }
 
     @Override
