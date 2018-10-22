@@ -35,6 +35,7 @@ public class Examen {
             date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault()).parse(fecha);
             Calendar cal = Calendar.getInstance();
             cal.setTime(date);
+            cal.add(Calendar.HOUR, -3);
             date = cal.getTime();
         } catch (ParseException e) {
             e.printStackTrace();
