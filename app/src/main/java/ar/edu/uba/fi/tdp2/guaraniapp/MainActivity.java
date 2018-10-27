@@ -1,10 +1,14 @@
 package ar.edu.uba.fi.tdp2.guaraniapp;
 
 import android.app.AlertDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,10 +19,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.firebase.FirebaseMessagingManager;
+import ar.edu.uba.fi.tdp2.guaraniapp.examenes.Examen;
+import ar.edu.uba.fi.tdp2.guaraniapp.examenes.InscripcionExamen;
 import ar.edu.uba.fi.tdp2.guaraniapp.login.LoginFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Alumno;
@@ -34,10 +47,15 @@ public class MainActivity extends AppCompatActivity
 
     private Alumno alumno;
     private List<Materia> materias = new ArrayList<>();
+    private List<Examen> fechasExamen = new ArrayList<>();
+
+    private FirebaseMessagingManager firebaseMessagingManager;
 
     private Curso cursoSeleccionado;
     private Materia materiaSeleccionada;
     private Inscripcion inscripcionSeleccionada;
+    private InscripcionExamen inscripcionExamenSeleccionada;
+    //private Examen examenSeleccionado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +75,8 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         FragmentLoader.load(this, new LoginFragment(), "Login");
+
+        firebaseMessagingManager = new FirebaseMessagingManager(this);
     }
 
     @Override
@@ -71,12 +91,14 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+    */
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -195,11 +217,25 @@ public class MainActivity extends AppCompatActivity
         this.inscripcionSeleccionada = inscripcionSeleccionada;
     }
 
-    public void flipDesinscripcion() {
+    public List<Examen> getFechasExamen() {
+        return fechasExamen;
+    }
 
+    public void setFechasExamen(List<Examen> fechasExamen) {
+        this.fechasExamen = fechasExamen;
+    }
+
+    public void flipDesinscripcion() {
         if (getAlumno().getInscripciones() != null) {
             int inscripciones = getAlumno().getInscripciones().size();
             setDesinscripcionesEnabled(inscripciones > 0);
+        }
+    }
+
+    public void flipDesinscripcionExamenes() {
+        if (getAlumno().getInscripcionesExamenes() != null) {
+            int inscripciones = getAlumno().getInscripcionesExamenes().size();
+            setDesinscripcionesExamenesEnabled(inscripciones > 0);
         }
     }
 
@@ -211,11 +247,46 @@ public class MainActivity extends AppCompatActivity
         nav_desinscr.setEnabled(enabled);
     }
 
+    public void setDesinscripcionesExamenesEnabled(boolean enabled) {
+        NavigationView navigationView = findViewById(R.id.nav_view);
+
+        Menu menuNav = navigationView.getMenu();
+        MenuItem nav_desinscr = menuNav.findItem(R.id.nav_desinscribirme_examen);
+        nav_desinscr.setEnabled(enabled);
+    }
+
     public void eliminarInscripcion(Inscripcion inscripcion) {
         alumno.eliminarInscripcion(inscripcion);
         flipDesinscripcion();
-
     }
 
+    public InscripcionExamen getInscripcionExamenSeleccionada() {
+        return inscripcionExamenSeleccionada;
+    }
 
+    public void setInscripcionExamenSeleccionada(InscripcionExamen inscripcionExamenSeleccionada) {
+        this.inscripcionExamenSeleccionada = inscripcionExamenSeleccionada;
+    }
+
+    public void sendFirebaseToken() {
+        firebaseMessagingManager.sendFirebaseToken();
+    }
+
+    public void removeFechaExamen(Examen examen) {
+        this.fechasExamen.remove(examen);
+    }
+
+    public void removeInscripcionExamen(InscripcionExamen inscripcionExamen) {
+        this.alumno.getInscripcionesExamenes().remove(inscripcionExamen);
+    }
+
+    /*
+    public Examen getExamenSeleccionado() {
+        return examenSeleccionado;
+    }
+
+    public void setExamenSeleccionado(Examen examenSeleccionado) {
+        this.examenSeleccionado = examenSeleccionado;
+    }
+    */
 }

@@ -1,15 +1,19 @@
-package ar.edu.uba.fi.tdp2.guaraniapp.materias.oferta;
+package ar.edu.uba.fi.tdp2.guaraniapp.examenes.inscripcion;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.RecyclerFragment;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
 
-public class OfertaCarrerasFragment extends RecyclerFragment {
+public class InscripcionExamenFragment extends RecyclerFragment {
+
+    private Materia materia;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -20,7 +24,15 @@ public class OfertaCarrerasFragment extends RecyclerFragment {
     @Override
     public void onResume() {
         super.onResume();
-        ((MainActivity) getActivity()).setToolbarName(getString(R.string.seleccion_carrera_oferta));
+        setHasOptionsMenu(false);
+        materia = ((MainActivity) getActivity()).getMateriaSeleccionada();
+        String titulo = "";
+        if (materia != null) {
+            titulo = materia.getCodigo() + " " + materia.getNombre();
+        } else {
+            titulo = getString(R.string.seleccion_fechas_examenes);
+        }
+        ((MainActivity) getActivity()).setToolbarName(titulo);
     }
 
     @Override
@@ -30,7 +42,7 @@ public class OfertaCarrerasFragment extends RecyclerFragment {
 
     @Override
     protected void configureAdapter() {
-        OfertaCarrerasAdapter adapter = new OfertaCarrerasAdapter(getActivity());
+        InscripcionExamenAdapter adapter = new InscripcionExamenAdapter(getActivity(), this);
         this.setConfiguredAdapter(adapter);
     }
 

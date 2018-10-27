@@ -1,12 +1,21 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.materias;
 
 public class Persona {
+    private String _id;
     private String nombre;
     private String apellido;
 
     public Persona(String nombre, String apellido) {
         setApellido(apellido);
         setNombre(nombre);
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getNombre() {

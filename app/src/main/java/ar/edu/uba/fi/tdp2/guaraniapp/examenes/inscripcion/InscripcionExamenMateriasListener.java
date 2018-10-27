@@ -1,46 +1,43 @@
-package ar.edu.uba.fi.tdp2.guaraniapp.materias.desinscripcion;
+package ar.edu.uba.fi.tdp2.guaraniapp.examenes.inscripcion;
 
+import android.app.Activity;
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.ResponseParser;
-import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionMateriasFragment;
 
-public class DesinscripcionCursosListener implements ResponseListener {
+public class InscripcionExamenMateriasListener implements ResponseListener {
     private Context context;
-    private ProgressPopup progressPopup;
-    private ResponseWatcher watcher;
+    ResponseWatcher watcher;
 
-    public DesinscripcionCursosListener(Context context, ResponseWatcher watcher) {
+    public InscripcionExamenMateriasListener(Context context, ResponseWatcher watcher) {
         this.context = context;
         this.watcher = watcher;
-        progressPopup = new ProgressPopup("Cargando inscripciones...", context);
-        progressPopup.show();
     }
 
     @Override
     public void onRequestCompleted(Object response) {
         try {
 
-            if (((MainActivity)context).getAlumno() != null)
-                ((MainActivity)context).getAlumno().setInscripciones(ResponseParser.getInscripciones(response));
+            ((MainActivity)context).setMaterias(ResponseParser.getMaterias(response));
+            FragmentLoader.load((Activity) context, new InscripcionExamenMateriasFragment(), "InscripcionExamenMaterias");
+
             watcher.onSuccess();
 
         } catch (RuntimeException e) {
             RequestHelper.showError(context, e.getMessage());
             watcher.onError();
         }
-        progressPopup.dismiss();
     }
 
     @Override
     public void onRequestError(int codError, String errorMessage) {
         RequestHelper.showError(context, errorMessage);
-        progressPopup.dismiss();
         watcher.onError();
     }
 

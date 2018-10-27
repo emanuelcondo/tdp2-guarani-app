@@ -29,6 +29,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
+import ar.edu.uba.fi.tdp2.guaraniapp.examenes.desinscripcion.DesinscripcionExamenesListener;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.desinscripcion.DesinscripcionCursosListener;
 
 public class LoginFragment extends Fragment implements ResponseListener, ResponseWatcher {
@@ -83,37 +84,52 @@ public class LoginFragment extends Fragment implements ResponseListener, Respons
     }
 
     private void getAlumnoInfo() {
-        AlumnoListener alumnoListener = new AlumnoListener((MainActivity) getActivity());
+        AlumnoListener listener = new AlumnoListener((MainActivity) getActivity());
         RequestSender requestSender = new RequestSender(getActivity());
 
         String url = getString(R.string.urlAppServer) + "alumnos/mis-datos";
 
-        requestSender.doGet_expectJSONObject(alumnoListener, url);
+        requestSender.doGet_expectJSONObject(listener, url);
     }
 
     private void loadInscripciones() {
         Context context = getActivity();
-        DesinscripcionCursosListener desinscripcionCursosListener = new DesinscripcionCursosListener(context, this);
+        DesinscripcionCursosListener listener = new DesinscripcionCursosListener(context, this);
         RequestSender requestSender = new RequestSender(context);
 
         String url = context.getString(R.string.urlAppServer) + "inscripciones/cursos/";
 
-        requestSender.doGet_expectJSONObject(desinscripcionCursosListener, url);
+        requestSender.doGet_expectJSONObject(listener, url);
     }
 
     public void onLoginSuccess(String session) {
         Token.id = session;
         Token.conectado = true;
 
+        ((MainActivity) getActivity()).sendFirebaseToken();
+
         getAlumnoInfo();
         // Pre-carga de las inscripciones para mostrar en inscripcion
         // solo las materias a las cuales le falta inscribirse
         loadInscripciones();
+        // Pre-carga de las inscripciones a examen para habilitar en el menu
+        loadInscripcionesExamen();
 
         progressPopup.dismiss();
 
         RequestHelper.showError(getActivity(), "Conectado a " + getString(R.string.app_name) + "!");
 
+    }
+
+    private void loadInscripcionesExamen() {
+        Context context = getActivity();
+        DesinscripcionExamenesListener listener = new DesinscripcionExamenesListener(context, this);
+        RequestSender requestSender = new RequestSender(context);
+
+
+        String url = context.getString(R.string.urlAppServer) + "inscripciones/examenes";
+
+        requestSender.doGet_expectJSONObject(listener, url);
     }
 
     public void onLoginFailed() {
@@ -192,11 +208,11 @@ public class LoginFragment extends Fragment implements ResponseListener, Respons
         onLoginFailed();
     }
 
-
     @Override
     public void onSuccess() {
-        // en caso de que esté inscripto en alguna materia le habilito la desinscripcion
+        // en caso de que esté inscripto en alguna materia o examen le habilito la desinscripcion
         ((MainActivity) getActivity()).flipDesinscripcion();
+        ((MainActivity) getActivity()).flipDesinscripcionExamenes();
     }
 
     @Override

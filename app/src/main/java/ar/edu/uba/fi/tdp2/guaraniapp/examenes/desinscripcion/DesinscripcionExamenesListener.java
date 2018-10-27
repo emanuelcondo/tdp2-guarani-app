@@ -1,7 +1,12 @@
-package ar.edu.uba.fi.tdp2.guaraniapp.materias.desinscripcion;
+package ar.edu.uba.fi.tdp2.guaraniapp.examenes.desinscripcion;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.ResponseParser;
@@ -9,16 +14,18 @@ import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
+import ar.edu.uba.fi.tdp2.guaraniapp.examenes.Examen;
+import ar.edu.uba.fi.tdp2.guaraniapp.examenes.InscripcionExamen;
 
-public class DesinscripcionCursosListener implements ResponseListener {
+public class DesinscripcionExamenesListener implements ResponseListener {
     private Context context;
     private ProgressPopup progressPopup;
     private ResponseWatcher watcher;
 
-    public DesinscripcionCursosListener(Context context, ResponseWatcher watcher) {
+    public DesinscripcionExamenesListener(Context context, ResponseWatcher watcher) {
         this.context = context;
         this.watcher = watcher;
-        progressPopup = new ProgressPopup("Cargando inscripciones...", context);
+        progressPopup = new ProgressPopup("Cargando inscripciones a examen...", context);
         progressPopup.show();
     }
 
@@ -27,7 +34,8 @@ public class DesinscripcionCursosListener implements ResponseListener {
         try {
 
             if (((MainActivity)context).getAlumno() != null)
-                ((MainActivity)context).getAlumno().setInscripciones(ResponseParser.getInscripciones(response));
+                ((MainActivity)context).getAlumno().setInscripcionesExamenes(ResponseParser.getInscripcionesExamenes(response));
+
             watcher.onSuccess();
 
         } catch (RuntimeException e) {

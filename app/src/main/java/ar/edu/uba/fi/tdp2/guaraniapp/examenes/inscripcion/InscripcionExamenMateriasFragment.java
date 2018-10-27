@@ -1,4 +1,4 @@
-package ar.edu.uba.fi.tdp2.guaraniapp.materias.oferta;
+package ar.edu.uba.fi.tdp2.guaraniapp.examenes.inscripcion;
 
 
 import android.os.Bundle;
@@ -9,23 +9,28 @@ import android.support.v7.widget.RecyclerView;
 import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
+import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.RecyclerFragment;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionMateriasAdapter;
 
-public class OfertaCursosFragment extends RecyclerFragment {
 
-    private Materia materia;
-    private List<Curso> cursos;
+public class InscripcionExamenMateriasFragment extends RecyclerFragment {
+
+    private List<Materia> materias;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        materia = ((MainActivity) getActivity()).getMateriaSeleccionada();
-        cursos = materia.getCursos();
-        ((MainActivity) getActivity()).setToolbarName(materia.getCodigo() + " " + materia.getNombre());
+        setHasOptionsMenu(false);
+        materias = ((MainActivity) getActivity()).getMaterias();
+     }
 
-    }
+     @Override
+     public void onResume() {
+        super.onResume();
+         ((MainActivity) getActivity()).setToolbarName(getString(R.string.seleccion_fechas_examenes));
+     }
 
     @Override
     protected RecyclerView.LayoutManager getLayoutManager() {
@@ -34,16 +39,9 @@ public class OfertaCursosFragment extends RecyclerFragment {
 
     @Override
     protected void configureAdapter() {
-        OfertaCursosAdapter adapter = new OfertaCursosAdapter(getActivity(), cursos);
+        InscripcionExamenMateriasAdapter adapter = new InscripcionExamenMateriasAdapter(getActivity(), materias);
         this.setConfiguredAdapter(adapter);
     }
 
-    public void setCursos(List<Curso> cursos) {
-        this.cursos = cursos;
-    }
-
-    public void setMateria(Materia materia) {
-        this.materia = materia;
-    }
 }
 

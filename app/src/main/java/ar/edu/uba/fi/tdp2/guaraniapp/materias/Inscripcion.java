@@ -3,7 +3,9 @@ package ar.edu.uba.fi.tdp2.guaraniapp.materias;
 public class Inscripcion {
     private String timestamp;
     private String _id;
+
     private Curso curso;
+
     private Materia materia;
     private String condicion;
 

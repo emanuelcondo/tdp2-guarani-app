@@ -1,59 +1,58 @@
-package ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion;
+package ar.edu.uba.fi.tdp2.guaraniapp.examenes.inscripcion;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.Carrera;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionMateriasListener;
 
-public class InscripcionMateriaViewHolder extends RecyclerView.ViewHolder
+public class InscripcionExamenCarreraViewHolder extends RecyclerView.ViewHolder
         implements View.OnClickListener, ResponseWatcher {
     private TextView textViewCodigo;
     private TextView textViewNombre;
-    private Materia materia;
+    private Carrera carrera;
 
     private ProgressPopup progressPopup;
 
-    public InscripcionMateriaViewHolder(final View itemView) {
+    public InscripcionExamenCarreraViewHolder(final View itemView) {
         super(itemView);
 
-        textViewCodigo = itemView.findViewById(R.id.codigo_materia);
-        textViewNombre = itemView.findViewById(R.id.nombre_materia);
+        textViewCodigo = itemView.findViewById(R.id.codigo_carrera);
+        textViewNombre = itemView.findViewById(R.id.nombre_carrera);
 
-        progressPopup = new ProgressPopup("Cargando cursos...", itemView.getContext());
+        progressPopup = new ProgressPopup("Cargando materias...", itemView.getContext());
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadCursos();
-                ((MainActivity) itemView.getContext()).setMateriaSeleccionada(materia);
+
+                loadMaterias();
             }
         });
 
     }
 
-    private void loadCursos() {
-        progressPopup.show();
-        Context context = itemView.getContext();
-        InscripcionCursosListener listener = new InscripcionCursosListener(context, this);
-        RequestSender requestSender = new RequestSender(context);
-
-        String url = context.getString(R.string.urlAppServer) + "materias/" + materia.get_id() + "/cursos";
-
-        requestSender.doGet_expectJSONObject(listener, url);
+    public void bindTo(Carrera carrera) {
+        textViewNombre.setText(carrera.getNombre());
+        textViewCodigo.setText(String.valueOf((carrera.getCodigo())));
+        this.carrera = carrera;
     }
 
-    public void bindTo(Materia materia) {
+    private void loadMaterias() {
+        progressPopup.show();
+        Context context = itemView.getContext();
+        InscripcionExamenMateriasListener listener = new InscripcionExamenMateriasListener(context, this);
+        RequestSender requestSender = new RequestSender(context);
 
-        textViewCodigo.setText(materia.getCodigo());
-        textViewNombre.setText(materia.getNombre());
-        this.materia = materia;
+        String url = context.getString(R.string.urlAppServer) + "oferta-academica/materias/carrera/" + carrera.get_id();
+
+        requestSender.doGet_expectJSONObject(listener, url);
     }
 
     public void onSuccess() {
@@ -70,3 +69,4 @@ public class InscripcionMateriaViewHolder extends RecyclerView.ViewHolder
     }
 
 }
+

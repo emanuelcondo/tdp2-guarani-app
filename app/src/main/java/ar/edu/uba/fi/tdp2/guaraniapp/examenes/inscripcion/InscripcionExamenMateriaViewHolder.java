@@ -1,4 +1,4 @@
-package ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion;
+package ar.edu.uba.fi.tdp2.guaraniapp.examenes.inscripcion;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +12,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
 
-public class InscripcionMateriaViewHolder extends RecyclerView.ViewHolder
+public class InscripcionExamenMateriaViewHolder extends RecyclerView.ViewHolder
         implements View.OnClickListener, ResponseWatcher {
     private TextView textViewCodigo;
     private TextView textViewNombre;
@@ -20,31 +20,35 @@ public class InscripcionMateriaViewHolder extends RecyclerView.ViewHolder
 
     private ProgressPopup progressPopup;
 
-    public InscripcionMateriaViewHolder(final View itemView) {
+    public InscripcionExamenMateriaViewHolder(final View itemView) {
         super(itemView);
 
         textViewCodigo = itemView.findViewById(R.id.codigo_materia);
         textViewNombre = itemView.findViewById(R.id.nombre_materia);
 
-        progressPopup = new ProgressPopup("Cargando cursos...", itemView.getContext());
+        progressPopup = new ProgressPopup("Cargando fechas de examen...", itemView.getContext());
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadCursos();
+                loadFechasExamen();
                 ((MainActivity) itemView.getContext()).setMateriaSeleccionada(materia);
             }
         });
 
     }
 
-    private void loadCursos() {
+    private void loadFechasExamen() {
         progressPopup.show();
         Context context = itemView.getContext();
-        InscripcionCursosListener listener = new InscripcionCursosListener(context, this);
+        InscripcionExamenesListener listener = new InscripcionExamenesListener(context, this);
+
+        //TODO: Sacar el mock
+
+        //listener.onRequestCompleted(null);
         RequestSender requestSender = new RequestSender(context);
 
-        String url = context.getString(R.string.urlAppServer) + "materias/" + materia.get_id() + "/cursos";
+        String url = context.getString(R.string.urlAppServer) + "materias/" + materia.get_id() + "/examenes";
 
         requestSender.doGet_expectJSONObject(listener, url);
     }
