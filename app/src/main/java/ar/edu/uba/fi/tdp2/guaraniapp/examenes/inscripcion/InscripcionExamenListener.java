@@ -1,12 +1,10 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.examenes.inscripcion;
 
-import android.content.Context;
-
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
-import ar.edu.uba.fi.tdp2.guaraniapp.examenes.Examen;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Examen;
 
 public class InscripcionExamenListener implements ResponseListener {
     private Examen examen;

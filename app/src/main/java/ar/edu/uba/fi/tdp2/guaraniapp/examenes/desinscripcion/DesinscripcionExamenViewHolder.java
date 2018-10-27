@@ -6,17 +6,14 @@ import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ConfirmationPopup;
-import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
-import ar.edu.uba.fi.tdp2.guaraniapp.examenes.Examen;
-import ar.edu.uba.fi.tdp2.guaraniapp.examenes.InscripcionExamen;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.desinscripcion.DesinscripcionListener;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Examen;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.InscripcionExamen;
 
 public class DesinscripcionExamenViewHolder extends RecyclerView.ViewHolder
         implements ResponseWatcher {

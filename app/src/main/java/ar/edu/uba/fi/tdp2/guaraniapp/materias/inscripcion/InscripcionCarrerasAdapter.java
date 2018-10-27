@@ -10,7 +10,7 @@ import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Carrera;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Carrera;
 
 public class InscripcionCarrerasAdapter extends RecyclerView.Adapter<InscripcionCarreraViewHolder> {
 

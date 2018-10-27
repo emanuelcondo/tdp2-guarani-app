@@ -1,4 +1,4 @@
-package ar.edu.uba.fi.tdp2.guaraniapp.materias;
+package ar.edu.uba.fi.tdp2.guaraniapp.model;
 
 import java.util.ArrayList;
 import java.util.List;

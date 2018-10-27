@@ -11,8 +11,8 @@ import android.widget.TextView;
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Curso;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Horario;
 
 public class InscripcionCursoViewHolder extends RecyclerView.ViewHolder
         implements View.OnClickListener  {

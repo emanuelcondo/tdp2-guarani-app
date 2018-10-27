@@ -9,7 +9,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Carrera;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Carrera;
 
 public class InscripcionCarreraViewHolder  extends RecyclerView.ViewHolder
         implements View.OnClickListener, ResponseWatcher {

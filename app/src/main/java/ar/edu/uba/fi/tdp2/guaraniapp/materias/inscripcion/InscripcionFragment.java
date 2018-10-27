@@ -14,17 +14,14 @@ import android.widget.TextView;
 
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Persona;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Curso;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Horario;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Persona;
 
 public class InscripcionFragment extends Fragment  implements ResponseWatcher {
 

@@ -1,17 +1,9 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.examenes.desinscripcion;
 
-import android.content.Context;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
-import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
-import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
-import ar.edu.uba.fi.tdp2.guaraniapp.examenes.Examen;
-import ar.edu.uba.fi.tdp2.guaraniapp.examenes.InscripcionExamen;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.InscripcionExamen;
 
 public class DesinscripcionExamenListener implements ResponseListener {
     private DesinscripcionExamenFragment desinscripcionExamenFragment;

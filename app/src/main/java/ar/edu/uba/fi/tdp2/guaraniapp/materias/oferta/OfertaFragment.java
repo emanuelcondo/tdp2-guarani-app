@@ -13,9 +13,9 @@ import android.widget.TextView;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Persona;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Curso;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Horario;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Persona;
 
 public class OfertaFragment extends Fragment {
 

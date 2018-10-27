@@ -3,16 +3,12 @@ package ar.edu.uba.fi.tdp2.guaraniapp.examenes.inscripcion;
 import android.app.Activity;
 import android.content.Context;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.ResponseParser;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
-import ar.edu.uba.fi.tdp2.guaraniapp.examenes.Examen;
 
 public class InscripcionExamenesListener implements ResponseListener {
     private Context context;

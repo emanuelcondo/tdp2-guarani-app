@@ -14,7 +14,8 @@ import java.util.Date;
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.RecyclerFragment;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Materia;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.ResultadoExamen;
 
 
 public class HistoriaAcademicaFragment extends RecyclerFragment {

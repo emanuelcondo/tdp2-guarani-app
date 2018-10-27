@@ -7,19 +7,11 @@ import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.json.JSONObject;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
-import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ConfirmationPopup;
-import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
-import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
-import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
-import ar.edu.uba.fi.tdp2.guaraniapp.examenes.Examen;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionListener;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Examen;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Curso;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Materia;
 
 public class InscripcionExamenViewHolder extends RecyclerView.ViewHolder {
     private TextView textViewNumeroCurso;

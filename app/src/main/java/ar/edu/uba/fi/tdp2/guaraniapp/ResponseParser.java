@@ -10,11 +10,11 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import ar.edu.uba.fi.tdp2.guaraniapp.examenes.Examen;
-import ar.edu.uba.fi.tdp2.guaraniapp.examenes.InscripcionExamen;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Inscripcion;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Examen;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.InscripcionExamen;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Curso;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Inscripcion;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Materia;
 
 public class ResponseParser {
 

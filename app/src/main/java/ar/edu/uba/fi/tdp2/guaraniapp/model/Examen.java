@@ -1,4 +1,4 @@
-package ar.edu.uba.fi.tdp2.guaraniapp.examenes;
+package ar.edu.uba.fi.tdp2.guaraniapp.model;
 
 
 import java.text.ParseException;
@@ -6,10 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Sede;
 
 public class Examen {
     private String _id;

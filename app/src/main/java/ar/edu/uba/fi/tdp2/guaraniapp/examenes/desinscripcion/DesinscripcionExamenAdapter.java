@@ -10,8 +10,7 @@ import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
-import ar.edu.uba.fi.tdp2.guaraniapp.examenes.InscripcionExamen;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Inscripcion;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.InscripcionExamen;
 
 public class DesinscripcionExamenAdapter extends RecyclerView.Adapter<DesinscripcionExamenViewHolder> {
 

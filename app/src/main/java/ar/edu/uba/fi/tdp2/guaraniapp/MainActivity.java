@@ -1,14 +1,10 @@
 package ar.edu.uba.fi.tdp2.guaraniapp;
 
 import android.app.AlertDialog;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.DialogInterface;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,24 +15,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
-import com.google.firebase.messaging.FirebaseMessaging;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.firebase.FirebaseMessagingManager;
-import ar.edu.uba.fi.tdp2.guaraniapp.examenes.Examen;
-import ar.edu.uba.fi.tdp2.guaraniapp.examenes.InscripcionExamen;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Examen;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.InscripcionExamen;
 import ar.edu.uba.fi.tdp2.guaraniapp.login.LoginFragment;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Alumno;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Inscripcion;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Curso;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Alumno;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Inscripcion;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Materia;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

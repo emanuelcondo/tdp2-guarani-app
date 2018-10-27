@@ -1,4 +1,4 @@
-package ar.edu.uba.fi.tdp2.guaraniapp.materias;
+package ar.edu.uba.fi.tdp2.guaraniapp.model;
 
 import com.google.gson.annotations.SerializedName;
 

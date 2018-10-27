@@ -13,7 +13,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Alumno;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Alumno;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionCarrerasFragment;
 
 public class AlumnoListener implements ResponseListener {

@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Materia;
 
 public class InscripcionMateriasAdapter extends RecyclerView.Adapter<InscripcionMateriaViewHolder> {
 

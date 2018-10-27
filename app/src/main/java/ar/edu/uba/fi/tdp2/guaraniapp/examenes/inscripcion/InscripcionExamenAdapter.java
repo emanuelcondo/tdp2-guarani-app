@@ -10,7 +10,7 @@ import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
-import ar.edu.uba.fi.tdp2.guaraniapp.examenes.Examen;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Examen;
 
 public class InscripcionExamenAdapter extends RecyclerView.Adapter<InscripcionExamenViewHolder> {
 

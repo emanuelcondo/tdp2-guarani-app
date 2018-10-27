@@ -4,12 +4,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.RecyclerFragment;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Materia;
 
 public class InscripcionExamenFragment extends RecyclerFragment {
 

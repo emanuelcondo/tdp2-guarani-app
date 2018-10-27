@@ -8,6 +8,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.ResultadoExamen;
 
 public class HistoriaAcademicaViewHolder extends RecyclerView.ViewHolder
         implements View.OnClickListener  {

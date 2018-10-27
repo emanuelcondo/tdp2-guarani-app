@@ -1,10 +1,10 @@
-package ar.edu.uba.fi.tdp2.guaraniapp.historia;
+package ar.edu.uba.fi.tdp2.guaraniapp.model;
 
 import java.util.Date;
 
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Materia;
 
-class ResultadoExamen {
+public class ResultadoExamen {
     private Materia materia;
     private Date fecha;
     private int nota;

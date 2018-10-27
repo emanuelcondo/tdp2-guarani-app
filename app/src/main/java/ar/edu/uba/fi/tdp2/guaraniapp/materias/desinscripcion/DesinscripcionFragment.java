@@ -11,21 +11,16 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.json.JSONObject;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Alumno;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Horario;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Inscripcion;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Persona;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionListener;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Curso;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Horario;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Inscripcion;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Persona;
 
 public class DesinscripcionFragment extends Fragment implements ResponseWatcher {
 

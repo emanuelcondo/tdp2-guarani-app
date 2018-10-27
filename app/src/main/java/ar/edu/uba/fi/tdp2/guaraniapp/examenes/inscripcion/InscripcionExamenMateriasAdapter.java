@@ -9,8 +9,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Materia;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionMateriaViewHolder;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Materia;
 
 public class InscripcionExamenMateriasAdapter extends RecyclerView.Adapter<InscripcionExamenMateriaViewHolder> {
 

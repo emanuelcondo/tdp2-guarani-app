@@ -1,4 +1,4 @@
-package ar.edu.uba.fi.tdp2.guaraniapp.examenes;
+package ar.edu.uba.fi.tdp2.guaraniapp.model;
 
 import java.io.Serializable;
 

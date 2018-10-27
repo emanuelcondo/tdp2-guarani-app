@@ -10,7 +10,7 @@ import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.Curso;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Curso;
 
 public class InscripcionCursosAdapter extends RecyclerView.Adapter<InscripcionCursoViewHolder> {
 

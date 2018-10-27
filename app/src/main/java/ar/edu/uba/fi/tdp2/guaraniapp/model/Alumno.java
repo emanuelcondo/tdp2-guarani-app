@@ -1,9 +1,7 @@
-package ar.edu.uba.fi.tdp2.guaraniapp.materias;
+package ar.edu.uba.fi.tdp2.guaraniapp.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import ar.edu.uba.fi.tdp2.guaraniapp.examenes.InscripcionExamen;
 
 public class Alumno {
     //uso legajo en lugar de padron porque asi viene en el server

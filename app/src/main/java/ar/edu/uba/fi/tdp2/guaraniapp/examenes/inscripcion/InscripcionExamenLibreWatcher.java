@@ -1,7 +1,5 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.examenes.inscripcion;
 
-import android.content.Context;
-
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -11,8 +9,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ConfirmationPopup;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
-import ar.edu.uba.fi.tdp2.guaraniapp.examenes.Examen;
-import ar.edu.uba.fi.tdp2.guaraniapp.examenes.InscripcionExamen;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Examen;
 
 class InscripcionExamenLibreWatcher implements ResponseWatcher {
     private Examen examen;
