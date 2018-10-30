@@ -9,6 +9,10 @@
             android:icon="@drawable/ic_menu_bulleted_list"
             android:title="@string/oferta" />
         <item
+            android:id="@+id/nav_prioridad"
+            android:icon="@drawable/baseline_stars_black_18dp"
+            android:title="@string/prioridad" />
+        <item
             android:id="@+id/nav_inscribirme"
             android:icon="@drawable/ic_note_add_black_24dp"
             android:title="@string/inscripcion" />
