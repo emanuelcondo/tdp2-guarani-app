@@ -15,8 +15,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.firebase.FirebaseMessagingManager;
@@ -27,6 +32,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.model.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.model.Alumno;
 import ar.edu.uba.fi.tdp2.guaraniapp.model.Inscripcion;
 import ar.edu.uba.fi.tdp2.guaraniapp.model.Materia;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Periodo;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -36,6 +42,7 @@ public class MainActivity extends AppCompatActivity
     private ActionBarDrawerToggle toggle;
 
     private Alumno alumno;
+    private Periodo periodo;
     private List<Materia> materias = new ArrayList<>();
     private List<Examen> fechasExamen = new ArrayList<>();
 
@@ -268,6 +275,32 @@ public class MainActivity extends AppCompatActivity
 
     public void removeInscripcionExamen(InscripcionExamen inscripcionExamen) {
         this.alumno.getInscripcionesExamenes().remove(inscripcionExamen);
+    }
+
+    public void setPeriodo(Periodo periodo) {
+        this.periodo = periodo;
+    }
+
+    public Periodo getPeriodo() {
+        return periodo;
+    }
+
+    public String getFechaInicioInscripcion() {
+        //TODO: Calcular en base a la prioridad
+        String fechaInicioInscripcion = this.periodo.getInscripcionCurso().getInicio();
+
+        Date date = null;
+        try {
+            date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                    , Locale.getDefault()).parse(fechaInicioInscripcion);
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            cal.add(Calendar.HOUR, -3);
+            date = cal.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault()).format(date);
     }
 
     /*

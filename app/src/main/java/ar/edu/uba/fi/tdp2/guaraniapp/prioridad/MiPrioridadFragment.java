@@ -2,36 +2,19 @@ package ar.edu.uba.fi.tdp2.guaraniapp.prioridad;
 
 
 import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Locale;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
-import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
-import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
-import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
-import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
-import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
-import ar.edu.uba.fi.tdp2.guaraniapp.examenes.desinscripcion.DesinscripcionExamenesListener;
-import ar.edu.uba.fi.tdp2.guaraniapp.login.AlumnoListener;
-import ar.edu.uba.fi.tdp2.guaraniapp.login.Token;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.desinscripcion.DesinscripcionCursosListener;
 
 public class MiPrioridadFragment extends Fragment {
 
@@ -59,20 +42,26 @@ public class MiPrioridadFragment extends Fragment {
         textViewTitulo = view.findViewById(R.id.prioridad_titulo);
         textViewPrioridad = view.findViewById(R.id.prioridad_numero);
         textViewFechaInscripcion = view.findViewById(R.id.prioridad_fecha_inscripcion);
-        linearLayoutError = view.findViewById(R.id.prioridad_error);
 
-        existePrioridad = false;
+        existePrioridad = true;
+
+        loadAlumno();
 
         if (existePrioridad) {
-            //TODO: Borrar mock
-            textViewPrioridad.setText("127");
-            textViewFechaInscripcion.setText(getString(R.string.prioridad_fecha) + " 20/08/2019 13:30");
+            textViewPrioridad.setText(String.format(Locale.getDefault()
+                    , "%d", ((MainActivity) getActivity()).getAlumno().getPrioridad()));
+            textViewFechaInscripcion.
+                    setText(getString(R.string.prioridad_fecha) + " "
+                            + ((MainActivity) getActivity()).getFechaInicioInscripcion());
         } else {
-            textViewTitulo.setVisibility(View.GONE);
-            textViewPrioridad.setVisibility(View.GONE);
-            textViewFechaInscripcion.setVisibility(View.GONE);
-            linearLayoutError.setVisibility(View.VISIBLE);
+            textViewTitulo.setText("Tu prioridad aún no está cargada");
+            textViewPrioridad.setText("?");
+            textViewFechaInscripcion.setText("Las prioridades serán cargadas el día 13/08/2019");
         }
+
+    }
+
+    private void loadAlumno() {
 
     }
 }

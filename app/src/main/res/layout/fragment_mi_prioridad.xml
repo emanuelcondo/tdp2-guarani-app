@@ -48,30 +48,5 @@
             android:textSize="18sp"
             android:textColor="@color/black"/>
 
-        <LinearLayout
-            android:id="@+id/prioridad_error"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:background="@drawable/prioridad_error_shape"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/baseline_info_black_18dp"
-                android:layout_margin="8dp"
-                android:tint="@color/white"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/prioridad_error"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:layout_margin="8dp"/>
-
-        </LinearLayout>
-
     </LinearLayout>
 </ScrollView>
