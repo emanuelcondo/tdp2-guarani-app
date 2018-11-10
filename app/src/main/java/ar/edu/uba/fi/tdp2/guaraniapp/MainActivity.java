@@ -352,6 +352,26 @@ public class MainActivity extends AppCompatActivity
         return hoy.after(getFechaInicioInscripcion()) && hoy.before(dateFinInscripcion);
     }
 
+    public boolean existePrioridad() {
+        Date hoy = Calendar.getInstance().getTime();
+        return hoy.after(getFechaPublicacionPrioridades());
+    }
+
+    public Date getFechaPublicacionPrioridades() {
+        Date datePublicacionPrioridad = null;
+        try {
+            datePublicacionPrioridad = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                    , Locale.getDefault()).parse(periodo.getConsultaPrioridad().getInicio());
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(datePublicacionPrioridad);
+            cal.add(Calendar.HOUR, -3);
+            datePublicacionPrioridad = cal.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return datePublicacionPrioridad;
+    }
+
     /*
     public Examen getExamenSeleccionado() {
         return examenSeleccionado;

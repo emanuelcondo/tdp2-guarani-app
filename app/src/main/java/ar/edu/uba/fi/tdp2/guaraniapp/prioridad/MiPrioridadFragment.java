@@ -21,8 +21,6 @@ public class MiPrioridadFragment extends Fragment {
 
     private static final String TAG = "MiPrioridad";
 
-    private boolean existePrioridad;
-
     private TextView textViewTitulo;
     private TextView textViewPrioridad;
     private TextView textViewFechaInscripcion;
@@ -44,28 +42,25 @@ public class MiPrioridadFragment extends Fragment {
         textViewPrioridad = view.findViewById(R.id.prioridad_numero);
         textViewFechaInscripcion = view.findViewById(R.id.prioridad_fecha_inscripcion);
 
-        existePrioridad = true;
+        MainActivity activity = (MainActivity) getActivity();
 
-        loadAlumno();
-
-        if (existePrioridad) {
+        if (activity.existePrioridad()) {
             textViewPrioridad.setText(String.format(Locale.getDefault()
-                    , "%d", ((MainActivity) getActivity()).getAlumno().getPrioridad()));
+                    , "%d", activity.getAlumno().getPrioridad()));
             String fechaInscipcion = new SimpleDateFormat("dd/MM/yyyy HH:mm"
                     , Locale.getDefault())
-                    .format(((MainActivity) getActivity()).getFechaInicioInscripcion());
+                    .format(activity.getFechaInicioInscripcion());
             textViewFechaInscripcion.
                     setText(getString(R.string.prioridad_fecha) + " "
                             + fechaInscipcion);
         } else {
             textViewTitulo.setText("Tu prioridad aún no está cargada");
             textViewPrioridad.setText("?");
-            textViewFechaInscripcion.setText("Las prioridades serán cargadas el día 13/08/2019");
+            String fechaPrioridades = new SimpleDateFormat("dd/MM/yyyy HH:mm"
+                    , Locale.getDefault())
+                    .format(activity.getFechaPublicacionPrioridades());
+            textViewFechaInscripcion.setText("Las prioridades serán cargadas el día " + fechaPrioridades);
         }
-
-    }
-
-    private void loadAlumno() {
 
     }
 }
