@@ -68,7 +68,16 @@ public class Horario {
     }
 
     public String getSede() {
-        return sede;
+        switch (sede) {
+            case "PC":
+                return "Paseo Colón";
+            case "LH":
+                return "Las Heras";
+            case "CU":
+                return "Ciudad Universitaria";
+            default:
+                return sede;
+        }
     }
 
     public void setSede(String sede) {

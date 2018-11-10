@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
@@ -50,9 +51,12 @@ public class MiPrioridadFragment extends Fragment {
         if (existePrioridad) {
             textViewPrioridad.setText(String.format(Locale.getDefault()
                     , "%d", ((MainActivity) getActivity()).getAlumno().getPrioridad()));
+            String fechaInscipcion = new SimpleDateFormat("dd/MM/yyyy HH:mm"
+                    , Locale.getDefault())
+                    .format(((MainActivity) getActivity()).getFechaInicioInscripcion());
             textViewFechaInscripcion.
                     setText(getString(R.string.prioridad_fecha) + " "
-                            + ((MainActivity) getActivity()).getFechaInicioInscripcion());
+                            + fechaInscipcion);
         } else {
             textViewTitulo.setText("Tu prioridad aún no está cargada");
             textViewPrioridad.setText("?");

@@ -13,6 +13,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestHelper;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseListener;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.oferta.OfertaCarrerasFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.model.Alumno;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionCarrerasFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.model.Periodo;
@@ -45,7 +46,7 @@ public class AlumnoListener implements ResponseListener {
             view.setText(activity.getString(R.string.legajo_header, alumno.getLegajo()));
             //Agregar una foto al menu
 
-            FragmentLoader.load(getActivity(), new InscripcionCarrerasFragment(), "InscripcionCarreras");
+            FragmentLoader.load(getActivity(), new OfertaCarrerasFragment(), "OfertaCarreras");
 
         } catch (JSONException e) {
             RequestHelper.showError(getActivity(), e.getMessage());

@@ -235,7 +235,7 @@ public class MainActivity extends AppCompatActivity
 
         Date dateInicio = null;
         Date dateFin = null;
-        Date hoy = null;
+        Date hoy = Calendar.getInstance().getTime();
         try {
             dateInicio = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
                     , Locale.getDefault()).parse(fechaInicioDesinscripcion);
@@ -248,7 +248,6 @@ public class MainActivity extends AppCompatActivity
             cal.setTime(dateFin);
             cal.add(Calendar.HOUR, -3);
             dateFin = cal.getTime();
-            hoy = Calendar.getInstance().getTime();
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -311,7 +310,7 @@ public class MainActivity extends AppCompatActivity
         return periodo;
     }
 
-    public String getFechaInicioInscripcion() {
+    public Date getFechaInicioInscripcion() {
         //TODO: Calcular en base a la prioridad
         String fechaInicioInscripcion = this.periodo.getInscripcionCurso().getInicio();
 
@@ -326,7 +325,31 @@ public class MainActivity extends AppCompatActivity
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault()).format(date);
+        return date;
+    }
+
+    public void flipInscripionCursos() {
+        NavigationView navigationView = findViewById(R.id.nav_view);
+
+        Menu menuNav = navigationView.getMenu();
+        MenuItem menuItem = menuNav.findItem(R.id.nav_inscribirme);
+        menuItem.setEnabled(esFechaDeInscripcionCursos());
+    }
+
+    private boolean esFechaDeInscripcionCursos() {
+        Date hoy = Calendar.getInstance().getTime();
+        Date dateFinInscripcion = null;
+        try {
+            dateFinInscripcion = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                    , Locale.getDefault()).parse(periodo.getInscripcionCurso().getFin());
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(dateFinInscripcion);
+            cal.add(Calendar.HOUR, -3);
+            dateFinInscripcion = cal.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return hoy.after(getFechaInicioInscripcion()) && hoy.before(dateFinInscripcion);
     }
 
     /*
