@@ -225,8 +225,34 @@ public class MainActivity extends AppCompatActivity
     public void flipDesinscripcion() {
         if (getAlumno().getInscripciones() != null) {
             int inscripciones = getAlumno().getInscripciones().size();
-            setDesinscripcionesEnabled(inscripciones > 0);
+            setDesinscripcionesEnabled(inscripciones > 0 && esFechaDeDesinscripcionCursos());
         }
+    }
+
+    private boolean esFechaDeDesinscripcionCursos() {
+        String fechaInicioDesinscripcion = this.periodo.getDesinscripcionCurso().getInicio();
+        String fechaFinDesinscripcion = this.periodo.getDesinscripcionCurso().getFin();
+
+        Date dateInicio = null;
+        Date dateFin = null;
+        Date hoy = null;
+        try {
+            dateInicio = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                    , Locale.getDefault()).parse(fechaInicioDesinscripcion);
+            dateFin = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                    , Locale.getDefault()).parse(fechaFinDesinscripcion);
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(dateInicio);
+            cal.add(Calendar.HOUR, -3);
+            dateInicio = cal.getTime();
+            cal.setTime(dateFin);
+            cal.add(Calendar.HOUR, -3);
+            dateFin = cal.getTime();
+            hoy = Calendar.getInstance().getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return hoy.after(dateInicio) && hoy.before(dateFin);
     }
 
     public void flipDesinscripcionExamenes() {

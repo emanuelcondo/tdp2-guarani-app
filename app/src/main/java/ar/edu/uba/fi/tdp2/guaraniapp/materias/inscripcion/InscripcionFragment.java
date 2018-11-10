@@ -165,7 +165,7 @@ public class InscripcionFragment extends Fragment  implements ResponseWatcher {
             textViewHorario.setPadding(8,8,8,8);
 
             TextView textViewSede = new TextView(getContext());
-            textViewSede.setText(curso.getSede().getNombre());
+            textViewSede.setText(horario.getSede());
             textViewSede.setBackgroundResource(R.drawable.cell_shape);
             textViewSede.setPadding(8,8,8,8);
 

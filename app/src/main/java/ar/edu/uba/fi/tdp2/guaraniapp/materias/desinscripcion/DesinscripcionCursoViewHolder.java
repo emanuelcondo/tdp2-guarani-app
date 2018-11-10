@@ -146,7 +146,7 @@ public class DesinscripcionCursoViewHolder extends RecyclerView.ViewHolder
             textViewHorario.setPadding(8,8,8,8);
 
             TextView textViewSede = new TextView(itemView.getContext());
-            textViewSede.setText(curso.getSede().getNombre());
+            textViewSede.setText(horario.getSede());
             textViewSede.setBackgroundResource(R.drawable.cell_shape);
             textViewSede.setPadding(8,8,8,8);
 
