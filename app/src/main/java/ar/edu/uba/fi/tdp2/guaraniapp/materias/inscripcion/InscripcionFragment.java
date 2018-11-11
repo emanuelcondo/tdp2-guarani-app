@@ -205,10 +205,6 @@ public class InscripcionFragment extends Fragment  implements ResponseWatcher {
         btnInscribir.setEnabled(false);
         btnInscribir.setBackgroundResource(R.color.gray);
 
-        // habilito en el menu la desinscripcion
-        ((MainActivity) getActivity()).setDesinscripcionesEnabled(((MainActivity) getActivity())
-                .esFechaDeDesinscripcionCursos());
-
         curso.decrementarVacantes();
         vacantes.setText(getString(R.string.vacantes_header, curso.getCupos(), curso.getVacantes()));
 

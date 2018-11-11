@@ -224,8 +224,7 @@ public class MainActivity extends AppCompatActivity
 
     public void flipDesinscripcion() {
         if (getAlumno() != null && getAlumno().getInscripciones() != null) {
-            int inscripciones = getAlumno().getInscripciones().size();
-            setDesinscripcionesEnabled(inscripciones > 0 && esFechaDeDesinscripcionCursos());
+            setDesinscripcionesEnabled(esFechaDeDesinscripcionCursos());
         }
     }
 
