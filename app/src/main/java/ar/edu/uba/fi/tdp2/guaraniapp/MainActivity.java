@@ -333,7 +333,7 @@ public class MainActivity extends AppCompatActivity
             // si el resultado de dividir por INTERVALO es > 0 incremento dias
             // y el residuo hace que incrementen las horas
             int prioridad = alumno.getPrioridad();
-            if (prioridad >= 95) {
+            if (prioridad >= 91) {
                 //la prioridad supera el maximo lo pongo el viernes a las 17:30
                 cal.add(Calendar.DATE, 4);
                 cal.add(Calendar.HOUR, 8);
