@@ -229,7 +229,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private boolean esFechaDeDesinscripcionCursos() {
+    public boolean esFechaDeDesinscripcionCursos() {
         String fechaInicioDesinscripcion = this.periodo.getDesinscripcionCurso().getInicio();
         String fechaFinDesinscripcion = this.periodo.getDesinscripcionCurso().getFin();
 
