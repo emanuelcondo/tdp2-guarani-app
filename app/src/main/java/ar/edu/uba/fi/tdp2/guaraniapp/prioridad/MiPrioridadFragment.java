@@ -12,6 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
@@ -47,12 +49,23 @@ public class MiPrioridadFragment extends Fragment {
         if (activity.existePrioridad()) {
             textViewPrioridad.setText(String.format(Locale.getDefault()
                     , "%d", activity.getAlumno().getPrioridad()));
+
+            Date ahora = Calendar.getInstance().getTime();
+
             String fechaInscipcion = new SimpleDateFormat("dd/MM/yyyy HH:mm"
                     , Locale.getDefault())
                     .format(activity.getFechaInicioInscripcion());
-            textViewFechaInscripcion.
-                    setText(getString(R.string.prioridad_fecha) + " "
-                            + fechaInscipcion);
+
+            if (ahora.after(activity.getFechaInicioInscripcion())) {
+                textViewFechaInscripcion.
+                        setText(getString(R.string.prioridad_fecha_habilitado, fechaInscipcion));
+            } else {
+                textViewFechaInscripcion.
+                        setText(getString(R.string.prioridad_fecha) + " "
+                                + fechaInscipcion);
+            }
+
+
         } else {
             textViewTitulo.setText("Tu prioridad aún no está cargada");
             textViewPrioridad.setText("?");

@@ -321,7 +321,46 @@ public class MainActivity extends AppCompatActivity
             Calendar cal = Calendar.getInstance();
             cal.setTime(date);
             cal.add(Calendar.HOUR, -3);
+
+            //Calculo la fecha y hora segun prioridad
+
+            // INTERVALO => cantidad de veces que se puede dividir un dia (9 a 18hs) en intervalos de media hora
+            int INTERVALO = 18;
+            // PASO = 0.5 => valor en horas de lo que tiene que esperar el alumno por cada punto de prioridad
+            double PASO = 0.5;
+
+
+            // si el resultado de dividir por INTERVALO es > 0 incremento dias
+            // y el residuo hace que incrementen las horas
+            int prioridad = alumno.getPrioridad();
+            if (prioridad >= 95) {
+                //la prioridad supera el maximo lo pongo el viernes a las 17:30
+                cal.add(Calendar.DATE, 4);
+                cal.add(Calendar.HOUR, 8);
+                cal.add(Calendar.MINUTE, 30);
+            } else {
+                double aux = (double) prioridad / INTERVALO;
+                //supongo que la inscripcion se produce en una semana completa entonces no tengo en cuenta los findes
+                int dias = (int) Math.floor(aux);
+                if (aux > 1) {
+                    cal.add(Calendar.DATE, dias);
+                    //fix por bug al siguiente dia
+                    //cal.add(Calendar.MINUTE, 30);
+                }
+                double horasMinutos = ((aux - dias) > 0 )?(prioridad - dias * INTERVALO) * PASO - PASO : 8.5;
+                int horas = (int) Math.floor(horasMinutos);
+
+                cal.add(Calendar.HOUR, horas);
+
+
+                int minutos = (int) ((horasMinutos - horas) * 60);
+
+                if (minutos > 0) {
+                    cal.add(Calendar.MINUTE, minutos);
+                }
+            }
             date = cal.getTime();
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
