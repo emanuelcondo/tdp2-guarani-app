@@ -223,7 +223,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void flipDesinscripcion() {
-        if (getAlumno().getInscripciones() != null) {
+        if (getAlumno() != null && getAlumno().getInscripciones() != null) {
             int inscripciones = getAlumno().getInscripciones().size();
             setDesinscripcionesEnabled(inscripciones > 0 && esFechaDeDesinscripcionCursos());
         }
@@ -255,7 +255,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void flipDesinscripcionExamenes() {
-        if (getAlumno().getInscripcionesExamenes() != null) {
+        if (getAlumno() != null && getAlumno().getInscripcionesExamenes() != null) {
             int inscripciones = getAlumno().getInscripcionesExamenes().size();
             setDesinscripcionesExamenesEnabled(inscripciones > 0);
         }
