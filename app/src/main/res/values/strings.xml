@@ -33,7 +33,7 @@
     <string name="vacantes_header">Cupo: %1$d - Vacantes: %2$d</string>
     <string name="horario_row">%1$s - %2$s</string>
     <string name="legajo_header">Padrón: %1$d</string>
-    <string name="alumno_header">Alumno: %1$s, %2$s</string>
+    <string name="alumno_header">%1$s, %2$s</string>
     <string name="mensaje_condicionales">No puede inscribirse como condicional mientras existan vacantes en otros cursos para esta materia.</string>
     <string name="desinscripcion_examen">Desinscripción a Exámenes</string>
     <string name="perfil">Perfil</string>
