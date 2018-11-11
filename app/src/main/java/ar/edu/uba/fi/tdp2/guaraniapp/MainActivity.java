@@ -320,7 +320,8 @@ public class MainActivity extends AppCompatActivity
                     , Locale.getDefault()).parse(fechaInicioInscripcion);
             Calendar cal = Calendar.getInstance();
             cal.setTime(date);
-            cal.add(Calendar.HOUR, -3);
+            //Le agrego 9 - 3 = 6
+            cal.add(Calendar.HOUR, 6);
 
             //Calculo la fecha y hora segun prioridad
 
@@ -335,7 +336,7 @@ public class MainActivity extends AppCompatActivity
             int prioridad = alumno.getPrioridad();
             if (prioridad >= 91) {
                 //la prioridad supera el maximo lo pongo el viernes a las 17:30
-                cal.add(Calendar.DATE, 4);
+                cal.add(Calendar.DATE, 5);
                 cal.add(Calendar.HOUR, 8);
                 cal.add(Calendar.MINUTE, 30);
             } else {
@@ -409,6 +410,21 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }
         return datePublicacionPrioridad;
+    }
+
+    public Date getFechaFinInscripcion() {
+        Date dateFinInscripcion = null;
+        try {
+            dateFinInscripcion = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                    , Locale.getDefault()).parse(periodo.getInscripcionCurso().getFin());
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(dateFinInscripcion);
+            cal.add(Calendar.HOUR, -3);
+            dateFinInscripcion = cal.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dateFinInscripcion;
     }
 
     /*

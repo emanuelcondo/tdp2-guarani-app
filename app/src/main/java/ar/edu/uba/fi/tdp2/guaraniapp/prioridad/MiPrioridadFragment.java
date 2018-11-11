@@ -56,9 +56,13 @@ public class MiPrioridadFragment extends Fragment {
                     , Locale.getDefault())
                     .format(activity.getFechaInicioInscripcion());
 
+            String fechaInscipcionFin = new SimpleDateFormat("dd/MM/yyyy HH:mm"
+                    , Locale.getDefault())
+                    .format(activity.getFechaFinInscripcion());
+
             if (ahora.after(activity.getFechaInicioInscripcion())) {
                 textViewFechaInscripcion.
-                        setText(getString(R.string.prioridad_fecha_habilitado, fechaInscipcion));
+                        setText(getString(R.string.prioridad_fecha_habilitado, fechaInscipcion, fechaInscipcionFin));
             } else {
                 textViewFechaInscripcion.
                         setText(getString(R.string.prioridad_fecha) + " "
