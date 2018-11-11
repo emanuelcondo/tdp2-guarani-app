@@ -155,7 +155,7 @@ public class FragmentLoader {
                 fragment = new InscripcionCarrerasFragment();
                 name = InscripcionCarreras;
                 break;
-            case R.id.nav_desinscribirme:
+            case R.id.nav_mis_inscripciones_cursos:
                 fragment = new DesinscripcionCursosFragment();
                 name = DesinscripcionCursos;
                 break;

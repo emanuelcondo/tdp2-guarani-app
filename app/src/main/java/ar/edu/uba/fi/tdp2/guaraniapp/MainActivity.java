@@ -224,9 +224,12 @@ public class MainActivity extends AppCompatActivity
 
     public void flipDesinscripcion() {
         if (getAlumno() != null && getAlumno().getInscripciones() != null) {
-            int inscripciones = getAlumno().getInscripciones().size();
-            setDesinscripcionesEnabled(inscripciones > 0 && esFechaDeDesinscripcionCursos());
+            setDesinscripcionesEnabled(alumnoTieneInscripcionesACursos());
         }
+    }
+
+    public boolean alumnoTieneInscripcionesACursos() {
+        return getAlumno().getInscripciones().size() > 0;
     }
 
     public boolean esFechaDeDesinscripcionCursos() {
@@ -265,7 +268,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
 
         Menu menuNav = navigationView.getMenu();
-        MenuItem nav_desinscr = menuNav.findItem(R.id.nav_desinscribirme);
+        MenuItem nav_desinscr = menuNav.findItem(R.id.nav_mis_inscripciones_cursos);
         nav_desinscr.setEnabled(enabled);
     }
 

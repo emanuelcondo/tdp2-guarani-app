@@ -30,6 +30,19 @@
             android:layout_gravity="center_horizontal"
             android:text="@string/desinscribirse" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/mensaje_periodo_desinscripcion"
+            android:textColor="@color/dim_gray"
+            style="@style/TextAppearance.AppCompat.Caption"
+            android:text="@string/periodo_desinscripcion"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            android:textAlignment="center"
+            android:visibility="gone"
+            android:padding="8dp" />
+
     </LinearLayout>
 
 </ScrollView>
