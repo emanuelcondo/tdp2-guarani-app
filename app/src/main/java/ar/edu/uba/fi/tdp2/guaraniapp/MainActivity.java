@@ -253,26 +253,11 @@ public class MainActivity extends AppCompatActivity
         return hoy.after(dateInicio) && hoy.before(dateFin);
     }
 
-    public void flipDesinscripcionExamenes() {
-        if (getAlumno() != null && getAlumno().getInscripcionesExamenes() != null) {
-            int inscripciones = getAlumno().getInscripcionesExamenes().size();
-            setDesinscripcionesExamenesEnabled(inscripciones > 0);
-        }
-    }
-
     public void setDesinscripcionesEnabled(boolean enabled) {
         NavigationView navigationView = findViewById(R.id.nav_view);
 
         Menu menuNav = navigationView.getMenu();
         MenuItem nav_desinscr = menuNav.findItem(R.id.nav_desinscribirme);
-        nav_desinscr.setEnabled(enabled);
-    }
-
-    public void setDesinscripcionesExamenesEnabled(boolean enabled) {
-        NavigationView navigationView = findViewById(R.id.nav_view);
-
-        Menu menuNav = navigationView.getMenu();
-        MenuItem nav_desinscr = menuNav.findItem(R.id.nav_desinscribirme_examen);
         nav_desinscr.setEnabled(enabled);
     }
 

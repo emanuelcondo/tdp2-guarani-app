@@ -26,7 +26,6 @@
             android:title="@string/inscripcion_examen" />
         <item
             android:id="@+id/nav_desinscribirme_examen"
-            android:enabled="false"
             android:icon="@drawable/ic_person_add_disabled"
             android:title="@string/desinscripcion_examen" />
         <item
