@@ -39,6 +39,10 @@ public class AlumnoListener implements ResponseListener {
             activity.setAlumno(alumno);
             activity.setPeriodo(periodo);
 
+            // en caso de que esté inscripto en alguna materia o examen le habilito la desinscripcion
+            activity.flipDesinscripcion();
+            activity.flipInscripionCursos();
+
             // Para que se vea el nombre del alumno en el menu
             TextView view = activity.findViewById(R.id.alumno_conectado);
             view.setText(activity.getString(R.string.alumno_header, alumno.getApellido(), alumno.getNombre()));

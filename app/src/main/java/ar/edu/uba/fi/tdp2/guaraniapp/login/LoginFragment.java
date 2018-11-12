@@ -184,9 +184,7 @@ public class LoginFragment extends Fragment implements ResponseListener, Respons
 
     @Override
     public void onSuccess() {
-        // en caso de que esté inscripto en alguna materia o examen le habilito la desinscripcion
-        ((MainActivity) getActivity()).flipDesinscripcion();
-        ((MainActivity) getActivity()).flipInscripionCursos();
+
     }
 
     @Override
