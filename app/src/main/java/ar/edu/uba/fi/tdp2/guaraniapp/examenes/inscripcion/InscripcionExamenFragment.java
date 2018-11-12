@@ -32,7 +32,7 @@ public class InscripcionExamenFragment extends RecyclerFragment {
         materia = ((MainActivity) getActivity()).getMateriaSeleccionada();
         String titulo = "";
         if (materia != null) {
-            titulo = materia.getCodigo() + " " + materia.getNombre();
+            titulo = materia.getNombre();
         } else {
             titulo = getString(R.string.seleccion_fechas_examenes);
         }
@@ -58,7 +58,7 @@ public class InscripcionExamenFragment extends RecyclerFragment {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View error = inflater.inflate(R.layout.error_message, null);
         TextView errorMessage = error.findViewById(R.id.error_message_text);
-        errorMessage.setText(R.string.error_no_inscripciones);
+        errorMessage.setText(R.string.error_no_examenes);
         CoordinatorLayout view = getView().getRootView().findViewById(R.id.coordinator);
         view.addView(error);
     }

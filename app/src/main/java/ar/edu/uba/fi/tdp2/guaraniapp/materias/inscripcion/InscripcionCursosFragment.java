@@ -29,7 +29,7 @@ public class InscripcionCursosFragment extends RecyclerFragment {
             Log.d("InscripcionCursosFragment", "No hay materia seleccionada");
         } else {
             cursos = materia.getCursos();
-            ((MainActivity) getActivity()).setToolbarName(materia.getCodigo() + " " + materia.getNombre());
+            ((MainActivity) getActivity()).setToolbarName(materia.getNombre());
         }
 
 
