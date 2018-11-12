@@ -46,7 +46,7 @@ public class DesinscripcionCursosFragment extends RecyclerFragment implements Re
         //progressPopup.show();
         getAdapter().notifyDataSetChanged();
         loadInscripciones();
-        ((MainActivity) getActivity()).setToolbarName(getString(R.string.desinscripcion));
+        ((MainActivity) getActivity()).setToolbarName(getString(R.string.mis_inscripciones));
     }
 
     @Override
