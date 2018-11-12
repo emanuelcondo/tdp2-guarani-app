@@ -330,10 +330,14 @@ public class MainActivity extends AppCompatActivity
                 double aux = (double) prioridad / INTERVALO;
                 //supongo que la inscripcion se produce en una semana completa entonces no tengo en cuenta los findes
                 int dias = (int) Math.floor(aux);
-                if (aux > 1) {
-                    cal.add(Calendar.DATE, dias);
+                if ((aux - dias) > 0 ) {
+                    if (dias > 0)
+                        cal.add(Calendar.DATE, dias);
                     //fix por bug al siguiente dia
                     //cal.add(Calendar.MINUTE, 30);
+                } else {
+                    if (dias > 0)
+                        cal.add(Calendar.DATE, dias -1);
                 }
                 double horasMinutos = ((aux - dias) > 0 )?(prioridad - dias * INTERVALO) * PASO - PASO : 8.5;
                 int horas = (int) Math.floor(horasMinutos);
