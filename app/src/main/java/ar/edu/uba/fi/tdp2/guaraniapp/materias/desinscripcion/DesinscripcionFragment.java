@@ -88,34 +88,46 @@ public class DesinscripcionFragment extends Fragment implements ResponseWatcher 
         // deshabilito (en caso de no haber mas inscripciones) en el menu la desinscripcion
         ((MainActivity) getActivity()).eliminarInscripcion(inscripcion);
 
-        Curso curso;
-        if (inscripcion.esCondicional())
-            curso = new Curso();
-        else
-            curso = inscripcion.getCurso();
-        curso.agregarVacante();
-        vacantes.setText(getString(R.string.vacantes_header, curso.getCupos(), curso.getVacantes()));
+        if (inscripcion.esCondicional()) {
+            vacantes.setText("Te has desinscripto de esta materia.");
+        } else {
+            Curso curso = inscripcion.getCurso();
+            curso.agregarVacante();
+            vacantes.setText(getString(R.string.vacantes_header, curso.getCupos(), curso.getVacantes()));
+        }
+
     }
 
     public void onError() {
         progressPopup.dismiss();
     }
 
+    @Override
+    public void onResume() {
+        //OnResume se llama siempre despues de OnStart y cada vez que se vuelve al fragment
+        super.onResume();
+        String materia = ((MainActivity) getActivity()).getInscripcionSeleccionada().getMateria().getNombre();
+        ((MainActivity) getActivity()).setToolbarName(materia);
+    }
+
     private void bindCurso() {
         Curso curso;
+        modalidades.setVisibility(View.GONE);
         if (inscripcion.esCondicional()) {
             curso = new Curso();
             docente.setText(R.string.condicional);
             horarios.setVisibility(View.GONE);
-            modalidades.setVisibility(View.GONE);
+            vacantes.setText(inscripcion.getFormatedTimestamp());
+
         } else {
             curso = inscripcion.getCurso();
             docente.setText(curso.getDocente());
+            vacantes.setText(getString(R.string.vacantes_header, curso.getCupos(), curso.getVacantes()));
         }
 
         numeroCurso.setText("Curso " + curso.getComision());
 
-        vacantes.setText(getString(R.string.vacantes_header, curso.getCupos(), curso.getVacantes()));
+
 
         if (curso.getAyudantes().isEmpty()) {
             ayudantes.setVisibility(View.GONE);
@@ -193,11 +205,11 @@ public class DesinscripcionFragment extends Fragment implements ResponseWatcher 
 
             horarios.addView(row);
 
-            TextView modalidad = new TextView(getContext());
+            /*TextView modalidad = new TextView(getContext());
             String s_modalidad = horario.getDia() + " " + horario.getHoraInicio() + " - " + horario.getHoraFin() + ": " + horario.getTipo();
             modalidad.setText(s_modalidad);
             modalidad.setPadding(8,8,8,8);
-            modalidades.addView(modalidad);
+            modalidades.addView(modalidad);*/
         }
 
     }
