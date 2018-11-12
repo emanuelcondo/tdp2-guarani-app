@@ -19,7 +19,6 @@
             android:title="@string/inscripcion" />
         <item
             android:id="@+id/nav_mis_inscripciones_cursos"
-            android:enabled="false"
             android:icon="@drawable/baseline_assignment_black_18dp"
             android:title="@string/mis_inscripciones" />
         <item

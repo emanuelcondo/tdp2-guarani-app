@@ -418,6 +418,9 @@ public class MainActivity extends AppCompatActivity
         return dateFinInscripcion;
     }
 
+    public void addInscripcion() {
+    }
+
     /*
     public Examen getExamenSeleccionado() {
         return examenSeleccionado;

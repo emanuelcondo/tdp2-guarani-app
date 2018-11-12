@@ -205,6 +205,8 @@ public class InscripcionFragment extends Fragment  implements ResponseWatcher {
         btnInscribir.setEnabled(false);
         btnInscribir.setBackgroundResource(R.color.gray);
 
+        ((MainActivity) getActivity()).setDesinscripcionesEnabled(true);
+
         curso.decrementarVacantes();
         vacantes.setText(getString(R.string.vacantes_header, curso.getCupos(), curso.getVacantes()));
 
