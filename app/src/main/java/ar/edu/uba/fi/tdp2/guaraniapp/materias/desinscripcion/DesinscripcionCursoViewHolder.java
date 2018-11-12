@@ -78,19 +78,19 @@ public class DesinscripcionCursoViewHolder extends RecyclerView.ViewHolder
 
         textViewNombreMateria.setText(inscripcion.getMateria().getNombre());
 
-        Date date = null;
-        try {
-            date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault()).parse(inscripcion.getTimestamp());
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(date);
-            cal.add(Calendar.HOUR, -3);
-            date = cal.getTime();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        String formattedDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault()).format(date);
-        String fechaInscripcion = "Fecha de Inscripción: " + formattedDate;
-        textViewFechaInscripcion.setText(fechaInscripcion);
+//        Date date = null;
+//        try {
+//            date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault()).parse(inscripcion.getTimestamp());
+//            Calendar cal = Calendar.getInstance();
+//            cal.setTime(date);
+//            cal.add(Calendar.HOUR, -3);
+//            date = cal.getTime();
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//        String formattedDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault()).format(date);
+//        String fechaInscripcion = "Fecha de Inscripción: " + inscripcion.getFormatedTimestamp();
+        textViewFechaInscripcion.setText(inscripcion.getFormatedTimestamp());
 
         textViewNumeroCurso.setText(itemView.getContext().getString(R.string.curso_header, curso.getComision()));
 

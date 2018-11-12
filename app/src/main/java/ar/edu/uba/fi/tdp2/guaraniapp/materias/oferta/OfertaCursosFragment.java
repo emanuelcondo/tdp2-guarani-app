@@ -23,7 +23,7 @@ public class OfertaCursosFragment extends RecyclerFragment {
         super.onCreate(savedInstanceState);
         materia = ((MainActivity) getActivity()).getMateriaSeleccionada();
         cursos = materia.getCursos();
-        ((MainActivity) getActivity()).setToolbarName(materia.getCodigo() + " " + materia.getNombre());
+        ((MainActivity) getActivity()).setToolbarName(materia.getNombre());
 
     }
 
