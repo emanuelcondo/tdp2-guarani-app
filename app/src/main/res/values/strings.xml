@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Guarani App</string>
-    <string name="urlAppServer">http://192.168.0.15:3000/api/v1.0/</string>
+    <string name="urlAppServer">http://192.168.43.52:3000/api/v1.0/</string>
     <!-- Servidor apuntando a produccion -->
     <!--string name="urlAppServer">https://guarani-server.herokuapp.com/api/v1.0/</string-->
     <string name="navigation_drawer_open">Abrir menu</string>
@@ -61,4 +61,5 @@
     <string name="mi_prioridad_toolbar">Mi Prioridad</string>
     <string name="prioridad_error">Las prioridades van a ser cargadas el día 16/08/2019</string>
     <string name="error_no_inscripciones">No hay inscripciones en este período.</string>
+    <string name="error_no_examenes">No hay examenes aun para esta materia.</string>
 </resources>
