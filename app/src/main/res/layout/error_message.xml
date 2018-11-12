@@ -19,14 +19,14 @@
             android:src="@drawable/baseline_info_black_18dp"
             android:layout_gravity="center_vertical"
             android:layout_margin="8dp"
-            android:tint="@color/white"/>
+            android:tint="@color/gray"/>
 
         <TextView
             android:id="@+id/error_message_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:layout_margin="8dp"/>
 
     </LinearLayout>
