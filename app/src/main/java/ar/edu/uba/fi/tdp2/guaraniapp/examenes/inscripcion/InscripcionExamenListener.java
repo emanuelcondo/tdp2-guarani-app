@@ -21,8 +21,6 @@ public class InscripcionExamenListener implements ResponseListener {
 
     @Override
     public void onRequestCompleted(Object response) {
-        // habilito en el menu la desinscripcion
-        ((MainActivity) inscripcionExamenFragment.getActivity()).setDesinscripcionesExamenesEnabled(true);
         ((MainActivity) inscripcionExamenFragment.getActivity()).removeFechaExamen(examen);
         inscripcionExamenFragment.getAdapter().notifyDataSetChanged();
         RequestHelper.showError(inscripcionExamenFragment.getContext(), "Inscripción exitosa");

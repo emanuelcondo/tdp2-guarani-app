@@ -20,6 +20,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionCarrerasFra
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.inscripcion.InscripcionMateriasFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.oferta.OfertaCarrerasFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.materias.oferta.OfertaMateriasFragment;
+import ar.edu.uba.fi.tdp2.guaraniapp.prioridad.MiPrioridadFragment;
 
 
 public class FragmentLoader {
@@ -49,6 +50,7 @@ public class FragmentLoader {
 
     public static final String Login = "Login";
     public static final String HistoriaAcademica = "HistoriaAcademica";
+    public static final String MiPrioridad = "MiPrioridad";
 
     //Examenes
     public static final String InscripcionExamenes = "InscripcionExamenes";
@@ -84,6 +86,7 @@ public class FragmentLoader {
 
         drawerVisibilityMap.put(Login, false);
         drawerVisibilityMap.put(HistoriaAcademica, true);
+        drawerVisibilityMap.put(MiPrioridad, true);
 
         //Examenes
         drawerVisibilityMap.put(InscripcionExamenes, true);
@@ -144,11 +147,15 @@ public class FragmentLoader {
                 fragment = new OfertaCarrerasFragment();
                 name = OfertaCarreras;
                 break;
+            case R.id.nav_prioridad:
+                fragment = new MiPrioridadFragment();
+                name = MiPrioridad;
+                break;
             case R.id.nav_inscribirme:
                 fragment = new InscripcionCarrerasFragment();
                 name = InscripcionCarreras;
                 break;
-            case R.id.nav_desinscribirme:
+            case R.id.nav_mis_inscripciones_cursos:
                 fragment = new DesinscripcionCursosFragment();
                 name = DesinscripcionCursos;
                 break;

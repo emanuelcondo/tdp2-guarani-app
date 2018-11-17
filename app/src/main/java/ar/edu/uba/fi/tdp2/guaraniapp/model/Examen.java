@@ -10,7 +10,8 @@ import java.util.Locale;
 public class Examen {
     private String _id;
 
-    private Aula aula;
+    private String aula;
+    private String sede;
     private Curso curso;
     private Materia materia;
     private String fecha;
@@ -51,19 +52,36 @@ public class Examen {
         this.curso = curso;
     }
 
-    public Aula getAula() {
-        return aula;
-    }
-
-    public void setAula(Aula aula) {
-        this.aula = aula;
-    }
-
     public Materia getMateria() {
         return materia;
     }
 
     public void setMateria(Materia materia) {
         this.materia = materia;
+    }
+
+    public String getAula() {
+        return aula;
+    }
+
+    public void setAula(String aula) {
+        this.aula = aula;
+    }
+
+    public String getSede() {
+        switch (sede) {
+            case "PC":
+                return "Paseo Colón";
+            case "LH":
+                return "Las Heras";
+            case "CU":
+                return "Ciudad Universitaria";
+            default:
+                return sede;
+        }
+    }
+
+    public void setSede(String sede) {
+        this.sede = sede;
     }
 }

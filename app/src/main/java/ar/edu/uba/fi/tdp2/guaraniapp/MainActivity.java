@@ -15,8 +15,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.firebase.FirebaseMessagingManager;
@@ -27,6 +32,7 @@ import ar.edu.uba.fi.tdp2.guaraniapp.model.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.model.Alumno;
 import ar.edu.uba.fi.tdp2.guaraniapp.model.Inscripcion;
 import ar.edu.uba.fi.tdp2.guaraniapp.model.Materia;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Periodo;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -36,6 +42,7 @@ public class MainActivity extends AppCompatActivity
     private ActionBarDrawerToggle toggle;
 
     private Alumno alumno;
+    private Periodo periodo;
     private List<Materia> materias = new ArrayList<>();
     private List<Examen> fechasExamen = new ArrayList<>();
 
@@ -216,32 +223,45 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void flipDesinscripcion() {
-        if (getAlumno().getInscripciones() != null) {
-            int inscripciones = getAlumno().getInscripciones().size();
-            setDesinscripcionesEnabled(inscripciones > 0);
+        if (getAlumno() != null && getAlumno().getInscripciones() != null) {
+            setDesinscripcionesEnabled(alumnoTieneInscripcionesACursos());
         }
     }
 
-    public void flipDesinscripcionExamenes() {
-        if (getAlumno().getInscripcionesExamenes() != null) {
-            int inscripciones = getAlumno().getInscripcionesExamenes().size();
-            setDesinscripcionesExamenesEnabled(inscripciones > 0);
+    public boolean alumnoTieneInscripcionesACursos() {
+        return getAlumno().getInscripciones().size() > 0;
+    }
+
+    public boolean esFechaDeDesinscripcionCursos() {
+        String fechaInicioDesinscripcion = this.periodo.getDesinscripcionCurso().getInicio();
+        String fechaFinDesinscripcion = this.periodo.getDesinscripcionCurso().getFin();
+
+        Date dateInicio = null;
+        Date dateFin = null;
+        Date hoy = Calendar.getInstance().getTime();
+        try {
+            dateInicio = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                    , Locale.getDefault()).parse(fechaInicioDesinscripcion);
+            dateFin = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                    , Locale.getDefault()).parse(fechaFinDesinscripcion);
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(dateInicio);
+            cal.add(Calendar.HOUR, -3);
+            dateInicio = cal.getTime();
+            cal.setTime(dateFin);
+            cal.add(Calendar.HOUR, -3);
+            dateFin = cal.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
+        return hoy.after(dateInicio) && hoy.before(dateFin);
     }
 
     public void setDesinscripcionesEnabled(boolean enabled) {
         NavigationView navigationView = findViewById(R.id.nav_view);
 
         Menu menuNav = navigationView.getMenu();
-        MenuItem nav_desinscr = menuNav.findItem(R.id.nav_desinscribirme);
-        nav_desinscr.setEnabled(enabled);
-    }
-
-    public void setDesinscripcionesExamenesEnabled(boolean enabled) {
-        NavigationView navigationView = findViewById(R.id.nav_view);
-
-        Menu menuNav = navigationView.getMenu();
-        MenuItem nav_desinscr = menuNav.findItem(R.id.nav_desinscribirme_examen);
+        MenuItem nav_desinscr = menuNav.findItem(R.id.nav_mis_inscripciones_cursos);
         nav_desinscr.setEnabled(enabled);
     }
 
@@ -268,6 +288,137 @@ public class MainActivity extends AppCompatActivity
 
     public void removeInscripcionExamen(InscripcionExamen inscripcionExamen) {
         this.alumno.getInscripcionesExamenes().remove(inscripcionExamen);
+    }
+
+    public void setPeriodo(Periodo periodo) {
+        this.periodo = periodo;
+    }
+
+    public Periodo getPeriodo() {
+        return periodo;
+    }
+
+    public Date getFechaInicioInscripcion() {
+        //TODO: Calcular en base a la prioridad
+        String fechaInicioInscripcion = this.periodo.getInscripcionCurso().getInicio();
+
+        Date date = null;
+        try {
+            date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                    , Locale.getDefault()).parse(fechaInicioInscripcion);
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            cal.add(Calendar.HOUR, -3);
+
+            //Calculo la fecha y hora segun prioridad
+
+            // INTERVALO => cantidad de veces que se puede dividir un dia (9 a 18hs) en intervalos de media hora
+            int INTERVALO = 18;
+            // PASO = 0.5 => valor en horas de lo que tiene que esperar el alumno por cada punto de prioridad
+            double PASO = 0.5;
+
+
+            // si el resultado de dividir por INTERVALO es > 0 incremento dias
+            // y el residuo hace que incrementen las horas
+            int prioridad = alumno.getPrioridad();
+            if (prioridad >= 91) {
+                //la prioridad supera el maximo lo pongo el viernes a las 17:30
+                cal.add(Calendar.DATE, 4);
+                cal.add(Calendar.HOUR, 8);
+                cal.add(Calendar.MINUTE, 30);
+            } else {
+                double aux = (double) prioridad / INTERVALO;
+                //supongo que la inscripcion se produce en una semana completa entonces no tengo en cuenta los findes
+                int dias = (int) Math.floor(aux);
+                if ((aux - dias) > 0 ) {
+                    if (dias > 0)
+                        cal.add(Calendar.DATE, dias);
+                    //fix por bug al siguiente dia
+                    //cal.add(Calendar.MINUTE, 30);
+                } else {
+                    if (dias > 0)
+                        cal.add(Calendar.DATE, dias -1);
+                }
+                double horasMinutos = ((aux - dias) > 0 )?(prioridad - dias * INTERVALO) * PASO - PASO : 8.5;
+                int horas = (int) Math.floor(horasMinutos);
+
+                cal.add(Calendar.HOUR, horas);
+
+
+                int minutos = (int) ((horasMinutos - horas) * 60);
+
+                if (minutos > 0) {
+                    cal.add(Calendar.MINUTE, minutos);
+                }
+            }
+            date = cal.getTime();
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
+
+    public void flipInscripionCursos() {
+        NavigationView navigationView = findViewById(R.id.nav_view);
+
+        Menu menuNav = navigationView.getMenu();
+        MenuItem menuItem = menuNav.findItem(R.id.nav_inscribirme);
+        menuItem.setEnabled(esFechaDeInscripcionCursos());
+    }
+
+    private boolean esFechaDeInscripcionCursos() {
+        Date hoy = Calendar.getInstance().getTime();
+        Date dateFinInscripcion = null;
+        try {
+            dateFinInscripcion = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                    , Locale.getDefault()).parse(periodo.getInscripcionCurso().getFin());
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(dateFinInscripcion);
+            cal.add(Calendar.HOUR, -3);
+            dateFinInscripcion = cal.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return hoy.after(getFechaInicioInscripcion()) && hoy.before(dateFinInscripcion);
+    }
+
+    public boolean existePrioridad() {
+        Date hoy = Calendar.getInstance().getTime();
+        return hoy.after(getFechaPublicacionPrioridades());
+    }
+
+    public Date getFechaPublicacionPrioridades() {
+        Date datePublicacionPrioridad = null;
+        try {
+            datePublicacionPrioridad = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                    , Locale.getDefault()).parse(periodo.getConsultaPrioridad().getInicio());
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(datePublicacionPrioridad);
+            cal.add(Calendar.HOUR, -3);
+            datePublicacionPrioridad = cal.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return datePublicacionPrioridad;
+    }
+
+    public Date getFechaFinInscripcion() {
+        Date dateFinInscripcion = null;
+        try {
+            dateFinInscripcion = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                    , Locale.getDefault()).parse(periodo.getInscripcionCurso().getFin());
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(dateFinInscripcion);
+            cal.add(Calendar.HOUR, -3);
+            dateFinInscripcion = cal.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dateFinInscripcion;
+    }
+
+    public void addInscripcion() {
     }
 
     /*

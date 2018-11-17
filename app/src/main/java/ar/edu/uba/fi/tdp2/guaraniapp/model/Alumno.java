@@ -8,6 +8,7 @@ public class Alumno {
     private int legajo;
     private String nombre;
     private String apellido;
+    private int prioridad;
     private List<Carrera> carreras;
     private List<Inscripcion> inscripciones;
     private List<InscripcionExamen> inscripcionesExamenes;
@@ -83,5 +84,13 @@ public class Alumno {
 
     public void setInscripcionesExamenes(List<InscripcionExamen> inscripcionesExamenes) {
         this.inscripcionesExamenes = inscripcionesExamenes;
+    }
+
+    public int getPrioridad() {
+        return prioridad;
+    }
+
+    public void setPrioridad(int prioridad) {
+        this.prioridad = prioridad;
     }
 }

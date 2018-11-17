@@ -1,5 +1,11 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 public class Inscripcion {
     private String timestamp;
     private String _id;
@@ -59,4 +65,21 @@ public class Inscripcion {
         Inscripcion ins = (Inscripcion)obj;
         return ins.getMateria().equals(materia);
     }
+
+    public String getFormatedTimestamp() {
+        Date date = null;
+        try {
+            date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault()).parse(getTimestamp());
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            cal.add(Calendar.HOUR, -3);
+            date = cal.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return getTimestamp();
+        }
+        String formattedDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault()).format(date);
+        return  "Fecha de Inscripción: " + formattedDate;
+    }
+
 }

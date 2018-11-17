@@ -92,16 +92,6 @@ public class LoginFragment extends Fragment implements ResponseListener, Respons
         requestSender.doGet_expectJSONObject(listener, url);
     }
 
-    private void loadInscripciones() {
-        Context context = getActivity();
-        DesinscripcionCursosListener listener = new DesinscripcionCursosListener(context, this);
-        RequestSender requestSender = new RequestSender(context);
-
-        String url = context.getString(R.string.urlAppServer) + "inscripciones/cursos/";
-
-        requestSender.doGet_expectJSONObject(listener, url);
-    }
-
     public void onLoginSuccess(String session) {
         Token.id = session;
         Token.conectado = true;
@@ -109,27 +99,11 @@ public class LoginFragment extends Fragment implements ResponseListener, Respons
         ((MainActivity) getActivity()).sendFirebaseToken();
 
         getAlumnoInfo();
-        // Pre-carga de las inscripciones para mostrar en inscripcion
-        // solo las materias a las cuales le falta inscribirse
-        loadInscripciones();
-        // Pre-carga de las inscripciones a examen para habilitar en el menu
-        loadInscripcionesExamen();
 
         progressPopup.dismiss();
 
         RequestHelper.showError(getActivity(), "Conectado a " + getString(R.string.app_name) + "!");
 
-    }
-
-    private void loadInscripcionesExamen() {
-        Context context = getActivity();
-        DesinscripcionExamenesListener listener = new DesinscripcionExamenesListener(context, this);
-        RequestSender requestSender = new RequestSender(context);
-
-
-        String url = context.getString(R.string.urlAppServer) + "inscripciones/examenes";
-
-        requestSender.doGet_expectJSONObject(listener, url);
     }
 
     public void onLoginFailed() {
@@ -210,9 +184,7 @@ public class LoginFragment extends Fragment implements ResponseListener, Respons
 
     @Override
     public void onSuccess() {
-        // en caso de que esté inscripto en alguna materia o examen le habilito la desinscripcion
-        ((MainActivity) getActivity()).flipDesinscripcion();
-        ((MainActivity) getActivity()).flipDesinscripcionExamenes();
+
     }
 
     @Override

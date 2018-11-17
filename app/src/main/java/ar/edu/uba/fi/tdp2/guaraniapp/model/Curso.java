@@ -5,12 +5,10 @@ import java.util.List;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.model.Horario;
 import ar.edu.uba.fi.tdp2.guaraniapp.model.Persona;
-import ar.edu.uba.fi.tdp2.guaraniapp.model.Sede;
 
 public class Curso {
     private String _id;
     private int comision;
-    private Sede sede;
     private Persona docenteACargo;
     private Persona jtp;
     private List<Horario> cursada;
@@ -84,14 +82,6 @@ public class Curso {
 
     public void setAyudantes(List<Persona> ayudantes) {
         this.ayudantes = ayudantes;
-    }
-
-    public Sede getSede() {
-        return sede;
-    }
-
-    public void setSede(Sede sede) {
-        this.sede = sede;
     }
 
     public Persona getDocenteACargo() {

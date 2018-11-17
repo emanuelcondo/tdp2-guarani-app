@@ -12,6 +12,12 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.ProgressPopup;
@@ -20,7 +26,9 @@ import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
 import ar.edu.uba.fi.tdp2.guaraniapp.model.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.model.Horario;
 import ar.edu.uba.fi.tdp2.guaraniapp.model.Inscripcion;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Periodo;
 import ar.edu.uba.fi.tdp2.guaraniapp.model.Persona;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Plazo;
 
 public class DesinscripcionFragment extends Fragment implements ResponseWatcher {
 
@@ -28,6 +36,7 @@ public class DesinscripcionFragment extends Fragment implements ResponseWatcher 
     private TextView docente;
     private TableLayout horarios;
     private TextView vacantes;
+    private TextView mensajePeriodo;
     private Button btnDesinscribir;
     private LinearLayout modalidades;
     private LinearLayout ayudantes;
@@ -53,6 +62,7 @@ public class DesinscripcionFragment extends Fragment implements ResponseWatcher 
         modalidades = rootView.findViewById(R.id.modalidades);
         ayudantes = rootView.findViewById(R.id.ayudantes);
         btnDesinscribir = rootView.findViewById(R.id.ins_btn_desinscribir);
+        mensajePeriodo = rootView.findViewById(R.id.mensaje_periodo_desinscripcion);
 
         progressPopup = new ProgressPopup("Desinscribiendo...", getContext());
 
@@ -82,40 +92,89 @@ public class DesinscripcionFragment extends Fragment implements ResponseWatcher 
     public void onSuccess() {
         progressPopup.dismiss();
         // TODO: acá se podría mostrat una tilde verde en vez de grisar el boton
-        btnDesinscribir.setEnabled(false);
-        btnDesinscribir.setBackgroundResource(R.color.gray);
+        deshabilitarBotonDesinscribir();
 
         // deshabilito (en caso de no haber mas inscripciones) en el menu la desinscripcion
         ((MainActivity) getActivity()).eliminarInscripcion(inscripcion);
 
-        Curso curso;
-        if (inscripcion.esCondicional())
-            curso = new Curso();
-        else
-            curso = inscripcion.getCurso();
-        curso.agregarVacante();
-        vacantes.setText(getString(R.string.vacantes_header, curso.getCupos(), curso.getVacantes()));
+        if (inscripcion.esCondicional()) {
+            vacantes.setText("Te has desinscripto de esta materia.");
+        } else {
+            Curso curso = inscripcion.getCurso();
+            curso.agregarVacante();
+            vacantes.setText(getString(R.string.vacantes_header, curso.getCupos(), curso.getVacantes()));
+        }
+
+    }
+
+    private void deshabilitarBotonDesinscribir() {
+        btnDesinscribir.setEnabled(false);
+        btnDesinscribir.setBackgroundResource(R.color.gray);
     }
 
     public void onError() {
         progressPopup.dismiss();
     }
 
+    @Override
+    public void onResume() {
+        //OnResume se llama siempre despues de OnStart y cada vez que se vuelve al fragment
+        super.onResume();
+        String materia = ((MainActivity) getActivity()).getInscripcionSeleccionada().getMateria().getNombre();
+        ((MainActivity) getActivity()).setToolbarName(materia);
+    }
+
     private void bindCurso() {
         Curso curso;
+        modalidades.setVisibility(View.GONE);
         if (inscripcion.esCondicional()) {
             curso = new Curso();
             docente.setText(R.string.condicional);
             horarios.setVisibility(View.GONE);
-            modalidades.setVisibility(View.GONE);
+            vacantes.setText(inscripcion.getFormatedTimestamp());
+
         } else {
             curso = inscripcion.getCurso();
             docente.setText(curso.getDocente());
+            vacantes.setText(getString(R.string.vacantes_header, curso.getCupos(), curso.getVacantes()));
+        }
+
+        if (!((MainActivity) getActivity()).esFechaDeDesinscripcionCursos()) {
+            deshabilitarBotonDesinscribir();
+            mensajePeriodo.setVisibility(View.VISIBLE);
+            Plazo plazoDesinscripcion = ((MainActivity) getActivity()).getPeriodo().getDesinscripcionCurso();
+
+            Date dateInicio = null;
+            Date dateFin = null;
+            try {
+                dateInicio = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                        , Locale.getDefault()).parse(plazoDesinscripcion.getInicio());
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(dateInicio);
+                cal.add(Calendar.HOUR, -3);
+                dateInicio = cal.getTime();
+                dateFin = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                        , Locale.getDefault()).parse(plazoDesinscripcion.getFin());
+                cal.setTime(dateFin);
+                cal.add(Calendar.HOUR, -3);
+                dateFin = cal.getTime();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            String inicio = new SimpleDateFormat("dd/MM/yyyy HH:mm"
+                    , Locale.getDefault())
+                    .format(dateInicio);
+            String fin = new SimpleDateFormat("dd/MM/yyyy HH:mm"
+                    , Locale.getDefault())
+                    .format(dateFin);
+
+            mensajePeriodo.setText(getString(R.string.periodo_desinscripcion, inicio, fin));
         }
 
         numeroCurso.setText("Curso " + curso.getComision());
 
-        vacantes.setText(getString(R.string.vacantes_header, curso.getCupos(), curso.getVacantes()));
+
 
         if (curso.getAyudantes().isEmpty()) {
             ayudantes.setVisibility(View.GONE);
@@ -177,7 +236,7 @@ public class DesinscripcionFragment extends Fragment implements ResponseWatcher 
             textViewHorario.setPadding(8,8,8,8);
 
             TextView textViewSede = new TextView(getContext());
-            textViewSede.setText(curso.getSede().getNombre());
+            textViewSede.setText(horario.getSede());
             textViewSede.setBackgroundResource(R.drawable.cell_shape);
             textViewSede.setPadding(8,8,8,8);
 
@@ -193,11 +252,11 @@ public class DesinscripcionFragment extends Fragment implements ResponseWatcher 
 
             horarios.addView(row);
 
-            TextView modalidad = new TextView(getContext());
+            /*TextView modalidad = new TextView(getContext());
             String s_modalidad = horario.getDia() + " " + horario.getHoraInicio() + " - " + horario.getHoraFin() + ": " + horario.getTipo();
             modalidad.setText(s_modalidad);
             modalidad.setPadding(8,8,8,8);
-            modalidades.addView(modalidad);
+            modalidades.addView(modalidad);*/
         }
 
     }

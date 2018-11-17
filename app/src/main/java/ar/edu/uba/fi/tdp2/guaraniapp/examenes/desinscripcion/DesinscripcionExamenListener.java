@@ -20,7 +20,6 @@ public class DesinscripcionExamenListener implements ResponseListener {
         desinscripcionExamenFragment.onResume();
         desinscripcionExamenFragment.progressPopup.dismiss();
         ((MainActivity) desinscripcionExamenFragment.getActivity()).removeInscripcionExamen(inscripcionExamen);
-        ((MainActivity) desinscripcionExamenFragment.getActivity()).flipDesinscripcionExamenes();
     }
 
     @Override

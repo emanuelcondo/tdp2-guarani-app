@@ -24,7 +24,10 @@ public class InscripcionListener implements ResponseListener {
     @Override
     public void onRequestError(int codError, String errorMessage) {
         if (codError == 400) {
-            errorMessage = "Usted ya cuenta con una inscripción a esta materia";
+            if (errorMessage.startsWith("La tarea"))
+                errorMessage = "El periodo de inscripción terminó. Ya no puede realizar inscripciones a cursos.";
+            else
+                errorMessage = "Usted ya cuenta con una inscripción a esta materia.";
         }
         RequestHelper.showError(context, errorMessage);
         watcher.onError();
