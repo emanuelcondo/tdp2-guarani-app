@@ -25,6 +25,7 @@ import java.util.Locale;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.firebase.FirebaseMessagingManager;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.EncuestaCurso;
 import ar.edu.uba.fi.tdp2.guaraniapp.model.Examen;
 import ar.edu.uba.fi.tdp2.guaraniapp.model.InscripcionExamen;
 import ar.edu.uba.fi.tdp2.guaraniapp.login.LoginFragment;
@@ -52,6 +53,8 @@ public class MainActivity extends AppCompatActivity
     private Materia materiaSeleccionada;
     private Inscripcion inscripcionSeleccionada;
     private InscripcionExamen inscripcionExamenSeleccionada;
+    private List<EncuestaCurso> encuestasCursos = new ArrayList<>();
+    private EncuestaCurso encuestaCursoSeleccionada;
     //private Examen examenSeleccionado;
 
     @Override
@@ -419,6 +422,22 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void addInscripcion() {
+    }
+
+    public void setEncuestasCursos(List<EncuestaCurso> encuestasCursos) {
+        this.encuestasCursos = encuestasCursos;
+    }
+
+    public List<EncuestaCurso> getEncuestaCursos() {
+        return encuestasCursos;
+    }
+
+    public void setEncuestaCursoSeleccionada(EncuestaCurso encuestaCursoSeleccionada) {
+        this.encuestaCursoSeleccionada = encuestaCursoSeleccionada;
+    }
+
+    public EncuestaCurso getEncuestaCursoSeleccionada() {
+        return encuestaCursoSeleccionada;
     }
 
     /*

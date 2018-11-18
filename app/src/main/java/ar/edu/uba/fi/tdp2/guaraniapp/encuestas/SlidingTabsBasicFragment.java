@@ -1,8 +1,10 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.encuestas;
 
 //import com.example.android.common.logger.Log;
+import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.vista.SlidingTabLayout;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.EncuestaCurso;
 
 import android.os.Bundle;
 //import android.support.v4.app.Fragment;
@@ -132,19 +134,89 @@ public class SlidingTabsBasicFragment extends Fragment {
          */
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-            // Inflate a new layout from our resources
+            switch (position) {
+                case 0: return instantiateOpinionGeneral(container);
+                case 1: return instantiateTemas(container);
+                case 2: return instantiateActualidad(container);
+                case 3: return instantiateNivelTeoricas(container);
+                case 4: return instantiateNivelPracticas(container);
+                default: return instantiateError(container);
+            }
+        }
+
+        private View instantiateOpinionGeneral(ViewGroup container) {
             View view = getActivity().getLayoutInflater().inflate(R.layout.encuesta_pager_item,
                     container, false);
-            // Add the newly created View to the ViewPager
             container.addView(view);
 
-            // Retrieve a TextView from the inflated View, and update it's text
-            TextView title = (TextView) view.findViewById(R.id.item_title);
-            title.setText(String.valueOf(position + 1));
+            setInfoCurso(view);
 
-            Log.i(LOG_TAG, "instantiateItem() [position: " + position + "]");
+            TextView pregunta = view.findViewById(R.id.encuesta_pregunta);
+            pregunta.setText(R.string.pregunta_opinion_general);
 
-            // Return the View
+            return view;
+        }
+
+        private View instantiateTemas(ViewGroup container) {
+            View view = getActivity().getLayoutInflater().inflate(R.layout.encuesta_pager_item,
+                    container, false);
+            container.addView(view);
+
+            setInfoCurso(view);
+
+            TextView pregunta = view.findViewById(R.id.encuesta_pregunta);
+            pregunta.setText(R.string.pregunta_temas);
+
+            return view;
+        }
+
+        private View instantiateActualidad(ViewGroup container) {
+            View view = getActivity().getLayoutInflater().inflate(R.layout.encuesta_pager_item,
+                    container, false);
+            container.addView(view);
+
+            setInfoCurso(view);
+
+            TextView pregunta = view.findViewById(R.id.encuesta_pregunta);
+            pregunta.setText(R.string.pregunta_actualidad);
+
+            return view;
+        }
+
+        private View instantiateNivelTeoricas(ViewGroup container) {
+            View view = getActivity().getLayoutInflater().inflate(R.layout.encuesta_pager_item,
+                    container, false);
+            container.addView(view);
+
+            setInfoCurso(view);
+
+            TextView pregunta = view.findViewById(R.id.encuesta_pregunta);
+            pregunta.setText(R.string.pregunta_nivel_teoricas);
+
+            return view;
+        }
+
+        private View instantiateNivelPracticas(ViewGroup container) {
+            View view = getActivity().getLayoutInflater().inflate(R.layout.encuesta_pager_item,
+                    container, false);
+            container.addView(view);
+
+            setInfoCurso(view);
+
+            TextView pregunta = view.findViewById(R.id.encuesta_pregunta);
+            pregunta.setText(R.string.pregunta_nivel_practicas);
+
+            return view;
+        }
+
+        private View instantiateError(ViewGroup container) {
+            View view = getActivity().getLayoutInflater().inflate(R.layout.encuesta_pager_item,
+                    container, false);
+            container.addView(view);
+
+            TextView pregunta = view.findViewById(R.id.encuesta_pregunta);
+            pregunta.setText(R.string.pregunta_error);
+
             return view;
         }
 
@@ -158,5 +230,21 @@ public class SlidingTabsBasicFragment extends Fragment {
             Log.i(LOG_TAG, "destroyItem() [position: " + position + "]");
         }
 
+    }
+
+    private void setInfoCurso(View view) {
+        EncuestaCurso encuestaCurso = ((MainActivity) getActivity()).getEncuestaCursoSeleccionada();
+
+        TextView codigoMateria = view.findViewById(R.id.encuesta_codigo_materia);
+        codigoMateria.setText(encuestaCurso.getMateria().getCodigo());
+
+        TextView nombreMateria = view.findViewById(R.id.encuesta_nombre_materia);
+        nombreMateria.setText(encuestaCurso.getMateria().getNombre());
+
+        TextView comision = view.findViewById(R.id.encuesta_numero_curso);
+        comision.setText(String.valueOf(encuestaCurso.getComision()));
+
+        TextView docente = view.findViewById(R.id.encuesta_docente_curso);
+        docente.setText(encuestaCurso.getCurso().getDocente());
     }
 }

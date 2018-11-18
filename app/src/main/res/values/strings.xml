@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Guarani App</string>
-    <string name="urlAppServer">http://192.168.1.103:3000/api/v1.0/</string>
+    <string name="urlAppServer">http://192.168.0.15:3000/api/v1.0/</string>
     <!-- Servidor apuntando a produccion -->
     <!--string name="urlAppServer">https://guarani-server.herokuapp.com/api/v1.0/</string-->
     <string name="navigation_drawer_open">Abrir menu</string>
@@ -65,4 +65,13 @@
     <string name="periodo_desinscripcion">El periodo de desinscripción actual es desde el %1$s hasta el %2$s</string>
     <string name="error_no_inscripciones">No hay inscripciones en este período.</string>
     <string name="error_no_examenes">No hay examenes aun para esta materia.</string>
+    <string name="encuestas_cursos">Encuestas de Cursos</string>
+    <string name="error_no_encuestas">No hay encuestas que debas completar</string>
+    <string name="responder_encuesta">Responder encuesta</string>
+    <string name="pregunta_opinion_general">¿Cuál es tu opinión general del curso?</string>
+    <string name="pregunta_error">Ha ocurrido un error inesperado.</string>
+    <string name="pregunta_temas">¿Cómo te resultaron los temas de la materia?</string>
+    <string name="pregunta_nivel_teoricas">A tu entender, ¿cuál fue el nivel de las clases teóricas?</string>
+    <string name="pregunta_nivel_practicas">A tu entender, ¿cuál fue el nivel de las clases prácticas?</string>
+    <string name="pregunta_actualidad">¿Te parecieron actualizados los temas tratados en la materia?</string>
 </resources>

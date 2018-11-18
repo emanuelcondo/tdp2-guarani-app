@@ -11,6 +11,7 @@ import java.util.Map;
 
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
+import ar.edu.uba.fi.tdp2.guaraniapp.encuestas.EncuestasCursosFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.encuestas.SlidingTabsBasicFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.examenes.desinscripcion.DesinscripcionExamenFragment;
 import ar.edu.uba.fi.tdp2.guaraniapp.examenes.inscripcion.InscripcionExamenCarrerasFragment;
@@ -52,6 +53,7 @@ public class FragmentLoader {
     public static final String Login = "Login";
     public static final String HistoriaAcademica = "HistoriaAcademica";
     public static final String MiPrioridad = "MiPrioridad";
+    public static final String EncuestasCursos = "EncuestasCursos";
     public static final String Encuestas = "Encuestas";
 
     //Examenes
@@ -89,6 +91,7 @@ public class FragmentLoader {
         drawerVisibilityMap.put(Login, false);
         drawerVisibilityMap.put(HistoriaAcademica, true);
         drawerVisibilityMap.put(MiPrioridad, true);
+        drawerVisibilityMap.put(EncuestasCursos, true);
         drawerVisibilityMap.put(Encuestas, true);
 
         //Examenes
@@ -171,8 +174,8 @@ public class FragmentLoader {
                 name = DesinscripcionExamenes;
                 break;
             case R.id.nav_encuestas:
-                fragment = new SlidingTabsBasicFragment();
-                name = Encuestas;
+                fragment = new EncuestasCursosFragment();
+                name = EncuestasCursos;
                 break;
             case R.id.nav_historia:
                 fragment = new HistoriaAcademicaFragment();

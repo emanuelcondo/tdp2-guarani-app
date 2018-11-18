@@ -10,6 +10,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.edu.uba.fi.tdp2.guaraniapp.model.EncuestaCurso;
 import ar.edu.uba.fi.tdp2.guaraniapp.model.Examen;
 import ar.edu.uba.fi.tdp2.guaraniapp.model.InscripcionExamen;
 import ar.edu.uba.fi.tdp2.guaraniapp.model.Curso;
@@ -56,5 +57,10 @@ public class ResponseParser {
     public static List<InscripcionExamen> getInscripcionesExamenes(Object response) {
         Type listType = new TypeToken<ArrayList<InscripcionExamen>>(){}.getType();
         return gson.fromJson(getJsonArray(response,"inscripciones"), listType);
+    }
+
+    public static List<EncuestaCurso> getEncuestaCursos(Object response) {
+        Type listType = new TypeToken<ArrayList<EncuestaCurso>>(){}.getType();
+        return gson.fromJson(getJsonArray(response,"cursos"), listType);
     }
 }
