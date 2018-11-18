@@ -1,10 +1,19 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.model;
 
-public class Encuesta {
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
+public class Encuesta implements Serializable {
+    @SerializedName("nivel_general")
     private int nivelGeneral;
+    @SerializedName("nivel_teoricas")
     private int nivelTeoricas;
+    @SerializedName("nivel_practicas")
     private int nivelPracticas;
+    @SerializedName("nivel_temas")
     private int nivelTemas;
+    @SerializedName("nivel_actualizacion")
     private int nivelActualizacion;
     private String comentario;
 
@@ -20,6 +29,10 @@ public class Encuesta {
         this.nivelTemas = nivelTemas;
         this.nivelActualizacion = nivelActualizacion;
         this.comentario = comentario;
+    }
+
+    public Encuesta() {
+
     }
 
     public int getNivelGeneral() {

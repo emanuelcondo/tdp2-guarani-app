@@ -74,4 +74,6 @@
     <string name="pregunta_nivel_teoricas">A tu entender, ¿cuál fue el nivel de las clases teóricas?</string>
     <string name="pregunta_nivel_practicas">A tu entender, ¿cuál fue el nivel de las clases prácticas?</string>
     <string name="pregunta_actualidad">¿Te parecieron actualizados los temas tratados en la materia?</string>
+    <string name="enviar_encuesta">Enviar encuesta</string>
+    <string name="encuesta_comentario_hint">Comentarios opcionales</string>
 </resources>

@@ -3,7 +3,12 @@ package ar.edu.uba.fi.tdp2.guaraniapp.encuestas;
 //import com.example.android.common.logger.Log;
 import ar.edu.uba.fi.tdp2.guaraniapp.MainActivity;
 import ar.edu.uba.fi.tdp2.guaraniapp.R;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
+import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.vista.SlidingTabLayout;
+import ar.edu.uba.fi.tdp2.guaraniapp.materias.desinscripcion.DesinscripcionListener;
+import ar.edu.uba.fi.tdp2.guaraniapp.model.Encuesta;
 import ar.edu.uba.fi.tdp2.guaraniapp.model.EncuestaCurso;
 
 import android.os.Bundle;
@@ -15,7 +20,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +40,12 @@ import java.util.List;
  * to display a custom {@link ViewPager} title strip which gives continuous feedback to the user
  * when scrolling.
  */
-public class SlidingTabsBasicFragment extends Fragment {
+public class SlidingTabsBasicFragment extends Fragment implements ResponseWatcher {
 
     static final String LOG_TAG = "SlidingTabsBasicFragment";
+
+    private Encuesta encuesta;
+    private EncuestaCurso encuestaCurso;
 
     /**
      * A custom {@link ViewPager} title strip which looks much like Tabs present in Android v4.0 and
@@ -48,6 +66,8 @@ public class SlidingTabsBasicFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        this.encuesta = new Encuesta(0, 0, 0, 0, 0, null);
+        this.encuestaCurso = ((MainActivity) getActivity()).getEncuestaCursoSeleccionada();
         return inflater.inflate(R.layout.fragment_encuesta, container, false);
     }
 
@@ -77,6 +97,16 @@ public class SlidingTabsBasicFragment extends Fragment {
         // END_INCLUDE (setup_slidingtablayout)
     }
     // END_INCLUDE (fragment_onviewcreated)
+
+    @Override
+    public void onSuccess() {
+        FragmentLoader.backFragment(getActivity());
+    }
+
+    @Override
+    public void onError() {
+
+    }
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} used to display pages in this sample.
@@ -154,6 +184,12 @@ public class SlidingTabsBasicFragment extends Fragment {
             TextView pregunta = view.findViewById(R.id.encuesta_pregunta);
             pregunta.setText(R.string.pregunta_opinion_general);
 
+            addRespuestaNivelGeneral(view,"Excelente", 5);
+            addRespuestaNivelGeneral(view,"Muy bueno", 4);
+            addRespuestaNivelGeneral(view,"Bueno", 3);
+            addRespuestaNivelGeneral(view,"Regular", 2);
+            addRespuestaNivelGeneral(view,"Malo", 1);
+
             return view;
         }
 
@@ -166,6 +202,12 @@ public class SlidingTabsBasicFragment extends Fragment {
 
             TextView pregunta = view.findViewById(R.id.encuesta_pregunta);
             pregunta.setText(R.string.pregunta_temas);
+
+            addRespuestaNivelTemas(view, "Muy interesantes", 5);
+            addRespuestaNivelTemas(view, "Interesantes", 4);
+            addRespuestaNivelTemas(view, "Opinión neutral", 3);
+            addRespuestaNivelTemas(view, "Poco interesantes", 2);
+            addRespuestaNivelTemas(view, "Nada interesantes", 1);
 
             return view;
         }
@@ -180,6 +222,12 @@ public class SlidingTabsBasicFragment extends Fragment {
             TextView pregunta = view.findViewById(R.id.encuesta_pregunta);
             pregunta.setText(R.string.pregunta_actualidad);
 
+            addRespuestaNivelActualizacion(view, "Muy actualizados", 5);
+            addRespuestaNivelActualizacion(view, "Actualizados", 4);
+            addRespuestaNivelActualizacion(view, "Aun vigentes", 3);
+            addRespuestaNivelActualizacion(view, "Poco actualizados", 2);
+            addRespuestaNivelActualizacion(view, "Nada actualizados", 1);
+
             return view;
         }
 
@@ -193,6 +241,12 @@ public class SlidingTabsBasicFragment extends Fragment {
             TextView pregunta = view.findViewById(R.id.encuesta_pregunta);
             pregunta.setText(R.string.pregunta_nivel_teoricas);
 
+            addRespuestaNivelTeoricas(view,"Excelente", 5);
+            addRespuestaNivelTeoricas(view,"Muy bueno", 4);
+            addRespuestaNivelTeoricas(view,"Bueno", 3);
+            addRespuestaNivelTeoricas(view,"Regular", 2);
+            addRespuestaNivelTeoricas(view,"Malo", 1);
+
             return view;
         }
 
@@ -205,6 +259,32 @@ public class SlidingTabsBasicFragment extends Fragment {
 
             TextView pregunta = view.findViewById(R.id.encuesta_pregunta);
             pregunta.setText(R.string.pregunta_nivel_practicas);
+
+            addRespuestaNivelPracticas(view,"Excelente", 5);
+            addRespuestaNivelPracticas(view,"Muy bueno", 4);
+            addRespuestaNivelPracticas(view,"Bueno", 3);
+            addRespuestaNivelPracticas(view,"Regular", 2);
+            addRespuestaNivelPracticas(view,"Malo", 1);
+
+            final EditText comentario = view.findViewById(R.id.encuesta_comentario);
+            comentario.setVisibility(View.VISIBLE);
+
+            Button botonEnviar = view.findViewById(R.id.enviar_encuesta);
+            botonEnviar.setVisibility(View.VISIBLE);
+            botonEnviar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (encuesta.getNivelActualizacion() != 0 &&
+                            encuesta.getNivelGeneral() != 0 &&
+                            encuesta.getNivelTemas() != 0 &&
+                            encuesta.getNivelTeoricas() != 0 &&
+                            encuesta.getNivelPracticas() != 0) {
+                        encuesta.setComentario(comentario.getText().toString());
+                        enviarEncuesta();
+                    } else
+                        Toast.makeText(getContext(), "Completá todas las preguntas antes de enviar la encuesta", Toast.LENGTH_LONG).show();
+                }
+            });
 
             return view;
         }
@@ -226,15 +306,109 @@ public class SlidingTabsBasicFragment extends Fragment {
          */
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
-            container.removeView((View) object);
-            Log.i(LOG_TAG, "destroyItem() [position: " + position + "]");
+            /*container.removeView((View) object);
+            Log.i(LOG_TAG, "destroyItem() [position: " + position + "]");*/
         }
 
     }
 
-    private void setInfoCurso(View view) {
-        EncuestaCurso encuestaCurso = ((MainActivity) getActivity()).getEncuestaCursoSeleccionada();
+    private void enviarEncuesta() {
+        EncuestaListener listener = new EncuestaListener(getContext(), this);
+        RequestSender requestSender = new RequestSender(getContext());
 
+        String url = getContext().getString(R.string.urlAppServer)
+                + "encuestas/curso/" + encuestaCurso.getCurso().get_id();
+
+        Gson gson = new Gson();
+        try {
+            JSONObject jsonObject = new JSONObject(gson.toJson(encuesta));
+            requestSender.doPost(listener, url, jsonObject);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void addRespuestaNivelGeneral(View view, String respuesta, final int nivel) {
+        RadioGroup respuestas = view.findViewById(R.id.encuesta_respuestas);
+
+        RadioButton radioButton = new RadioButton(getContext());
+        radioButton.setText(respuesta);
+        radioButton.setTextSize(18);
+        radioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                encuesta.setNivelGeneral(nivel);
+            }
+        });
+
+        respuestas.addView(radioButton);
+    }
+
+    private void addRespuestaNivelTemas(View view, String respuesta, final int nivel) {
+        RadioGroup respuestas = view.findViewById(R.id.encuesta_respuestas);
+
+        RadioButton radioButton = new RadioButton(getContext());
+        radioButton.setText(respuesta);
+        radioButton.setTextSize(18);
+        radioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                encuesta.setNivelTemas(nivel);
+            }
+        });
+
+        respuestas.addView(radioButton);
+    }
+
+    private void addRespuestaNivelActualizacion(View view, String respuesta, final int nivel) {
+        RadioGroup respuestas = view.findViewById(R.id.encuesta_respuestas);
+
+        RadioButton radioButton = new RadioButton(getContext());
+        radioButton.setText(respuesta);
+        radioButton.setTextSize(18);
+        radioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                encuesta.setNivelActualizacion(nivel);
+            }
+        });
+
+        respuestas.addView(radioButton);
+    }
+
+    private void addRespuestaNivelPracticas(View view, String respuesta, final int nivel) {
+        RadioGroup respuestas = view.findViewById(R.id.encuesta_respuestas);
+
+        RadioButton radioButton = new RadioButton(getContext());
+        radioButton.setText(respuesta);
+        radioButton.setTextSize(18);
+        radioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                encuesta.setNivelPracticas(nivel);
+            }
+        });
+
+        respuestas.addView(radioButton);
+    }
+
+    private void addRespuestaNivelTeoricas(View view, String respuesta, final int nivel) {
+        RadioGroup respuestas = view.findViewById(R.id.encuesta_respuestas);
+
+        RadioButton radioButton = new RadioButton(getContext());
+        radioButton.setText(respuesta);
+        radioButton.setTextSize(18);
+        radioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                encuesta.setNivelTeoricas(nivel);
+            }
+        });
+
+        respuestas.addView(radioButton);
+    }
+
+    private void setInfoCurso(View view) {
         TextView codigoMateria = view.findViewById(R.id.encuesta_codigo_materia);
         codigoMateria.setText(encuestaCurso.getMateria().getCodigo());
 

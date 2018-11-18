@@ -1,77 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="8dp">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@color/colorPrimaryDark">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/encuesta_codigo_materia"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:padding="8dp" />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/encuesta_nombre_materia"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:padding="8dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/encuesta_numero_curso"
-                android:textSize="16sp"
-                android:textColor="@color/colorPrimaryDark"
-                android:padding="8dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/encuesta_docente_curso"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimaryDark"
-                android:padding="8dp" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/encuesta_pregunta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:padding="8dp"/>
+            android:orientation="vertical"
+            android:padding="8dp">
 
-        <LinearLayout
-            android:id="@+id/encuesta_respuestas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/colorPrimaryDark">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/encuesta_codigo_materia"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:padding="8dp" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/encuesta_nombre_materia"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:padding="8dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/encuesta_numero_curso"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:padding="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/encuesta_docente_curso"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:padding="8dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/encuesta_pregunta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="8dp"/>
+
+            <RadioGroup
+                android:id="@+id/encuesta_respuestas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/encuesta_comentario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences|textMultiLine|textAutoComplete"
+                android:hint="@string/encuesta_comentario_hint"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/enviar_encuesta"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:shadowColor="@color/black"
+                android:background="@color/design_default_color_primary"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/enviar_encuesta"
+                android:visibility="gone"/>
+
         </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</android.support.design.widget.CoordinatorLayout>
