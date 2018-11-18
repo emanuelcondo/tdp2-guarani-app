@@ -35,6 +35,11 @@
             android:enabled="false"
             android:title="@string/perfil" />
         <item
+            android:id="@+id/nav_encuestas"
+            android:icon="@drawable/ic_star_blank"
+            android:enabled="true"
+            android:title="@string/encuestas" />
+        <item
             android:id="@+id/nav_historia"
             android:icon="@drawable/ic_assignment_ind_black_24dp"
             android:title="@string/historia" />

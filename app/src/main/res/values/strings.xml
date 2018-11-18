@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Guarani App</string>
-    <string name="urlAppServer">http://192.168.43.52:3000/api/v1.0/</string>
+    <string name="urlAppServer">http://192.168.1.103:3000/api/v1.0/</string>
     <!-- Servidor apuntando a produccion -->
     <!--string name="urlAppServer">https://guarani-server.herokuapp.com/api/v1.0/</string-->
     <string name="navigation_drawer_open">Abrir menu</string>
@@ -37,6 +37,7 @@
     <string name="mensaje_condicionales">No puede inscribirse como condicional mientras existan vacantes en otros cursos para esta materia.</string>
     <string name="desinscripcion_examen">Desinscripción a Exámenes</string>
     <string name="perfil">Perfil</string>
+    <string name="encuestas">Encuestas</string>
     <string name="inscripcion_examen">Inscripción a Exámenes</string>
     <string name="seleccion_fechas_examenes">Fechas de Examen</string>
     <string name="horario_examen_header">Fecha de Examen</string>
