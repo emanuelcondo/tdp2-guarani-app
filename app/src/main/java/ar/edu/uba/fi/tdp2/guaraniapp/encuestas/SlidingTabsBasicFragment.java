@@ -317,7 +317,7 @@ public class SlidingTabsBasicFragment extends Fragment implements ResponseWatche
         RequestSender requestSender = new RequestSender(getContext());
 
         String url = getContext().getString(R.string.urlAppServer)
-                + "encuestas/curso/" + encuestaCurso.getCurso().get_id();
+                + "encuestas/curso/" + encuestaCurso.getId();
 
         Gson gson = new Gson();
         try {
@@ -416,9 +416,6 @@ public class SlidingTabsBasicFragment extends Fragment implements ResponseWatche
         nombreMateria.setText(encuestaCurso.getMateria().getNombre());
 
         TextView comision = view.findViewById(R.id.encuesta_numero_curso);
-        comision.setText(String.valueOf(encuestaCurso.getComision()));
-
-        TextView docente = view.findViewById(R.id.encuesta_docente_curso);
-        docente.setText(encuestaCurso.getCurso().getDocente());
+        comision.setText("Curso " + String.valueOf(encuestaCurso.getComision()));
     }
 }

@@ -1,33 +1,29 @@
 package ar.edu.uba.fi.tdp2.guaraniapp.model;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
 import ar.edu.uba.fi.tdp2.guaraniapp.model.Curso;
 import ar.edu.uba.fi.tdp2.guaraniapp.model.Materia;
 
-public class EncuestaCurso {
-    private Curso curso;
+public class EncuestaCurso implements Serializable {
+    @SerializedName("_id")
+    private String id;
     private int comision;
     private int anio;
     private int cuatrimestre;
     private Materia materia;
 
-    public EncuestaCurso (Curso curso,
+    public EncuestaCurso (String id,
                           int comision,
                           int anio,
                           int cuatrimestre,
                           Materia materia) {
-        this.curso = curso;
         this.comision = comision;
         this.anio = anio;
         this.cuatrimestre = cuatrimestre;
         this.materia = materia;
-    }
-
-    public Curso getCurso() {
-        return curso;
-    }
-
-    public void setCurso(Curso curso) {
-        this.curso = curso;
     }
 
     public int getComision() {
@@ -60,5 +56,13 @@ public class EncuestaCurso {
 
     public void setMateria(Materia materia) {
         this.materia = materia;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

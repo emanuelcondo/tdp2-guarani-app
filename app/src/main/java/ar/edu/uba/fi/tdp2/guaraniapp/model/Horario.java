@@ -68,6 +68,8 @@ public class Horario {
     }
 
     public String getSede() {
+        if (sede == null)
+            return "-";
         switch (sede) {
             case "PC":
                 return "Paseo Colón";

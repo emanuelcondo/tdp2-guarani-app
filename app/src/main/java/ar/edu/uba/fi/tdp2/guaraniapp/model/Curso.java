@@ -39,6 +39,8 @@ public class Curso {
     }
 
     public String getDocente() {
+        if (docenteACargo == null)
+            return "Docente a determinar";
         return docenteACargo.toString();
     }
 

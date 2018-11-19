@@ -36,7 +36,7 @@ public class EncuestasCursosFragment extends RecyclerFragment implements Respons
         EncuestasCursosListener encuestasCursosListener = new EncuestasCursosListener(context, this);
         RequestSender requestSender = new RequestSender(context);
 
-        String url = context.getString(R.string.urlAppServer) + "encuestas/alumnos/mis-encuestas";
+        String url = context.getString(R.string.urlAppServer) + "alumnos/mis-encuestas";
 
         requestSender.doGet_expectJSONObject(encuestasCursosListener, url);
     }
@@ -48,18 +48,7 @@ public class EncuestasCursosFragment extends RecyclerFragment implements Respons
         getAdapter().notifyDataSetChanged();
         ((MainActivity) getActivity()).setToolbarName(getString(R.string.encuestas_cursos));
 
-        //TODO: Borrar mock
-        final Materia materia = new Materia();
-        materia.setCodigo("75.01");
-        materia.setNombre("Algoritmos y Programación I");
-        final Curso curso = new Curso();
-        curso.setDocenteACargo(new Persona("Carlos", "Perez"));
-        ((MainActivity) getActivity()).setEncuestasCursos(new ArrayList<EncuestaCurso>() {{
-            add(new EncuestaCurso(curso, 0, 2018, 2, materia));
-        }});
-        onSuccess();
-
-        //loadEncuestas();
+        loadEncuestas();
     }
 
     @Override

@@ -44,14 +44,11 @@ public class EncuestasCursoViewHolder extends RecyclerView.ViewHolder {
     }
 
     private void bindViews() {
-
-        Curso curso;
-        curso = encuestaCurso.getCurso();
-        textViewDocente.setText(curso.getDocente());
         textViewCodigoMateria.setText(encuestaCurso.getMateria().getCodigo());
         textViewNombreMateria.setText(encuestaCurso.getMateria().getNombre());
 
-        textViewNumeroCurso.setText(itemView.getContext().getString(R.string.curso_header, curso.getComision()));
+        textViewNumeroCurso.setText(itemView.getContext()
+                .getString(R.string.curso_header, encuestaCurso.getComision()));
     }
 
 }
