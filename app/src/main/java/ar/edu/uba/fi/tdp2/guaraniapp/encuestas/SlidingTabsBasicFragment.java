@@ -7,7 +7,6 @@ import ar.edu.uba.fi.tdp2.guaraniapp.comunes.FragmentLoader;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.RequestSender;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.red.ResponseWatcher;
 import ar.edu.uba.fi.tdp2.guaraniapp.comunes.vista.SlidingTabLayout;
-import ar.edu.uba.fi.tdp2.guaraniapp.materias.desinscripcion.DesinscripcionListener;
 import ar.edu.uba.fi.tdp2.guaraniapp.model.Encuesta;
 import ar.edu.uba.fi.tdp2.guaraniapp.model.EncuestaCurso;
 
@@ -46,6 +45,13 @@ public class SlidingTabsBasicFragment extends Fragment implements ResponseWatche
 
     private Encuesta encuesta;
     private EncuestaCurso encuestaCurso;
+
+    private int opcionOpinionGeneral = -1;
+    private int opcionTemas = -1;
+    private int opcionActualidad = -1;
+    private int opcionTeoricas = -1;
+    private int opcionPracticas = -1;
+    private String comentarioAnterior = "";
 
     /**
      * A custom {@link ViewPager} title strip which looks much like Tabs present in Android v4.0 and
@@ -190,6 +196,12 @@ public class SlidingTabsBasicFragment extends Fragment implements ResponseWatche
             addRespuestaNivelGeneral(view,"Regular", 2);
             addRespuestaNivelGeneral(view,"Malo", 1);
 
+            if (opcionOpinionGeneral != -1) {
+                RadioGroup radioGroup = view.findViewById(R.id.encuesta_respuestas);
+                RadioButton radioButton = (RadioButton) radioGroup.getChildAt(opcionOpinionGeneral);
+                radioButton.setChecked(true);
+            }
+
             return view;
         }
 
@@ -208,6 +220,12 @@ public class SlidingTabsBasicFragment extends Fragment implements ResponseWatche
             addRespuestaNivelTemas(view, "Opinión neutral", 3);
             addRespuestaNivelTemas(view, "Poco interesantes", 2);
             addRespuestaNivelTemas(view, "Nada interesantes", 1);
+
+            if (opcionTemas != -1) {
+                RadioGroup radioGroup = view.findViewById(R.id.encuesta_respuestas);
+                RadioButton radioButton = (RadioButton) radioGroup.getChildAt(opcionTemas);
+                radioButton.setChecked(true);
+            }
 
             return view;
         }
@@ -228,6 +246,12 @@ public class SlidingTabsBasicFragment extends Fragment implements ResponseWatche
             addRespuestaNivelActualizacion(view, "Poco actualizados", 2);
             addRespuestaNivelActualizacion(view, "Nada actualizados", 1);
 
+            if (opcionActualidad != -1) {
+                RadioGroup radioGroup = view.findViewById(R.id.encuesta_respuestas);
+                RadioButton radioButton = (RadioButton) radioGroup.getChildAt(opcionActualidad);
+                radioButton.setChecked(true);
+            }
+
             return view;
         }
 
@@ -246,6 +270,12 @@ public class SlidingTabsBasicFragment extends Fragment implements ResponseWatche
             addRespuestaNivelTeoricas(view,"Bueno", 3);
             addRespuestaNivelTeoricas(view,"Regular", 2);
             addRespuestaNivelTeoricas(view,"Malo", 1);
+
+            if (opcionTeoricas != -1) {
+                RadioGroup radioGroup = view.findViewById(R.id.encuesta_respuestas);
+                RadioButton radioButton = (RadioButton) radioGroup.getChildAt(opcionTeoricas);
+                radioButton.setChecked(true);
+            }
 
             return view;
         }
@@ -286,6 +316,15 @@ public class SlidingTabsBasicFragment extends Fragment implements ResponseWatche
                 }
             });
 
+            if (opcionPracticas != -1) {
+                RadioGroup radioGroup = view.findViewById(R.id.encuesta_respuestas);
+                RadioButton radioButton = (RadioButton) radioGroup.getChildAt(opcionPracticas);
+                radioButton.setChecked(true);
+            }
+
+            if (!comentarioAnterior.equals(""))
+                comentario.setText(comentarioAnterior);
+
             return view;
         }
 
@@ -306,8 +345,20 @@ public class SlidingTabsBasicFragment extends Fragment implements ResponseWatche
          */
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
-            /*container.removeView((View) object);
-            Log.i(LOG_TAG, "destroyItem() [position: " + position + "]");*/
+            RadioGroup radioGroup = ((View) object).findViewById(R.id.encuesta_respuestas);
+            RadioButton radioButton = radioGroup.findViewById(radioGroup.getCheckedRadioButtonId());
+            switch (position) {
+                case 0: opcionOpinionGeneral = radioGroup.indexOfChild(radioButton); break;
+                case 1: opcionTemas = radioGroup.indexOfChild(radioButton); break;
+                case 2: opcionActualidad = radioGroup.indexOfChild(radioButton); break;
+                case 3: opcionTeoricas = radioGroup.indexOfChild(radioButton); break;
+                case 4: opcionPracticas = radioGroup.indexOfChild(radioButton);
+                    EditText comentario = ((View) object).findViewById(R.id.encuesta_comentario);
+                    comentarioAnterior = comentario.getText().toString();
+            }
+
+            container.removeView((View) object);
+            Log.i(LOG_TAG, "destroyItem() [position: " + position + "]");
         }
 
     }
