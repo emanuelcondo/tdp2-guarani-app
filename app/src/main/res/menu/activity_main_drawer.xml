@@ -10,7 +10,7 @@
             android:title="@string/oferta" />
         <item
             android:id="@+id/nav_prioridad"
-            android:icon="@drawable/baseline_stars_black_18dp"
+            android:icon="@drawable/ic_prioridad"
             android:title="@string/prioridad" />
         <item
             android:id="@+id/nav_inscribirme"
@@ -19,7 +19,7 @@
             android:title="@string/inscripcion" />
         <item
             android:id="@+id/nav_mis_inscripciones_cursos"
-            android:icon="@drawable/baseline_assignment_black_18dp"
+            android:icon="@drawable/ic_mis_inscripciones"
             android:title="@string/mis_inscripciones" />
         <item
             android:id="@+id/nav_inscribirme_examen"
@@ -30,11 +30,6 @@
             android:icon="@drawable/ic_person_add_disabled"
             android:title="@string/desinscripcion_examen" />
         <item
-            android:id="@+id/nav_perfil"
-            android:icon="@drawable/ic_assignment_ind_black_24dp"
-            android:enabled="false"
-            android:title="@string/perfil" />
-        <item
             android:id="@+id/nav_encuestas"
             android:icon="@drawable/ic_star_blank"
             android:enabled="true"
@@ -44,18 +39,5 @@
             android:icon="@drawable/ic_assignment_ind_black_24dp"
             android:title="@string/historia" />
     </group>
-
-    <item android:title="Comunicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Compartir" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Enviar" />
-        </menu>
-    </item>
 
 </menu>
